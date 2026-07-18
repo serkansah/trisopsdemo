@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FinOps — Trisops</title>
 <link rel="icon" href="/static/default-favicon.png">
-<link rel="stylesheet" href="/static/style.css?v=1784407556">
+<link rel="stylesheet" href="/static/style.css?v=1784408468">
 <script>
 (function(){
   function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
@@ -552,8 +552,8 @@ function onSearchKey(e) {
         </div>
         <div class="fo-kpi fo-kpi-save" id="kpi-save">
           <div class="fo-kpi-label">Aylık Tasarruf Potansiyeli</div>
-          <div class="fo-kpi-val" id="kv-save">$244,81</div>
-          <div class="fo-kpi-sub" id="ks-save">Yıllık: $2.937,72</div>
+          <div class="fo-kpi-val" id="kv-save">$1.000</div>
+          <div class="fo-kpi-sub" id="ks-save">Yıllık: $12.000</div>
         </div>
         <div class="fo-kpi" id="kpi-poc">
           <div class="fo-kpi-label">POC / Test VM</div>
@@ -625,24 +625,9 @@ function onSearchKey(e) {
         <td>8</td>
         <td>4</td>
         <td style="font-variant-numeric:tabular-nums">580</td>
-        <td style="color:var(--accent);font-weight:700">$80,67</td>
+        <td style="color:var(--accent);font-weight:700">$592</td>
         <td>
           <button class="fo-act" onclick="openSingleModal('mon02-trisops','Trisops-Demo-vCenter')">
-            İş Emri
-          </button>
-        </td></tr><tr class="" data-key="log02-trisops|Trisops-Demo-vCenter">
-        <td style="text-align:center">
-          <input type="checkbox" class="fo-chk" onchange="toggleRow(this,'log02-trisops|Trisops-Demo-vCenter')" onclick="event.stopPropagation()" style="accent-color:var(--accent)">
-        </td>
-        <td style="font-weight:600" title="log02-trisops">log02-trisops</td>
-        <td style="color:var(--text-dim)">Trisops-Demo-vCenter</td>
-        <td><span class="days-badge days-1">1 gün</span></td>
-        <td>8</td>
-        <td>32</td>
-        <td style="font-variant-numeric:tabular-nums">60</td>
-        <td style="color:var(--accent);font-weight:700">$76,68</td>
-        <td>
-          <button class="fo-act" onclick="openSingleModal('log02-trisops','Trisops-Demo-vCenter')">
             İş Emri
           </button>
         </td></tr><tr class="" data-key="mail01-trisops|Trisops-Demo-vCenter">
@@ -655,7 +640,7 @@ function onSearchKey(e) {
         <td>2</td>
         <td>32</td>
         <td style="font-variant-numeric:tabular-nums">120</td>
-        <td style="color:var(--accent);font-weight:700">$43,73</td>
+        <td style="color:var(--accent);font-weight:700">$154</td>
         <td>
           <button class="fo-act" onclick="openSingleModal('mail01-trisops','Trisops-Demo-vCenter')">
             İş Emri
@@ -670,9 +655,24 @@ function onSearchKey(e) {
         <td>2</td>
         <td>32</td>
         <td style="font-variant-numeric:tabular-nums">120</td>
-        <td style="color:var(--accent);font-weight:700">$43,73</td>
+        <td style="color:var(--accent);font-weight:700">$154</td>
         <td>
           <button class="fo-act" onclick="openSingleModal('api03-trisops','Trisops-Demo-vCenter')">
+            İş Emri
+          </button>
+        </td></tr><tr class="" data-key="log02-trisops|Trisops-Demo-vCenter">
+        <td style="text-align:center">
+          <input type="checkbox" class="fo-chk" onchange="toggleRow(this,'log02-trisops|Trisops-Demo-vCenter')" onclick="event.stopPropagation()" style="accent-color:var(--accent)">
+        </td>
+        <td style="font-weight:600" title="log02-trisops">log02-trisops</td>
+        <td style="color:var(--text-dim)">Trisops-Demo-vCenter</td>
+        <td><span class="days-badge days-1">1 gün</span></td>
+        <td>8</td>
+        <td>32</td>
+        <td style="font-variant-numeric:tabular-nums">60</td>
+        <td style="color:var(--accent);font-weight:700">$100</td>
+        <td>
+          <button class="fo-act" onclick="openSingleModal('log02-trisops','Trisops-Demo-vCenter')">
             İş Emri
           </button>
         </td></tr></tbody>
@@ -1133,7 +1133,7 @@ document.addEventListener('keydown', e => { if(e.key==='Escape') closeOpModal();
 loadData();
 </script>
 
-<script src="/static/app.js?v=1784407556"></script>
+<script src="/static/app.js?v=1784408468"></script>
 <script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
 <!-- AI Chat Widget — floating button + chat window, visible on all pages -->
 <div id="ai-root" aria-live="polite" data-page="/finops">
