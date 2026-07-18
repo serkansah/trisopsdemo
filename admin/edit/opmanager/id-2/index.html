@@ -3,7 +3,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAM Kullanım Raporu — Trisops</title>
+<title>Düzenle — OpManager — Trisops</title>
 <link rel="icon" href="/static/default-favicon.png">
 <link rel="stylesheet" href="/static/style.css?v=1784407556">
 <script>
@@ -169,7 +169,7 @@
   <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
 
   
-  <a href="/reports" class="nav-item active">
+  <a href="/reports" class="nav-item ">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
     <span data-i18n="nav.reports">Raporlar</span>
   </a>
@@ -514,325 +514,113 @@ function onSearchKey(e) {
 }
 </script>
     <div class="content">
-
-      <div class="page-header">
+      <div class="page-header" style="display:flex;align-items:center;gap:12px">
+        <a href="/admin" class="btn-back">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </a>
         <div>
-          <h2 class="page-title">PAM Kullanım Raporu</h2>
-          <p class="page-sub" id="pam-sub">Secret Server oturum analizi</p>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:6px">
-            <label style="font-size:12px;color:var(--text-dim)">Son:</label>
-            <select id="days-sel" onchange="loadData()" style="background:var(--card-bg);border:1px solid var(--border);border-radius:6px;
-                           padding:4px 10px;color:var(--text);font-size:12px;cursor:pointer">
-              <option value="7">7 gün</option>
-              <option value="15" selected="">15 gün</option>
-              <option value="30">30 gün</option>
-              <option value="60">60 gün</option>
-            </select>
-          </div>
-          <button class="btn-ghost" onclick="loadData()" style="display:flex;align-items:center;gap:6px">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-.18-4.57"></path></svg>
-            Yenile
-          </button>
-          <button class="btn-primary" id="btn-send" onclick="sendReport(this)" style="display:flex;align-items:center;gap:6px">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            Mail Gönder
-          </button>
+          <h2 class="page-title">
+            Trisops-Demo-OpManager — Düzenle
+          </h2>
+          <p class="page-sub">OpManager bağlantı bilgileri</p>
         </div>
       </div>
 
-      
-      <div class="settings-card">
-        <div style="padding:32px;text-align:center">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#f0a500;margin-bottom:12px"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">PAM bağlantısı yapılandırılmamış</div>
-          <div style="font-size:13px;color:var(--text-dim);margin-bottom:16px">
-            Secret Server MSSQL bağlantı bilgilerini Ayarlar sayfasından ekleyin.
+      <div class="edit-card">
+        <form method="post" action="/admin/save/opmanager">
+          <input type="hidden" name="id" value="2">
+
+          <div class="field-group">
+            <label>Ortam Adı <span class="required">*</span></label>
+            <input type="text" name="name" value="Trisops-Demo-OpManager" placeholder="Örn: PROD vCenter, DR NetBackup, İstanbul Zerto..." required="" autofocus="">
+            <div class="field-hint">Bu adı listede görürsünüz. Anlamlı ve kısa tutun.</div>
           </div>
-          <a href="/settings#pam" class="btn-primary">Ayarlara Git →</a>
-        </div>
+
+          <div class="edit-divider"></div>
+
+          
+          
+          
+          
+          
+          <div class="field-group">
+            <label>Host / IP</label>
+            
+            <input type="text" name="host" value="demo-opmanager.trisops.local" placeholder="" autocomplete="off">
+            
+            
+          </div>
+          
+          
+          
+          
+          
+          <div class="field-group">
+            <label>Protokol</label>
+            
+            <select name="use_ssl">
+              
+              
+              <option value="true" selected="">
+                HTTPS (önerilen)
+              </option>
+              
+              <option value="false">
+                HTTP
+              </option>
+              
+            </select>
+            
+          </div>
+          
+          
+          
+          
+          
+          <div class="field-group">
+            <label>Port</label>
+            
+            <input type="text" name="port" value="443" placeholder="" autocomplete="off">
+            
+            
+          </div>
+          
+          
+          
+          
+          
+          <div class="field-group">
+            <label>API Key</label>
+            
+            <input type="password" name="apikey" value="" placeholder="Değiştirmek için yeni değer girin, boş bırakırsanız korunur" autocomplete="off">
+            
+            <div class="field-hint">Mevcut şifre korunuyor. Değiştirmek için yeni değer girin.</div>
+            
+            
+          </div>
+          
+
+          <div class="edit-actions">
+            <a href="/admin" class="btn-ghost">İptal</a>
+            
+            <button type="submit" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Güncelle
+            </button>
+          </div>
+        </form>
+        
       </div>
-      
 
     </div>
   </div>
 </div>
 
-<style>
-.vc-skeleton-wrap { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
-.vc-skeleton {
-  height: 14px; border-radius: 6px;
-  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover,#1e2130) 50%, var(--border) 75%);
-  background-size: 200% 100%; animation: vc-shimmer 1.4s infinite;
-}
-@keyframes vc-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-.vc-stat-loading {
-  display: inline-block; width: 48px; height: 22px; border-radius: 4px;
-  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover,#1e2130) 50%, var(--border) 75%);
-  background-size: 200% 100%; animation: vc-shimmer 1.4s infinite; vertical-align: middle;
-}
-.badge-err { background: #2a1010; color: #e24b4a; border: 1px solid #4a1a1a; border-radius: 6px; font-size: 11px; padding: 2px 8px; }
-
-/* PAM Table */
-.pam-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.pam-table thead tr { background: var(--bg-hover,#1e2130); }
-.pam-table th { padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600;
-                text-transform: uppercase; letter-spacing: .04em; color: var(--text-dim);
-                border-bottom: 1px solid var(--border); white-space: nowrap; }
-.pam-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); color: var(--text); white-space: nowrap; }
-.pam-table tbody tr:hover { background: var(--bg-hover,#1e2130); }
-.pam-table tbody tr:last-child td { border-bottom: none; }
-.pam-table .off-row td { background: rgba(226,75,74,.07); }
-.pam-table .off-row:hover td { background: rgba(226,75,74,.12); }
-
-/* Bağlantı tipi bar */
-.ct-bar-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.ct-bar-label { font-size: 12px; color: var(--text); min-width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ct-bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-.ct-bar-fill  { height: 100%; background: #4a6ef5; border-radius: 4px; transition: width .5s ease; }
-.ct-bar-count { font-size: 11px; color: var(--text-dim); min-width: 32px; text-align: right; }
-</style>
-
-<script src="/static/chart.umd.min.js?v=1784407556"></script>
-<script>
-let _chartHourly = null, _chartDaily = null, _chartUsers = null;
-let _allSessions = [];
-
-const CHART_COLORS = {
-  blue:   '#4a6ef5',
-  green:  '#2ecc71',
-  red:    '#e24b4a',
-  amber:  '#f0a500',
-  purple: '#9b59b6',
-  teal:   '#1abc9c',
-  pink:   '#e91e63',
-  orange: '#ff9800',
-};
-
-const PALETTE = Object.values(CHART_COLORS);
-
-function destroyChart(c) { if (c) { try { c.destroy(); } catch(e){} } }
-
-function toggleSection(bodyId, chevId) {
-  const body = document.getElementById(bodyId);
-  const chev = document.getElementById(chevId);
-  const collapsed = body.style.maxHeight === '0px' || body.style.maxHeight === '0';
-  body.style.maxHeight = collapsed ? '9999px' : '0px';
-  if (chev) chev.style.transform = collapsed ? 'rotate(0deg)' : 'rotate(-90deg)';
-}
-
-function filterSessions(q) {
-  const rows = document.querySelectorAll('#sessions-table tbody tr');
-  const lq = q.toLowerCase();
-  rows.forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(lq) ? '' : 'none';
-  });
-}
-
-function renderHourly(dist) {
-  const ctx = document.getElementById('chart-hourly').getContext('2d');
-  destroyChart(_chartHourly);
-  const labels = Array.from({length: 24}, (_, i) => `${String(i).padStart(2,'0')}:00`);
-  const offMask = dist.map((_, i) => i < 9 || i >= 18);
-  _chartHourly = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels,
-      datasets: [{
-        label: 'Bağlantı',
-        data: dist,
-        backgroundColor: dist.map((_, i) => (i < 9 || i >= 18) ? 'rgba(226,75,74,.7)' : 'rgba(74,110,245,.7)'),
-        borderRadius: 4,
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } } },
-        y: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } }, beginAtZero: true }
-      }
-    }
-  });
-}
-
-function renderDaily(trend) {
-  const ctx = document.getElementById('chart-daily').getContext('2d');
-  destroyChart(_chartDaily);
-  const labels = Object.keys(trend).map(d => d.slice(5)); // MM-DD
-  const data   = Object.values(trend);
-  _chartDaily = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [{
-        label: 'Bağlantı',
-        data,
-        borderColor: '#4a6ef5',
-        backgroundColor: 'rgba(74,110,245,.12)',
-        tension: 0.3, fill: true, pointRadius: 3,
-        pointBackgroundColor: '#4a6ef5',
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } } },
-        y: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } }, beginAtZero: true }
-      }
-    }
-  });
-}
-
-function renderTopUsers(users) {
-  const ctx = document.getElementById('chart-users').getContext('2d');
-  destroyChart(_chartUsers);
-  _chartUsers = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: users.map(u => u.user.split(' ').slice(-1)[0] || u.user),
-      datasets: [{
-        label: 'Bağlantı',
-        data: users.map(u => u.count),
-        backgroundColor: PALETTE.slice(0, users.length),
-        borderRadius: 4,
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } }, beginAtZero: true },
-        y: { grid: { display: false }, ticks: { color: '#6b7a99', font: { size: 10 } } }
-      }
-    }
-  });
-}
-
-function renderConnTypes(types) {
-  const el  = document.getElementById('conn-type-list');
-  const max = types[0]?.count || 1;
-  el.innerHTML = types.map((t, i) => `
-    <div class="ct-bar-wrap">
-      <span class="ct-bar-label" title="${t.type}">${t.type}</span>
-      <div class="ct-bar-track">
-        <div class="ct-bar-fill" style="width:${Math.round(t.count/max*100)}%;background:${PALETTE[i%PALETTE.length]}"></div>
-      </div>
-      <span class="ct-bar-count">${t.count}</span>
-    </div>`).join('');
-}
-
-function renderOffHours(rows) {
-  const tbody = document.querySelector('#offhours-table tbody');
-  document.getElementById('offhours-count').textContent = rows.length + ' kayıt';
-  tbody.innerHTML = rows.map(r => `<tr>
-    <td>${r.user}</td>
-    <td>${r.target}</td>
-    <td>${r.conn_type}</td>
-    <td>${r.start_date}</td>
-    <td>${r.weekday}</td>
-    <td>${String(r.hour).padStart(2,'0')}:xx</td>
-    <td>${r.duration}</td>
-  </tr>`).join('');
-}
-
-function renderSessions(sessions) {
-  _allSessions = sessions;
-  const tbody = document.querySelector('#sessions-table tbody');
-  document.getElementById('sessions-count').textContent = sessions.length + ' kayıt';
-  tbody.innerHTML = sessions.map(s => `
-    <tr class="${s.is_off_hours ? 'off-row' : ''}">
-      <td><b>${s.user}</b></td>
-      <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis" title="${s.folder}">${s.folder}</td>
-      <td>${s.target}</td>
-      <td><span style="background:var(--bg-hover,#1e2130);border-radius:4px;padding:1px 6px;font-size:11px">${s.conn_type}</span></td>
-      <td>${s.start_date}</td>
-      <td>${s.end_date || '—'}</td>
-      <td style="color:var(--text-dim)">${s.duration}</td>
-    </tr>`).join('');
-}
-
-async function loadData() {
-  const days = document.getElementById('days-sel').value;
-  document.getElementById('loading-wrap').style.display = 'block';
-  document.getElementById('data-wrap').style.display    = 'none';
-  ['stat-total','stat-users','stat-offhours','stat-peak'].forEach(id => {
-    document.getElementById(id).innerHTML = '<span class="vc-stat-loading"></span>';
-  });
-
-  try {
-    const resp = await fetch('/reports/pam-usage/data?days=' + days);
-    if (!resp.ok) {
-      const err = await resp.json();
-      document.getElementById('loading-wrap').innerHTML =
-        `<div class="settings-card"><div style="padding:20px;color:#e24b4a">${err.error || 'Veri alınamadı.'}</div></div>`;
-      return;
-    }
-    const d = await resp.json();
-
-    document.getElementById('stat-total').textContent    = d.total;
-    document.getElementById('stat-users').textContent    = d.unique_users;
-    document.getElementById('stat-offhours').textContent = d.off_hours_count;
-    document.getElementById('stat-peak').textContent     = d.peak_hour;
-    document.getElementById('stat-period').textContent   = `${d.start_date} – ${d.end_date}`;
-    document.getElementById('pam-sub').textContent       =
-      `Secret Server oturum analizi · ${d.start_date} – ${d.end_date}`;
-
-    renderHourly(d.hourly_dist);
-    renderDaily(d.daily_trend);
-    renderTopUsers(d.top_users);
-    renderConnTypes(d.conn_type_dist);
-    renderOffHours(d.off_hours);
-    renderSessions(d.sessions);
-
-    document.getElementById('loading-wrap').style.display = 'none';
-    document.getElementById('data-wrap').style.display    = 'block';
-
-  } catch(e) {
-    document.getElementById('loading-wrap').innerHTML =
-      '<div class="settings-card"><div style="padding:20px;color:#e24b4a">Veri alınamadı.</div></div>';
-  }
-}
-
-async function sendReport(btn) {
-  const el   = document.getElementById('mail-result');
-  const days = document.getElementById('days-sel').value;
-  btn.disabled = true;
-  btn.innerHTML = '<svg class="vc-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg> Gönderiliyor…';
-  const form = new FormData();
-  form.append('days', days);
-  try {
-    const resp = await fetch('/reports/pam-usage/send-report', { method: 'POST', body: form });
-    const data = await resp.json();
-    el.innerHTML = `<div class="alert ${data.ok ? 'alert-success' : 'alert-error'}">${data.msg}</div>`;
-    el.style.display = 'block';
-  } catch(e) {
-    el.innerHTML = '<div class="alert alert-error">Mail gönderilemedi.</div>';
-    el.style.display = 'block';
-  }
-  btn.disabled = false;
-  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Mail Gönder';
-}
-
-// Mesai dışı saat aralığını grafikte göster (kırmızı band tooltip)
-
-</script>
-<style>
-.vc-spin {
-  display: inline-block; width: 14px; height: 14px;
-  border: 2px solid currentColor; border-top-color: transparent;
-  border-radius: 50%; animation: vc-rotate .7s linear infinite; vertical-align: middle;
-}
-@keyframes vc-rotate { to { transform: rotate(360deg); } }
-</style>
 
 <script src="/static/app.js?v=1784407556"></script>
 <script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
 <!-- AI Chat Widget — floating button + chat window, visible on all pages -->
-<div id="ai-root" aria-live="polite" data-page="/reports/pam-usage">
+<div id="ai-root" aria-live="polite" data-page="/admin/edit/opmanager">
 
   <!-- Floating trigger button -->
   <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">

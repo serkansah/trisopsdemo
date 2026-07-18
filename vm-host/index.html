@@ -3,7 +3,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAM Kullanım Raporu — Trisops</title>
+<title>VM-Host Eşleme — Trisops</title>
 <link rel="icon" href="/static/default-favicon.png">
 <link rel="stylesheet" href="/static/style.css?v=1784407556">
 <script>
@@ -70,7 +70,7 @@
   
 
   
-  <a href="/vm-host" class="nav-item " style="padding-left:28px">
+  <a href="/vm-host" class="nav-item active" style="padding-left:28px">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
     <span data-i18n="nav.vmhost">VM-Host Eşleme</span>
   </a>
@@ -169,7 +169,7 @@
   <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
 
   
-  <a href="/reports" class="nav-item active">
+  <a href="/reports" class="nav-item ">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
     <span data-i18n="nav.reports">Raporlar</span>
   </a>
@@ -517,322 +517,819 @@ function onSearchKey(e) {
 
       <div class="page-header">
         <div>
-          <h2 class="page-title">PAM Kullanım Raporu</h2>
-          <p class="page-sub" id="pam-sub">Secret Server oturum analizi</p>
+          <h2 class="page-title">VM — Host Eşleme</h2>
+          <p class="page-sub" id="vmh-sub">48 VM · 8 host · 0/8 sunucu eşleşti (0%)</p>
         </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:6px">
-            <label style="font-size:12px;color:var(--text-dim)">Son:</label>
-            <select id="days-sel" onchange="loadData()" style="background:var(--card-bg);border:1px solid var(--border);border-radius:6px;
-                           padding:4px 10px;color:var(--text);font-size:12px;cursor:pointer">
-              <option value="7">7 gün</option>
-              <option value="15" selected="">15 gün</option>
-              <option value="30">30 gün</option>
-              <option value="60">60 gün</option>
-            </select>
-          </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input type="text" id="vmh-filter" placeholder="VM veya sunucu ara…" oninput="filterRows()" style="padding:7px 12px;border:1px solid var(--border);border-radius:7px;
+                        background:var(--card-bg);color:var(--text);font-size:13px;width:200px">
           <button class="btn-ghost" onclick="loadData()" style="display:flex;align-items:center;gap:6px">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-.18-4.57"></path></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-.18-4.57"></path>
+            </svg>
             Yenile
           </button>
-          <button class="btn-primary" id="btn-send" onclick="sendReport(this)" style="display:flex;align-items:center;gap:6px">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            Mail Gönder
-          </button>
         </div>
       </div>
 
       
-      <div class="settings-card">
-        <div style="padding:32px;text-align:center">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:#f0a500;margin-bottom:12px"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-          <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px">PAM bağlantısı yapılandırılmamış</div>
-          <div style="font-size:13px;color:var(--text-dim);margin-bottom:16px">
-            Secret Server MSSQL bağlantı bilgilerini Ayarlar sayfasından ekleyin.
+
+      <div id="vmh-loading" style="text-align: center; padding: 80px 0px; display: none;">
+        <div class="vmh-spin"></div>
+        <p style="margin-top:16px;color:var(--text-dim);font-size:14px">Veriler yükleniyor…</p>
+      </div>
+      <div id="vmh-error" style="display:none"></div>
+      <div id="vmh-content" style=""><div class="vmh-summary-row">
+    <div class="vmh-stat">
+      <div class="vmh-stat-val">48</div>
+      <div class="vmh-stat-lbl">Toplam VM</div>
+    </div>
+    <div class="vmh-stat">
+      <div class="vmh-stat-val">8</div>
+      <div class="vmh-stat-lbl">ESXi Host</div>
+    </div>
+    <div class="vmh-stat" style="">
+      <div class="vmh-stat-val" style="color:var(--text)">0</div>
+      <div class="vmh-stat-lbl">Eşleşen Sunucu</div>
+    </div>
+    <div class="vmh-stat" style="border-color:#c08000">
+      <div class="vmh-stat-val" style="color:#c08000">8</div>
+      <div class="vmh-stat-lbl">Eşleşmeyen Host</div>
+    </div>
+  </div><div class="vmh-server-card" id="card-esx01_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx01.trisops.local</span>
+            
           </div>
-          <a href="/settings#pam" class="btn-primary">Ayarlara Git →</a>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
         </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
       </div>
-      
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">web01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.0.10</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2022 (64-bit)</td>
+        <td>1</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">mon01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.8.18</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2019 (64-bit)</td>
+        <td>4</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">backup01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.16.26</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Red Hat Enterprise Linux 9 (64-bit)</td>
+        <td>2</td>
+        <td>2 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">api02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.4.34</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ubuntu Linux 22.04 LTS (64-bit)</td>
+        <td>2</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">dc02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.12.42</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rocky Linux 9 (64-bit)</td>
+        <td>4</td>
+        <td>16 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">web03-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.0.50</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUSE Linux Enterprise 15 (64-bit)</td>
+        <td>2</td>
+        <td>8 GB</td>
+      </tr></tbody></table></div></div><div class="vmh-server-card" id="card-esx02_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx02.trisops.local</span>
+            
+          </div>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">app01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.1.11</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2019 (64-bit)</td>
+        <td>8</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">log01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.9.19</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Red Hat Enterprise Linux 9 (64-bit)</td>
+        <td>2</td>
+        <td>16 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">mail01-trisops</td>
+        <td><span class="vmh-badge vmh-b-off">Kapalı</span></td>
+        <td style="font-family:monospace;font-size:11px">—</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ubuntu Linux 22.04 LTS (64-bit)</td>
+        <td>2</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">auth02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.5.35</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rocky Linux 9 (64-bit)</td>
+        <td>2</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">dns02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.13.43</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUSE Linux Enterprise 15 (64-bit)</td>
+        <td>8</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">app03-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.1.51</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2016 (64-bit)</td>
+        <td>4</td>
+        <td>32 GB</td>
+      </tr></tbody></table></div></div><div class="vmh-server-card" id="card-esx03_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx03.trisops.local</span>
+            
+          </div>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">db01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.2.12</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Red Hat Enterprise Linux 9 (64-bit)</td>
+        <td>2</td>
+        <td>16 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">file01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.10.20</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ubuntu Linux 22.04 LTS (64-bit)</td>
+        <td>4</td>
+        <td>16 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">erp01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.18.28</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rocky Linux 9 (64-bit)</td>
+        <td>8</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">cache02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.6.36</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUSE Linux Enterprise 15 (64-bit)</td>
+        <td>2</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">proxy02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.14.44</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2016 (64-bit)</td>
+        <td>2</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">db03-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.2.52</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2022 (64-bit)</td>
+        <td>2</td>
+        <td>16 GB</td>
+      </tr></tbody></table></div></div><div class="vmh-server-card" id="card-esx04_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx04.trisops.local</span>
+            
+          </div>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">sql01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.3.13</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ubuntu Linux 22.04 LTS (64-bit)</td>
+        <td>1</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">print01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.11.21</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rocky Linux 9 (64-bit)</td>
+        <td>8</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">crm01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.19.29</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUSE Linux Enterprise 15 (64-bit)</td>
+        <td>4</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">queue02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.7.37</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2016 (64-bit)</td>
+        <td>8</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">vpn02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.15.45</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2022 (64-bit)</td>
+        <td>4</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">sql03-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.3.53</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2019 (64-bit)</td>
+        <td>1</td>
+        <td>16 GB</td>
+      </tr></tbody></table></div></div><div class="vmh-server-card" id="card-esx05_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx05.trisops.local</span>
+            
+          </div>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">api01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.4.14</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rocky Linux 9 (64-bit)</td>
+        <td>4</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">dc01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.12.22</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUSE Linux Enterprise 15 (64-bit)</td>
+        <td>2</td>
+        <td>2 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">web02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.0.30</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2016 (64-bit)</td>
+        <td>8</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">mon02-trisops</td>
+        <td><span class="vmh-badge vmh-b-off">Kapalı</span></td>
+        <td style="font-family:monospace;font-size:11px">—</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2022 (64-bit)</td>
+        <td>8</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">backup02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.16.46</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2019 (64-bit)</td>
+        <td>4</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">api03-trisops</td>
+        <td><span class="vmh-badge vmh-b-off">Kapalı</span></td>
+        <td style="font-family:monospace;font-size:11px">—</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Red Hat Enterprise Linux 9 (64-bit)</td>
+        <td>2</td>
+        <td>32 GB</td>
+      </tr></tbody></table></div></div><div class="vmh-server-card" id="card-esx06_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx06.trisops.local</span>
+            
+          </div>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">auth01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.5.15</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUSE Linux Enterprise 15 (64-bit)</td>
+        <td>2</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">dns01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.13.23</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2016 (64-bit)</td>
+        <td>4</td>
+        <td>2 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">app02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.1.31</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2022 (64-bit)</td>
+        <td>4</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">log02-trisops</td>
+        <td><span class="vmh-badge vmh-b-off">Kapalı</span></td>
+        <td style="font-family:monospace;font-size:11px">—</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2019 (64-bit)</td>
+        <td>8</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">mail02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.17.47</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Red Hat Enterprise Linux 9 (64-bit)</td>
+        <td>1</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">auth03-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.5.55</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ubuntu Linux 22.04 LTS (64-bit)</td>
+        <td>2</td>
+        <td>4 GB</td>
+      </tr></tbody></table></div></div><div class="vmh-server-card" id="card-esx07_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx07.trisops.local</span>
+            
+          </div>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">cache01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.6.16</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2016 (64-bit)</td>
+        <td>4</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">proxy01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.14.24</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2022 (64-bit)</td>
+        <td>2</td>
+        <td>32 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">db02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.2.32</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2019 (64-bit)</td>
+        <td>4</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">file02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.10.40</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Red Hat Enterprise Linux 9 (64-bit)</td>
+        <td>4</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">erp02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.18.48</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ubuntu Linux 22.04 LTS (64-bit)</td>
+        <td>1</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">cache03-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.6.56</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rocky Linux 9 (64-bit)</td>
+        <td>2</td>
+        <td>8 GB</td>
+      </tr></tbody></table></div></div><div class="vmh-server-card" id="card-esx08_trisops_local">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c08000" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <span class="vmh-no-match">esx08.trisops.local</span>
+            
+          </div>
+          <div style="margin-top:3px"><span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span></div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">6 VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody><tr>
+        <td style="font-weight:600">queue01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.7.17</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2022 (64-bit)</td>
+        <td>8</td>
+        <td>16 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">vpn01-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.15.25</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Microsoft Windows Server 2019 (64-bit)</td>
+        <td>4</td>
+        <td>16 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">sql02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.3.33</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Red Hat Enterprise Linux 9 (64-bit)</td>
+        <td>4</td>
+        <td>8 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">print02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.11.41</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Ubuntu Linux 22.04 LTS (64-bit)</td>
+        <td>1</td>
+        <td>2 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">crm02-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.19.49</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Rocky Linux 9 (64-bit)</td>
+        <td>4</td>
+        <td>4 GB</td>
+      </tr><tr>
+        <td style="font-weight:600">queue03-trisops</td>
+        <td><span class="vmh-badge vmh-b-on">Açık</span></td>
+        <td style="font-family:monospace;font-size:11px">10.99.7.57</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">SUSE Linux Enterprise 15 (64-bit)</td>
+        <td>2</td>
+        <td>4 GB</td>
+      </tr></tbody></table></div></div></div>
 
+      
     </div>
   </div>
 </div>
 
 <style>
-.vc-skeleton-wrap { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
-.vc-skeleton {
-  height: 14px; border-radius: 6px;
-  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover,#1e2130) 50%, var(--border) 75%);
-  background-size: 200% 100%; animation: vc-shimmer 1.4s infinite;
+.vmh-spin {
+  width:36px;height:36px;border-radius:50%;
+  border:3px solid var(--border);border-top-color:var(--accent,#4a6ef5);
+  animation:vmh-rot .8s linear infinite;margin:0 auto;
 }
-@keyframes vc-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-.vc-stat-loading {
-  display: inline-block; width: 48px; height: 22px; border-radius: 4px;
-  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover,#1e2130) 50%, var(--border) 75%);
-  background-size: 200% 100%; animation: vc-shimmer 1.4s infinite; vertical-align: middle;
+@keyframes vmh-rot{to{transform:rotate(360deg)}}
+
+.vmh-summary-row {
+  display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;
 }
-.badge-err { background: #2a1010; color: #e24b4a; border: 1px solid #4a1a1a; border-radius: 6px; font-size: 11px; padding: 2px 8px; }
+.vmh-stat {
+  background:var(--card-bg);border:1px solid var(--border);border-radius:10px;
+  padding:14px 20px;min-width:120px;
+}
+.vmh-stat-val { font-size:22px;font-weight:800;color:var(--text);line-height:1; }
+.vmh-stat-lbl { font-size:11px;color:var(--text-dim);margin-top:4px;text-transform:uppercase;letter-spacing:.06em; }
 
-/* PAM Table */
-.pam-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.pam-table thead tr { background: var(--bg-hover,#1e2130); }
-.pam-table th { padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600;
-                text-transform: uppercase; letter-spacing: .04em; color: var(--text-dim);
-                border-bottom: 1px solid var(--border); white-space: nowrap; }
-.pam-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); color: var(--text); white-space: nowrap; }
-.pam-table tbody tr:hover { background: var(--bg-hover,#1e2130); }
-.pam-table tbody tr:last-child td { border-bottom: none; }
-.pam-table .off-row td { background: rgba(226,75,74,.07); }
-.pam-table .off-row:hover td { background: rgba(226,75,74,.12); }
+.vmh-server-card {
+  background:var(--card-bg);border:1px solid var(--border);border-radius:10px;
+  margin-bottom:10px;overflow:hidden;
+}
+.vmh-server-hd {
+  display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;
+  transition:background .1s;user-select:none;
+}
+.vmh-server-hd:hover { background:var(--bg-hover,rgba(255,255,255,.04)); }
+.vmh-server-hd .vmh-chevron {
+  margin-left:auto;transition:transform .2s;color:var(--text-dim);flex-shrink:0;
+}
+.vmh-server-hd.open .vmh-chevron { transform:rotate(90deg); }
 
-/* Bağlantı tipi bar */
-.ct-bar-wrap { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-.ct-bar-label { font-size: 12px; color: var(--text); min-width: 160px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ct-bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
-.ct-bar-fill  { height: 100%; background: #4a6ef5; border-radius: 4px; transition: width .5s ease; }
-.ct-bar-count { font-size: 11px; color: var(--text-dim); min-width: 32px; text-align: right; }
+.vmh-vm-table-wrap { border-top:1px solid var(--border);overflow-x:auto; }
+.vmh-vm-table { width:100%;border-collapse:collapse; }
+.vmh-vm-table th {
+  text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--text-dim);padding:9px 16px;
+  border-bottom:1px solid var(--border);white-space:nowrap;
+}
+.vmh-vm-table td {
+  padding:9px 16px;border-bottom:1px solid var(--border);
+  font-size:12px;color:var(--text);vertical-align:middle;
+}
+.vmh-vm-table tr:last-child td { border-bottom:none; }
+
+.vmh-badge {
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;
+}
+.vmh-b-up      { background:rgba(22,163,74,.15);color:#16a34a; }
+.vmh-b-down    { background:rgba(239,68,68,.15);color:#ef4444; }
+.vmh-b-trouble { background:rgba(245,158,11,.15);color:#f59e0b; }
+.vmh-b-unknown { background:rgba(107,114,128,.15);color:#6b7280; }
+.vmh-b-on      { background:rgba(22,163,74,.15);color:#16a34a; }
+.vmh-b-off     { background:rgba(107,114,128,.15);color:#6b7280; }
+.vmh-b-unmatched { background:rgba(245,158,11,.12);color:#c08000;border:1px dashed #c08000; }
+
+.vmh-no-match { color:var(--text-dim);font-style:italic;font-size:12px; }
 </style>
 
-<script src="/static/chart.umd.min.js?v=1784407556"></script>
 <script>
-let _chartHourly = null, _chartDaily = null, _chartUsers = null;
-let _allSessions = [];
+let _vmhData = null;
 
-const CHART_COLORS = {
-  blue:   '#4a6ef5',
-  green:  '#2ecc71',
-  red:    '#e24b4a',
-  amber:  '#f0a500',
-  purple: '#9b59b6',
-  teal:   '#1abc9c',
-  pink:   '#e91e63',
-  orange: '#ff9800',
-};
-
-const PALETTE = Object.values(CHART_COLORS);
-
-function destroyChart(c) { if (c) { try { c.destroy(); } catch(e){} } }
-
-function toggleSection(bodyId, chevId) {
-  const body = document.getElementById(bodyId);
-  const chev = document.getElementById(chevId);
-  const collapsed = body.style.maxHeight === '0px' || body.style.maxHeight === '0';
-  body.style.maxHeight = collapsed ? '9999px' : '0px';
-  if (chev) chev.style.transform = collapsed ? 'rotate(0deg)' : 'rotate(-90deg)';
+function _e(s) {
+  if (!s) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
 }
 
-function filterSessions(q) {
-  const rows = document.querySelectorAll('#sessions-table tbody tr');
-  const lq = q.toLowerCase();
-  rows.forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(lq) ? '' : 'none';
-  });
+function _stBadge(code, label) {
+  const cls = code===1?'vmh-b-up':code===2?'vmh-b-down':code===3?'vmh-b-trouble':'vmh-b-unknown';
+  const lbl = code===1?'Aktif':code===2?'Kapalı':code===3?'Sorunlu':(label||'?');
+  return `<span class="vmh-badge ${cls}">${_e(lbl)}</span>`;
 }
 
-function renderHourly(dist) {
-  const ctx = document.getElementById('chart-hourly').getContext('2d');
-  destroyChart(_chartHourly);
-  const labels = Array.from({length: 24}, (_, i) => `${String(i).padStart(2,'0')}:00`);
-  const offMask = dist.map((_, i) => i < 9 || i >= 18);
-  _chartHourly = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels,
-      datasets: [{
-        label: 'Bağlantı',
-        data: dist,
-        backgroundColor: dist.map((_, i) => (i < 9 || i >= 18) ? 'rgba(226,75,74,.7)' : 'rgba(74,110,245,.7)'),
-        borderRadius: 4,
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } } },
-        y: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } }, beginAtZero: true }
-      }
-    }
-  });
+function _powerBadge(state) {
+  if (state==='poweredOn')  return `<span class="vmh-badge vmh-b-on">Açık</span>`;
+  if (state==='poweredOff') return `<span class="vmh-badge vmh-b-off">Kapalı</span>`;
+  return `<span class="vmh-badge vmh-b-unknown">${_e(state)}</span>`;
 }
 
-function renderDaily(trend) {
-  const ctx = document.getElementById('chart-daily').getContext('2d');
-  destroyChart(_chartDaily);
-  const labels = Object.keys(trend).map(d => d.slice(5)); // MM-DD
-  const data   = Object.values(trend);
-  _chartDaily = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [{
-        label: 'Bağlantı',
-        data,
-        borderColor: '#4a6ef5',
-        backgroundColor: 'rgba(74,110,245,.12)',
-        tension: 0.3, fill: true, pointRadius: 3,
-        pointBackgroundColor: '#4a6ef5',
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } } },
-        y: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } }, beginAtZero: true }
-      }
-    }
-  });
-}
-
-function renderTopUsers(users) {
-  const ctx = document.getElementById('chart-users').getContext('2d');
-  destroyChart(_chartUsers);
-  _chartUsers = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: users.map(u => u.user.split(' ').slice(-1)[0] || u.user),
-      datasets: [{
-        label: 'Bağlantı',
-        data: users.map(u => u.count),
-        backgroundColor: PALETTE.slice(0, users.length),
-        borderRadius: 4,
-      }]
-    },
-    options: {
-      indexAxis: 'y',
-      responsive: true, maintainAspectRatio: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } }, beginAtZero: true },
-        y: { grid: { display: false }, ticks: { color: '#6b7a99', font: { size: 10 } } }
-      }
-    }
-  });
-}
-
-function renderConnTypes(types) {
-  const el  = document.getElementById('conn-type-list');
-  const max = types[0]?.count || 1;
-  el.innerHTML = types.map((t, i) => `
-    <div class="ct-bar-wrap">
-      <span class="ct-bar-label" title="${t.type}">${t.type}</span>
-      <div class="ct-bar-track">
-        <div class="ct-bar-fill" style="width:${Math.round(t.count/max*100)}%;background:${PALETTE[i%PALETTE.length]}"></div>
-      </div>
-      <span class="ct-bar-count">${t.count}</span>
-    </div>`).join('');
-}
-
-function renderOffHours(rows) {
-  const tbody = document.querySelector('#offhours-table tbody');
-  document.getElementById('offhours-count').textContent = rows.length + ' kayıt';
-  tbody.innerHTML = rows.map(r => `<tr>
-    <td>${r.user}</td>
-    <td>${r.target}</td>
-    <td>${r.conn_type}</td>
-    <td>${r.start_date}</td>
-    <td>${r.weekday}</td>
-    <td>${String(r.hour).padStart(2,'0')}:xx</td>
-    <td>${r.duration}</td>
-  </tr>`).join('');
-}
-
-function renderSessions(sessions) {
-  _allSessions = sessions;
-  const tbody = document.querySelector('#sessions-table tbody');
-  document.getElementById('sessions-count').textContent = sessions.length + ' kayıt';
-  tbody.innerHTML = sessions.map(s => `
-    <tr class="${s.is_off_hours ? 'off-row' : ''}">
-      <td><b>${s.user}</b></td>
-      <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis" title="${s.folder}">${s.folder}</td>
-      <td>${s.target}</td>
-      <td><span style="background:var(--bg-hover,#1e2130);border-radius:4px;padding:1px 6px;font-size:11px">${s.conn_type}</span></td>
-      <td>${s.start_date}</td>
-      <td>${s.end_date || '—'}</td>
-      <td style="color:var(--text-dim)">${s.duration}</td>
-    </tr>`).join('');
+function _memFmt(mb) {
+  if (!mb) return '—';
+  return mb >= 1024 ? (mb/1024).toFixed(0)+' GB' : mb+' MB';
 }
 
 async function loadData() {
-  const days = document.getElementById('days-sel').value;
-  document.getElementById('loading-wrap').style.display = 'block';
-  document.getElementById('data-wrap').style.display    = 'none';
-  ['stat-total','stat-users','stat-offhours','stat-peak'].forEach(id => {
-    document.getElementById(id).innerHTML = '<span class="vc-stat-loading"></span>';
-  });
-
+  document.getElementById('vmh-loading').style.display = '';
+  document.getElementById('vmh-content').style.display = 'none';
+  document.getElementById('vmh-error').style.display   = 'none';
   try {
-    const resp = await fetch('/reports/pam-usage/data?days=' + days);
-    if (!resp.ok) {
-      const err = await resp.json();
-      document.getElementById('loading-wrap').innerHTML =
-        `<div class="settings-card"><div style="padding:20px;color:#e24b4a">${err.error || 'Veri alınamadı.'}</div></div>`;
-      return;
+    const r = await fetch('/vm-host/data');
+    const j = await r.json();
+    if (j.error) { showError(j.error); return; }
+    _vmhData = j;
+    render(j);
+  } catch(e) {
+    showError('Veri yüklenemedi: ' + e.message);
+  }
+}
+
+function showError(msg) {
+  document.getElementById('vmh-loading').style.display = 'none';
+  document.getElementById('vmh-error').style.display   = '';
+  document.getElementById('vmh-error').innerHTML =
+    `<div class="settings-card"><div style="padding:40px;text-align:center">
+       <div style="color:#ef4444;font-size:14px;font-weight:600">Hata</div>
+       <div style="color:var(--text-dim);font-size:13px;margin-top:8px">${_e(msg)}</div>
+     </div></div>`;
+}
+
+function render(d) {
+  const matched   = d.matched || 0;
+  const unmatched = (d.total_hosts || 0) - matched;
+
+  let html = `<div class="vmh-summary-row">
+    <div class="vmh-stat">
+      <div class="vmh-stat-val">${d.total_vms||0}</div>
+      <div class="vmh-stat-lbl">Toplam VM</div>
+    </div>
+    <div class="vmh-stat">
+      <div class="vmh-stat-val">${d.total_hosts||0}</div>
+      <div class="vmh-stat-lbl">ESXi Host</div>
+    </div>
+    <div class="vmh-stat" style="${matched>0?'border-color:#16a34a':''}" >
+      <div class="vmh-stat-val" style="color:${matched>0?'#16a34a':'var(--text)'}">${matched}</div>
+      <div class="vmh-stat-lbl">Eşleşen Sunucu</div>
+    </div>
+    ${unmatched>0?`<div class="vmh-stat" style="border-color:#c08000">
+      <div class="vmh-stat-val" style="color:#c08000">${unmatched}</div>
+      <div class="vmh-stat-lbl">Eşleşmeyen Host</div>
+    </div>`:''}
+  </div>`;
+
+  for (const srv of (d.servers||[])) {
+    const om  = srv.om_device;
+    const vms = srv.vms || [];
+    const cnt = srv.vm_count || 0;
+
+    const serverTitle = om
+      ? `<strong>${_e(om.display_name||om.name)}</strong>`
+      : `<span class="vmh-no-match">${_e(srv.esxi_host)}</span>`;
+    const serverSub = om
+      ? `<span style="font-size:11px;color:var(--text-dim)">${_e(om.ip_address||'')}${om.device_type?' · '+_e(om.device_type):''}</span>`
+      : `<span class="vmh-badge vmh-b-unmatched" style="font-size:10px">OpManager'da bulunamadı</span>`;
+    const statusBadge = om ? _stBadge(om.status_code, om.status) : '';
+
+    html += `<div class="vmh-server-card" id="card-${_e(srv.esxi_host.replace(/[^a-z0-9]/gi,'_'))}">
+      <div class="vmh-server-hd" onclick="toggleCard(this)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="${om?'var(--accent,#4a6ef5)':'#c08000'}" stroke-width="1.8">
+          <rect x="2" y="2" width="20" height="8" rx="2"/>
+          <rect x="2" y="14" width="20" height="8" rx="2"/>
+          <line x1="6" y1="6" x2="6.01" y2="6"/>
+          <line x1="6" y1="18" x2="6.01" y2="18"/>
+        </svg>
+        <div style="min-width:0;flex:1">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            ${serverTitle}
+            ${statusBadge}
+          </div>
+          <div style="margin-top:3px">${serverSub}</div>
+        </div>
+        <span style="font-size:13px;color:var(--text-dim);flex-shrink:0">${cnt} VM</span>
+        <svg class="vmh-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </div>
+      <div class="vmh-vm-table-wrap" style="display:none">
+        <table class="vmh-vm-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>İşletim Sistemi</th><th>CPU</th><th>RAM</th>
+          </tr></thead>
+          <tbody>`;
+
+    for (const vm of vms) {
+      html += `<tr>
+        <td style="font-weight:600">${_e(vm.name)}</td>
+        <td>${_powerBadge(vm.power_state)}</td>
+        <td style="font-family:monospace;font-size:11px">${_e(vm.ip_address||'—')}</td>
+        <td style="color:var(--text-dim);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${_e(vm.guest_os||'—')}</td>
+        <td>${vm.num_cpu||'—'}</td>
+        <td>${_memFmt(vm.memory_mb)}</td>
+      </tr>`;
     }
-    const d = await resp.json();
 
-    document.getElementById('stat-total').textContent    = d.total;
-    document.getElementById('stat-users').textContent    = d.unique_users;
-    document.getElementById('stat-offhours').textContent = d.off_hours_count;
-    document.getElementById('stat-peak').textContent     = d.peak_hour;
-    document.getElementById('stat-period').textContent   = `${d.start_date} – ${d.end_date}`;
-    document.getElementById('pam-sub').textContent       =
-      `Secret Server oturum analizi · ${d.start_date} – ${d.end_date}`;
-
-    renderHourly(d.hourly_dist);
-    renderDaily(d.daily_trend);
-    renderTopUsers(d.top_users);
-    renderConnTypes(d.conn_type_dist);
-    renderOffHours(d.off_hours);
-    renderSessions(d.sessions);
-
-    document.getElementById('loading-wrap').style.display = 'none';
-    document.getElementById('data-wrap').style.display    = 'block';
-
-  } catch(e) {
-    document.getElementById('loading-wrap').innerHTML =
-      '<div class="settings-card"><div style="padding:20px;color:#e24b4a">Veri alınamadı.</div></div>';
+    html += `</tbody></table></div></div>`;
   }
+
+  document.getElementById('vmh-content').innerHTML = html;
+  document.getElementById('vmh-loading').style.display = 'none';
+  document.getElementById('vmh-content').style.display = '';
+
+  const matched_pct = d.total_hosts ? Math.round(matched/d.total_hosts*100) : 0;
+  document.getElementById('vmh-sub').textContent =
+    `${d.total_vms} VM · ${d.total_hosts} host · ${matched}/${d.total_hosts} sunucu eşleşti (${matched_pct}%)`;
 }
 
-async function sendReport(btn) {
-  const el   = document.getElementById('mail-result');
-  const days = document.getElementById('days-sel').value;
-  btn.disabled = true;
-  btn.innerHTML = '<svg class="vc-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg> Gönderiliyor…';
-  const form = new FormData();
-  form.append('days', days);
-  try {
-    const resp = await fetch('/reports/pam-usage/send-report', { method: 'POST', body: form });
-    const data = await resp.json();
-    el.innerHTML = `<div class="alert ${data.ok ? 'alert-success' : 'alert-error'}">${data.msg}</div>`;
-    el.style.display = 'block';
-  } catch(e) {
-    el.innerHTML = '<div class="alert alert-error">Mail gönderilemedi.</div>';
-    el.style.display = 'block';
-  }
-  btn.disabled = false;
-  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Mail Gönder';
+function toggleCard(hd) {
+  hd.classList.toggle('open');
+  const wrap = hd.nextElementSibling;
+  wrap.style.display = wrap.style.display === 'none' ? '' : 'none';
 }
 
-// Mesai dışı saat aralığını grafikte göster (kırmızı band tooltip)
+function filterRows() {
+  const q = document.getElementById('vmh-filter').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('.vmh-server-card');
+  cards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = (!q || text.includes(q)) ? '' : 'none';
+  });
+}
 
+loadData();
 </script>
-<style>
-.vc-spin {
-  display: inline-block; width: 14px; height: 14px;
-  border: 2px solid currentColor; border-top-color: transparent;
-  border-radius: 50%; animation: vc-rotate .7s linear infinite; vertical-align: middle;
-}
-@keyframes vc-rotate { to { transform: rotate(360deg); } }
-</style>
 
 <script src="/static/app.js?v=1784407556"></script>
 <script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
 <!-- AI Chat Widget — floating button + chat window, visible on all pages -->
-<div id="ai-root" aria-live="polite" data-page="/reports/pam-usage">
+<div id="ai-root" aria-live="polite" data-page="/vm-host">
 
   <!-- Floating trigger button -->
   <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
@@ -882,7 +1379,7 @@ async function sendReport(btn) {
     <!-- Messages area -->
     <div id="ai-msgs" role="log">
       <!-- Welcome message injected by JS -->
-    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Kaç VM var?</button><button class="ai-sug">Tag'siz VM'ler neler?</button><button class="ai-sug">Lisans envanteri</button><button class="ai-sug">Bekleyen operasyonlar</button><button class="ai-sug">Fiziksel cihaz durumu</button><button class="ai-sug">Teklifler neler?</button><button class="ai-sug">ESXi host listesi</button><button class="ai-sug">Silinecek VM'ler?</button><button class="ai-sug">Süresi dolmuş lisanslar?</button><button class="ai-sug">32 GB RAM, 8 CPU, 500 GB disk maliyeti?</button></div></div>
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">ESXi host listesi</button><button class="ai-sug">Hangi host'ta en çok VM var?</button></div></div>
 
     <!-- Input area -->
     <div id="ai-footer">

@@ -1,0 +1,2578 @@
+<!DOCTYPE html><html lang="tr" data-theme="light"><head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Örnek Sizing Teklifi — Trisops</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css?v=1784407556">
+<script>
+(function(){
+  function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  var t=_getCookie('ps_theme')||'light';
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+  window._PS_LANG=_getCookie('ps_lang')||'tr';
+  window._PS_TZ=_getCookie('ps_tz')||'Europe/Istanbul';
+})();
+</script>
+</head>
+<body>
+
+<div class="app">
+  
+
+
+
+
+<nav class="sidebar" id="sidebar">
+  <a href="/" class="sidebar-logo" style="display:block;text-decoration:none">
+    <img src="/static/default-logo.png" alt="Trisops" class="logo-img logo-img-sm" id="sidebar-logo-img">
+  </a>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <a href="/daily-check" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+    <span data-i18n="nav.dailycheck">Günlük Kontrol</span>
+  </a>
+  
+
+  
+  
+  
+
+  
+  <div class="nav-section-label" data-i18n="nav.section.infra">Altyapı</div>
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.virt">Sanallaştırma</div>
+
+  
+  <a href="/vcenter" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+    <span data-i18n="nav.vcenter">vCenter</span>
+  </a>
+  
+
+  
+  <a href="/vm-host" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+    <span data-i18n="nav.vmhost">VM-Host Eşleme</span>
+  </a>
+  
+
+  
+  <a href="/rvtools" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.rvtools">RVTools</span>
+  </a>
+  <a href="/capacity" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+    <span data-i18n="nav.capacity">Kapasite Trend Analizi</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.monitor">İzleme</div>
+
+  
+  <a href="/physical" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+    <span data-i18n="nav.physical">Fiziksel Mimari</span>
+  </a>
+  
+
+  
+  <a href="/delinea" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <span data-i18n="nav.delinea">Delinea PAM</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.dataprot">Veri Koruma</div>
+
+  
+  <a href="/itanalytics" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    <span data-i18n="nav.itanalytics">IT Analytics</span>
+  </a>
+  
+
+  
+  <a href="/netbackup" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    <span data-i18n="nav.netbackup">NetBackup</span>
+  </a>
+  
+
+  
+  <a href="/zerto" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-9 9M12 2h9v9"></path><path d="M3 22l9-9M12 22H3v-9"></path></svg>
+    <span data-i18n="nav.zerto">Zerto</span>
+  </a>
+  
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.mgmt">Yönetim</div>
+  
+
+  
+  <a href="/operations" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+    <span data-i18n="nav.operations">Operasyon</span>
+  </a>
+  
+
+  
+  <a href="/calculator" class="nav-item active">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+    <span data-i18n="nav.calculator">Teklifler</span>
+  </a>
+  
+
+  
+  <a href="/finops" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+    <span data-i18n="nav.finops">Maliyet Optimizasyonu</span>
+  </a>
+  
+
+  
+  <a href="/licenses" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 4v5M15 4v5M7 14h4M7 17h6"></path></svg>
+    <span data-i18n="nav.licenses">Lisans Yönetimi</span>
+  </a>
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
+
+  
+  <a href="/reports" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.reports">Raporlar</span>
+  </a>
+  
+
+  
+  <a href="/jobs" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span data-i18n="nav.jobs">Zamanlanmış Görevler</span>
+  </a>
+  
+  
+
+</nav>
+  <div class="main">
+    
+
+
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menüyü aç/kapat">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <!-- Global Arama — sadece vCenter yetkisi olanlara göster -->
+  
+  
+  <div class="search-wrap" id="search-wrap" style="max-width:400px">
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="search-input" class="search-input" type="text" placeholder="VM ara… (ad, IP, DNS, etiket)" autocomplete="off" spellcheck="false" oninput="onSearch(this.value)" onkeydown="onSearchKey(event)" onfocus="showDrop()">
+      <kbd class="search-kbd" id="search-kbd">Ctrl K</kbd>
+    </div>
+    <div class="search-drop" id="search-drop" style="display:none"></div>
+  </div>
+  <a href="/cmdb" class="btn-detail-search ">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span data-i18n="nav.cmdb">Detay arama</span>
+  </a>
+  
+
+  <div class="topbar-right">
+    <a href="/docs" title="Dokümantasyon" class="btn-docs">🛈</a>
+    <div class="topbar-user-chip" id="user-chip" onclick="toggleUserMenu()" style="cursor:pointer;user-select:none">
+      <div class="topbar-avatar">A</div>
+      <div class="topbar-user-info">
+        <div class="topbar-user-name">Admin</div>
+        <div class="topbar-user-role" data-i18n="user.role.admin">Yönetici</div>
+      </div>
+      <svg style="margin-left:4px;color:var(--text-dim);flex-shrink:0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div class="user-dropdown" id="user-dropdown">
+      <div class="ud-brand">
+        <img src="/static/default-logo.png" alt="Trisops" class="ud-brand-logo">
+      </div>
+      <div class="ud-product">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+        <span class="ud-product-name">Trisops</span>
+        <span class="ud-product-version">v1.34</span>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-userinfo">
+        <div class="ud-avatar">A</div>
+        <div class="ud-userinfo-text">
+          <div class="ud-username">Admin</div>
+          <div class="ud-userhandle">Admin</div>
+        </div>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      
+      
+      <a href="/settings" class="user-dropdown-item user-dropdown-item--normal" style="position:relative">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="nav.admin">Admin Panel</span>
+        
+      </a>
+      
+      <a href="/user/settings" class="user-dropdown-item user-dropdown-item--normal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="user.menu.settings">Kullanıcı Ayarları</span>
+      </a>
+      <a href="/logout" class="user-dropdown-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span data-i18n="user.menu.logout">Çıkış Yap</span>
+      </a>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-theme-row">
+        <span class="ud-theme-label" data-i18n="user.menu.theme">Görünüm</span>
+        <div class="ud-theme-toggle" id="ud-theme-toggle">
+          <button type="button" class="ud-theme-btn ud-theme-btn--active" data-mode="light" onclick="quickSetTheme('light')" title="Açık">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="dark" onclick="quickSetTheme('dark')" title="Koyu">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="auto" onclick="quickSetTheme('auto')" title="Sistem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleUserMenu() {
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('user-chip').contains(e.target)) {
+    document.getElementById('user-dropdown').classList.remove('open');
+  }
+});
+
+/* ── Hızlı görünüm (tema) değiştirici ────────────────────── */
+function _udGetCookie(n) {
+  var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)');
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function _udSyncThemeButtons() {
+  var current = _udGetCookie('ps_theme') || 'light';
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === current);
+  });
+}
+async function quickSetTheme(mode) {
+  var root = document.documentElement;
+  if (mode === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === mode);
+  });
+  try {
+    await fetch('/user/settings/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        language: window._PS_LANG || 'tr',
+        timezone: window._PS_TZ || 'Europe/Istanbul',
+        theme: mode,
+      }),
+    });
+  } catch (e) {}
+}
+_udSyncThemeButtons();
+</script>
+
+<footer class="app-footer">Trisops © 2026</footer>
+
+<style>
+.btn-detail-search {
+  display: flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 14px; margin-right: 12px; flex-shrink: 0;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text-muted); font-size: 13px;
+  text-decoration: none; white-space: nowrap;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.btn-detail-search:hover,
+.btn-detail-search.active { color: var(--accent); border-color: var(--accent); background: var(--bg-hover); }
+
+.search-wrap {
+  flex: 1; max-width: 540px; margin: 0 24px; position: relative;
+}
+.search-bar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0 12px; height: 38px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.search-bar:focus-within {
+  border-color: var(--accent, #4a6ef5);
+  box-shadow: 0 0 0 3px rgba(74,110,245,.15);
+}
+.search-icon   { color: var(--text-dim); flex-shrink: 0; }
+.search-input  {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-size: 14px; min-width: 0;
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-kbd {
+  font-size: 11px; color: var(--text-dim);
+  background: var(--bg-hover, #1e2130); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2px 6px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Dropdown */
+.search-drop {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.1);
+  max-height: 440px; overflow-y: auto; z-index: 9999;
+}
+.search-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-dim); padding: 12px 16px 6px; border-bottom: 1px solid var(--border);
+}
+.search-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; cursor: pointer; transition: background .1s;
+}
+.search-item:hover, .search-item.active { background: var(--bg-hover); }
+.search-item-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.si-on  { background: var(--badge-ok-bg);     color: var(--badge-ok-color); }
+.si-off { background: var(--badge-danger-bg); color: var(--badge-danger-color); }
+.search-item-body { flex: 1; min-width: 0; }
+.search-item-name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-item-meta { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.search-item-vc   { font-size: 11px; color: var(--text-dim); white-space: nowrap; flex-shrink: 0; background: var(--bg-hover); border-radius: 5px; padding: 2px 7px; }
+.search-empty     { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+.search-loading   { padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+
+<script>
+// Ctrl+K / Cmd+K ile arama çubuğuna focus
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+    showDrop();
+  }
+  if (e.key === 'Escape') closeDrop();
+});
+
+document.addEventListener('click', e => {
+  if (!document.getElementById('search-wrap').contains(e.target)) closeDrop();
+});
+
+let _searchTimer = null;
+let _activeIdx = -1;
+
+function showDrop() {
+  const drop = document.getElementById('search-drop');
+  const inp  = document.getElementById('search-input');
+  if (inp.value.length >= 2) drop.style.display = 'block';
+  document.getElementById('search-kbd').style.display = 'none';
+}
+
+function closeDrop() {
+  document.getElementById('search-drop').style.display = 'none';
+  document.getElementById('search-kbd').style.display = '';
+  _activeIdx = -1;
+}
+
+function onSearch(val) {
+  clearTimeout(_searchTimer);
+  if (val.length < 2) {
+    document.getElementById('search-drop').style.display = 'none';
+    return;
+  }
+  const drop = document.getElementById('search-drop');
+  drop.innerHTML = '<div class="search-loading">Aranıyor…</div>';
+  drop.style.display = 'block';
+  _searchTimer = setTimeout(() => doSearch(val), 280);
+}
+
+async function doSearch(q) {
+  try {
+    const resp = await fetch('/search?q=' + encodeURIComponent(q));
+    const data = await resp.json();
+    renderResults(data.results, q);
+  } catch(e) {
+    document.getElementById('search-drop').innerHTML =
+      '<div class="search-empty">Arama hatası.</div>';
+  }
+}
+
+function powerIcon(state) {
+  if (state === 'poweredOn')
+    return '<div class="search-item-icon si-on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
+  return '<div class="search-item-icon si-off"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>';
+}
+
+function highlight(text, q) {
+  if (!text) return '';
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx)
+    + '<mark style="background:#dbeafe;color:#1d4ed8;border-radius:3px;padding:0 1px;font-weight:700">'
+    + text.slice(idx, idx + q.length)
+    + '</mark>'
+    + text.slice(idx + q.length);
+}
+
+function renderResults(results, q) {
+  const drop = document.getElementById('search-drop');
+  if (!results.length) {
+    drop.innerHTML = '<div class="search-empty">Sonuç bulunamadı.</div>';
+    return;
+  }
+  let html = `<div class="search-section-label">Sanal Makineler (${results.length})</div>`;
+  results.forEach((r, i) => {
+    const meta = [
+      r.ip_address, r.dns_name, r.guest_os
+    ].filter(Boolean).join(' · ');
+    html += `<div class="search-item" data-idx="${i}" onclick="goToVM('${encodeURIComponent(r.vm_name)}')">
+      ${powerIcon(r.power_state)}
+      <div class="search-item-body">
+        <div class="search-item-name">${highlight(r.vm_name, q)}</div>
+        <div class="search-item-meta">${highlight(meta, q)}</div>
+      </div>
+      <span class="search-item-vc">${r.vcenter.split('.')[0]}</span>
+    </div>`;
+  });
+  drop.innerHTML = html;
+  _activeIdx = -1;
+}
+
+function goToVM(name) {
+  closeDrop();
+  document.getElementById('search-input').value = '';
+  window.location.href = '/vcenter?highlight=' + name;
+}
+
+function onSearchKey(e) {
+  const items = document.querySelectorAll('.search-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    _activeIdx = Math.min(_activeIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    _activeIdx = Math.max(_activeIdx - 1, 0);
+  } else if (e.key === 'Enter' && _activeIdx >= 0) {
+    items[_activeIdx].click();
+    return;
+  } else return;
+  items.forEach((el, i) => el.classList.toggle('active', i === _activeIdx));
+  items[_activeIdx]?.scrollIntoView({ block: 'nearest' });
+}
+</script>
+    <div class="content" style="padding-bottom:80px">
+
+      <!-- ── Üst bar ─────────────────────────────────────────────────────────── -->
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;
+                  flex-wrap:wrap;gap:12px;margin-bottom:20px">
+        <div>
+          <a href="/calculator" style="font-size:12px;color:var(--text-dim);text-decoration:none;
+             display:inline-flex;align-items:center;gap:5px;margin-bottom:8px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            Teklifler
+          </a>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <input id="quote-title" type="text" value="Örnek Sizing Teklifi" style="font-size:21px;font-weight:700;color:var(--text-primary);
+                          border:none;background:transparent;outline:none;min-width:200px;
+                          border-bottom:2px solid transparent;padding-bottom:2px" onfocus="this.style.borderBottomColor='var(--accent)'" onblur="this.style.borderBottomColor='transparent';saveQuoteMeta()">
+            <input type="date" id="quote-date" value="2026-07-18" style="font-size:12px;color:var(--text-dim);border:1px solid var(--border);
+                          background:var(--bg-elevated,#fff);border-radius:6px;padding:4px 8px;
+                          cursor:pointer;outline:none" onchange="saveQuoteMeta()">
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn-ghost" onclick="openAddModal()" style="display:inline-flex;align-items:center;gap:6px;font-size:13px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            VM Ekle
+          </button>
+          <button class="btn-ghost" onclick="openVcenterModal()" style="display:inline-flex;align-items:center;gap:6px;font-size:13px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+            vCenter'dan Aktar
+          </button>
+          <button class="btn-ghost" onclick="openImportModal()" style="display:inline-flex;align-items:center;gap:6px;font-size:13px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            İçe Aktar
+          </button>
+          <button onclick="exportExcel()" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;
+                         padding:7px 14px;border-radius:7px;cursor:pointer;
+                         background:var(--bg-elevated);border:1px solid var(--border);color:var(--text-muted)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Excel
+          </button>
+          <button onclick="openSendModal()" class="btn-primary" style="display:inline-flex;align-items:center;gap:6px;font-size:13px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Teklif Gönder
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Birim Fiyatlar ─────────────────────────────────────────────────── -->
+      <div class="settings-card" style="margin-bottom:16px;padding:18px 22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--text-primary)">Birim Fiyatlar</div>
+            <div style="font-size:11px;color:var(--text-dim);margin-top:2px">
+              Etikete tıklayarak düzenleyin · <strong>Kaydet</strong>'e basın
+            </div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button onclick="toggleAddPrice()" class="btn-ghost" style="font-size:11px;padding:5px 10px;display:inline-flex;align-items:center;gap:4px">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Yeni
+            </button>
+            <button onclick="savePrices()" id="save-prices-btn" class="btn-primary" style="font-size:11px;padding:5px 14px">Kaydet</button>
+          </div>
+        </div>
+
+        <div id="add-price-row" style="display:none;background:var(--bg-hover);
+             border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:12px">
+          <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+            <div style="flex:1;min-width:160px">
+              <label class="cl">Ürün Adı</label>
+              <input type="text" id="new-price-label" class="ci" placeholder="Örn: Destek" style="width:100%">
+            </div>
+            <div style="width:140px">
+              <label class="cl">Aylık Fiyat ($)</label>
+              <input type="number" id="new-price-value" class="ci" value="0" step="0.0001" min="0" style="width:100%">
+            </div>
+            <div style="width:160px">
+              <label class="cl">Kategori</label>
+              <select id="new-price-category" class="ci" style="width:100%"><option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option></select>
+            </div>
+            <div style="display:flex;gap:5px">
+              <button class="btn-primary" onclick="addPrice()" style="font-size:11px;padding:6px 12px">Ekle</button>
+              <button class="btn-ghost" onclick="toggleAddPrice()" style="font-size:11px;padding:6px 10px">İptal</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="price-grid">
+    <div class="price-cat-group">
+      <div class="price-cat-title">Kategorisiz</div>
+      <div class="price-grid">
+        
+        <div class="price-card" id="pcard-ram_gb">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-ram_gb" class="price-label" onclick="editLabel('ram_gb')" title="Adı düzenlemek için tıkla">RAM (GB / ay)</div>
+              <input id="pinput-ram_gb" class="price-label-input" type="text" value="RAM (GB / ay)" style="display:none;width:100%" onblur="saveLabel('ram_gb')" onkeydown="if(event.key==='Enter')saveLabel('ram_gb');if(event.key==='Escape')cancelLabel('ram_gb')">
+            </div>
+            <button onclick="deletePrice('ram_gb')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-ram_gb" data-key="ram_gb" value="0.801" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="ram_gb" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+        <div class="price-card" id="pcard-cpu">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-cpu" class="price-label" onclick="editLabel('cpu')" title="Adı düzenlemek için tıkla">CPU (çekirdek / ay)</div>
+              <input id="pinput-cpu" class="price-label-input" type="text" value="CPU (çekirdek / ay)" style="display:none;width:100%" onblur="saveLabel('cpu')" onkeydown="if(event.key==='Enter')saveLabel('cpu');if(event.key==='Escape')cancelLabel('cpu')">
+            </div>
+            <button onclick="deletePrice('cpu')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-cpu" data-key="cpu" value="6" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="cpu" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+        <div class="price-card" id="pcard-disk_gb">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-disk_gb" class="price-label" onclick="editLabel('disk_gb')" title="Adı düzenlemek için tıkla">Disk (GB / ay)</div>
+              <input id="pinput-disk_gb" class="price-label-input" type="text" value="Disk (GB / ay)" style="display:none;width:100%" onblur="saveLabel('disk_gb')" onkeydown="if(event.key==='Enter')saveLabel('disk_gb');if(event.key==='Escape')cancelLabel('disk_gb')">
+            </div>
+            <button onclick="deletePrice('disk_gb')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-disk_gb" data-key="disk_gb" value="0.0508" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="disk_gb" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+        <div class="price-card" id="pcard-switch">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-switch" class="price-label" onclick="editLabel('switch')" title="Adı düzenlemek için tıkla">Switch (VM / ay sabit)</div>
+              <input id="pinput-switch" class="price-label-input" type="text" value="Switch (VM / ay sabit)" style="display:none;width:100%" onblur="saveLabel('switch')" onkeydown="if(event.key==='Enter')saveLabel('switch');if(event.key==='Escape')cancelLabel('switch')">
+            </div>
+            <button onclick="deletePrice('switch')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-switch" data-key="switch" value="254.33" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="switch" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+        <div class="price-card" id="pcard-zerto">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-zerto" class="price-label" onclick="editLabel('zerto')" title="Adı düzenlemek için tıkla">Zerto (VM / ay)</div>
+              <input id="pinput-zerto" class="price-label-input" type="text" value="Zerto (VM / ay)" style="display:none;width:100%" onblur="saveLabel('zerto')" onkeydown="if(event.key==='Enter')saveLabel('zerto');if(event.key==='Escape')cancelLabel('zerto')">
+            </div>
+            <button onclick="deletePrice('zerto')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-zerto" data-key="zerto" value="12.83" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="zerto" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+        <div class="price-card" id="pcard-vmware">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-vmware" class="price-label" onclick="editLabel('vmware')" title="Adı düzenlemek için tıkla">VMware Lisans (VM / ay)</div>
+              <input id="pinput-vmware" class="price-label-input" type="text" value="VMware Lisans (VM / ay)" style="display:none;width:100%" onblur="saveLabel('vmware')" onkeydown="if(event.key==='Enter')saveLabel('vmware');if(event.key==='Escape')cancelLabel('vmware')">
+            </div>
+            <button onclick="deletePrice('vmware')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-vmware" data-key="vmware" value="102.53" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="vmware" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+        <div class="price-card" id="pcard-vsan">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-vsan" class="price-label" onclick="editLabel('vsan')" title="Adı düzenlemek için tıkla">VSAN Lisans (VM / ay)</div>
+              <input id="pinput-vsan" class="price-label-input" type="text" value="VSAN Lisans (VM / ay)" style="display:none;width:100%" onblur="saveLabel('vsan')" onkeydown="if(event.key==='Enter')saveLabel('vsan');if(event.key==='Escape')cancelLabel('vsan')">
+            </div>
+            <button onclick="deletePrice('vsan')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-vsan" data-key="vsan" value="73.04" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="vsan" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+        <div class="price-card" id="pcard-backup_rate">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-backup_rate" class="price-label" onclick="editLabel('backup_rate')" title="Adı düzenlemek için tıkla">Yedekleme (GB / yıl)</div>
+              <input id="pinput-backup_rate" class="price-label-input" type="text" value="Yedekleme (GB / yıl)" style="display:none;width:100%" onblur="saveLabel('backup_rate')" onkeydown="if(event.key==='Enter')saveLabel('backup_rate');if(event.key==='Escape')cancelLabel('backup_rate')">
+            </div>
+            <button onclick="deletePrice('backup_rate')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-backup_rate" data-key="backup_rate" value="0.16" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="backup_rate" onchange="onPriceCategoryChange(this)">
+            <option value="">(Kategorisiz)</option><option value="__new__">+ Yeni kategori…</option>
+          </select>
+        </div>
+      </div>
+    </div></div>
+      </div>
+
+      <!-- ── VM Tablosu ─────────────────────────────────────────────────────── -->
+      <div class="settings-card" style="padding:0;overflow:hidden">
+        <div style="padding:11px 18px;border-bottom:1px solid var(--border);
+                    display:flex;align-items:center;justify-content:space-between">
+          <span style="font-size:13px;font-weight:700;color:var(--text-primary)">
+            VM Listesi
+            <span id="vm-count" style="font-size:11px;font-weight:400;color:var(--text-dim);margin-left:6px">(2 VM)</span>
+          </span>
+        </div>
+        <div style="overflow-x:auto">
+          <table id="vm-table" style="width: 100%; border-collapse: collapse; font-size: 12.5px;">
+            <thead id="vm-thead"><tr><th style="text-align:left;min-width:170px">VM Adı</th><th style="text-align:left">Lokasyon</th><th>CPU (çekirdek / ay)</th><th>Aylık</th><th style="width:70px">İşlem</th></tr></thead>
+            <tbody id="vm-tbody"><tr><td style="font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis" title="app-yeni01">app-yeni01<span style="font-size:9px;font-weight:700;background:rgba(74,110,245,.15);color:var(--accent);
+             padding:1px 5px;border-radius:4px;margin-left:5px;vertical-align:middle">×2</span></td><td style="color:var(--text-dim)">Trisops-DC1</td><td style="color:var(--accent)">$24.00</td><td style="font-weight:700;color:var(--text-primary)">$48.00</td><td>
+      <button class="act-btn" onclick="openEditModal(1)" title="Düzenle" style="margin-right:3px">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <button class="act-btn act-del" onclick="deleteItem(1)" title="Sil">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path></svg>
+      </button>
+    </td></tr><tr><td style="font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis" title="db-yeni01">db-yeni01<span style="font-size:9px;font-weight:700;background:rgba(74,110,245,.15);color:var(--accent);
+             padding:1px 5px;border-radius:4px;margin-left:5px;vertical-align:middle">×2</span></td><td style="color:var(--text-dim)">Trisops-DC1</td><td style="color:var(--accent)">$48.00</td><td style="font-weight:700;color:var(--text-primary)">$96.00</td><td>
+      <button class="act-btn" onclick="openEditModal(2)" title="Düzenle" style="margin-right:3px">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <button class="act-btn act-del" onclick="deleteItem(2)" title="Sil">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path></svg>
+      </button>
+    </td></tr></tbody>
+            <tfoot id="vm-tfoot">
+    <tr style="background:rgba(74,110,245,.07)">
+      <td colspan="3" style="padding:11px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;
+          text-transform:uppercase;color:var(--text-dim);text-align:right;border-top:2px solid var(--border)">Aylık Toplam</td>
+      <td style="padding:11px 14px;font-size:16px;font-weight:800;color:var(--accent);text-align:right;
+          border-top:2px solid var(--border)">$144.00</td>
+      <td style="border-top:2px solid var(--border);background:rgba(74,110,245,.07)"></td>
+    </tr>
+    <tr style="background:rgba(74,110,245,.12)">
+      <td colspan="3" style="padding:11px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;
+          text-transform:uppercase;color:var(--text-dim);text-align:right;border-top:1px solid rgba(74,110,245,.2)">Yıllık Toplam</td>
+      <td style="padding:11px 14px;font-size:16px;font-weight:800;color:var(--accent);text-align:right;
+          border-top:1px solid rgba(74,110,245,.2)">$1,728.00</td>
+      <td style="background:rgba(74,110,245,.12);border-top:1px solid rgba(74,110,245,.2)"></td>
+    </tr></tfoot>
+          </table>
+        </div>
+        <div id="empty-state" style="padding: 48px; text-align: center; display: none;">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.2" style="margin-bottom:12px">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          <p style="color:var(--text-dim);margin-bottom:16px">Teklife VM eklemek için "VM Ekle" düğmesini kullanın.</p>
+          <button class="btn-primary" onclick="openAddModal()">VM Ekle</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── VM Modal ──────────────────────────────────────────────────────────────── -->
+<div id="modal-bg" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+     z-index:1000;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto">
+  <div style="background:var(--bg-elevated,#fff);border-radius:12px;width:560px;max-width:100%;
+              box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border);margin-bottom:40px">
+    <div style="padding:14px 20px;border-bottom:1px solid var(--border);
+                display:flex;align-items:center;justify-content:space-between">
+      <h3 id="modal-title" style="margin:0;font-size:14px;color:var(--text-primary)">VM Ekle</h3>
+      <button onclick="closeModal()" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-dim)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <form id="vm-form" onsubmit="saveVM(event)" style="padding:16px 20px">
+      <input type="hidden" id="f-id">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:14px">
+        <div style="grid-column:1/-1">
+          <label class="ml">VM Adı <span style="color:#c82828">*</span></label>
+          <input type="text" id="f-name" class="mi" placeholder="Örn: Prod-DB-01" required="">
+        </div>
+        <div>
+          <label class="ml">Lokasyon</label>
+          <input type="text" id="f-loc" class="mi" placeholder="İstanbul / Yalova">
+        </div>
+        <div>
+          <label class="ml">Not</label>
+          <input type="text" id="f-notes" class="mi" placeholder="Opsiyonel">
+        </div>
+        <div id="f-category-wrap" style="grid-column:1/-1;display:none">
+          <label class="ml">Kategori</label>
+          <select id="f-category" class="mi" onchange="onCategoryChange()"></select>
+        </div>
+        <div style="grid-column:1/-1">
+          <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;margin-top:2px">
+            <input type="checkbox" id="f-replication" style="width:15px;height:15px;accent-color:var(--accent);flex-shrink:0" onchange="previewCost()">
+            <span style="font-size:13px;font-weight:600;color:var(--text-primary)">Replikasyon</span>
+            <span style="font-size:11px;color:var(--text-dim)">(toplam tutar ×2 olur)</span>
+          </label>
+        </div>
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:12px">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+                    color:var(--text-dim);margin-bottom:10px">Ürünler &amp; Miktarlar</div>
+        <div id="product-inputs" style="display:grid;grid-template-columns:1fr 1fr;gap:9px"></div>
+      </div>
+      <div id="preview-box" style="margin-top:14px;background:var(--bg-hover);
+           border-radius:8px;padding:11px 14px;display:none">
+        <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+                    color:var(--text-dim);margin-bottom:9px">Maliyet Önizlemesi</div>
+        <div id="preview-lines" style="display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:9px"></div>
+        <div style="border-top:1px solid var(--border);padding-top:9px;
+                    display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:12px;font-weight:600;color:var(--text-primary)">Aylık Toplam</span>
+          <span id="pv-monthly" style="font-size:19px;font-weight:800;color:var(--accent)">$0.00</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:9px;justify-content:flex-end">
+        <button type="button" class="btn-ghost" onclick="closeModal()">İptal</button>
+        <button type="submit" class="btn-primary" id="modal-save-btn">Ekle</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ── vCenter'dan Aktar Modal ───────────────────────────────────────────────── -->
+<div id="vc-modal-bg" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+     z-index:1000;align-items:flex-start;justify-content:center;padding:32px 16px;overflow-y:auto">
+  <div style="background:var(--bg-elevated,#fff);border-radius:12px;width:820px;max-width:100%;
+              box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border);margin-bottom:40px">
+
+    <!-- Header -->
+    <div style="padding:14px 20px;border-bottom:1px solid var(--border);
+                display:flex;align-items:center;justify-content:space-between">
+      <div>
+        <h3 style="margin:0;font-size:14px;color:var(--text-primary)">vCenter Envanterinden Aktar</h3>
+        <div id="vc-snap-info" style="font-size:11px;color:var(--text-dim);margin-top:2px"></div>
+      </div>
+      <button onclick="closeVcenterModal()" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-dim)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Filtreler -->
+    <div style="padding:12px 20px;border-bottom:1px solid var(--border);
+                display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+      <div style="position:relative;flex:1;min-width:180px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-dim);pointer-events:none">
+          <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="vc-search" type="text" placeholder="VM adı ara…" oninput="renderVcTable()" style="width:100%;padding:7px 10px 7px 30px;border:1px solid var(--border);
+                      border-radius:7px;background:var(--bg-elevated,#fff);color:var(--text-primary);
+                      font-size:12px;box-sizing:border-box">
+      </div>
+      <select id="vc-filter-conn" onchange="renderVcTable()" style="padding:7px 10px;border:1px solid var(--border);border-radius:7px;
+                     background:var(--bg-elevated,#fff);color:var(--text-primary);font-size:12px">
+        <option value="">Tüm vCenter'lar</option>
+      </select>
+      <select id="vc-filter-power" onchange="renderVcTable()" style="padding:7px 10px;border:1px solid var(--border);border-radius:7px;
+                     background:var(--bg-elevated,#fff);color:var(--text-primary);font-size:12px">
+        <option value="">Tüm VM'ler</option>
+        <option value="poweredOn">Yalnızca Açık</option>
+        <option value="poweredOff">Yalnızca Kapalı</option>
+      </select>
+      <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;
+                    color:var(--text-muted);cursor:pointer;white-space:nowrap">
+        <input type="checkbox" id="vc-only-sized" onchange="renderVcTable()" style="accent-color:var(--accent)">
+        Yalnızca ölçülü VM'ler
+      </label>
+    </div>
+
+    <!-- Tablo -->
+    <div style="overflow-x:auto;max-height:420px;overflow-y:auto" id="vc-table-wrap">
+      <div id="vc-loading" style="padding:40px;text-align:center;color:var(--text-dim)">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="animation:spin 1s linear infinite;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto">
+          <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
+        </svg>
+        Envanter yükleniyor…
+      </div>
+      <table id="vc-table" style="display:none;width:100%;border-collapse:collapse;font-size:12px">
+        <thead>
+          <tr style="position:sticky;top:0;z-index:1">
+            <th style="padding:8px 12px;background:var(--table-head-bg,#f5f7fa);border-bottom:1px solid var(--border);
+                       font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+                       color:var(--text-dim);width:28px;text-align:center">
+              <input type="checkbox" id="vc-select-all" onchange="vcToggleAll(this.checked)" style="accent-color:var(--accent)">
+            </th>
+            <th class="vc-th" style="text-align:left">VM Adı</th>
+            <th class="vc-th">vCenter</th>
+            <th class="vc-th">Durum</th>
+            <th class="vc-th">CPU</th>
+            <th class="vc-th">RAM (GB)</th>
+            <th class="vc-th">Disk (GB)</th>
+            <th class="vc-th" style="text-align:left">OS</th>
+          </tr>
+        </thead>
+        <tbody id="vc-tbody"></tbody>
+      </table>
+      <div id="vc-empty" style="display:none;padding:36px;text-align:center;color:var(--text-dim);font-size:13px">
+        Eşleşen VM bulunamadı.
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div style="padding:12px 20px;border-top:1px solid var(--border);
+                display:flex;align-items:center;justify-content:space-between;gap:10px">
+      <div id="vc-sel-count" style="font-size:12px;color:var(--text-dim)">0 VM seçildi</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn-ghost" onclick="closeVcenterModal()" style="font-size:13px">İptal</button>
+        <button id="vc-import-btn" class="btn-primary" onclick="vcImportSelected()" style="font-size:13px;display:inline-flex;align-items:center;gap:6px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Teklife Ekle
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── İçe Aktar Modal ───────────────────────────────────────────────────────── -->
+<div id="import-modal-bg" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+     z-index:1000;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto">
+  <div style="background:var(--bg-elevated,#fff);border-radius:12px;width:560px;max-width:100%;
+              box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border);margin-bottom:40px">
+    <div style="padding:14px 20px;border-bottom:1px solid var(--border);
+                display:flex;align-items:center;justify-content:space-between">
+      <h3 style="margin:0;font-size:14px;color:var(--text-primary)">Diğer Tekliflerden VM Aktar</h3>
+      <button onclick="closeImportModal()" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-dim)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div style="padding:16px 20px">
+      <p style="font-size:12px;color:var(--text-dim);margin:0 0 14px">
+        Seçilen VM'ler bu teklife kopyalanır (orijinal teklif etkilenmez).
+      </p>
+      <div id="import-list" style="max-height:380px;overflow-y:auto;border:1px solid var(--border);border-radius:8px"></div>
+      <div style="margin-top:14px;display:flex;gap:9px;justify-content:flex-end">
+        <button class="btn-ghost" onclick="closeImportModal()">İptal</button>
+        <button class="btn-primary" onclick="importSelected()" id="import-btn">Seçilenleri Aktar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Teklif Gönder Modal ────────────────────────────────────────────────────── -->
+<div id="send-modal-bg" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+     z-index:1000;align-items:center;justify-content:center">
+  <div style="background:var(--bg-elevated,#fff);border-radius:12px;width:460px;max-width:95vw;
+              box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border)">
+    <div style="padding:14px 20px;border-bottom:1px solid var(--border);
+                display:flex;align-items:center;justify-content:space-between">
+      <h3 style="margin:0;font-size:14px;color:var(--text-primary)">Teklif Gönder</h3>
+      <button onclick="closeSendModal()" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-dim)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div style="padding:18px 20px">
+      <div style="margin-bottom:12px">
+        <label class="ml">Alıcı e-posta <span style="color:#c82828">*</span></label>
+        <input type="text" id="send-to" class="mi" placeholder="ornek@sirket.com, diger@sirket.com">
+      </div>
+      <div style="margin-bottom:12px">
+        <label class="ml">Konu</label>
+        <input type="text" id="send-subject" class="mi">
+      </div>
+      <div style="margin-bottom:16px">
+        <label class="ml">Mesaj (opsiyonel)</label>
+        <textarea id="send-message" class="mi" rows="3" style="resize:vertical" placeholder="Sayın yetkili, maliyet teklifimizi aşağıda bulabilirsiniz."></textarea>
+      </div>
+      <div style="display:flex;gap:9px;justify-content:flex-end">
+        <button class="btn-ghost" onclick="closeSendModal()">İptal</button>
+        <button class="btn-primary" onclick="sendQuote()" id="send-btn" style="display:inline-flex;align-items:center;gap:6px">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+          Gönder
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast-wrap" style="position:fixed;bottom:24px;right:24px;z-index:9999;
+     display:flex;flex-direction:column;gap:8px;pointer-events:none"></div>
+
+<style>
+.cl{display:block;font-size:10px;font-weight:700;color:var(--text-dim);
+  text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.ci{padding:7px 10px;border:1px solid var(--border);border-radius:6px;
+  background:var(--bg-elevated,#fff);color:var(--text-primary);font-size:13px;box-sizing:border-box}
+.ci:focus{outline:none;border-color:var(--accent)}
+.ml{display:block;font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:5px}
+.mi{width:100%;padding:8px 11px;border:1px solid var(--border);border-radius:7px;
+  background:var(--bg-elevated,#fff);color:var(--text-primary);font-size:13px;box-sizing:border-box}
+.mi:focus{outline:none;border-color:var(--accent)}
+
+.price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:9px}
+.price-card{background:var(--bg-hover);border:1px solid var(--border);border-radius:8px;padding:11px 13px}
+.price-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--text-muted);line-height:1.3;cursor:pointer;transition:.15s;user-select:none}
+.price-label:hover{color:var(--accent)}
+.price-label-input{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  padding:2px 5px;border:1px solid var(--accent);border-radius:4px;
+  background:var(--bg-elevated,#fff);color:var(--text-primary);box-sizing:border-box;width:100%}
+.price-input-wrap{display:flex;align-items:center;gap:5px;margin-top:5px}
+.price-sym{font-size:12px;font-weight:700;color:var(--text-dim)}
+.price-inp{flex:1;min-width:0;background:var(--bg-elevated,#fff);border:1px solid var(--border);
+  border-radius:5px;padding:5px 7px;font-size:13px;font-weight:700;color:var(--text-primary)}
+.price-inp:focus{outline:none;border-color:var(--accent)}
+.price-cat-group{margin-bottom:14px}
+.price-cat-group:last-child{margin-bottom:0}
+.price-cat-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--text-dim);margin-bottom:7px}
+.price-cat-sel{width:100%;margin-top:7px;font-size:10.5px;padding:3px 5px;border-radius:5px;
+  border:1px solid var(--border);background:var(--bg-elevated,#fff);color:var(--text-dim)}
+.price-cat-sel:focus{outline:none;border-color:var(--accent)}
+.del-btn{background:none;border:none;cursor:pointer;padding:3px;color:var(--text-dim);
+  border-radius:4px;opacity:.4;flex-shrink:0;transition:.15s}
+.del-btn:hover{opacity:1;color:#c82828}
+
+#vm-table th{padding:9px 14px;font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--text-dim);background:var(--table-head-bg,#f5f7fa);border-right:1px solid var(--border);
+  white-space:nowrap;text-align:right}
+#vm-table th:first-child,#vm-table th:nth-child(2){text-align:left}
+#vm-table th:last-child{border-right:none;text-align:center}
+#vm-table td{padding:8px 14px;border-bottom:1px solid var(--border);font-size:12.5px;
+  white-space:nowrap;text-align:right}
+#vm-table td:first-child,#vm-table td:nth-child(2){text-align:left}
+#vm-table td:last-child{text-align:center}
+#vm-tbody tr:nth-child(even) td{background:var(--bg-hover)}
+#vm-tbody tr:hover td{background:color-mix(in srgb,var(--accent) 5%,transparent)}
+#vm-tfoot td{padding:11px 14px;font-weight:700;border-top:2px solid var(--border)}
+
+.act-btn{background:none;border:1px solid var(--border);border-radius:5px;cursor:pointer;
+  padding:3px 6px;color:var(--text-dim);transition:.15s}
+.act-btn:hover{border-color:var(--accent);color:var(--accent)}
+.act-del:hover{border-color:#c82828!important;color:#c82828!important}
+
+.import-row{display:flex;align-items:center;gap:10px;padding:10px 14px;
+  border-bottom:1px solid var(--border);cursor:pointer;transition:.12s}
+.import-row:last-child{border-bottom:none}
+.import-row:hover{background:var(--bg-hover)}
+.import-row input[type=checkbox]{width:15px;height:15px;accent-color:var(--accent);flex-shrink:0}
+
+.toast{pointer-events:auto;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;
+  color:#fff;box-shadow:0 4px 20px rgba(0,0,0,.2);animation:fadein .2s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.vc-th{padding:8px 12px;background:var(--table-head-bg,#f5f7fa);border-bottom:1px solid var(--border);
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dim);
+  white-space:nowrap;text-align:right}
+#vc-tbody tr{cursor:pointer;transition:.1s}
+#vc-tbody tr:hover td{background:color-mix(in srgb,var(--accent) 6%,transparent)}
+#vc-tbody tr.vc-selected td{background:color-mix(in srgb,var(--accent) 10%,transparent)}
+#vc-tbody td{padding:7px 12px;border-bottom:1px solid var(--border);white-space:nowrap;
+  text-align:right;font-size:12px}
+#vc-tbody td:first-child{text-align:center}
+#vc-tbody td:nth-child(2),#vc-tbody td:last-child{text-align:left}
+.vc-power-on{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;
+  color:#16a34a;background:rgba(22,163,74,.1);padding:2px 7px;border-radius:10px}
+.vc-power-off{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;
+  color:var(--text-dim);background:var(--bg-hover);padding:2px 7px;border-radius:10px}
+.vc-no-data{color:var(--text-dim);font-style:italic}
+</style>
+
+<script>
+const QUOTE_ID = 1;
+
+let vmItems = [{"id": 1, "lines": {"cpu": 4, "disk": 200, "ram": 16}, "location": "Trisops-DC1", "notes": "Yeni uygulama sunucusu", "replication": true, "vm_name": "app-yeni01"}, {"id": 2, "lines": {"cpu": 8, "disk": 500, "ram": 32}, "location": "Trisops-DC1", "notes": "Yeni veritaban\u0131 sunucusu", "replication": true, "vm_name": "db-yeni01"}];
+let priceList = [
+
+  { key: "ram_gb", label: "RAM (GB / ay)", value: 0.801, category: "" },
+
+  { key: "cpu", label: "CPU (\u00e7ekirdek / ay)", value: 6.0, category: "" },
+
+  { key: "disk_gb", label: "Disk (GB / ay)", value: 0.0508, category: "" },
+
+  { key: "switch", label: "Switch (VM / ay sabit)", value: 254.33, category: "" },
+
+  { key: "zerto", label: "Zerto (VM / ay)", value: 12.83, category: "" },
+
+  { key: "vmware", label: "VMware Lisans (VM / ay)", value: 102.53, category: "" },
+
+  { key: "vsan", label: "VSAN Lisans (VM / ay)", value: 73.04, category: "" },
+
+  { key: "backup_rate", label: "Yedekleme (GB / y\u0131l)", value: 0.16, category: "" },
+
+];
+let priceCategories = [];
+
+// ── Fiyat yardımcıları ────────────────────────────────────────────────────────
+function getP(key) {
+  const el = document.getElementById('price-' + key);
+  if (el) return parseFloat(el.value) || 0;
+  const p = priceList.find(x => x.key === key);
+  return p ? p.value : 0;
+}
+function lineCost(key, qty) {
+  return key === 'backup_rate' ? qty * getP(key) / 12 : qty * getP(key);
+}
+function calcLines(lines) {
+  let total = 0;
+  const bd = [];
+  for (const p of priceList) {
+    const qty = +(lines[p.key] || 0);
+    if (qty > 0) { const c = lineCost(p.key, qty); if (c > 0) { bd.push({key:p.key,label:p.label,cost:c}); total+=c; } }
+  }
+  return { total, bd };
+}
+function fmt(v) { return '$'+(v||0).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,','); }
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+// ── Teklif meta kaydet ────────────────────────────────────────────────────────
+async function saveQuoteMeta() {
+  await fetch('/calculator/quotes/' + QUOTE_ID, {
+    method: 'PATCH', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      title: document.getElementById('quote-title').value.trim() || 'Yeni Teklif',
+      date:  document.getElementById('quote-date').value || '',
+      notes: '',
+    }),
+  });
+}
+
+// ── Tablo render ──────────────────────────────────────────────────────────────
+function renderTable() {
+  const thead  = document.getElementById('vm-thead');
+  const tbody  = document.getElementById('vm-tbody');
+  const tfoot  = document.getElementById('vm-tfoot');
+  const empty  = document.getElementById('empty-state');
+  const count  = document.getElementById('vm-count');
+  const tbl    = document.getElementById('vm-table');
+
+  if (!vmItems.length) {
+    thead.innerHTML=''; tbody.innerHTML=''; tfoot.innerHTML='';
+    empty.style.display='block'; tbl.style.display='none';
+    count.textContent=''; return;
+  }
+  empty.style.display='none'; tbl.style.display='';
+  count.textContent=`(${vmItems.length} VM)`;
+
+  const usedKeys = priceList.filter(p => vmItems.some(v => (+((v.lines||{})[p.key]||0)) > 0));
+
+  thead.innerHTML = '<tr><th style="text-align:left;min-width:170px">VM Adı</th>'
+    + '<th style="text-align:left">Lokasyon</th>'
+    + usedKeys.map(p=>`<th>${esc(p.label)}</th>`).join('')
+    + '<th>Aylık</th><th style="width:70px">İşlem</th></tr>';
+
+  let totalMonthly = 0;
+  tbody.innerHTML = vmItems.map(item => {
+    const lines = item.lines || {};
+    const { total } = calcLines(lines);
+    const displayTotal = item.replication ? total * 2 : total;
+    totalMonthly += displayTotal;
+    const replBadge = item.replication
+      ? `<span style="font-size:9px;font-weight:700;background:rgba(74,110,245,.15);color:var(--accent);
+             padding:1px 5px;border-radius:4px;margin-left:5px;vertical-align:middle">×2</span>`
+      : '';
+    let cells = `<td style="font-weight:600;max-width:200px;overflow:hidden;text-overflow:ellipsis" title="${esc(item.vm_name)}">${esc(item.vm_name)}${replBadge}</td>`;
+    cells += `<td style="color:var(--text-dim)">${esc(item.location||'—')}</td>`;
+    for (const p of usedKeys) {
+      const qty = +(lines[p.key]||0);
+      const c   = qty ? lineCost(p.key, qty) : 0;
+      cells += c > 0 ? `<td style="color:var(--accent)">${fmt(c)}</td>`
+                     : `<td style="color:var(--text-dim)">—</td>`;
+    }
+    cells += `<td style="font-weight:700;color:var(--text-primary)">${fmt(displayTotal)}</td>`;
+    cells += `<td>
+      <button class="act-btn" onclick="openEditModal(${item.id})" title="Düzenle" style="margin-right:3px">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </button>
+      <button class="act-btn act-del" onclick="deleteItem(${item.id})" title="Sil">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+      </button>
+    </td>`;
+    return `<tr>${cells}</tr>`;
+  }).join('');
+
+  // Toplam satırları
+  const colCount = 2 + usedKeys.length;
+  tfoot.innerHTML = `
+    <tr style="background:rgba(74,110,245,.07)">
+      <td colspan="${colCount}" style="padding:11px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;
+          text-transform:uppercase;color:var(--text-dim);text-align:right;border-top:2px solid var(--border)">Aylık Toplam</td>
+      <td style="padding:11px 14px;font-size:16px;font-weight:800;color:var(--accent);text-align:right;
+          border-top:2px solid var(--border)">${fmt(totalMonthly)}</td>
+      <td style="border-top:2px solid var(--border);background:rgba(74,110,245,.07)"></td>
+    </tr>
+    <tr style="background:rgba(74,110,245,.12)">
+      <td colspan="${colCount}" style="padding:11px 14px;font-size:11px;font-weight:700;letter-spacing:.05em;
+          text-transform:uppercase;color:var(--text-dim);text-align:right;border-top:1px solid rgba(74,110,245,.2)">Yıllık Toplam</td>
+      <td style="padding:11px 14px;font-size:16px;font-weight:800;color:var(--accent);text-align:right;
+          border-top:1px solid rgba(74,110,245,.2)">${fmt(totalMonthly*12)}</td>
+      <td style="background:rgba(74,110,245,.12);border-top:1px solid rgba(74,110,245,.2)"></td>
+    </tr>`;
+}
+
+function recalcAll() { renderTable(); }
+
+// ── Kategori yardımcıları ───────────────────────────────────────────────────────
+function categoryOptionsHtml(selected, includeAll) {
+  let html = includeAll ? `<option value="">(Tümü)</option>` : `<option value="">(Kategorisiz)</option>`;
+  html += priceCategories.map(c =>
+    `<option value="${esc(c)}"${c===selected?' selected':''}>${esc(c)}</option>`
+  ).join('');
+  html += `<option value="__new__">+ Yeni kategori…</option>`;
+  return html;
+}
+function addCategoryIfNew(cat) {
+  if (cat && !priceCategories.includes(cat)) { priceCategories.push(cat); priceCategories.sort(); }
+}
+
+// ── Birim fiyat grid (kategoriye göre gruplu) ───────────────────────────────────
+function renderPriceGrid() {
+  const grid = document.getElementById('price-grid');
+  const groups = {};
+  priceList.forEach(p => { (groups[p.category||''] = groups[p.category||''] || []).push(p); });
+  const order = [...priceCategories, ''].filter((c,i,a) => a.indexOf(c)===i);
+  grid.innerHTML = order.filter(c => groups[c] && groups[c].length).map(cat => `
+    <div class="price-cat-group">
+      <div class="price-cat-title">${cat ? esc(cat) : 'Kategorisiz'}</div>
+      <div class="price-grid">
+        ${groups[cat].map(p => `
+        <div class="price-card" id="pcard-${p.key}">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:7px;gap:4px">
+            <div style="flex:1;min-width:0">
+              <div id="plabel-${p.key}" class="price-label" onclick="editLabel('${p.key}')"
+                   title="Adı düzenlemek için tıkla">${esc(p.label)}</div>
+              <input id="pinput-${p.key}" class="price-label-input" type="text"
+                     value="${esc(p.label)}" style="display:none;width:100%"
+                     onblur="saveLabel('${p.key}')"
+                     onkeydown="if(event.key==='Enter')saveLabel('${p.key}');if(event.key==='Escape')cancelLabel('${p.key}')">
+            </div>
+            <button onclick="deletePrice('${p.key}')" class="del-btn" title="Sil">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+          <div class="price-input-wrap">
+            <span class="price-sym">$</span>
+            <input type="number" class="price-inp" id="price-${p.key}" data-key="${p.key}"
+                   value="${p.value}" step="0.0001" min="0" oninput="recalcAll()">
+          </div>
+          <select class="price-cat-sel" data-key="${p.key}" onchange="onPriceCategoryChange(this)">
+            ${categoryOptionsHtml(p.category, false)}
+          </select>
+        </div>`).join('')}
+      </div>
+    </div>`).join('');
+  // "Yeni ürün" satırındaki kategori seçimini de güncel tut
+  const newSel = document.getElementById('new-price-category');
+  if (newSel) newSel.innerHTML = categoryOptionsHtml('', false);
+}
+async function onPriceCategoryChange(sel) {
+  const key = sel.dataset.key;
+  let cat = sel.value;
+  if (cat === '__new__') {
+    cat = (prompt('Yeni kategori adı:') || '').trim();
+    if (!cat) { const p=priceList.find(x=>x.key===key); sel.value = p ? p.category : ''; return; }
+    addCategoryIfNew(cat);
+  }
+  await fetch('/calculator/prices/'+key, {method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({category:cat})});
+  const p = priceList.find(x=>x.key===key); if (p) p.category = cat;
+  renderPriceGrid();
+}
+
+// ── Ürün rename ───────────────────────────────────────────────────────────────
+function editLabel(key) {
+  document.getElementById('plabel-'+key).style.display='none';
+  const inp=document.getElementById('pinput-'+key); inp.style.display='block'; inp.focus(); inp.select();
+}
+async function saveLabel(key) {
+  const inp=document.getElementById('pinput-'+key); const lbl=document.getElementById('plabel-'+key);
+  const label=inp.value.trim(); if(!label){cancelLabel(key);return;}
+  await fetch('/calculator/prices/'+key,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({label})});
+  lbl.textContent=label; inp.style.display='none'; lbl.style.display='';
+  const p=priceList.find(x=>x.key===key); if(p) p.label=label; renderTable();
+}
+function cancelLabel(key) {
+  const lbl=document.getElementById('plabel-'+key); const inp=document.getElementById('pinput-'+key);
+  inp.value=lbl.textContent; inp.style.display='none'; lbl.style.display='';
+}
+
+// ── Ürün ekle/sil ────────────────────────────────────────────────────────────
+function toggleAddPrice() {
+  const row=document.getElementById('add-price-row'); const vis=row.style.display!=='none';
+  row.style.display=vis?'none':'block';
+  if(!vis) setTimeout(()=>document.getElementById('new-price-label').focus(),50);
+}
+async function addPrice() {
+  const label=document.getElementById('new-price-label').value.trim();
+  const value=parseFloat(document.getElementById('new-price-value').value)||0;
+  let category=document.getElementById('new-price-category').value;
+  if(!label){document.getElementById('new-price-label').focus();return;}
+  if (category === '__new__') {
+    category = (prompt('Yeni kategori adı:') || '').trim();
+    if (category) addCategoryIfNew(category);
+  }
+  const r=await fetch('/calculator/prices/add',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({label,value,category})});
+  const d=await r.json(); if(!d.ok){alert(d.msg||'Hata');return;}
+  priceList.push({key:d.key,label:d.label,value:d.value,category:d.category||''});
+  document.getElementById('new-price-label').value='';
+  document.getElementById('new-price-value').value=0;
+  document.getElementById('new-price-category').value='';
+  document.getElementById('add-price-row').style.display='none';
+  renderPriceGrid();
+  renderVMFormProducts();
+}
+async function deletePrice(key) {
+  if(!confirm('Bu ürünü silmek istiyor musunuz?'))return;
+  await fetch('/calculator/prices/'+key,{method:'DELETE'});
+  priceList=priceList.filter(p=>p.key!==key);
+  renderPriceGrid(); recalcAll();
+}
+async function savePrices() {
+  const payload={};
+  document.querySelectorAll('.price-inp').forEach(el=>{
+    payload[el.dataset.key]=parseFloat(el.value)||0;
+    const p=priceList.find(x=>x.key===el.dataset.key); if(p) p.value=payload[el.dataset.key];
+  });
+  const btn=document.getElementById('save-prices-btn'); btn.disabled=true; btn.textContent='…';
+  try {
+    await fetch('/calculator/prices',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    renderTable(); btn.textContent='✓ Kaydedildi';
+    setTimeout(()=>{btn.textContent='Kaydet';btn.disabled=false;},1500);
+  } catch{btn.textContent='Hata!';btn.disabled=false;}
+}
+
+// ── VM Modal ──────────────────────────────────────────────────────────────────
+let _hiddenLines = {};   // görünmeyen kategorilerden korunan miktarlar (veri kaybını önler)
+
+function renderVMFormProducts(existingLines={}, category) {
+  const list = category ? priceList.filter(p=>p.category===category) : priceList;
+  document.getElementById('product-inputs').innerHTML=list.map(p=>`
+    <div>
+      <label class="ml" style="font-size:11px;color:var(--text-dim)">${esc(p.label)}</label>
+      <input type="number" class="mi product-qty" id="qty-${p.key}" data-key="${p.key}"
+             value="${existingLines[p.key]||''}" min="0" step="0.01" placeholder="0" oninput="previewCost()">
+    </div>`).join('');
+}
+function syncVisibleIntoHidden() {
+  document.querySelectorAll('.product-qty').forEach(el=>{
+    const v=parseFloat(el.value);
+    if (v>0) _hiddenLines[el.dataset.key]=v; else delete _hiddenLines[el.dataset.key];
+  });
+}
+function onCategoryChange() {
+  syncVisibleIntoHidden();
+  const cat = document.getElementById('f-category').value;
+  renderVMFormProducts(_hiddenLines, cat);
+  previewCost();
+}
+function previewCost() {
+  syncVisibleIntoHidden();
+  const lines={..._hiddenLines};
+  const {total,bd}=calcLines(lines);
+  const repl=document.getElementById('f-replication').checked;
+  const displayTotal=repl?total*2:total;
+  const box=document.getElementById('preview-box');
+  if(total>0){
+    box.style.display='block';
+    const replBadge=repl?`<div style="display:flex;align-items:center;gap:6px;margin-top:4px">
+      <span style="font-size:11px;font-weight:700;background:rgba(74,110,245,.12);color:var(--accent);
+            padding:2px 8px;border-radius:5px">× 2 Replikasyon</span></div>`:'';
+    document.getElementById('preview-lines').innerHTML=bd.map(b=>
+      `<div><span style="font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dim);display:block">${esc(b.label)}</span>
+       <span style="font-size:13px;font-weight:700;color:var(--text-primary)">${fmt(b.cost)}</span></div>`
+    ).join('')+replBadge;
+  } else{box.style.display='none';}
+  document.getElementById('pv-monthly').textContent=fmt(displayTotal);
+}
+function setupCategorySelect(selected) {
+  const wrap = document.getElementById('f-category-wrap');
+  const sel  = document.getElementById('f-category');
+  if (!priceCategories.length) { wrap.style.display='none'; sel.innerHTML=''; return ''; }
+  wrap.style.display='block';
+  sel.innerHTML = categoryOptionsHtml(selected, true);
+  return selected || '';
+}
+function openAddModal() {
+  document.getElementById('modal-title').textContent='VM Ekle';
+  document.getElementById('modal-save-btn').textContent='Ekle';
+  document.getElementById('f-id').value='';
+  ['f-name','f-loc','f-notes'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-replication').checked=false;
+  _hiddenLines = {};
+  const cat = setupCategorySelect(priceCategories[0] || '');
+  renderVMFormProducts({}, cat);
+  document.getElementById('preview-box').style.display='none';
+  document.getElementById('modal-bg').style.display='flex';
+  setTimeout(()=>document.getElementById('f-name').focus(),50);
+}
+function openEditModal(id) {
+  const item=vmItems.find(v=>v.id===id); if(!item) return;
+  document.getElementById('modal-title').textContent='VM Düzenle';
+  document.getElementById('modal-save-btn').textContent='Güncelle';
+  document.getElementById('f-id').value=item.id;
+  document.getElementById('f-name').value=item.vm_name;
+  document.getElementById('f-loc').value=item.location||'';
+  document.getElementById('f-notes').value=item.notes||'';
+  document.getElementById('f-replication').checked=!!item.replication;
+  _hiddenLines = {...(item.lines||{})};
+  // Mevcut satırlardaki anahtarlardan ilkinin kategorisini varsayılan seç
+  const firstKey = Object.keys(_hiddenLines)[0];
+  const firstP   = firstKey ? priceList.find(p=>p.key===firstKey) : null;
+  const cat = setupCategorySelect((firstP && firstP.category) || priceCategories[0] || '');
+  renderVMFormProducts(_hiddenLines, cat); previewCost();
+  document.getElementById('modal-bg').style.display='flex';
+}
+function closeModal(){document.getElementById('modal-bg').style.display='none';}
+document.getElementById('modal-bg').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal();});
+
+async function saveVM(e) {
+  e.preventDefault();
+  const btn=document.getElementById('modal-save-btn'); const orig=btn.textContent;
+  btn.disabled=true; btn.textContent='…';
+  syncVisibleIntoHidden();
+  const lines={..._hiddenLines};
+  const payload={
+    id:          parseInt(document.getElementById('f-id').value)||null,
+    vm_name:     document.getElementById('f-name').value.trim(),
+    location:    document.getElementById('f-loc').value.trim(),
+    notes:       document.getElementById('f-notes').value.trim(),
+    replication: document.getElementById('f-replication').checked,
+    lines,
+  };
+  try {
+    const r=await fetch(`/calculator/${QUOTE_ID}/items`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const d=await r.json();
+    if(d.ok){
+      if(payload.id){const idx=vmItems.findIndex(v=>v.id===payload.id);if(idx!==-1)vmItems[idx]={...payload,id:payload.id};}
+      else vmItems.push({...payload,id:d.id});
+      renderTable(); closeModal();
+    } else alert('Hata: '+(d.error||'Kaydedilemedi.'));
+  } catch(err){alert('Bağlantı hatası: '+err.message);}
+  btn.disabled=false; btn.textContent=orig;
+}
+
+async function deleteItem(id) {
+  if(!confirm("Bu VM'yi silmek istiyor musunuz?"))return;
+  await fetch(`/calculator/${QUOTE_ID}/items/${id}`,{method:'DELETE'});
+  vmItems=vmItems.filter(v=>v.id!==id); renderTable();
+}
+
+// ── İçe aktar modal ──────────────────────────────────────────────────────────
+async function openImportModal() {
+  document.getElementById('import-list').innerHTML='<div style="padding:20px;text-align:center;color:var(--text-dim)">Yükleniyor…</div>';
+  document.getElementById('import-modal-bg').style.display='flex';
+  const r=await fetch('/calculator/all-items'); const all=await r.json();
+  const others=all.filter(item=>item.quote_id!==QUOTE_ID);
+  if(!others.length){
+    document.getElementById('import-list').innerHTML='<div style="padding:24px;text-align:center;color:var(--text-dim)">Diğer tekliflerde VM bulunamadı.</div>';
+    return;
+  }
+  // Teklif başlığına göre grupla
+  const groups={};
+  others.forEach(item=>{
+    const key=item.quote_title||'—';
+    if(!groups[key]) groups[key]=[];
+    groups[key].push(item);
+  });
+  let html='';
+  for(const [title,items] of Object.entries(groups)){
+    html+=`<div style="padding:8px 14px 4px;font-size:10px;font-weight:700;text-transform:uppercase;
+              letter-spacing:.05em;color:var(--text-dim);background:var(--bg-hover);
+              border-bottom:1px solid var(--border)">${esc(title)} · ${items[0].quote_date||''}</div>`;
+    html+=items.map(item=>`
+      <div class="import-row" onclick="this.querySelector('input').click();event.stopPropagation()">
+        <input type="checkbox" value="${item.id}" onclick="event.stopPropagation()">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--text-primary)">${esc(item.vm_name)}</div>
+          ${item.location?`<div style="font-size:11px;color:var(--text-dim)">${esc(item.location)}</div>`:''}
+        </div>
+      </div>`).join('');
+  }
+  document.getElementById('import-list').innerHTML=html;
+}
+function closeImportModal(){document.getElementById('import-modal-bg').style.display='none';}
+document.getElementById('import-modal-bg').addEventListener('click',e=>{if(e.target===e.currentTarget)closeImportModal();});
+
+async function importSelected() {
+  const ids=[...document.querySelectorAll('#import-list input[type=checkbox]:checked')].map(el=>parseInt(el.value));
+  if(!ids.length){alert('En az bir VM seçin.');return;}
+  const btn=document.getElementById('import-btn'); btn.disabled=true; btn.textContent='Aktarılıyor…';
+  const r=await fetch(`/calculator/${QUOTE_ID}/import`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({item_ids:ids})});
+  const d=await r.json();
+  if(d.ok){vmItems=d.items; renderTable(); closeImportModal(); showToast(`${ids.length} VM aktarıldı.`,true);}
+  else alert('Hata!');
+  btn.disabled=false; btn.textContent='Seçilenleri Aktar';
+}
+
+// ── Excel & E-posta ───────────────────────────────────────────────────────────
+function exportExcel(){window.location.href=`/calculator/${QUOTE_ID}/export/excel`;}
+
+function openSendModal(){
+  document.getElementById('send-subject').value=document.getElementById('quote-title').value||'Maliyet Teklifi';
+  document.getElementById('send-to').value=''; document.getElementById('send-message').value='';
+  document.getElementById('send-modal-bg').style.display='flex';
+  setTimeout(()=>document.getElementById('send-to').focus(),50);
+}
+function closeSendModal(){document.getElementById('send-modal-bg').style.display='none';}
+document.getElementById('send-modal-bg').addEventListener('click',e=>{if(e.target===e.currentTarget)closeSendModal();});
+
+async function sendQuote(){
+  const to=document.getElementById('send-to').value.trim();
+  if(!to){document.getElementById('send-to').focus();return;}
+  const btn=document.getElementById('send-btn'); btn.disabled=true; btn.textContent='Gönderiliyor…';
+  try{
+    const r=await fetch(`/calculator/${QUOTE_ID}/send`,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({to,subject:document.getElementById('send-subject').value.trim()||'Maliyet Teklifi',
+        message:document.getElementById('send-message').value.trim()})});
+    const d=await r.json();
+    closeSendModal();
+    showToast(d.ok?'Teklif başarıyla gönderildi.':'Hata: '+(d.msg||'Bilinmiyor'),d.ok);
+  }catch(err){showToast('Bağlantı hatası: '+err.message,false);}
+  btn.disabled=false;
+  btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Gönder';
+}
+
+function showToast(msg,ok=true){
+  const wrap=document.getElementById('toast-wrap');
+  const t=document.createElement('div'); t.className='toast';
+  t.style.background=ok?'#1a9e50':'#c82828'; t.textContent=msg; wrap.appendChild(t);
+  setTimeout(()=>{t.style.transition='opacity .4s';t.style.opacity='0';setTimeout(()=>t.remove(),400);},4500);
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeModal();closeImportModal();closeSendModal();closeVcenterModal();}
+});
+
+// ── vCenter'dan Aktar ─────────────────────────────────────────────────────────
+let vcAllVms = [];
+
+function mapVmToLines(vm) {
+  const lines = {};
+  for (const p of priceList) {
+    const k = p.key.toLowerCase();
+    if (k === 'cpu' || k.includes('cpu') || k.includes('vcpu')) {
+      if (vm.num_cpu > 0) lines[p.key] = vm.num_cpu;
+    } else if (k === 'ram_gb' || k.includes('ram') || k.includes('memory') || k.includes('bellek')) {
+      const gb = Math.round(vm.memory_mb / 1024);
+      if (gb > 0) lines[p.key] = gb;
+    } else if (k === 'disk_gb' || k.includes('disk') || k.includes('storage') || k.includes('depolama')) {
+      if (vm.total_disk_gb > 0) lines[p.key] = vm.total_disk_gb;
+    }
+  }
+  return lines;
+}
+
+function vcFilteredVms() {
+  const q     = (document.getElementById('vc-search').value || '').toLowerCase().trim();
+  const conn  = document.getElementById('vc-filter-conn').value;
+  const power = document.getElementById('vc-filter-power').value;
+  const sized = document.getElementById('vc-only-sized').checked;
+  return vcAllVms.filter(vm => {
+    if (q && !vm.vm_name.toLowerCase().includes(q)) return false;
+    if (conn && vm.vcenter !== conn) return false;
+    if (power && vm.power_state !== power) return false;
+    if (sized && vm.num_cpu === 0 && vm.memory_mb === 0 && vm.total_disk_gb === 0) return false;
+    return true;
+  });
+}
+
+function renderVcTable() {
+  const vms = vcFilteredVms();
+  const tbody = document.getElementById('vc-tbody');
+  const tbl   = document.getElementById('vc-table');
+  const empty = document.getElementById('vc-empty');
+  if (!vms.length) {
+    tbl.style.display = 'none'; empty.style.display = 'block'; return;
+  }
+  tbl.style.display = ''; empty.style.display = 'none';
+  tbody.innerHTML = vms.map((vm, i) => {
+    const ramGb = vm.memory_mb > 0 ? Math.round(vm.memory_mb / 1024) : 0;
+    const powerBadge = vm.power_state === 'poweredOn'
+      ? `<span class="vc-power-on"><svg width="6" height="6" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#16a34a"/></svg>Açık</span>`
+      : `<span class="vc-power-off"><svg width="6" height="6" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="currentColor"/></svg>Kapalı</span>`;
+    const cpu  = vm.num_cpu      > 0 ? vm.num_cpu      : '<span class="vc-no-data">—</span>';
+    const ram  = ramGb            > 0 ? ramGb            : '<span class="vc-no-data">—</span>';
+    const disk = vm.total_disk_gb > 0 ? vm.total_disk_gb : '<span class="vc-no-data">—</span>';
+    const os   = vm.guest_os ? esc(vm.guest_os.replace(/Microsoft |VMware /gi,'').substring(0,28)) : '<span class="vc-no-data">—</span>';
+    return `<tr data-idx="${i}" onclick="vcToggleRow(this)">
+      <td><input type="checkbox" class="vc-chk" onchange="vcUpdateCount();event.stopPropagation()" onclick="event.stopPropagation()" style="accent-color:var(--accent)"></td>
+      <td style="font-weight:600;max-width:220px;overflow:hidden;text-overflow:ellipsis" title="${esc(vm.vm_name)}">${esc(vm.vm_name)}</td>
+      <td style="color:var(--text-dim)">${esc(vm.vcenter)}</td>
+      <td>${powerBadge}</td>
+      <td>${cpu}</td>
+      <td>${ram}</td>
+      <td>${disk}</td>
+      <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;color:var(--text-dim)" title="${esc(vm.guest_os||'')}">${os}</td>
+    </tr>`;
+  }).join('');
+  vcUpdateCount();
+}
+
+function vcToggleRow(tr) {
+  const chk = tr.querySelector('.vc-chk');
+  chk.checked = !chk.checked;
+  tr.classList.toggle('vc-selected', chk.checked);
+  vcUpdateCount();
+}
+
+function vcToggleAll(checked) {
+  document.querySelectorAll('#vc-tbody .vc-chk').forEach(chk => {
+    chk.checked = checked;
+    chk.closest('tr').classList.toggle('vc-selected', checked);
+  });
+  vcUpdateCount();
+}
+
+function vcUpdateCount() {
+  const n = document.querySelectorAll('#vc-tbody .vc-chk:checked').length;
+  document.getElementById('vc-sel-count').textContent = `${n} VM seçildi`;
+  document.getElementById('vc-select-all').indeterminate =
+    n > 0 && n < document.querySelectorAll('#vc-tbody .vc-chk').length;
+  document.getElementById('vc-select-all').checked =
+    n > 0 && n === document.querySelectorAll('#vc-tbody .vc-chk').length;
+}
+
+async function openVcenterModal() {
+  document.getElementById('vc-modal-bg').style.display = 'flex';
+  document.getElementById('vc-loading').style.display = 'block';
+  document.getElementById('vc-table').style.display = 'none';
+  document.getElementById('vc-empty').style.display = 'none';
+  document.getElementById('vc-search').value = '';
+  document.getElementById('vc-filter-power').value = '';
+  document.getElementById('vc-only-sized').checked = false;
+
+  try {
+    const r = await fetch('/calculator/vcenter-vms');
+    const d = await r.json();
+    vcAllVms = d.vms || [];
+
+    // vCenter dropdown'u doldur
+    const conns = [...new Set(vcAllVms.map(v => v.vcenter))].sort();
+    const sel = document.getElementById('vc-filter-conn');
+    sel.innerHTML = '<option value="">Tüm vCenter\'lar</option>'
+      + conns.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join('');
+
+    // Anlık görüntü tarihini bul
+    const dates = [...new Set(vcAllVms.map(v => v.snap_date).filter(Boolean))].sort().reverse();
+    document.getElementById('vc-snap-info').textContent =
+      vcAllVms.length
+        ? `${vcAllVms.length} VM · Anlık görüntü: ${dates[0] || 'bilinmiyor'}`
+        : 'Kayıtlı vCenter anlık görüntüsü bulunamadı.';
+
+    document.getElementById('vc-loading').style.display = 'none';
+    renderVcTable();
+  } catch(err) {
+    document.getElementById('vc-loading').textContent = 'Yükleme hatası: ' + err.message;
+  }
+}
+
+function closeVcenterModal() {
+  document.getElementById('vc-modal-bg').style.display = 'none';
+}
+document.getElementById('vc-modal-bg').addEventListener('click', e => { if(e.target===e.currentTarget) closeVcenterModal(); });
+
+async function vcImportSelected() {
+  const checked = [...document.querySelectorAll('#vc-tbody .vc-chk:checked')];
+  if (!checked.length) { alert('En az bir VM seçin.'); return; }
+
+  const btn = document.getElementById('vc-import-btn');
+  btn.disabled = true; btn.textContent = 'Ekleniyor…';
+
+  const filtered = vcFilteredVms();
+  const toImport = checked.map(chk => filtered[parseInt(chk.closest('tr').dataset.idx)]).filter(Boolean);
+
+  let ok = 0, fail = 0;
+  for (const vm of toImport) {
+    const lines = mapVmToLines(vm);
+    try {
+      const r = await fetch(`/calculator/${QUOTE_ID}/items`, {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          vm_name:     vm.vm_name,
+          location:    vm.vcenter,
+          lines,
+          notes:       '',
+          replication: false,
+        }),
+      });
+      const d = await r.json();
+      if (d.ok) { vmItems.push({id: d.id, vm_name: vm.vm_name, location: vm.vcenter, lines, notes: '', replication: false}); ok++; }
+      else fail++;
+    } catch { fail++; }
+  }
+
+  renderTable();
+  closeVcenterModal();
+  if (ok)   showToast(`${ok} VM teklife eklendi.`, true);
+  if (fail) showToast(`${fail} VM eklenemedi.`, false);
+
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Teklife Ekle';
+}
+
+renderPriceGrid();
+renderTable();
+</script>
+
+<script src="/static/app.js?v=1784407556"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
+<!-- AI Chat Widget — floating button + chat window, visible on all pages -->
+<div id="ai-root" aria-live="polite" data-page="/calculator/1">
+
+  <!-- Floating trigger button -->
+  <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
+    <!-- Closed: chat icon -->
+    <svg id="ai-btn-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r=".5" fill="currentColor"></circle>
+    </svg>
+    <!-- Open: close icon -->
+    <svg id="ai-btn-close" width="20" height="20" viewBox="0 0 24 24" style="display:none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <!-- Unread dot -->
+    <span id="ai-dot" style="display:none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ai-win" role="dialog" aria-label="AI Asistan" aria-hidden="true">
+    <!-- Header -->
+    <div id="ai-hd">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div id="ai-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <div>
+          <div id="ai-title-txt" style="font-size:13px;font-weight:700;line-height:1.1">AI Asistan</div>
+          <div id="ai-status-txt" style="font-size:10px;opacity:.65;line-height:1">Altyapı verilerini analiz ediyor</div>
+        </div>
+      </div>
+      <button id="ai-close-btn" onclick="aiToggle()" title="Kapat" style="background:none;border:none;cursor:pointer;padding:4px;border-radius:5px;
+                     color:inherit;opacity:.7;display:flex;align-items:center;transition:opacity .15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="ai-msgs" role="log">
+      <!-- Welcome message injected by JS -->
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Teklifler neler?</button><button class="ai-sug">32 GB RAM, 8 CPU, 500 GB disk maliyeti?</button></div></div>
+
+    <!-- Input area -->
+    <div id="ai-footer">
+      <div id="ai-input-wrap">
+        <textarea id="ai-input" rows="1" placeholder="Bir soru sorun…" maxlength="600" onkeydown="aiKey(event)" oninput="aiResize(this)" aria-label="Soru girin"></textarea>
+        <button id="ai-send" onclick="aiSend()" title="Gönder (Enter)" aria-label="Gönder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-footer-note" style="font-size:10px;color:var(--ai-muted);text-align:center;margin-top:6px;line-height:1.3">Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Tokens ── */
+:root {
+  --ai-accent:   #4f6ef7;
+  --ai-accent2:  #7c5af5;
+  --ai-win-bg:   #ffffff;
+  --ai-hd-bg:    linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  --ai-hd-txt:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-user-bg:  linear-gradient(135deg, #4f6ef7, #7c5af5);
+  --ai-user-txt: #ffffff;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+  --ai-radius:   14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-win-bg:   #1a1d23;
+    --ai-msg-bg:   #252830;
+    --ai-msg-txt:  #e5e7eb;
+    --ai-border:   rgba(255,255,255,.08);
+    --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+    --ai-muted:    #6b7280;
+    --ai-input-bg: #1e2128;
+    --ai-table-hd: #1e2128;
+  }
+}
+:root[data-theme="dark"] {
+  --ai-win-bg:   #1a1d23;
+  --ai-msg-bg:   #252830;
+  --ai-msg-txt:  #e5e7eb;
+  --ai-border:   rgba(255,255,255,.08);
+  --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+  --ai-muted:    #6b7280;
+  --ai-input-bg: #1e2128;
+  --ai-table-hd: #1e2128;
+}
+:root[data-theme="light"] {
+  --ai-win-bg:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+}
+
+/* ── Trigger button ── */
+#ai-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79,110,247,.45);
+  transition: transform .2s, box-shadow .2s;
+}
+#ai-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,110,247,.6); }
+#ai-btn:active { transform: scale(.96); }
+#ai-btn.open   { box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+
+/* Unread dot */
+#ai-dot {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background: #f87171;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: .7; }
+}
+
+/* ── Chat window ── */
+#ai-win {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 9997;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--ai-win-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.85) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+}
+#ai-win.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Header ── */
+#ai-hd {
+  background: var(--ai-hd-bg);
+  color: var(--ai-hd-txt);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+#ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Messages ── */
+#ai-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+#ai-msgs::-webkit-scrollbar { width: 4px; }
+#ai-msgs::-webkit-scrollbar-track { background: transparent; }
+#ai-msgs::-webkit-scrollbar-thumb { background: var(--ai-border); border-radius: 4px; }
+
+/* Bubbles */
+.ai-bubble {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ai-bubble.bot {
+  background: var(--ai-msg-bg);
+  color: var(--ai-msg-txt);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.ai-bubble.user {
+  background: var(--ai-user-bg);
+  color: var(--ai-user-txt);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+.ai-bubble.error {
+  background: rgba(239,68,68,.1);
+  color: #dc2626;
+  align-self: flex-start;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Detail text below bubble */
+.ai-detail {
+  font-size: 11px;
+  color: var(--ai-muted);
+  margin-top: 5px;
+  padding: 0 2px;
+  align-self: flex-start;
+  max-width: 88%;
+  line-height: 1.5;
+}
+
+/* Cost table */
+.ai-cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ai-cost-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding: 5px 8px;
+  background: var(--ai-table-hd);
+  border-bottom: 1px solid var(--ai-border);
+}
+.ai-cost-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--ai-border);
+  color: var(--ai-msg-txt);
+}
+.ai-cost-table tr:last-child td { border-bottom: none; }
+.ai-cost-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ai-accent);
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--ai-table-hd);
+  border-radius: 6px;
+}
+
+/* Source chip */
+.ai-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  padding: 2px 7px; border-radius: 10px; margin-top: 5px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; gap: 5px; align-items: center;
+  padding: 12px 14px;
+  background: var(--ai-msg-bg);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+.ai-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ai-muted);
+  animation: ai-bounce .9s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .15s; }
+.ai-typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes ai-bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ── */
+#ai-footer {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--ai-border);
+  flex-shrink: 0;
+  background: var(--ai-win-bg);
+}
+#ai-input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--ai-input-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: 10px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color .15s;
+}
+#ai-input-wrap:focus-within { border-color: var(--ai-accent); }
+
+#ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ai-msg-txt);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  font-family: inherit;
+}
+#ai-input::placeholder { color: var(--ai-muted); }
+
+#ai-send {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: none; cursor: pointer; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f6ef7, #7c5af5);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s, transform .1s;
+}
+#ai-send:hover  { opacity: .9; }
+#ai-send:active { transform: scale(.93); }
+#ai-send:disabled { opacity: .4; cursor: default; }
+
+/* ── Quick suggestion chips ── */
+#ai-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.ai-sug {
+  font-size: 11px; padding: 5px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.2); cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+  font-weight: 500;
+}
+.ai-sug:hover { background: rgba(79,110,247,.2); }
+
+/* ── Follow-up suggestion chips ── */
+.ai-follow-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 0 2px; margin-top: 6px;
+  align-self: flex-start; max-width: 96%;
+}
+.ai-follow-label {
+  width: 100%; font-size: 10px; color: var(--ai-muted);
+  font-weight: 600; letter-spacing: .03em; margin-bottom: 2px;
+}
+.ai-follow-chip {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.08); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.18); cursor: pointer;
+  transition: background .15s, border-color .15s; white-space: nowrap;
+  font-weight: 500; display: inline-flex; align-items: center; gap: 4px;
+}
+.ai-follow-chip::before { content: '↪'; font-size: 10px; opacity: .7; }
+.ai-follow-chip:hover {
+  background: rgba(79,110,247,.18); border-color: rgba(79,110,247,.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ai-win { transition: none; }
+  .ai-typing span { animation: none; opacity: .7; }
+  #ai-dot { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Language: follows the same document.documentElement.lang set by applyI18n() ── */
+  function _lang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'tr';
+  }
+
+  const WELCOME = {
+    tr: 'Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.\n\nÖrnekler:',
+    en: 'Hello! You can ask questions about your infrastructure data.\n\nExamples:',
+  };
+
+  /* ── Static widget chrome strings ── */
+  const WI18N = {
+    tr: {
+      title:        'AI Asistan',
+      openLabel:    'AI Asistanı aç',
+      statusIdle:   'Altyapı verilerini analiz ediyor',
+      close:        'Kapat',
+      inputPh:      'Bir soru sorun…',
+      inputAria:    'Soru girin',
+      sendTitle:    'Gönder (Enter)',
+      sendAria:     'Gönder',
+      footerNote:   'Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder',
+      followLabel:  'Devam edebilirsiniz:',
+      serverError:  'Sunucu hatası (',
+      connError:    'Bağlantı hatası: ',
+      costHeaders:  ['Bileşen', 'Miktar', 'Tutar'],
+      chipCost:     'Maliyet Hesabı',
+      chipVcenter:  'vCenter Verisi',
+    },
+    en: {
+      title:        'AI Assistant',
+      openLabel:    'Open AI Assistant',
+      statusIdle:   'Analyzing infrastructure data',
+      close:        'Close',
+      inputPh:      'Ask a question…',
+      inputAria:    'Enter your question',
+      sendTitle:    'Send (Enter)',
+      sendAria:     'Send',
+      footerNote:   'Answers using your real infrastructure data &nbsp;·&nbsp; Enter = send',
+      followLabel:  'You can continue:',
+      serverError:  'Server error (',
+      connError:    'Connection error: ',
+      costHeaders:  ['Component', 'Quantity', 'Amount'],
+      chipCost:     'Cost Calculation',
+      chipVcenter:  'vCenter Data',
+    },
+  };
+  function _wt(key) { return (WI18N[_lang()] || WI18N.tr)[key]; }
+
+  /* ── Sayfaya özel hazır sorular — anahtar, sayfanın URL path'idir (en spesifik eşleşme kazanır). ── */
+  const SUGGESTION_MAP = {
+    tr: {
+      '/vcenter':                ['Kaç VM var?', 'Kapalı VM\'ler neler?', 'Tag\'siz VM\'ler neler?', 'En fazla RAM kullanan 10 VM?'],
+      '/rvtools':                ['Kaç VM var?', 'Snapshot var mı?', 'En fazla RAM kullanan 10 VM?', 'Kapalı VM\'ler neler?'],
+      '/licenses':               ['Lisans envanteri', 'Süresi dolmuş lisanslar?', '30 gün içinde dolacak lisanslar?'],
+      '/operations':             ['Bekleyen operasyonlar', 'Başarısız işlemler?', 'Bugün tamamlanan işlemler?'],
+      '/calculator':             ['Teklifler neler?', '32 GB RAM, 8 CPU, 500 GB disk maliyeti?'],
+      '/vm-host':                ['ESXi host listesi', 'Hangi host\'ta en çok VM var?'],
+      '/physical':               ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/opmanager':              ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/reports/notags-vms':     ['Tag\'siz VM\'ler neler?'],
+      '/reports/poc-vms':        ['POC VM\'ler neler?'],
+      '/reports/willdelete-vms': ['Silinecek VM\'ler neler?'],
+      '/reports/poweredoff-vms': ['Kapalı VM\'ler neler?'],
+    },
+    en: {
+      '/vcenter':                ['How many VMs are there?', 'Which VMs are powered off?', 'Which VMs are untagged?', 'Top 10 VMs by RAM usage?'],
+      '/rvtools':                ['How many VMs are there?', 'Are there any snapshots?', 'Top 10 VMs by RAM usage?', 'Which VMs are powered off?'],
+      '/licenses':               ['License inventory', 'Which licenses have expired?', 'Which licenses expire within 30 days?'],
+      '/operations':             ['Pending operations', 'Failed operations?', 'Operations completed today?'],
+      '/calculator':             ['What are the quotes?', 'Cost for 32 GB RAM, 8 CPU, 500 GB disk?'],
+      '/vm-host':                ['ESXi host list', 'Which host has the most VMs?'],
+      '/physical':               ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/opmanager':              ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/reports/notags-vms':     ['Which VMs are untagged?'],
+      '/reports/poc-vms':        ['What are the POC VMs?'],
+      '/reports/willdelete-vms': ['Which VMs are marked for deletion?'],
+      '/reports/poweredoff-vms': ['Which VMs are powered off?'],
+    },
+  };
+  const DASHBOARD_SUGGESTIONS = {
+    tr: ['Altyapımı özetle', 'Kaç VM var?', 'Bekleyen operasyonlar', 'Süresi dolmuş lisanslar?'],
+    en: ['Summarize my infrastructure', 'How many VMs are there?', 'Pending operations', 'Which licenses have expired?'],
+  };
+  const DEFAULT_SUGGESTIONS = {
+    tr: [
+      'Kaç VM var?',
+      'Tag\'siz VM\'ler neler?',
+      'Lisans envanteri',
+      'Bekleyen operasyonlar',
+      'Fiziksel cihaz durumu',
+      'Teklifler neler?',
+      'ESXi host listesi',
+      'Silinecek VM\'ler?',
+      'Süresi dolmuş lisanslar?',
+      '32 GB RAM, 8 CPU, 500 GB disk maliyeti?',
+    ],
+    en: [
+      'How many VMs are there?',
+      'Which VMs are untagged?',
+      'License inventory',
+      'Pending operations',
+      'Physical device status',
+      'What are the quotes?',
+      'ESXi host list',
+      'Which VMs are marked for deletion?',
+      'Which licenses have expired?',
+      'Cost for 32 GB RAM, 8 CPU, 500 GB disk?',
+    ],
+  };
+
+  /* ── Sayfaya göre hazır soru listesini seç ── */
+  function _pageSuggestions() {
+    const root = document.getElementById('ai-root');
+    const path = (root && root.dataset.page) || '/';
+    const lang = _lang();
+    if (path === '/') return DASHBOARD_SUGGESTIONS[lang];
+    const map = SUGGESTION_MAP[lang];
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      if (path === k || path.startsWith(k + '/')) return map[k];
+    }
+    return DEFAULT_SUGGESTIONS[lang];
+  }
+
+  /* ── Apply static chrome translations ── */
+  function _applyWidgetI18n() {
+    const btn = document.getElementById('ai-btn');
+    if (btn) { btn.title = _wt('title'); btn.setAttribute('aria-label', _wt('openLabel')); }
+    const win = document.getElementById('ai-win');
+    if (win) win.setAttribute('aria-label', _wt('title'));
+    const titleTxt = document.getElementById('ai-title-txt');
+    if (titleTxt) titleTxt.textContent = _wt('title');
+    const statusTxt = document.getElementById('ai-status-txt');
+    if (statusTxt) statusTxt.textContent = _wt('statusIdle');
+    const closeBtn = document.getElementById('ai-close-btn');
+    if (closeBtn) closeBtn.title = _wt('close');
+    const inp = document.getElementById('ai-input');
+    if (inp) { inp.placeholder = _wt('inputPh'); inp.setAttribute('aria-label', _wt('inputAria')); }
+    const sendBtn = document.getElementById('ai-send');
+    if (sendBtn) { sendBtn.title = _wt('sendTitle'); sendBtn.setAttribute('aria-label', _wt('sendAria')); }
+    const footNote = document.getElementById('ai-footer-note');
+    if (footNote) footNote.innerHTML = _wt('footerNote');
+  }
+
+  let _open = false;
+  let _busy = false;
+
+  /* ── Bold markdown (**text**) → <strong> ── */
+  function _md(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+  }
+  function _e(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Scroll to bottom ── */
+  function _scroll() {
+    const m = document.getElementById('ai-msgs');
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  /* ── Follow-up suggestions after bot response ── */
+  function _addFollowSuggestions(suggestions) {
+    if (!suggestions || !suggestions.length) return;
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const row = document.createElement('div');
+    row.className = 'ai-follow-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'ai-follow-label';
+    lbl.textContent = _wt('followLabel');
+    row.appendChild(lbl);
+    for (const s of suggestions) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-follow-chip';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      row.appendChild(btn);
+    }
+    msgs.appendChild(row);
+    _scroll();
+  }
+
+  /* ── Append message bubble ── */
+  function _addBubble(role, html, detail, extra) {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    // Remove initial suggestions and any follow-up rows
+    const sug = msgs.querySelector('#ai-suggestions');
+    if (sug) sug.remove();
+    msgs.querySelectorAll('.ai-follow-row').forEach(el => el.remove());
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column';
+
+    const bbl = document.createElement('div');
+    bbl.className = `ai-bubble ${role}`;
+    bbl.innerHTML = html;
+    wrap.appendChild(bbl);
+
+    if (detail) {
+      const det = document.createElement('div');
+      det.className = 'ai-detail';
+      det.innerHTML = _md(detail);
+      wrap.appendChild(det);
+    }
+    if (extra) {
+      const ex = document.createElement('div');
+      ex.innerHTML = extra;
+      wrap.appendChild(ex);
+    }
+    msgs.appendChild(wrap);
+    _scroll();
+    return wrap;
+  }
+
+  /* ── Typing indicator ── */
+  function _showTyping() {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return null;
+    const el = document.createElement('div');
+    el.id = 'ai-typing-el';
+    el.className = 'ai-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    _scroll();
+    return el;
+  }
+  function _removeTyping() {
+    const el = document.getElementById('ai-typing-el');
+    if (el) el.remove();
+  }
+
+  /* ── Render bot response ── */
+  function _renderBot(data) {
+    const type = data.type || '';
+
+    if (type === 'cost' && data.table) {
+      const [hComp, hQty, hAmt] = _wt('costHeaders');
+      let tbl = `<table class="ai-cost-table">
+        <thead><tr><th>${_e(hComp)}</th><th>${_e(hQty)}</th><th>${_e(hAmt)}</th></tr></thead><tbody>`;
+      for (const [comp, qty, price] of data.table) {
+        tbl += `<tr><td>${_e(comp)}</td><td>${_e(qty)}</td><td style="text-align:right;font-weight:600">${_e(price)}</td></tr>`;
+      }
+      tbl += `</tbody></table>`;
+      if (data.total) {
+        tbl += `<div class="ai-cost-total">${_e(data.total)}</div>`;
+      }
+      _addBubble('bot', _md(data.answer) + tbl, '', _chip(_wt('chipCost'), 'calculator'));
+      return;
+    }
+
+    if (type === 'vm_count' || type === 'vm_filter') {
+      const detail = data.detail || '';
+      _addBubble('bot', _md(data.answer), detail, _chip(_wt('chipVcenter'), 'vcenter'));
+      return;
+    }
+
+    if (type === 'llm') {
+      const model = data.model ? _e(data.model) : 'AI';
+      _addBubble('bot', _md(data.answer), '', _chip(model, 'llm'));
+      return;
+    }
+
+    if (type === 'error') {
+      _addBubble('error', _md(data.answer), '', '');
+      return;
+    }
+
+    // cost_hint / unknown / fallback
+    _addBubble('bot', _md(data.answer), '', '');
+  }
+
+  function _chip(label, kind) {
+    const icons = {
+      vcenter:    '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>',
+      calculator: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>',
+      llm:        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
+    };
+    return `<span class="ai-chip">${icons[kind] || ''} ${_e(label)}</span>`;
+  }
+
+  /* ── Send question ── */
+  async function aiSend() {
+    if (_busy) return;
+    const inp = document.getElementById('ai-input');
+    const q   = (inp.value || '').trim();
+    if (!q) return;
+
+    inp.value = '';
+    inp.style.height = '';
+    _addBubble('user', _e(q), '', '');
+
+    _busy = true;
+    document.getElementById('ai-send').disabled = true;
+    const tyEl = _showTyping();
+
+    try {
+      const r = await fetch('/ai/chat', {
+        method:  'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:    JSON.stringify({ q, lang: _lang() }),
+      });
+      _removeTyping();
+      if (!r.ok) { _addBubble('error', _wt('serverError') + r.status + ')', '', ''); return; }
+      const data = await r.json();
+      _renderBot(data);
+      _addFollowSuggestions(data.suggestions || []);
+    } catch (err) {
+      _removeTyping();
+      _addBubble('error', _wt('connError') + _e(err.message), '', '');
+    } finally {
+      _busy = false;
+      document.getElementById('ai-send').disabled = false;
+      inp.focus();
+    }
+  }
+
+  /* ── Toggle open/close ── */
+  function aiToggle() {
+    _open = !_open;
+    const win = document.getElementById('ai-win');
+    const btn = document.getElementById('ai-btn');
+    win.classList.toggle('visible', _open);
+    win.setAttribute('aria-hidden', String(!_open));
+    btn.setAttribute('aria-expanded', String(_open));
+    btn.classList.toggle('open', _open);
+    document.getElementById('ai-btn-open').style.display  = _open ? 'none' : '';
+    document.getElementById('ai-btn-close').style.display = _open ? '' : 'none';
+    document.getElementById('ai-dot').style.display = 'none';
+    if (_open) {
+      document.getElementById('ai-input').focus();
+      _scroll();
+    }
+  }
+
+  /* ── Textarea auto-resize ── */
+  function aiResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  /* ── Enter key handling ── */
+  function aiKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      aiSend();
+    }
+  }
+
+  /* ── Build suggestions ── */
+  function _buildSuggestions() {
+    const div = document.createElement('div');
+    div.id = 'ai-suggestions';
+    for (const s of _pageSuggestions()) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-sug';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      div.appendChild(btn);
+    }
+    return div;
+  }
+
+  /* ── Init welcome ── */
+  function _init() {
+    _applyWidgetI18n();
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const bbl = document.createElement('div');
+    bbl.className = 'ai-bubble bot';
+    bbl.innerHTML = _md(WELCOME[_lang()]);
+    msgs.appendChild(bbl);
+    msgs.appendChild(_buildSuggestions());
+
+    // Check Ollama status quietly
+    fetch('/ai/status').then(r => r.json()).then(d => {
+      if (d.ollama && d.model) {
+        const txt = document.getElementById('ai-status-txt');
+        if (txt) txt.textContent = `Ollama · ${d.model}`;
+      }
+    }).catch(() => {});
+
+    // Show unread dot if window is closed after 1.5 s
+    setTimeout(() => {
+      if (!_open) document.getElementById('ai-dot').style.display = '';
+    }, 1500);
+  }
+
+  // Expose to HTML inline handlers
+  window.aiToggle = aiToggle;
+  window.aiSend   = aiSend;
+  window.aiResize = aiResize;
+  window.aiKey    = aiKey;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+})();
+</script>
+
+</body></html>

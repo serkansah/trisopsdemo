@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bu ekran demo ortamında gösterilememektedir</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css">
+<script>
+(function(){
+  var t = (localStorage.getItem('ps_theme')||'light');
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
+<style>
+  body{margin:0}
+  .nf-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;
+    background:var(--bg-base);padding:20px}
+  .nf-card{max-width:460px;text-align:center;background:var(--bg-elevated,#fff);
+    border-radius:16px;padding:44px 36px;box-shadow:0 24px 64px rgba(26,35,64,.14),0 4px 12px rgba(26,35,64,.08)}
+  .nf-icon{width:52px;height:52px;border-radius:50%;background:rgba(74,110,245,.1);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+  .nf-title{font-size:18px;font-weight:700;color:var(--text-primary);margin:0 0 10px}
+  .nf-sub{font-size:13px;color:var(--text-dim);line-height:1.6;margin:0 0 28px}
+  .nf-btn{display:inline-block;padding:10px 22px;border-radius:9px;background:var(--accent,#4a6ef5);
+    color:#fff;text-decoration:none;font-size:13px;font-weight:600}
+</style>
+</head>
+<body>
+<div class="nf-wrap">
+  <div class="nf-card">
+    <div class="nf-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a6ef5" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    </div>
+    <p class="nf-title">Bu ekran demo ortamında gösterilememektedir</p>
+    <p class="nf-sub">Aradığınız içerik bu demo sürümünde yer almıyor olabilir ya da yalnızca canlı bir kurulumda kullanılabilir bir işlemdir. Uygulamanın kendisi çalışıyor — sol menüden diğer ekranlara göz atabilirsiniz.</p>
+    <a class="nf-btn" href="/">Ana Sayfaya Dön</a>
+  </div>
+</div>
+</body>
+</html>
