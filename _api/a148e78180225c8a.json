@@ -1,0 +1,1 @@
+{"dir":"/app/Backup","retention_days":"7","schedule_enabled":"1","schedule_hour":"2","sftp_enabled":"0","sftp_host":"","sftp_port":"22","sftp_user":"","sftp_pass_set":false,"sftp_path":"/backups/","smb_enabled":"0","smb_host":"","smb_share":"","smb_user":"","smb_pass_set":false,"smb_path":"backups"}

@@ -1,0 +1,1814 @@
+<!DOCTYPE html><html lang="tr" data-theme="light"><head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CMDB Arama — PS Portal</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css?v=1784405152">
+<script>
+(function(){
+  function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  var t=_getCookie('ps_theme')||'light';
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+  window._PS_LANG=_getCookie('ps_lang')||'tr';
+  window._PS_TZ=_getCookie('ps_tz')||'Europe/Istanbul';
+})();
+</script>
+</head>
+<body>
+
+<div class="app">
+  
+
+
+
+
+<nav class="sidebar" id="sidebar">
+  <a href="/" class="sidebar-logo" style="display:block;text-decoration:none">
+    <img src="/static/default-logo.png" alt="PS Portal" class="logo-img logo-img-sm" id="sidebar-logo-img">
+  </a>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <a href="/daily-check" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+    <span data-i18n="nav.dailycheck">Günlük Kontrol</span>
+  </a>
+  
+
+  
+  
+  
+
+  
+  <div class="nav-section-label" data-i18n="nav.section.infra">Altyapı</div>
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.virt">Sanallaştırma</div>
+
+  
+  <a href="/vcenter" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+    <span data-i18n="nav.vcenter">vCenter</span>
+  </a>
+  
+
+  
+  <a href="/vm-host" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+    <span data-i18n="nav.vmhost">VM-Host Eşleme</span>
+  </a>
+  
+
+  
+  <a href="/rvtools" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.rvtools">RVTools</span>
+  </a>
+  <a href="/capacity" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+    <span data-i18n="nav.capacity">Kapasite Trend Analizi</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.monitor">İzleme</div>
+
+  
+  <a href="/physical" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+    <span data-i18n="nav.physical">Fiziksel Mimari</span>
+  </a>
+  
+
+  
+  <a href="/delinea" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <span data-i18n="nav.delinea">Delinea PAM</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.dataprot">Veri Koruma</div>
+
+  
+  <a href="/itanalytics" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    <span data-i18n="nav.itanalytics">IT Analytics</span>
+  </a>
+  
+
+  
+  <a href="/netbackup" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    <span data-i18n="nav.netbackup">NetBackup</span>
+  </a>
+  
+
+  
+  <a href="/zerto" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-9 9M12 2h9v9"></path><path d="M3 22l9-9M12 22H3v-9"></path></svg>
+    <span data-i18n="nav.zerto">Zerto</span>
+  </a>
+  
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.mgmt">Yönetim</div>
+  
+
+  
+  <a href="/operations" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+    <span data-i18n="nav.operations">Operasyon</span>
+  </a>
+  
+
+  
+  <a href="/calculator" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+    <span data-i18n="nav.calculator">Teklifler</span>
+  </a>
+  
+
+  
+  <a href="/finops" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+    <span data-i18n="nav.finops">Maliyet Optimizasyonu</span>
+  </a>
+  
+
+  
+  <a href="/licenses" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 4v5M15 4v5M7 14h4M7 17h6"></path></svg>
+    <span data-i18n="nav.licenses">Lisans Yönetimi</span>
+  </a>
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
+
+  
+  <a href="/reports" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.reports">Raporlar</span>
+  </a>
+  
+
+  
+  <a href="/jobs" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span data-i18n="nav.jobs">Zamanlanmış Görevler</span>
+  </a>
+  
+  
+
+</nav>
+  <div class="main">
+    
+
+
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menüyü aç/kapat">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <!-- Global Arama — sadece vCenter yetkisi olanlara göster -->
+  
+  
+  <div class="search-wrap" id="search-wrap" style="max-width:400px">
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="search-input" class="search-input" type="text" placeholder="VM ara… (ad, IP, DNS, etiket)" autocomplete="off" spellcheck="false" oninput="onSearch(this.value)" onkeydown="onSearchKey(event)" onfocus="showDrop()">
+      <kbd class="search-kbd" id="search-kbd">Ctrl K</kbd>
+    </div>
+    <div class="search-drop" id="search-drop" style="display:none"></div>
+  </div>
+  <a href="/cmdb" class="btn-detail-search active">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span data-i18n="nav.cmdb">Detay arama</span>
+  </a>
+  
+
+  <div class="topbar-right">
+    <a href="/docs" title="Dokümantasyon" class="btn-docs">🛈</a>
+    <div class="topbar-user-chip" id="user-chip" onclick="toggleUserMenu()" style="cursor:pointer;user-select:none">
+      <div class="topbar-avatar">A</div>
+      <div class="topbar-user-info">
+        <div class="topbar-user-name">Admin</div>
+        <div class="topbar-user-role" data-i18n="user.role.admin">Yönetici</div>
+      </div>
+      <svg style="margin-left:4px;color:var(--text-dim);flex-shrink:0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div class="user-dropdown" id="user-dropdown">
+      <div class="ud-brand">
+        <img src="/static/default-logo.png" alt="PS Portal" class="ud-brand-logo">
+      </div>
+      <div class="ud-product">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+        <span class="ud-product-name">PS Portal</span>
+        <span class="ud-product-version">v1.34</span>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-userinfo">
+        <div class="ud-avatar">A</div>
+        <div class="ud-userinfo-text">
+          <div class="ud-username">Admin</div>
+          <div class="ud-userhandle">Admin</div>
+        </div>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      
+      
+      <a href="/settings" class="user-dropdown-item user-dropdown-item--normal" style="position:relative">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="nav.admin">Admin Panel</span>
+        
+      </a>
+      
+      <a href="/user/settings" class="user-dropdown-item user-dropdown-item--normal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="user.menu.settings">Kullanıcı Ayarları</span>
+      </a>
+      <a href="/logout" class="user-dropdown-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span data-i18n="user.menu.logout">Çıkış Yap</span>
+      </a>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-theme-row">
+        <span class="ud-theme-label" data-i18n="user.menu.theme">Görünüm</span>
+        <div class="ud-theme-toggle" id="ud-theme-toggle">
+          <button type="button" class="ud-theme-btn ud-theme-btn--active" data-mode="light" onclick="quickSetTheme('light')" title="Açık">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="dark" onclick="quickSetTheme('dark')" title="Koyu">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="auto" onclick="quickSetTheme('auto')" title="Sistem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleUserMenu() {
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('user-chip').contains(e.target)) {
+    document.getElementById('user-dropdown').classList.remove('open');
+  }
+});
+
+/* ── Hızlı görünüm (tema) değiştirici ────────────────────── */
+function _udGetCookie(n) {
+  var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)');
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function _udSyncThemeButtons() {
+  var current = _udGetCookie('ps_theme') || 'light';
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === current);
+  });
+}
+async function quickSetTheme(mode) {
+  var root = document.documentElement;
+  if (mode === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === mode);
+  });
+  try {
+    await fetch('/user/settings/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        language: window._PS_LANG || 'tr',
+        timezone: window._PS_TZ || 'Europe/Istanbul',
+        theme: mode,
+      }),
+    });
+  } catch (e) {}
+}
+_udSyncThemeButtons();
+</script>
+
+<footer class="app-footer">PS Portal © 2026</footer>
+
+<style>
+.btn-detail-search {
+  display: flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 14px; margin-right: 12px; flex-shrink: 0;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text-muted); font-size: 13px;
+  text-decoration: none; white-space: nowrap;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.btn-detail-search:hover,
+.btn-detail-search.active { color: var(--accent); border-color: var(--accent); background: var(--bg-hover); }
+
+.search-wrap {
+  flex: 1; max-width: 540px; margin: 0 24px; position: relative;
+}
+.search-bar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0 12px; height: 38px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.search-bar:focus-within {
+  border-color: var(--accent, #4a6ef5);
+  box-shadow: 0 0 0 3px rgba(74,110,245,.15);
+}
+.search-icon   { color: var(--text-dim); flex-shrink: 0; }
+.search-input  {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-size: 14px; min-width: 0;
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-kbd {
+  font-size: 11px; color: var(--text-dim);
+  background: var(--bg-hover, #1e2130); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2px 6px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Dropdown */
+.search-drop {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.1);
+  max-height: 440px; overflow-y: auto; z-index: 9999;
+}
+.search-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-dim); padding: 12px 16px 6px; border-bottom: 1px solid var(--border);
+}
+.search-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; cursor: pointer; transition: background .1s;
+}
+.search-item:hover, .search-item.active { background: var(--bg-hover); }
+.search-item-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.si-on  { background: var(--badge-ok-bg);     color: var(--badge-ok-color); }
+.si-off { background: var(--badge-danger-bg); color: var(--badge-danger-color); }
+.search-item-body { flex: 1; min-width: 0; }
+.search-item-name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-item-meta { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.search-item-vc   { font-size: 11px; color: var(--text-dim); white-space: nowrap; flex-shrink: 0; background: var(--bg-hover); border-radius: 5px; padding: 2px 7px; }
+.search-empty     { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+.search-loading   { padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+
+<script>
+// Ctrl+K / Cmd+K ile arama çubuğuna focus
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+    showDrop();
+  }
+  if (e.key === 'Escape') closeDrop();
+});
+
+document.addEventListener('click', e => {
+  if (!document.getElementById('search-wrap').contains(e.target)) closeDrop();
+});
+
+let _searchTimer = null;
+let _activeIdx = -1;
+
+function showDrop() {
+  const drop = document.getElementById('search-drop');
+  const inp  = document.getElementById('search-input');
+  if (inp.value.length >= 2) drop.style.display = 'block';
+  document.getElementById('search-kbd').style.display = 'none';
+}
+
+function closeDrop() {
+  document.getElementById('search-drop').style.display = 'none';
+  document.getElementById('search-kbd').style.display = '';
+  _activeIdx = -1;
+}
+
+function onSearch(val) {
+  clearTimeout(_searchTimer);
+  if (val.length < 2) {
+    document.getElementById('search-drop').style.display = 'none';
+    return;
+  }
+  const drop = document.getElementById('search-drop');
+  drop.innerHTML = '<div class="search-loading">Aranıyor…</div>';
+  drop.style.display = 'block';
+  _searchTimer = setTimeout(() => doSearch(val), 280);
+}
+
+async function doSearch(q) {
+  try {
+    const resp = await fetch('/search?q=' + encodeURIComponent(q));
+    const data = await resp.json();
+    renderResults(data.results, q);
+  } catch(e) {
+    document.getElementById('search-drop').innerHTML =
+      '<div class="search-empty">Arama hatası.</div>';
+  }
+}
+
+function powerIcon(state) {
+  if (state === 'poweredOn')
+    return '<div class="search-item-icon si-on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
+  return '<div class="search-item-icon si-off"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>';
+}
+
+function highlight(text, q) {
+  if (!text) return '';
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx)
+    + '<mark style="background:#dbeafe;color:#1d4ed8;border-radius:3px;padding:0 1px;font-weight:700">'
+    + text.slice(idx, idx + q.length)
+    + '</mark>'
+    + text.slice(idx + q.length);
+}
+
+function renderResults(results, q) {
+  const drop = document.getElementById('search-drop');
+  if (!results.length) {
+    drop.innerHTML = '<div class="search-empty">Sonuç bulunamadı.</div>';
+    return;
+  }
+  let html = `<div class="search-section-label">Sanal Makineler (${results.length})</div>`;
+  results.forEach((r, i) => {
+    const meta = [
+      r.ip_address, r.dns_name, r.guest_os
+    ].filter(Boolean).join(' · ');
+    html += `<div class="search-item" data-idx="${i}" onclick="goToVM('${encodeURIComponent(r.vm_name)}')">
+      ${powerIcon(r.power_state)}
+      <div class="search-item-body">
+        <div class="search-item-name">${highlight(r.vm_name, q)}</div>
+        <div class="search-item-meta">${highlight(meta, q)}</div>
+      </div>
+      <span class="search-item-vc">${r.vcenter.split('.')[0]}</span>
+    </div>`;
+  });
+  drop.innerHTML = html;
+  _activeIdx = -1;
+}
+
+function goToVM(name) {
+  closeDrop();
+  document.getElementById('search-input').value = '';
+  window.location.href = '/vcenter?highlight=' + name;
+}
+
+function onSearchKey(e) {
+  const items = document.querySelectorAll('.search-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    _activeIdx = Math.min(_activeIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    _activeIdx = Math.max(_activeIdx - 1, 0);
+  } else if (e.key === 'Enter' && _activeIdx >= 0) {
+    items[_activeIdx].click();
+    return;
+  } else return;
+  items.forEach((el, i) => el.classList.toggle('active', i === _activeIdx));
+  items[_activeIdx]?.scrollIntoView({ block: 'nearest' });
+}
+</script>
+    <div class="content">
+
+      <div class="page-header" style="margin-bottom:20px">
+        <div>
+          <h2 class="page-title">CMDB Arama</h2>
+          <p class="page-sub">vCenter, OpManager ve RVTools arşivinde (silinmiş sunucular dahil) tek noktadan arama</p>
+        </div>
+        
+        <div id="hist-status" style="font-size:11px;color:var(--text-dim);text-align:right;line-height:1.6">Arşiv indeksi: <strong>48</strong> mevcut, <strong>2</strong> silinmiş sunucu
+        · Son: — (0 gün mevcut)
+        <a href="javascript:void(0)" onclick="runReindex()" style="color:var(--accent,#4a6ef5);margin-left:6px">Güncelle</a></div>
+        
+      </div>
+
+      <!-- Search box -->
+      <div style="max-width:640px;margin-bottom:28px">
+        <div style="position:relative">
+          <svg style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-dim);pointer-events:none" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input id="cmdb-input" type="text" placeholder="VM adı, IP, cihaz türü, üretici…" autofocus="" autocomplete="off" spellcheck="false" style="width: 100%; padding: 12px 14px 12px 42px; border-color: var(--accent,#4a6ef5); border-top-style: ; border-top-width: ; border-right-style: ; border-right-width: ; border-bottom-style: ; border-bottom-width: ; border-left-style: ; border-left-width: ; border-image-source: ; border-image-slice: ; border-image-width: ; border-image-outset: ; border-image-repeat: ; border-radius: 10px; background: var(--card-bg); color: var(--text); font-size: 15px; box-sizing: border-box; transition: border-color 0.15s;" oninput="onInput()" onfocus="this.style.borderColor='var(--accent,#4a6ef5)'" onblur="this.style.borderColor='var(--border)'">
+          <div id="cmdb-spinner" style="display:none;position:absolute;right:14px;top:50%;transform:translateY(-50%)">
+            <div class="cmdb-spin"></div>
+          </div>
+        </div>
+        <div id="cmdb-hint" style="font-size:12px;color:var(--text-dim);margin-top:8px;padding-left:2px">
+          En az 2 karakter girin — tüm sistemlerde arama yapılır
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="cmdb-results"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Geçmiş Modal -->
+<div id="hist-modal-bg" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+     z-index:1000;align-items:center;justify-content:center">
+  <div style="background:var(--bg-elevated,#fff);border-radius:12px;width:640px;max-width:95vw;
+              max-height:85vh;display:flex;flex-direction:column;
+              box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border)">
+    <div style="padding:16px 22px;border-bottom:1px solid var(--border);
+                display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+      <h3 id="hist-title" style="margin:0;font-size:15px;color:var(--text-primary)">Sunucu Geçmişi</h3>
+      <button onclick="closeHistory()" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-dim)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div id="hist-body" style="padding:20px 22px;overflow-y:auto"></div>
+  </div>
+</div>
+
+<style>
+.cmdb-spin {
+  width:16px;height:16px;border-radius:50%;
+  border:2px solid var(--border);border-top-color:var(--accent,#4a6ef5);
+  animation:cmdb-rot .7s linear infinite;
+}
+@keyframes cmdb-rot{to{transform:rotate(360deg)}}
+
+.cmdb-section { margin-bottom:24px; }
+.cmdb-section-hd {
+  display:flex;align-items:center;gap:10px;
+  font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--text-dim);margin-bottom:10px;
+}
+.cmdb-section-hd::after { content:'';flex:1;height:1px;background:var(--border); }
+.cmdb-section-cnt {
+  font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;
+  background:var(--bg-hover,rgba(74,110,245,.1));color:var(--accent,#4a6ef5);
+  padding:1px 6px;border-radius:10px;
+}
+
+.cmdb-table { width:100%;border-collapse:collapse; }
+.cmdb-table th {
+  text-align:left;font-size:11px;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--text-dim);padding:9px 14px;
+  border-bottom:1px solid var(--border);white-space:nowrap;
+}
+.cmdb-table td {
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  font-size:13px;color:var(--text);vertical-align:middle;
+}
+.cmdb-table tbody tr:last-child td { border-bottom:none; }
+.cmdb-table tbody tr:hover { background:var(--bg-hover,rgba(255,255,255,.04)); }
+
+.cmdb-card {
+  background:var(--card-bg);border:1px solid var(--border);
+  border-radius:10px;overflow:hidden;overflow-x:auto;
+}
+
+.cmdb-badge {
+  display:inline-flex;align-items:center;
+  font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;white-space:nowrap;
+}
+.cmdb-b-on      { background:rgba(22,163,74,.15);color:#16a34a; }
+.cmdb-b-off     { background:rgba(107,114,128,.15);color:#6b7280; }
+.cmdb-b-up      { background:rgba(22,163,74,.15);color:#16a34a; }
+.cmdb-b-down    { background:rgba(239,68,68,.15);color:#ef4444; }
+.cmdb-b-trouble { background:rgba(245,158,11,.15);color:#f59e0b; }
+.cmdb-b-unknown { background:rgba(107,114,128,.15);color:#6b7280; }
+
+.cmdb-hl { background:rgba(74,110,245,.2);border-radius:2px;padding:0 1px; }
+
+.cmdb-empty {
+  padding:32px;text-align:center;color:var(--text-dim);font-size:13px;
+}
+
+.cmdb-op-link {
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11px;font-weight:600;padding:4px 10px;
+  border-radius:6px;border:1px solid var(--border);
+  color:var(--accent,#4a6ef5);background:var(--bg-hover);
+  text-decoration:none;white-space:nowrap;transition:.15s;
+}
+.cmdb-op-link:hover {
+  background:var(--accent,#4a6ef5);color:#fff;border-color:transparent;
+}
+
+.hist-summary {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;
+}
+.hist-stat {
+  background:var(--bg-hover,rgba(0,0,0,.03));border:1px solid var(--border);
+  border-radius:8px;padding:9px 12px;
+}
+.hist-stat-label { font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px; }
+.hist-stat-value { font-size:14px;font-weight:600;color:var(--text-primary); }
+
+.hist-timeline { position:relative;padding-left:22px; }
+.hist-timeline::before {
+  content:'';position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--border);
+}
+.hist-ev { position:relative;padding-bottom:16px; }
+.hist-ev:last-child { padding-bottom:0; }
+.hist-ev::before {
+  content:'';position:absolute;left:-22px;top:3px;width:10px;height:10px;border-radius:50%;
+  background:var(--card-bg,#fff);border:2px solid var(--accent,#4a6ef5);
+}
+.hist-ev.ev-bad::before   { border-color:#ef4444; }
+.hist-ev.ev-good::before  { border-color:#16a34a; }
+.hist-ev.ev-neutral::before { border-color:#6b7280; }
+.hist-ev-date { font-size:11px;font-weight:600;color:var(--text-dim);margin-bottom:2px; }
+.hist-ev-desc { font-size:13px;color:var(--text-primary); }
+</style>
+
+<script>
+
+
+var _opsAvailable = true;
+var _isAdmin = true;
+
+let _debounceTimer = null;
+let _lastQ = '';
+
+function _e(s) {
+  if (s == null) return '';
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function _hl(text, q) {
+  if (!q || !text) return _e(text);
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx < 0) return _e(text);
+  return _e(text.slice(0,idx))
+    + `<mark class="cmdb-hl">${_e(text.slice(idx, idx+q.length))}</mark>`
+    + _e(text.slice(idx+q.length));
+}
+
+function _memFmt(mb) {
+  if (!mb) return '—';
+  return mb>=1024 ? (mb/1024).toFixed(0)+' GB' : mb+' MB';
+}
+
+function onInput() {
+  clearTimeout(_debounceTimer);
+  const q = document.getElementById('cmdb-input').value.trim();
+  if (q.length < 2) {
+    document.getElementById('cmdb-results').innerHTML = '';
+    document.getElementById('cmdb-hint').textContent = 'En az 2 karakter girin — tüm sistemlerde arama yapılır';
+    document.getElementById('cmdb-spinner').style.display = 'none';
+    return;
+  }
+  document.getElementById('cmdb-spinner').style.display = '';
+  document.getElementById('cmdb-hint').textContent = 'Aranıyor…';
+  _debounceTimer = setTimeout(() => doSearch(q), 300);
+}
+
+async function doSearch(q) {
+  if (q === _lastQ) { document.getElementById('cmdb-spinner').style.display = 'none'; return; }
+  _lastQ = q;
+  try {
+    const r   = await fetch('/cmdb/search?q=' + encodeURIComponent(q));
+    const j   = await r.json();
+    const cur = document.getElementById('cmdb-input').value.trim();
+    if (cur !== q) return;  // stale
+    render(j, q);
+  } catch(err) {
+    document.getElementById('cmdb-results').innerHTML =
+      `<div style="color:#ef4444;font-size:13px;padding:20px 0">Arama hatası: ${_e(err.message)}</div>`;
+  } finally {
+    document.getElementById('cmdb-spinner').style.display = 'none';
+  }
+}
+
+function render(j, q) {
+  const vc  = j.results.vcenter         || [];
+  const opm = j.results.opmanager       || [];
+  const rv  = j.results.rvtools_history || [];
+  const hint = document.getElementById('cmdb-hint');
+  hint.textContent = j.total === 0
+    ? `"${q}" için sonuç bulunamadı`
+    : `${j.total} sonuç bulundu — vCenter: ${vc.length}, Fiziksel Cihaz: ${opm.length}, Arşiv/Silinmiş: ${rv.length}`;
+
+  let html = '';
+
+  if (vc.length > 0) {
+    html += `<div class="cmdb-section">
+      <div class="cmdb-section-hd">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
+        </svg>
+        vCenter VM
+        <span class="cmdb-section-cnt">${vc.length}</span>
+      </div>
+      <div class="cmdb-card">
+        <table class="cmdb-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th>
+            <th>ESXi Host</th><th>İşletim Sistemi</th><th>CPU</th><th>RAM</th><th>vCenter</th>
+            <th></th>
+          </tr></thead><tbody>`;
+    for (const v of vc) {
+      const stCls = v.power_state==='poweredOn'?'cmdb-b-on':'cmdb-b-off';
+      const stLbl = v.power_state==='poweredOn'?'Açık':'Kapalı';
+      const opUrl = '/operations?vm=' + encodeURIComponent(v.vm_name) + '&vcenter=' + encodeURIComponent(v.vcenter||'');
+      html += `<tr>
+        <td style="font-weight:600">${_hl(v.vm_name,q)}</td>
+        <td><span class="cmdb-badge ${stCls}">${stLbl}</span></td>
+        <td style="font-family:monospace;font-size:12px">${_hl(v.ip_address||'—',q)}</td>
+        <td style="color:var(--text-dim);font-size:12px">${_hl(v.host||'—',q)}</td>
+        <td style="color:var(--text-dim);font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"
+            title="${_e(v.guest_os)}">${_hl(v.guest_os||'—',q)}</td>
+        <td>${v.num_cpu||'—'}</td>
+        <td>${_memFmt(v.memory_mb)}</td>
+        <td style="color:var(--text-dim);font-size:12px">${_e(v.vcenter||'—')}</td>
+        <td style="white-space:nowrap">
+          <a href="javascript:void(0)" onclick="openHistory('${_e(v.vm_name).replace(/'/g,"\\'")}')" class="cmdb-op-link" title="Geçmiş değişiklikleri gör">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Geçmiş
+          </a>
+          ${_opsAvailable ? `
+          <a href="${opUrl}" class="cmdb-op-link" title="Bu VM için operasyon yap" style="margin-left:4px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+            Operasyon
+          </a>` : ''}</td>
+      </tr>`;
+    }
+    html += '</tbody></table></div></div>';
+  }
+
+  if (opm.length > 0) {
+    html += `<div class="cmdb-section">
+      <div class="cmdb-section-hd">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="8" rx="2"/>
+          <rect x="2" y="14" width="20" height="8" rx="2"/>
+          <line x1="6" y1="6" x2="6.01" y2="6"/>
+        </svg>
+        Fiziksel Cihaz (OpManager)
+        <span class="cmdb-section-cnt">${opm.length}</span>
+      </div>
+      <div class="cmdb-card">
+        <table class="cmdb-table">
+          <thead><tr>
+            <th>Cihaz Adı</th><th>Durum</th><th>IP</th>
+            <th>Kategori</th><th>Tür</th><th>Üretici</th><th>Model</th>
+          </tr></thead><tbody>`;
+    for (const d of opm) {
+      const sc = d.status_code;
+      const stCls = sc===1?'cmdb-b-up':sc===2?'cmdb-b-down':sc===3?'cmdb-b-trouble':'cmdb-b-unknown';
+      const stLbl = sc===1?'Aktif':sc===2?'Kapalı':sc===3?'Sorunlu':(d.status||'?');
+      const catLbl = {Server:'Sunucu',Storage:'Depolama',Network:'Ağ',Other:'Diğer'}[d.category]||d.category;
+      html += `<tr>
+        <td style="font-weight:600">${_hl(d.display_name||d.name,q)}</td>
+        <td><span class="cmdb-badge ${stCls}">${stLbl}</span></td>
+        <td style="font-family:monospace;font-size:12px">${_hl(d.ip_address||'—',q)}</td>
+        <td style="color:var(--text-dim)">${_e(catLbl)}</td>
+        <td style="color:var(--text-dim);font-size:12px">${_hl(d.device_type||'—',q)}</td>
+        <td style="color:var(--text-dim);font-size:12px">${_hl(d.vendor||'—',q)}</td>
+        <td style="color:var(--text-dim);font-size:12px">${_hl(d.model||'—',q)}</td>
+      </tr>`;
+    }
+    html += '</tbody></table></div></div>';
+  }
+
+  if (rv.length > 0) {
+    html += `<div class="cmdb-section">
+      <div class="cmdb-section-hd">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Arşiv Kaydı / Silinmiş Sunucular (RVTools)
+        <span class="cmdb-section-cnt">${rv.length}</span>
+      </div>
+      <div class="cmdb-card">
+        <table class="cmdb-table">
+          <thead><tr>
+            <th>VM Adı</th><th>Durum</th><th>IP</th><th>CPU</th><th>RAM</th>
+            <th>İlk Görülme</th><th>Son Görülme</th><th></th>
+          </tr></thead><tbody>`;
+    for (const r of rv) {
+      const gone = !r.exists_now;
+      html += `<tr style="${gone ? 'opacity:.7' : ''}">
+        <td style="font-weight:600">${_hl(r.vm_name,q)}</td>
+        <td><span class="cmdb-badge ${gone ? 'cmdb-b-down' : 'cmdb-b-on'}">${gone ? 'Silinmiş' : 'Mevcut'}</span></td>
+        <td style="font-family:monospace;font-size:12px">${_hl(r.ip||'—',q)}</td>
+        <td>${r.cpu||'—'}</td>
+        <td>${r.mem_gb ? r.mem_gb+' GB' : '—'}</td>
+        <td style="color:var(--text-dim);font-size:12px">${_e(r.first_seen||'—')}</td>
+        <td style="color:var(--text-dim);font-size:12px">${_e(r.last_seen||'—')}</td>
+        <td style="white-space:nowrap">
+          <a href="javascript:void(0)" onclick="openHistory('${_e(r.vm_name).replace(/'/g,"\\'")}')" class="cmdb-op-link" title="Geçmiş değişiklikleri gör">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            Geçmiş
+          </a>
+        </td>
+      </tr>`;
+    }
+    html += '</tbody></table></div></div>';
+  }
+
+  if (j.total === 0) {
+    html = `<div class="cmdb-empty">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+           style="color:var(--text-dim);margin-bottom:12px">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px">Sonuç bulunamadı</div>
+      <div>"${_e(q)}" ile eşleşen VM veya cihaz yok.</div>
+    </div>`;
+  }
+
+  document.getElementById('cmdb-results').innerHTML = html;
+}
+
+// ── Geçmiş modalı ────────────────────────────────────────────────────────────
+
+const _EVENT_STYLE = {
+  created:         'ev-good',
+  recreated:       'ev-good',
+  removed:         'ev-bad',
+  disk_removed:    'ev-bad',
+  cpu_changed:     'ev-neutral',
+  mem_changed:     'ev-neutral',
+  disk_added:      'ev-good',
+  disk_resized:    'ev-neutral',
+  state_changed:   'ev-neutral',
+};
+
+async function openHistory(vmName) {
+  document.getElementById('hist-title').textContent = 'Sunucu Geçmişi — ' + vmName;
+  document.getElementById('hist-body').innerHTML = '<div style="text-align:center;padding:30px;color:var(--text-dim)">Yükleniyor…</div>';
+  document.getElementById('hist-modal-bg').style.display = 'flex';
+
+  try {
+    const r = await fetch('/cmdb/history/' + encodeURIComponent(vmName));
+    if (!r.ok) {
+      document.getElementById('hist-body').innerHTML =
+        `<div class="cmdb-empty">Bu sunucu için RVTools arşivinde kayıt bulunamadı.<br>
+         <span style="font-size:11px">(Sunucu henüz günlük RVTools taramasına yansımamış olabilir.)</span></div>`;
+      return;
+    }
+    const d = await r.json();
+    render_hist(d);
+  } catch (err) {
+    document.getElementById('hist-body').innerHTML =
+      `<div style="color:#ef4444;padding:16px">Hata: ${_e(err.message)}</div>`;
+  }
+}
+
+function render_hist(d) {
+  const statusBadge = d.exists_now
+    ? '<span class="cmdb-badge cmdb-b-on">Mevcut</span>'
+    : '<span class="cmdb-badge cmdb-b-down">Silinmiş / Envanterde Yok</span>';
+
+  let html = `
+    <div style="margin-bottom:14px">${statusBadge}</div>
+    <div class="hist-summary">
+      <div class="hist-stat"><div class="hist-stat-label">İlk Görülme</div><div class="hist-stat-value">${_e(d.first_seen)}</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">Son Görülme</div><div class="hist-stat-value">${_e(d.last_seen)}</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">Güncel Durum</div><div class="hist-stat-value">${d.state==='poweredOn'?'Açık':d.state==='poweredOff'?'Kapalı':_e(d.state||'—')}</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">CPU</div><div class="hist-stat-value">${d.cpu||'—'} vCPU</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">RAM</div><div class="hist-stat-value">${d.mem_gb||'—'} GB</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">Disk</div><div class="hist-stat-value">${d.disk_count||0} disk · ${d.disk_gb||0} GB</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">IP</div><div class="hist-stat-value" style="font-family:monospace;font-size:12px">${_e(d.ip||'—')}</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">Cluster</div><div class="hist-stat-value">${_e(d.cluster||'—')}</div></div>
+      <div class="hist-stat"><div class="hist-stat-label">ESXi Host</div><div class="hist-stat-value" style="font-size:12px">${_e(d.host||'—')}</div></div>
+    </div>`;
+
+  if (!d.events || d.events.length === 0) {
+    html += `<div class="cmdb-empit" style="color:var(--text-dim);font-size:13px">
+      Arşiv boyunca hiçbir değişiklik kaydedilmemiş (ilk kayıttan bu yana sabit kalmış).</div>`;
+  } else {
+    html += '<div class="hist-timeline">';
+    // en yeni en üstte
+    for (const ev of [...d.events].reverse()) {
+      const cls = _EVENT_STYLE[ev.event_type] || 'ev-neutral';
+      html += `<div class="hist-ev ${cls}">
+        <div class="hist-ev-date">${_e(ev.event_date)}</div>
+        <div class="hist-ev-desc">${_e(ev.description)}</div>
+      </div>`;
+    }
+    html += '</div>';
+  }
+
+  document.getElementById('hist-body').innerHTML = html;
+}
+
+function closeHistory() { document.getElementById('hist-modal-bg').style.display = 'none'; }
+document.getElementById('hist-modal-bg').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeHistory();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeHistory(); });
+
+// ── Admin: indeks durumu ────────────────────────────────────────────────────
+
+async function loadHistStatus() {
+  if (!_isAdmin) return;
+  try {
+    const r = await fetch('/cmdb/history-status');
+    const s = await r.json();
+    const el = document.getElementById('hist-status');
+    if (!el) return;
+    if (s.total_vms === 0) {
+      el.innerHTML = `RVTools arşiv indeksi henüz oluşturulmadı.
+        <a href="javascript:void(0)" onclick="runReindex()" style="color:var(--accent,#4a6ef5)">Şimdi oluştur</a>`;
+    } else {
+      el.innerHTML = `Arşiv indeksi: <strong>${s.active_vms}</strong> mevcut, <strong>${s.removed_vms}</strong> silinmiş sunucu
+        · Son: ${_e(s.last_indexed_date || '—')} (${s.available_dates} gün mevcut)
+        <a href="javascript:void(0)" onclick="runReindex()" style="color:var(--accent,#4a6ef5);margin-left:6px">Güncelle</a>`;
+    }
+  } catch (err) { /* sessiz geç — admin olmayan kullanıcıyı etkilemez */ }
+}
+
+async function runReindex() {
+  const el = document.getElementById('hist-status');
+  if (el) el.textContent = 'İndeksleniyor… (yeni dosya varsa birkaç saniye, ilk kurulumda birkaç dakika sürebilir)';
+  try {
+    await fetch('/cmdb/history-reindex', { method: 'POST' });
+  } finally {
+    loadHistStatus();
+  }
+}
+
+loadHistStatus();
+</script>
+
+<script src="/static/app.js?v=1784405152"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
+<!-- AI Chat Widget — floating button + chat window, visible on all pages -->
+<div id="ai-root" aria-live="polite" data-page="/cmdb">
+
+  <!-- Floating trigger button -->
+  <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
+    <!-- Closed: chat icon -->
+    <svg id="ai-btn-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r=".5" fill="currentColor"></circle>
+    </svg>
+    <!-- Open: close icon -->
+    <svg id="ai-btn-close" width="20" height="20" viewBox="0 0 24 24" style="display:none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <!-- Unread dot -->
+    <span id="ai-dot" style="display:none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ai-win" role="dialog" aria-label="AI Asistan" aria-hidden="true">
+    <!-- Header -->
+    <div id="ai-hd">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div id="ai-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <div>
+          <div id="ai-title-txt" style="font-size:13px;font-weight:700;line-height:1.1">AI Asistan</div>
+          <div id="ai-status-txt" style="font-size:10px;opacity:.65;line-height:1">Altyapı verilerini analiz ediyor</div>
+        </div>
+      </div>
+      <button id="ai-close-btn" onclick="aiToggle()" title="Kapat" style="background:none;border:none;cursor:pointer;padding:4px;border-radius:5px;
+                     color:inherit;opacity:.7;display:flex;align-items:center;transition:opacity .15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="ai-msgs" role="log">
+      <!-- Welcome message injected by JS -->
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Kaç VM var?</button><button class="ai-sug">Tag'siz VM'ler neler?</button><button class="ai-sug">Lisans envanteri</button><button class="ai-sug">Bekleyen operasyonlar</button><button class="ai-sug">Fiziksel cihaz durumu</button><button class="ai-sug">Teklifler neler?</button><button class="ai-sug">ESXi host listesi</button><button class="ai-sug">Silinecek VM'ler?</button><button class="ai-sug">Süresi dolmuş lisanslar?</button><button class="ai-sug">32 GB RAM, 8 CPU, 500 GB disk maliyeti?</button></div></div>
+
+    <!-- Input area -->
+    <div id="ai-footer">
+      <div id="ai-input-wrap">
+        <textarea id="ai-input" rows="1" placeholder="Bir soru sorun…" maxlength="600" onkeydown="aiKey(event)" oninput="aiResize(this)" aria-label="Soru girin"></textarea>
+        <button id="ai-send" onclick="aiSend()" title="Gönder (Enter)" aria-label="Gönder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-footer-note" style="font-size:10px;color:var(--ai-muted);text-align:center;margin-top:6px;line-height:1.3">Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Tokens ── */
+:root {
+  --ai-accent:   #4f6ef7;
+  --ai-accent2:  #7c5af5;
+  --ai-win-bg:   #ffffff;
+  --ai-hd-bg:    linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  --ai-hd-txt:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-user-bg:  linear-gradient(135deg, #4f6ef7, #7c5af5);
+  --ai-user-txt: #ffffff;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+  --ai-radius:   14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-win-bg:   #1a1d23;
+    --ai-msg-bg:   #252830;
+    --ai-msg-txt:  #e5e7eb;
+    --ai-border:   rgba(255,255,255,.08);
+    --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+    --ai-muted:    #6b7280;
+    --ai-input-bg: #1e2128;
+    --ai-table-hd: #1e2128;
+  }
+}
+:root[data-theme="dark"] {
+  --ai-win-bg:   #1a1d23;
+  --ai-msg-bg:   #252830;
+  --ai-msg-txt:  #e5e7eb;
+  --ai-border:   rgba(255,255,255,.08);
+  --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+  --ai-muted:    #6b7280;
+  --ai-input-bg: #1e2128;
+  --ai-table-hd: #1e2128;
+}
+:root[data-theme="light"] {
+  --ai-win-bg:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+}
+
+/* ── Trigger button ── */
+#ai-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79,110,247,.45);
+  transition: transform .2s, box-shadow .2s;
+}
+#ai-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,110,247,.6); }
+#ai-btn:active { transform: scale(.96); }
+#ai-btn.open   { box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+
+/* Unread dot */
+#ai-dot {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background: #f87171;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: .7; }
+}
+
+/* ── Chat window ── */
+#ai-win {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 9997;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--ai-win-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.85) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+}
+#ai-win.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Header ── */
+#ai-hd {
+  background: var(--ai-hd-bg);
+  color: var(--ai-hd-txt);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+#ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Messages ── */
+#ai-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+#ai-msgs::-webkit-scrollbar { width: 4px; }
+#ai-msgs::-webkit-scrollbar-track { background: transparent; }
+#ai-msgs::-webkit-scrollbar-thumb { background: var(--ai-border); border-radius: 4px; }
+
+/* Bubbles */
+.ai-bubble {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ai-bubble.bot {
+  background: var(--ai-msg-bg);
+  color: var(--ai-msg-txt);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.ai-bubble.user {
+  background: var(--ai-user-bg);
+  color: var(--ai-user-txt);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+.ai-bubble.error {
+  background: rgba(239,68,68,.1);
+  color: #dc2626;
+  align-self: flex-start;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Detail text below bubble */
+.ai-detail {
+  font-size: 11px;
+  color: var(--ai-muted);
+  margin-top: 5px;
+  padding: 0 2px;
+  align-self: flex-start;
+  max-width: 88%;
+  line-height: 1.5;
+}
+
+/* Cost table */
+.ai-cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ai-cost-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding: 5px 8px;
+  background: var(--ai-table-hd);
+  border-bottom: 1px solid var(--ai-border);
+}
+.ai-cost-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--ai-border);
+  color: var(--ai-msg-txt);
+}
+.ai-cost-table tr:last-child td { border-bottom: none; }
+.ai-cost-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ai-accent);
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--ai-table-hd);
+  border-radius: 6px;
+}
+
+/* Source chip */
+.ai-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  padding: 2px 7px; border-radius: 10px; margin-top: 5px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; gap: 5px; align-items: center;
+  padding: 12px 14px;
+  background: var(--ai-msg-bg);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+.ai-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ai-muted);
+  animation: ai-bounce .9s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .15s; }
+.ai-typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes ai-bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ── */
+#ai-footer {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--ai-border);
+  flex-shrink: 0;
+  background: var(--ai-win-bg);
+}
+#ai-input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--ai-input-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: 10px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color .15s;
+}
+#ai-input-wrap:focus-within { border-color: var(--ai-accent); }
+
+#ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ai-msg-txt);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  font-family: inherit;
+}
+#ai-input::placeholder { color: var(--ai-muted); }
+
+#ai-send {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: none; cursor: pointer; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f6ef7, #7c5af5);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s, transform .1s;
+}
+#ai-send:hover  { opacity: .9; }
+#ai-send:active { transform: scale(.93); }
+#ai-send:disabled { opacity: .4; cursor: default; }
+
+/* ── Quick suggestion chips ── */
+#ai-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.ai-sug {
+  font-size: 11px; padding: 5px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.2); cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+  font-weight: 500;
+}
+.ai-sug:hover { background: rgba(79,110,247,.2); }
+
+/* ── Follow-up suggestion chips ── */
+.ai-follow-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 0 2px; margin-top: 6px;
+  align-self: flex-start; max-width: 96%;
+}
+.ai-follow-label {
+  width: 100%; font-size: 10px; color: var(--ai-muted);
+  font-weight: 600; letter-spacing: .03em; margin-bottom: 2px;
+}
+.ai-follow-chip {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.08); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.18); cursor: pointer;
+  transition: background .15s, border-color .15s; white-space: nowrap;
+  font-weight: 500; display: inline-flex; align-items: center; gap: 4px;
+}
+.ai-follow-chip::before { content: '↪'; font-size: 10px; opacity: .7; }
+.ai-follow-chip:hover {
+  background: rgba(79,110,247,.18); border-color: rgba(79,110,247,.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ai-win { transition: none; }
+  .ai-typing span { animation: none; opacity: .7; }
+  #ai-dot { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Language: follows the same document.documentElement.lang set by applyI18n() ── */
+  function _lang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'tr';
+  }
+
+  const WELCOME = {
+    tr: 'Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.\n\nÖrnekler:',
+    en: 'Hello! You can ask questions about your infrastructure data.\n\nExamples:',
+  };
+
+  /* ── Static widget chrome strings ── */
+  const WI18N = {
+    tr: {
+      title:        'AI Asistan',
+      openLabel:    'AI Asistanı aç',
+      statusIdle:   'Altyapı verilerini analiz ediyor',
+      close:        'Kapat',
+      inputPh:      'Bir soru sorun…',
+      inputAria:    'Soru girin',
+      sendTitle:    'Gönder (Enter)',
+      sendAria:     'Gönder',
+      footerNote:   'Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder',
+      followLabel:  'Devam edebilirsiniz:',
+      serverError:  'Sunucu hatası (',
+      connError:    'Bağlantı hatası: ',
+      costHeaders:  ['Bileşen', 'Miktar', 'Tutar'],
+      chipCost:     'Maliyet Hesabı',
+      chipVcenter:  'vCenter Verisi',
+    },
+    en: {
+      title:        'AI Assistant',
+      openLabel:    'Open AI Assistant',
+      statusIdle:   'Analyzing infrastructure data',
+      close:        'Close',
+      inputPh:      'Ask a question…',
+      inputAria:    'Enter your question',
+      sendTitle:    'Send (Enter)',
+      sendAria:     'Send',
+      footerNote:   'Answers using your real infrastructure data &nbsp;·&nbsp; Enter = send',
+      followLabel:  'You can continue:',
+      serverError:  'Server error (',
+      connError:    'Connection error: ',
+      costHeaders:  ['Component', 'Quantity', 'Amount'],
+      chipCost:     'Cost Calculation',
+      chipVcenter:  'vCenter Data',
+    },
+  };
+  function _wt(key) { return (WI18N[_lang()] || WI18N.tr)[key]; }
+
+  /* ── Sayfaya özel hazır sorular — anahtar, sayfanın URL path'idir (en spesifik eşleşme kazanır). ── */
+  const SUGGESTION_MAP = {
+    tr: {
+      '/vcenter':                ['Kaç VM var?', 'Kapalı VM\'ler neler?', 'Tag\'siz VM\'ler neler?', 'En fazla RAM kullanan 10 VM?'],
+      '/rvtools':                ['Kaç VM var?', 'Snapshot var mı?', 'En fazla RAM kullanan 10 VM?', 'Kapalı VM\'ler neler?'],
+      '/licenses':               ['Lisans envanteri', 'Süresi dolmuş lisanslar?', '30 gün içinde dolacak lisanslar?'],
+      '/operations':             ['Bekleyen operasyonlar', 'Başarısız işlemler?', 'Bugün tamamlanan işlemler?'],
+      '/calculator':             ['Teklifler neler?', '32 GB RAM, 8 CPU, 500 GB disk maliyeti?'],
+      '/vm-host':                ['ESXi host listesi', 'Hangi host\'ta en çok VM var?'],
+      '/physical':               ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/opmanager':              ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/reports/notags-vms':     ['Tag\'siz VM\'ler neler?'],
+      '/reports/poc-vms':        ['POC VM\'ler neler?'],
+      '/reports/willdelete-vms': ['Silinecek VM\'ler neler?'],
+      '/reports/poweredoff-vms': ['Kapalı VM\'ler neler?'],
+    },
+    en: {
+      '/vcenter':                ['How many VMs are there?', 'Which VMs are powered off?', 'Which VMs are untagged?', 'Top 10 VMs by RAM usage?'],
+      '/rvtools':                ['How many VMs are there?', 'Are there any snapshots?', 'Top 10 VMs by RAM usage?', 'Which VMs are powered off?'],
+      '/licenses':               ['License inventory', 'Which licenses have expired?', 'Which licenses expire within 30 days?'],
+      '/operations':             ['Pending operations', 'Failed operations?', 'Operations completed today?'],
+      '/calculator':             ['What are the quotes?', 'Cost for 32 GB RAM, 8 CPU, 500 GB disk?'],
+      '/vm-host':                ['ESXi host list', 'Which host has the most VMs?'],
+      '/physical':               ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/opmanager':              ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/reports/notags-vms':     ['Which VMs are untagged?'],
+      '/reports/poc-vms':        ['What are the POC VMs?'],
+      '/reports/willdelete-vms': ['Which VMs are marked for deletion?'],
+      '/reports/poweredoff-vms': ['Which VMs are powered off?'],
+    },
+  };
+  const DASHBOARD_SUGGESTIONS = {
+    tr: ['Altyapımı özetle', 'Kaç VM var?', 'Bekleyen operasyonlar', 'Süresi dolmuş lisanslar?'],
+    en: ['Summarize my infrastructure', 'How many VMs are there?', 'Pending operations', 'Which licenses have expired?'],
+  };
+  const DEFAULT_SUGGESTIONS = {
+    tr: [
+      'Kaç VM var?',
+      'Tag\'siz VM\'ler neler?',
+      'Lisans envanteri',
+      'Bekleyen operasyonlar',
+      'Fiziksel cihaz durumu',
+      'Teklifler neler?',
+      'ESXi host listesi',
+      'Silinecek VM\'ler?',
+      'Süresi dolmuş lisanslar?',
+      '32 GB RAM, 8 CPU, 500 GB disk maliyeti?',
+    ],
+    en: [
+      'How many VMs are there?',
+      'Which VMs are untagged?',
+      'License inventory',
+      'Pending operations',
+      'Physical device status',
+      'What are the quotes?',
+      'ESXi host list',
+      'Which VMs are marked for deletion?',
+      'Which licenses have expired?',
+      'Cost for 32 GB RAM, 8 CPU, 500 GB disk?',
+    ],
+  };
+
+  /* ── Sayfaya göre hazır soru listesini seç ── */
+  function _pageSuggestions() {
+    const root = document.getElementById('ai-root');
+    const path = (root && root.dataset.page) || '/';
+    const lang = _lang();
+    if (path === '/') return DASHBOARD_SUGGESTIONS[lang];
+    const map = SUGGESTION_MAP[lang];
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      if (path === k || path.startsWith(k + '/')) return map[k];
+    }
+    return DEFAULT_SUGGESTIONS[lang];
+  }
+
+  /* ── Apply static chrome translations ── */
+  function _applyWidgetI18n() {
+    const btn = document.getElementById('ai-btn');
+    if (btn) { btn.title = _wt('title'); btn.setAttribute('aria-label', _wt('openLabel')); }
+    const win = document.getElementById('ai-win');
+    if (win) win.setAttribute('aria-label', _wt('title'));
+    const titleTxt = document.getElementById('ai-title-txt');
+    if (titleTxt) titleTxt.textContent = _wt('title');
+    const statusTxt = document.getElementById('ai-status-txt');
+    if (statusTxt) statusTxt.textContent = _wt('statusIdle');
+    const closeBtn = document.getElementById('ai-close-btn');
+    if (closeBtn) closeBtn.title = _wt('close');
+    const inp = document.getElementById('ai-input');
+    if (inp) { inp.placeholder = _wt('inputPh'); inp.setAttribute('aria-label', _wt('inputAria')); }
+    const sendBtn = document.getElementById('ai-send');
+    if (sendBtn) { sendBtn.title = _wt('sendTitle'); sendBtn.setAttribute('aria-label', _wt('sendAria')); }
+    const footNote = document.getElementById('ai-footer-note');
+    if (footNote) footNote.innerHTML = _wt('footerNote');
+  }
+
+  let _open = false;
+  let _busy = false;
+
+  /* ── Bold markdown (**text**) → <strong> ── */
+  function _md(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+  }
+  function _e(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Scroll to bottom ── */
+  function _scroll() {
+    const m = document.getElementById('ai-msgs');
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  /* ── Follow-up suggestions after bot response ── */
+  function _addFollowSuggestions(suggestions) {
+    if (!suggestions || !suggestions.length) return;
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const row = document.createElement('div');
+    row.className = 'ai-follow-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'ai-follow-label';
+    lbl.textContent = _wt('followLabel');
+    row.appendChild(lbl);
+    for (const s of suggestions) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-follow-chip';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      row.appendChild(btn);
+    }
+    msgs.appendChild(row);
+    _scroll();
+  }
+
+  /* ── Append message bubble ── */
+  function _addBubble(role, html, detail, extra) {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    // Remove initial suggestions and any follow-up rows
+    const sug = msgs.querySelector('#ai-suggestions');
+    if (sug) sug.remove();
+    msgs.querySelectorAll('.ai-follow-row').forEach(el => el.remove());
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column';
+
+    const bbl = document.createElement('div');
+    bbl.className = `ai-bubble ${role}`;
+    bbl.innerHTML = html;
+    wrap.appendChild(bbl);
+
+    if (detail) {
+      const det = document.createElement('div');
+      det.className = 'ai-detail';
+      det.innerHTML = _md(detail);
+      wrap.appendChild(det);
+    }
+    if (extra) {
+      const ex = document.createElement('div');
+      ex.innerHTML = extra;
+      wrap.appendChild(ex);
+    }
+    msgs.appendChild(wrap);
+    _scroll();
+    return wrap;
+  }
+
+  /* ── Typing indicator ── */
+  function _showTyping() {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return null;
+    const el = document.createElement('div');
+    el.id = 'ai-typing-el';
+    el.className = 'ai-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    _scroll();
+    return el;
+  }
+  function _removeTyping() {
+    const el = document.getElementById('ai-typing-el');
+    if (el) el.remove();
+  }
+
+  /* ── Render bot response ── */
+  function _renderBot(data) {
+    const type = data.type || '';
+
+    if (type === 'cost' && data.table) {
+      const [hComp, hQty, hAmt] = _wt('costHeaders');
+      let tbl = `<table class="ai-cost-table">
+        <thead><tr><th>${_e(hComp)}</th><th>${_e(hQty)}</th><th>${_e(hAmt)}</th></tr></thead><tbody>`;
+      for (const [comp, qty, price] of data.table) {
+        tbl += `<tr><td>${_e(comp)}</td><td>${_e(qty)}</td><td style="text-align:right;font-weight:600">${_e(price)}</td></tr>`;
+      }
+      tbl += `</tbody></table>`;
+      if (data.total) {
+        tbl += `<div class="ai-cost-total">${_e(data.total)}</div>`;
+      }
+      _addBubble('bot', _md(data.answer) + tbl, '', _chip(_wt('chipCost'), 'calculator'));
+      return;
+    }
+
+    if (type === 'vm_count' || type === 'vm_filter') {
+      const detail = data.detail || '';
+      _addBubble('bot', _md(data.answer), detail, _chip(_wt('chipVcenter'), 'vcenter'));
+      return;
+    }
+
+    if (type === 'llm') {
+      const model = data.model ? _e(data.model) : 'AI';
+      _addBubble('bot', _md(data.answer), '', _chip(model, 'llm'));
+      return;
+    }
+
+    if (type === 'error') {
+      _addBubble('error', _md(data.answer), '', '');
+      return;
+    }
+
+    // cost_hint / unknown / fallback
+    _addBubble('bot', _md(data.answer), '', '');
+  }
+
+  function _chip(label, kind) {
+    const icons = {
+      vcenter:    '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>',
+      calculator: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>',
+      llm:        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
+    };
+    return `<span class="ai-chip">${icons[kind] || ''} ${_e(label)}</span>`;
+  }
+
+  /* ── Send question ── */
+  async function aiSend() {
+    if (_busy) return;
+    const inp = document.getElementById('ai-input');
+    const q   = (inp.value || '').trim();
+    if (!q) return;
+
+    inp.value = '';
+    inp.style.height = '';
+    _addBubble('user', _e(q), '', '');
+
+    _busy = true;
+    document.getElementById('ai-send').disabled = true;
+    const tyEl = _showTyping();
+
+    try {
+      const r = await fetch('/ai/chat', {
+        method:  'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:    JSON.stringify({ q, lang: _lang() }),
+      });
+      _removeTyping();
+      if (!r.ok) { _addBubble('error', _wt('serverError') + r.status + ')', '', ''); return; }
+      const data = await r.json();
+      _renderBot(data);
+      _addFollowSuggestions(data.suggestions || []);
+    } catch (err) {
+      _removeTyping();
+      _addBubble('error', _wt('connError') + _e(err.message), '', '');
+    } finally {
+      _busy = false;
+      document.getElementById('ai-send').disabled = false;
+      inp.focus();
+    }
+  }
+
+  /* ── Toggle open/close ── */
+  function aiToggle() {
+    _open = !_open;
+    const win = document.getElementById('ai-win');
+    const btn = document.getElementById('ai-btn');
+    win.classList.toggle('visible', _open);
+    win.setAttribute('aria-hidden', String(!_open));
+    btn.setAttribute('aria-expanded', String(_open));
+    btn.classList.toggle('open', _open);
+    document.getElementById('ai-btn-open').style.display  = _open ? 'none' : '';
+    document.getElementById('ai-btn-close').style.display = _open ? '' : 'none';
+    document.getElementById('ai-dot').style.display = 'none';
+    if (_open) {
+      document.getElementById('ai-input').focus();
+      _scroll();
+    }
+  }
+
+  /* ── Textarea auto-resize ── */
+  function aiResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  /* ── Enter key handling ── */
+  function aiKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      aiSend();
+    }
+  }
+
+  /* ── Build suggestions ── */
+  function _buildSuggestions() {
+    const div = document.createElement('div');
+    div.id = 'ai-suggestions';
+    for (const s of _pageSuggestions()) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-sug';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      div.appendChild(btn);
+    }
+    return div;
+  }
+
+  /* ── Init welcome ── */
+  function _init() {
+    _applyWidgetI18n();
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const bbl = document.createElement('div');
+    bbl.className = 'ai-bubble bot';
+    bbl.innerHTML = _md(WELCOME[_lang()]);
+    msgs.appendChild(bbl);
+    msgs.appendChild(_buildSuggestions());
+
+    // Check Ollama status quietly
+    fetch('/ai/status').then(r => r.json()).then(d => {
+      if (d.ollama && d.model) {
+        const txt = document.getElementById('ai-status-txt');
+        if (txt) txt.textContent = `Ollama · ${d.model}`;
+      }
+    }).catch(() => {});
+
+    // Show unread dot if window is closed after 1.5 s
+    setTimeout(() => {
+      if (!_open) document.getElementById('ai-dot').style.display = '';
+    }, 1500);
+  }
+
+  // Expose to HTML inline handlers
+  window.aiToggle = aiToggle;
+  window.aiSend   = aiSend;
+  window.aiResize = aiResize;
+  window.aiKey    = aiKey;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,1874 @@
+<!DOCTYPE html><html lang="tr" data-theme="light"><head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zerto VPG Raporu — PS Portal</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css?v=1784405152">
+<script>
+(function(){
+  function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  var t=_getCookie('ps_theme')||'light';
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+  window._PS_LANG=_getCookie('ps_lang')||'tr';
+  window._PS_TZ=_getCookie('ps_tz')||'Europe/Istanbul';
+})();
+</script>
+</head>
+<body>
+
+<div class="app">
+  
+
+
+
+
+<nav class="sidebar" id="sidebar">
+  <a href="/" class="sidebar-logo" style="display:block;text-decoration:none">
+    <img src="/static/default-logo.png" alt="PS Portal" class="logo-img logo-img-sm" id="sidebar-logo-img">
+  </a>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <a href="/daily-check" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+    <span data-i18n="nav.dailycheck">Günlük Kontrol</span>
+  </a>
+  
+
+  
+  
+  
+
+  
+  <div class="nav-section-label" data-i18n="nav.section.infra">Altyapı</div>
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.virt">Sanallaştırma</div>
+
+  
+  <a href="/vcenter" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+    <span data-i18n="nav.vcenter">vCenter</span>
+  </a>
+  
+
+  
+  <a href="/vm-host" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+    <span data-i18n="nav.vmhost">VM-Host Eşleme</span>
+  </a>
+  
+
+  
+  <a href="/rvtools" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.rvtools">RVTools</span>
+  </a>
+  <a href="/capacity" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+    <span data-i18n="nav.capacity">Kapasite Trend Analizi</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.monitor">İzleme</div>
+
+  
+  <a href="/physical" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+    <span data-i18n="nav.physical">Fiziksel Mimari</span>
+  </a>
+  
+
+  
+  <a href="/delinea" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <span data-i18n="nav.delinea">Delinea PAM</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.dataprot">Veri Koruma</div>
+
+  
+  <a href="/itanalytics" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    <span data-i18n="nav.itanalytics">IT Analytics</span>
+  </a>
+  
+
+  
+  <a href="/netbackup" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    <span data-i18n="nav.netbackup">NetBackup</span>
+  </a>
+  
+
+  
+  <a href="/zerto" class="nav-item active" style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-9 9M12 2h9v9"></path><path d="M3 22l9-9M12 22H3v-9"></path></svg>
+    <span data-i18n="nav.zerto">Zerto</span>
+  </a>
+  
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.mgmt">Yönetim</div>
+  
+
+  
+  <a href="/operations" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+    <span data-i18n="nav.operations">Operasyon</span>
+  </a>
+  
+
+  
+  <a href="/calculator" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+    <span data-i18n="nav.calculator">Teklifler</span>
+  </a>
+  
+
+  
+  <a href="/finops" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+    <span data-i18n="nav.finops">Maliyet Optimizasyonu</span>
+  </a>
+  
+
+  
+  <a href="/licenses" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 4v5M15 4v5M7 14h4M7 17h6"></path></svg>
+    <span data-i18n="nav.licenses">Lisans Yönetimi</span>
+  </a>
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
+
+  
+  <a href="/reports" class="nav-item active">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.reports">Raporlar</span>
+  </a>
+  
+
+  
+  <a href="/jobs" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span data-i18n="nav.jobs">Zamanlanmış Görevler</span>
+  </a>
+  
+  
+
+</nav>
+  <div class="main">
+    
+
+
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menüyü aç/kapat">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <!-- Global Arama — sadece vCenter yetkisi olanlara göster -->
+  
+  
+  <div class="search-wrap" id="search-wrap" style="max-width:400px">
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="search-input" class="search-input" type="text" placeholder="VM ara… (ad, IP, DNS, etiket)" autocomplete="off" spellcheck="false" oninput="onSearch(this.value)" onkeydown="onSearchKey(event)" onfocus="showDrop()">
+      <kbd class="search-kbd" id="search-kbd">Ctrl K</kbd>
+    </div>
+    <div class="search-drop" id="search-drop" style="display:none"></div>
+  </div>
+  <a href="/cmdb" class="btn-detail-search ">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span data-i18n="nav.cmdb">Detay arama</span>
+  </a>
+  
+
+  <div class="topbar-right">
+    <a href="/docs" title="Dokümantasyon" class="btn-docs">🛈</a>
+    <div class="topbar-user-chip" id="user-chip" onclick="toggleUserMenu()" style="cursor:pointer;user-select:none">
+      <div class="topbar-avatar">A</div>
+      <div class="topbar-user-info">
+        <div class="topbar-user-name">Admin</div>
+        <div class="topbar-user-role" data-i18n="user.role.admin">Yönetici</div>
+      </div>
+      <svg style="margin-left:4px;color:var(--text-dim);flex-shrink:0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div class="user-dropdown" id="user-dropdown">
+      <div class="ud-brand">
+        <img src="/static/default-logo.png" alt="PS Portal" class="ud-brand-logo">
+      </div>
+      <div class="ud-product">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+        <span class="ud-product-name">PS Portal</span>
+        <span class="ud-product-version">v1.34</span>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-userinfo">
+        <div class="ud-avatar">A</div>
+        <div class="ud-userinfo-text">
+          <div class="ud-username">Admin</div>
+          <div class="ud-userhandle">Admin</div>
+        </div>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      
+      
+      <a href="/settings" class="user-dropdown-item user-dropdown-item--normal" style="position:relative">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="nav.admin">Admin Panel</span>
+        
+      </a>
+      
+      <a href="/user/settings" class="user-dropdown-item user-dropdown-item--normal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="user.menu.settings">Kullanıcı Ayarları</span>
+      </a>
+      <a href="/logout" class="user-dropdown-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span data-i18n="user.menu.logout">Çıkış Yap</span>
+      </a>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-theme-row">
+        <span class="ud-theme-label" data-i18n="user.menu.theme">Görünüm</span>
+        <div class="ud-theme-toggle" id="ud-theme-toggle">
+          <button type="button" class="ud-theme-btn ud-theme-btn--active" data-mode="light" onclick="quickSetTheme('light')" title="Açık">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="dark" onclick="quickSetTheme('dark')" title="Koyu">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="auto" onclick="quickSetTheme('auto')" title="Sistem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleUserMenu() {
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('user-chip').contains(e.target)) {
+    document.getElementById('user-dropdown').classList.remove('open');
+  }
+});
+
+/* ── Hızlı görünüm (tema) değiştirici ────────────────────── */
+function _udGetCookie(n) {
+  var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)');
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function _udSyncThemeButtons() {
+  var current = _udGetCookie('ps_theme') || 'light';
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === current);
+  });
+}
+async function quickSetTheme(mode) {
+  var root = document.documentElement;
+  if (mode === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === mode);
+  });
+  try {
+    await fetch('/user/settings/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        language: window._PS_LANG || 'tr',
+        timezone: window._PS_TZ || 'Europe/Istanbul',
+        theme: mode,
+      }),
+    });
+  } catch (e) {}
+}
+_udSyncThemeButtons();
+</script>
+
+<footer class="app-footer">PS Portal © 2026</footer>
+
+<style>
+.btn-detail-search {
+  display: flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 14px; margin-right: 12px; flex-shrink: 0;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text-muted); font-size: 13px;
+  text-decoration: none; white-space: nowrap;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.btn-detail-search:hover,
+.btn-detail-search.active { color: var(--accent); border-color: var(--accent); background: var(--bg-hover); }
+
+.search-wrap {
+  flex: 1; max-width: 540px; margin: 0 24px; position: relative;
+}
+.search-bar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0 12px; height: 38px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.search-bar:focus-within {
+  border-color: var(--accent, #4a6ef5);
+  box-shadow: 0 0 0 3px rgba(74,110,245,.15);
+}
+.search-icon   { color: var(--text-dim); flex-shrink: 0; }
+.search-input  {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-size: 14px; min-width: 0;
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-kbd {
+  font-size: 11px; color: var(--text-dim);
+  background: var(--bg-hover, #1e2130); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2px 6px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Dropdown */
+.search-drop {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.1);
+  max-height: 440px; overflow-y: auto; z-index: 9999;
+}
+.search-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-dim); padding: 12px 16px 6px; border-bottom: 1px solid var(--border);
+}
+.search-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; cursor: pointer; transition: background .1s;
+}
+.search-item:hover, .search-item.active { background: var(--bg-hover); }
+.search-item-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.si-on  { background: var(--badge-ok-bg);     color: var(--badge-ok-color); }
+.si-off { background: var(--badge-danger-bg); color: var(--badge-danger-color); }
+.search-item-body { flex: 1; min-width: 0; }
+.search-item-name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-item-meta { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.search-item-vc   { font-size: 11px; color: var(--text-dim); white-space: nowrap; flex-shrink: 0; background: var(--bg-hover); border-radius: 5px; padding: 2px 7px; }
+.search-empty     { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+.search-loading   { padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+
+<script>
+// Ctrl+K / Cmd+K ile arama çubuğuna focus
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+    showDrop();
+  }
+  if (e.key === 'Escape') closeDrop();
+});
+
+document.addEventListener('click', e => {
+  if (!document.getElementById('search-wrap').contains(e.target)) closeDrop();
+});
+
+let _searchTimer = null;
+let _activeIdx = -1;
+
+function showDrop() {
+  const drop = document.getElementById('search-drop');
+  const inp  = document.getElementById('search-input');
+  if (inp.value.length >= 2) drop.style.display = 'block';
+  document.getElementById('search-kbd').style.display = 'none';
+}
+
+function closeDrop() {
+  document.getElementById('search-drop').style.display = 'none';
+  document.getElementById('search-kbd').style.display = '';
+  _activeIdx = -1;
+}
+
+function onSearch(val) {
+  clearTimeout(_searchTimer);
+  if (val.length < 2) {
+    document.getElementById('search-drop').style.display = 'none';
+    return;
+  }
+  const drop = document.getElementById('search-drop');
+  drop.innerHTML = '<div class="search-loading">Aranıyor…</div>';
+  drop.style.display = 'block';
+  _searchTimer = setTimeout(() => doSearch(val), 280);
+}
+
+async function doSearch(q) {
+  try {
+    const resp = await fetch('/search?q=' + encodeURIComponent(q));
+    const data = await resp.json();
+    renderResults(data.results, q);
+  } catch(e) {
+    document.getElementById('search-drop').innerHTML =
+      '<div class="search-empty">Arama hatası.</div>';
+  }
+}
+
+function powerIcon(state) {
+  if (state === 'poweredOn')
+    return '<div class="search-item-icon si-on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
+  return '<div class="search-item-icon si-off"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>';
+}
+
+function highlight(text, q) {
+  if (!text) return '';
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx)
+    + '<mark style="background:#dbeafe;color:#1d4ed8;border-radius:3px;padding:0 1px;font-weight:700">'
+    + text.slice(idx, idx + q.length)
+    + '</mark>'
+    + text.slice(idx + q.length);
+}
+
+function renderResults(results, q) {
+  const drop = document.getElementById('search-drop');
+  if (!results.length) {
+    drop.innerHTML = '<div class="search-empty">Sonuç bulunamadı.</div>';
+    return;
+  }
+  let html = `<div class="search-section-label">Sanal Makineler (${results.length})</div>`;
+  results.forEach((r, i) => {
+    const meta = [
+      r.ip_address, r.dns_name, r.guest_os
+    ].filter(Boolean).join(' · ');
+    html += `<div class="search-item" data-idx="${i}" onclick="goToVM('${encodeURIComponent(r.vm_name)}')">
+      ${powerIcon(r.power_state)}
+      <div class="search-item-body">
+        <div class="search-item-name">${highlight(r.vm_name, q)}</div>
+        <div class="search-item-meta">${highlight(meta, q)}</div>
+      </div>
+      <span class="search-item-vc">${r.vcenter.split('.')[0]}</span>
+    </div>`;
+  });
+  drop.innerHTML = html;
+  _activeIdx = -1;
+}
+
+function goToVM(name) {
+  closeDrop();
+  document.getElementById('search-input').value = '';
+  window.location.href = '/vcenter?highlight=' + name;
+}
+
+function onSearchKey(e) {
+  const items = document.querySelectorAll('.search-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    _activeIdx = Math.min(_activeIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    _activeIdx = Math.max(_activeIdx - 1, 0);
+  } else if (e.key === 'Enter' && _activeIdx >= 0) {
+    items[_activeIdx].click();
+    return;
+  } else return;
+  items.forEach((el, i) => el.classList.toggle('active', i === _activeIdx));
+  items[_activeIdx]?.scrollIntoView({ block: 'nearest' });
+}
+</script>
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Zerto VPG Raporu</h2>
+          <p class="page-sub">Replikasyon grupları — SLA durumu, SubStatus, alert ve depolama analizi</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn-ghost" onclick="runTest(this)" style="display:flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            Bağlantı Testi
+          </button>
+          <button class="btn-ghost" onclick="loadData()" style="display:flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-.18-4.57"></path></svg>
+            Yenile
+          </button>
+          <button class="btn-primary" id="btn-send" onclick="sendReport(this)" style="display:flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Mail Gönder
+          </button>
+        </div>
+      </div>
+
+      <!-- Özet kartlar -->
+      <div class="metrics-grid" style="margin-bottom:24px">
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#111c38;color:#4a6ef5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-9 9M12 2h9v9"></path><path d="M3 22l9-9M12 22H3v-9"></path></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">Toplam VPG</div>
+            <div class="metric-value" id="stat-vpgs">0</div>
+          </div>
+          <div class="metric-badge badge-ok">Zerto</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#0e1f0e;color:#2ecc71">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">SLA Karşılanıyor</div>
+            <div class="metric-value" id="stat-ok">0</div>
+          </div>
+          <div class="metric-badge badge-ok">Meeting SLA</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#1f0e0e;color:#e24b4a">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">Dikkat Gerektiren</div>
+            <div class="metric-value" id="stat-bad">0</div>
+          </div>
+          <div class="metric-badge badge-err">Sorunlu</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#111c38;color:#4a6ef5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="9" height="9"></rect><rect x="13" y="2" width="9" height="9"></rect><rect x="2" y="13" width="9" height="9"></rect><rect x="13" y="13" width="9" height="9"></rect></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">Korunan VM</div>
+            <div class="metric-value" id="stat-vms">0</div>
+          </div>
+          <div class="metric-badge badge-ok">VM</div>
+        </div>
+      </div>
+
+      <!-- Bağlantı testi sonucu -->
+      <div id="test-result" style="display:none;margin-bottom:16px"></div>
+
+      <!-- Mail sonuç -->
+      <div id="mail-result" style="display:none;margin-bottom:16px"></div>
+
+      <!-- Sorunlu VPG banner -->
+      <div id="bad-banner" style="display:none;margin-bottom:16px"></div>
+
+      <!-- Yükleniyor -->
+      <div id="loading-wrap" style="display: none;">
+        <div class="settings-card">
+          <div class="vc-skeleton-wrap">
+            <div class="vc-skeleton"></div>
+            <div class="vc-skeleton" style="width:80%"></div>
+            <div class="vc-skeleton" style="width:90%"></div>
+            <div class="vc-skeleton" style="width:70%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sonuçlar -->
+      <div id="results-wrap" style="display: block;"><div class="settings-card">
+      <div style="padding:32px;text-align:center;color:var(--text-dim)">
+        <div>Tanımlı Zerto ortamında VPG bulunamadı.</div>
+      </div>
+    </div></div>
+
+      <!-- Lisans özeti -->
+      <div id="license-wrap" style="display:none;margin-top:24px"></div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.vc-skeleton-wrap { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+.vc-skeleton {
+  height: 14px; border-radius: 6px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: vc-shimmer 1.4s infinite;
+}
+@keyframes vc-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+.vc-stat-loading {
+  display: inline-block; width: 40px; height: 20px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: vc-shimmer 1.4s infinite; vertical-align: middle;
+}
+
+.zrt-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.zrt-table thead tr {
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  color: var(--text-dim); text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  background: var(--table-head-bg);
+}
+.zrt-table th, .zrt-table td { padding: 8px 12px; text-align: left; }
+.zrt-table tbody tr.zrt-main { border-bottom: 1px solid var(--border); cursor: pointer; transition: background .1s; }
+.zrt-table tbody tr.zrt-main:hover { background: var(--bg-hover); }
+
+.zrt-detail {
+  overflow: hidden; max-height: 0; opacity: 0;
+  transition: max-height .25s ease, opacity .2s ease;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-hover);
+}
+.zrt-detail.open { max-height: 260px; opacity: 1; }
+.zrt-detail-inner {
+  padding: 10px 12px 10px 44px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px 20px; font-size: 12px;
+}
+.zrt-det-label { font-size: 10px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--text-dim); }
+.zrt-det-val   { color: var(--text-primary); margin-top: 2px; }
+.zrt-chevron { color: var(--text-dim); transition: transform .2s; flex-shrink: 0; }
+.zrt-chevron.open { transform: rotate(90deg); }
+
+/* Status badge */
+.zrt-status { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; }
+.zrt-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.zrt-dot-ok   { background: var(--green,   #1a9e50); }
+.zrt-dot-warn { background: var(--amber,   #c08000); }
+.zrt-dot-err  { background: var(--red,     #c82828); }
+.zrt-dot-info { background: var(--accent,  #4a6ef5); }
+
+/* SubStatus pill */
+.zrt-sub { font-size: 11px; padding: 1px 8px; border-radius: 99px; font-weight: 500; border: 1px solid transparent; }
+.zrt-sub-none { color: var(--text-dim); }
+.zrt-sub-bad  { background: var(--badge-danger-bg); color: var(--badge-danger-color); border-color: var(--badge-danger-border); }
+.zrt-sub-warn { background: var(--badge-warn-bg);   color: var(--badge-warn-color);   border-color: var(--badge-warn-border); }
+
+/* Alert cell */
+.zrt-alert { font-size: 11px; color: var(--red, #c82828); white-space: nowrap; overflow: hidden;
+             text-overflow: ellipsis; max-width: 220px; }
+
+/* Banner — açık tema */
+.zrt-bad-banner {
+  background: var(--badge-danger-bg, #fde6e6);
+  border: 1px solid var(--badge-danger-border, #f0a8a8);
+  border-radius: 8px; padding: 14px 16px;
+}
+.zrt-bad-banner-title {
+  font-size: 13px; font-weight: 600; color: var(--badge-danger-color, #b02020);
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.zrt-bad-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.zrt-bad-table th, .zrt-bad-table td { padding: 6px 10px; border-bottom: 1px solid var(--badge-danger-border, #f0a8a8); text-align: left; }
+.zrt-bad-table th { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--badge-danger-color, #b02020); font-weight: 700; }
+.zrt-bad-table td { color: var(--text-primary); }
+.zrt-bad-table tr:last-child td { border-bottom: none; }
+
+/* Öneri kutusu */
+.zrt-tip {
+  background: var(--badge-warn-bg, #fef3d8);
+  border-left: 3px solid var(--amber, #c08000);
+  color: var(--badge-warn-color, #8a5800);
+  padding: 8px 12px; margin-top: 10px; font-size: 11px; border-radius: 2px;
+}
+
+/* License table */
+.zrt-lic-table { border-collapse: collapse; font-size: 12px; }
+.zrt-lic-table th, .zrt-lic-table td { padding: 7px 14px; border: 1px solid var(--border); }
+.zrt-lic-table th { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em;
+                    color: var(--text-muted); background: var(--table-head-bg); }
+.zrt-lic-table td { color: var(--text-primary); }
+.zrt-lic-table .total-row { background: var(--bg-hover); font-weight: 600; }
+</style>
+
+<script>
+const _SUBSTATUS_BAD = new Set([7, 8, 12, 13, 14, 35]);
+
+function statusBadge(cls, label) {
+  const dotCls  = {ok:'zrt-dot-ok', warn:'zrt-dot-warn', err:'zrt-dot-err', info:'zrt-dot-info'}[cls] || 'zrt-dot-err';
+  const cssVar  = {ok:'var(--green,#1a9e50)', warn:'var(--amber,#c08000)', err:'var(--red,#c82828)', info:'var(--accent,#4a6ef5)'}[cls] || 'var(--red,#c82828)';
+  return `<span class="zrt-status"><span class="zrt-dot ${dotCls}"></span><span style="color:${cssVar}">${label}</span></span>`;
+}
+
+function subStatusBadge(sub, label) {
+  if (sub === 0) return `<span class="zrt-sub zrt-sub-none">—</span>`;
+  const isBad = _SUBSTATUS_BAD.has(sub);
+  // Bilinmeyen veya geçiş durumları → uyarı (turuncu); sorunlular → hata (kırmızı)
+  return `<span class="zrt-sub ${isBad ? 'zrt-sub-bad' : 'zrt-sub-warn'}">${label}</span>`;
+}
+
+function toggleRow(uid) {
+  const det  = document.getElementById('zrt-det-' + uid);
+  const chev = document.getElementById('zrt-chev-' + uid);
+  if (!det) return;
+  const open = det.classList.toggle('open');
+  if (chev) chev.classList.toggle('open', open);
+}
+
+function renderBadBanner(badVpgs) {
+  const banner = document.getElementById('bad-banner');
+  if (!badVpgs.length) { banner.style.display = 'none'; return; }
+
+  let rows = badVpgs.map(v => {
+    const alert = v.last_alert
+      ? `<span style="color:var(--red,#c82828);font-size:11px">${v.last_alert}</span>`
+      : '—';
+    return `<tr>
+      <td>${v._conn}</td>
+      <td style="font-weight:500">${v.name}</td>
+      <td>${statusBadge(v.status_class, v.status_label)}</td>
+      <td>${subStatusBadge(v.sub_status, v.sub_status_label)}</td>
+      <td>${alert}</td>
+    </tr>`;
+  }).join('');
+
+  banner.innerHTML = `<div class="zrt-bad-banner">
+    <div class="zrt-bad-banner-title">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+      </svg>
+      Dikkat Gerektiren VPG'ler (${badVpgs.length})
+    </div>
+    <table class="zrt-bad-table">
+      <thead><tr>
+        <th>Ortam</th><th>VPG Adı</th><th>Durum</th><th>SubStatus</th><th>Son Alert</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>
+    <div class="zrt-tip">
+      <b>ÖNERİ:</b> Paused / Needs Configuration / Missing Configuration durumundaki VPG'lerde
+      vCenter'daki VM'in varlığını kontrol edin. VM silindiyse <b>VPG'yi de silin</b>.
+    </div>
+  </div>`;
+  banner.style.display = 'block';
+}
+
+function renderLicense(data) {
+  const wrap = document.getElementById('license-wrap');
+  const hasSites = data.results.some(r => !r.error && r.license_count > 0);
+  if (!data.results.some(r => !r.error)) { wrap.style.display = 'none'; return; }
+
+  const grandUsed = data.total_vms;
+  const grandLic  = data.total_license;
+
+  let rows = data.results.filter(r => !r.error).map(r => {
+    const kalan = r.license_count > 0 ? (r.license_count - r.used_vms) : '—';
+    const kalanColor = (typeof kalan === 'number' && kalan < 10) ? 'var(--red,#c82828)' : 'inherit';
+    return `<tr>
+      <td>${r.connection_name}</td>
+      <td style="text-align:center;font-weight:600">${r.used_vms}</td>
+      <td style="text-align:center">${r.license_count || '—'}</td>
+      <td style="text-align:center;color:${kalanColor}">${kalan}</td>
+    </tr>`;
+  }).join('');
+
+  rows += `<tr class="total-row">
+    <td style="text-align:right">TOPLAM:</td>
+    <td style="text-align:center;color:var(--red,#c82828);font-size:15px">${grandUsed}</td>
+    <td style="text-align:center">${grandLic || '—'}</td>
+    <td style="text-align:center">${grandLic > 0 ? (grandLic - grandUsed) : '—'}</td>
+  </tr>`;
+
+  wrap.innerHTML = `<div class="settings-card">
+    <div class="settings-card-head">
+      <div class="settings-card-title">Lisans Kullanım Özeti</div>
+    </div>
+    <div style="padding:0 4px 12px">
+      <table class="zrt-lic-table">
+        <thead><tr>
+          <th>Ortam</th>
+          <th style="text-align:center">Kullanılan VM</th>
+          <th style="text-align:center">Toplam Lisans</th>
+          <th style="text-align:center">Kalan</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  </div>`;
+  wrap.style.display = 'block';
+}
+
+function renderAll(data) {
+  document.getElementById('stat-vpgs').textContent = data.total_vpgs;
+  document.getElementById('stat-ok').textContent   = data.meeting_sla;
+  document.getElementById('stat-bad').textContent  = data.bad_count;
+  document.getElementById('stat-vms').textContent  = data.total_vms;
+
+  // Sorunlu VPG banner
+  const badVpgs = data.results.flatMap(r =>
+    (r.vpgs || []).filter(v => v.is_bad).map(v => ({ ...v, _conn: r.connection_name }))
+  );
+  renderBadBanner(badVpgs);
+
+  const wrap = document.getElementById('results-wrap');
+
+  if (data.total_vpgs === 0 && data.results.every(r => !r.error)) {
+    wrap.innerHTML = `<div class="settings-card">
+      <div style="padding:32px;text-align:center;color:var(--text-dim)">
+        <div>Tanımlı Zerto ortamında VPG bulunamadı.</div>
+      </div>
+    </div>`;
+    wrap.style.display = 'block';
+    renderLicense(data);
+    return;
+  }
+
+  let html = '';
+  data.results.forEach(r => {
+    if (r.error) {
+      html += `<div class="settings-card" style="margin-bottom:16px">
+        <div class="settings-card-head">
+          <div class="settings-card-title">${r.connection_name}
+            <span style="color:var(--text-dim);font-weight:400;font-size:12px;margin-left:4px">${r.base_url}</span>
+          </div>
+          <span style="color:#e24b4a;font-size:12px">Hata: ${r.error}</span>
+        </div>
+      </div>`;
+      return;
+    }
+    if (!r.count) return;
+
+    const badCnt = (r.vpgs || []).filter(v => v.is_bad).length;
+    const badge  = badCnt > 0
+      ? `<span class="perm-badge" style="background:var(--badge-danger-bg);color:var(--badge-danger-color);border-color:var(--badge-danger-border)">${badCnt} sorunlu</span>`
+      : `<span class="perm-badge badge-ok">${r.count} VPG — OK</span>`;
+
+    html += `<div class="settings-card" style="margin-bottom:16px">
+      <div class="settings-card-head">
+        <div class="settings-card-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M21 2l-9 9M12 2h9v9"/><path d="M3 22l9-9M12 22H3v-9"/>
+          </svg>
+          ${r.connection_name}
+          <span style="color:var(--text-dim);font-weight:400;font-size:12px;margin-left:4px">${r.base_url}</span>
+        </div>
+        ${badge}
+      </div>
+      <table class="zrt-table">
+        <thead><tr>
+          <th style="width:26px"></th>
+          <th>VPG Adı</th>
+          <th style="text-align:center">VM</th>
+          <th>Durum</th>
+          <th>SubStatus</th>
+          <th>Gerçek RPO</th>
+          <th>Hedef Site</th>
+          <th>Son Alert</th>
+        </tr></thead>
+        <tbody>`;
+
+    (r.vpgs || []).forEach(v => {
+      const uid = (r.connection_name + '_' + v.name).replace(/[^a-z0-9]/gi, '_');
+      const alertCell = v.last_alert
+        ? `<span class="zrt-alert" title="${v.last_alert}">${v.last_alert}</span>`
+        : '<span style="color:var(--text-dim);font-size:12px">—</span>';
+      html += `<tr class="zrt-main" onclick="toggleRow('${uid}')">
+        <td><svg id="zrt-chev-${uid}" class="zrt-chevron" width="14" height="14" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></td>
+        <td style="font-weight:500">${v.name}</td>
+        <td style="text-align:center;color:var(--text-dim)">${v.vm_count}</td>
+        <td>${statusBadge(v.status_class, v.status_label)}</td>
+        <td>${subStatusBadge(v.sub_status, v.sub_status_label)}</td>
+        <td style="font-size:12px">${v.actual_rpo}</td>
+        <td style="color:var(--text-dim);font-size:12px">${v.target_site || '—'}</td>
+        <td style="max-width:200px">${alertCell}</td>
+      </tr>
+      <tr><td colspan="8" style="padding:0">
+        <div class="zrt-detail" id="zrt-det-${uid}">
+          <div class="zrt-detail-inner">
+            <div>
+              <div class="zrt-det-label">Kaynak Site</div>
+              <div class="zrt-det-val">${v.source_site || '—'}</div>
+            </div>
+            <div>
+              <div class="zrt-det-label">VPG Tipi</div>
+              <div class="zrt-det-val">${v.vpg_type || '—'}</div>
+            </div>
+            <div>
+              <div class="zrt-det-label">Öncelik</div>
+              <div class="zrt-det-val">${v.priority}</div>
+            </div>
+            <div>
+              <div class="zrt-det-label">Kullanılan Depolama</div>
+              <div class="zrt-det-val">${v.used_storage}</div>
+            </div>
+            <div>
+              <div class="zrt-det-label">Son Test</div>
+              <div class="zrt-det-val">${v.last_test || '—'}</div>
+            </div>
+            ${v.last_alert ? `<div style="grid-column:1/-1">
+              <div class="zrt-det-label">Son Alert</div>
+              <div class="zrt-det-val" style="color:var(--red,#c82828);font-size:11px;word-break:break-all">${v.last_alert}</div>
+            </div>` : ''}
+          </div>
+        </div>
+      </td></tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+  });
+
+  wrap.innerHTML = html;
+  wrap.style.display = 'block';
+  renderLicense(data);
+}
+
+async function loadData() {
+  document.getElementById('loading-wrap').style.display = 'block';
+  document.getElementById('results-wrap').style.display = 'none';
+  document.getElementById('bad-banner').style.display = 'none';
+  document.getElementById('license-wrap').style.display = 'none';
+  ['stat-vpgs','stat-ok','stat-bad','stat-vms'].forEach(id => {
+    document.getElementById(id).innerHTML = '<span class="vc-stat-loading"></span>';
+  });
+  try {
+    const resp = await fetch('/reports/zerto/data');
+    const data = await resp.json();
+    renderAll(data);
+  } catch(e) {
+    document.getElementById('results-wrap').innerHTML =
+      '<div class="settings-card"><div style="padding:20px;color:#e24b4a">Veri alınamadı.</div></div>';
+    document.getElementById('results-wrap').style.display = 'block';
+  } finally {
+    document.getElementById('loading-wrap').style.display = 'none';
+  }
+}
+
+async function runTest(btn) {
+  const el = document.getElementById('test-result');
+  btn.disabled = true;
+  const origHtml = btn.innerHTML;
+  btn.innerHTML = `<svg class="vc-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg> Test ediliyor…`;
+
+  try {
+    const resp = await fetch('/reports/zerto/test');
+    const data = await resp.json();
+
+    const rows = data.results.map(r => {
+      const icon = r.ok
+        ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green,#1a9e50)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>`
+        : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red,#c82828)" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+      const msgColor = r.ok ? 'color:var(--green,#1a9e50)' : 'color:var(--red,#c82828)';
+      return `<tr>
+        <td style="padding:8px 12px;border-bottom:1px solid var(--border)">${icon}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-weight:600">${r.name}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text-dim);font-size:12px">${r.base_url}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-size:11px;color:var(--text-dim)">${r.auth_mode}</td>
+        <td style="padding:8px 12px;border-bottom:1px solid var(--border);font-size:12px;${msgColor};word-break:break-word;max-width:420px">${r.msg}</td>
+      </tr>`;
+    }).join('');
+
+    const allOk = data.results.every(r => r.ok);
+    const headerColor = allOk ? 'var(--green,#1a9e50)' : 'var(--red,#c82828)';
+    const summary = allOk ? 'Tüm bağlantılar başarılı.' : 'Bazı bağlantılarda hata var.';
+
+    el.innerHTML = `<div class="settings-card">
+      <div class="settings-card-head">
+        <div class="settings-card-title" style="color:${headerColor}">
+          Bağlantı Testi — ${summary}
+        </div>
+        <button class="btn-ghost" style="font-size:11px;padding:3px 8px" onclick="document.getElementById('test-result').style.display='none'">Kapat</button>
+      </div>
+      <div style="padding:0 4px 4px">
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <thead><tr style="font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--text-dim);border-bottom:1px solid var(--border)">
+            <th style="padding:6px 12px;width:20px"></th>
+            <th style="padding:6px 12px;text-align:left">Bağlantı</th>
+            <th style="padding:6px 12px;text-align:left">URL</th>
+            <th style="padding:6px 12px;text-align:left">Auth Modu</th>
+            <th style="padding:6px 12px;text-align:left">Sonuç</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>`;
+    el.style.display = 'block';
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  } catch (e) {
+    el.innerHTML = `<div class="alert alert-error">Test çalıştırılamadı: ${e.message}</div>`;
+    el.style.display = 'block';
+  }
+
+  btn.disabled = false;
+  btn.innerHTML = origHtml;
+}
+
+async function sendReport(btn) {
+  const el = document.getElementById('mail-result');
+  btn.disabled = true;
+  btn.innerHTML = '<svg class="vc-spin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg> Gönderiliyor…';
+  try {
+    const resp = await fetch('/reports/zerto/send-report', { method: 'POST' });
+    const data = await resp.json();
+    el.innerHTML = `<div class="alert ${data.ok ? 'alert-success' : 'alert-error'}">${data.msg}</div>`;
+    el.style.display = 'block';
+  } catch(e) {
+    el.innerHTML = '<div class="alert alert-error">Mail gönderilemedi.</div>';
+    el.style.display = 'block';
+  }
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Mail Gönder';
+}
+
+loadData();
+</script>
+
+<script src="/static/app.js?v=1784405152"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
+<!-- AI Chat Widget — floating button + chat window, visible on all pages -->
+<div id="ai-root" aria-live="polite" data-page="/reports/zerto">
+
+  <!-- Floating trigger button -->
+  <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
+    <!-- Closed: chat icon -->
+    <svg id="ai-btn-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r=".5" fill="currentColor"></circle>
+    </svg>
+    <!-- Open: close icon -->
+    <svg id="ai-btn-close" width="20" height="20" viewBox="0 0 24 24" style="display:none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <!-- Unread dot -->
+    <span id="ai-dot" style="display:none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ai-win" role="dialog" aria-label="AI Asistan" aria-hidden="true">
+    <!-- Header -->
+    <div id="ai-hd">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div id="ai-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <div>
+          <div id="ai-title-txt" style="font-size:13px;font-weight:700;line-height:1.1">AI Asistan</div>
+          <div id="ai-status-txt" style="font-size:10px;opacity:.65;line-height:1">Altyapı verilerini analiz ediyor</div>
+        </div>
+      </div>
+      <button id="ai-close-btn" onclick="aiToggle()" title="Kapat" style="background:none;border:none;cursor:pointer;padding:4px;border-radius:5px;
+                     color:inherit;opacity:.7;display:flex;align-items:center;transition:opacity .15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="ai-msgs" role="log">
+      <!-- Welcome message injected by JS -->
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Kaç VM var?</button><button class="ai-sug">Tag'siz VM'ler neler?</button><button class="ai-sug">Lisans envanteri</button><button class="ai-sug">Bekleyen operasyonlar</button><button class="ai-sug">Fiziksel cihaz durumu</button><button class="ai-sug">Teklifler neler?</button><button class="ai-sug">ESXi host listesi</button><button class="ai-sug">Silinecek VM'ler?</button><button class="ai-sug">Süresi dolmuş lisanslar?</button><button class="ai-sug">32 GB RAM, 8 CPU, 500 GB disk maliyeti?</button></div></div>
+
+    <!-- Input area -->
+    <div id="ai-footer">
+      <div id="ai-input-wrap">
+        <textarea id="ai-input" rows="1" placeholder="Bir soru sorun…" maxlength="600" onkeydown="aiKey(event)" oninput="aiResize(this)" aria-label="Soru girin"></textarea>
+        <button id="ai-send" onclick="aiSend()" title="Gönder (Enter)" aria-label="Gönder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-footer-note" style="font-size:10px;color:var(--ai-muted);text-align:center;margin-top:6px;line-height:1.3">Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Tokens ── */
+:root {
+  --ai-accent:   #4f6ef7;
+  --ai-accent2:  #7c5af5;
+  --ai-win-bg:   #ffffff;
+  --ai-hd-bg:    linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  --ai-hd-txt:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-user-bg:  linear-gradient(135deg, #4f6ef7, #7c5af5);
+  --ai-user-txt: #ffffff;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+  --ai-radius:   14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-win-bg:   #1a1d23;
+    --ai-msg-bg:   #252830;
+    --ai-msg-txt:  #e5e7eb;
+    --ai-border:   rgba(255,255,255,.08);
+    --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+    --ai-muted:    #6b7280;
+    --ai-input-bg: #1e2128;
+    --ai-table-hd: #1e2128;
+  }
+}
+:root[data-theme="dark"] {
+  --ai-win-bg:   #1a1d23;
+  --ai-msg-bg:   #252830;
+  --ai-msg-txt:  #e5e7eb;
+  --ai-border:   rgba(255,255,255,.08);
+  --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+  --ai-muted:    #6b7280;
+  --ai-input-bg: #1e2128;
+  --ai-table-hd: #1e2128;
+}
+:root[data-theme="light"] {
+  --ai-win-bg:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+}
+
+/* ── Trigger button ── */
+#ai-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79,110,247,.45);
+  transition: transform .2s, box-shadow .2s;
+}
+#ai-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,110,247,.6); }
+#ai-btn:active { transform: scale(.96); }
+#ai-btn.open   { box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+
+/* Unread dot */
+#ai-dot {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background: #f87171;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: .7; }
+}
+
+/* ── Chat window ── */
+#ai-win {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 9997;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--ai-win-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.85) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+}
+#ai-win.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Header ── */
+#ai-hd {
+  background: var(--ai-hd-bg);
+  color: var(--ai-hd-txt);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+#ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Messages ── */
+#ai-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+#ai-msgs::-webkit-scrollbar { width: 4px; }
+#ai-msgs::-webkit-scrollbar-track { background: transparent; }
+#ai-msgs::-webkit-scrollbar-thumb { background: var(--ai-border); border-radius: 4px; }
+
+/* Bubbles */
+.ai-bubble {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ai-bubble.bot {
+  background: var(--ai-msg-bg);
+  color: var(--ai-msg-txt);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.ai-bubble.user {
+  background: var(--ai-user-bg);
+  color: var(--ai-user-txt);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+.ai-bubble.error {
+  background: rgba(239,68,68,.1);
+  color: #dc2626;
+  align-self: flex-start;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Detail text below bubble */
+.ai-detail {
+  font-size: 11px;
+  color: var(--ai-muted);
+  margin-top: 5px;
+  padding: 0 2px;
+  align-self: flex-start;
+  max-width: 88%;
+  line-height: 1.5;
+}
+
+/* Cost table */
+.ai-cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ai-cost-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding: 5px 8px;
+  background: var(--ai-table-hd);
+  border-bottom: 1px solid var(--ai-border);
+}
+.ai-cost-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--ai-border);
+  color: var(--ai-msg-txt);
+}
+.ai-cost-table tr:last-child td { border-bottom: none; }
+.ai-cost-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ai-accent);
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--ai-table-hd);
+  border-radius: 6px;
+}
+
+/* Source chip */
+.ai-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  padding: 2px 7px; border-radius: 10px; margin-top: 5px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; gap: 5px; align-items: center;
+  padding: 12px 14px;
+  background: var(--ai-msg-bg);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+.ai-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ai-muted);
+  animation: ai-bounce .9s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .15s; }
+.ai-typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes ai-bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ── */
+#ai-footer {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--ai-border);
+  flex-shrink: 0;
+  background: var(--ai-win-bg);
+}
+#ai-input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--ai-input-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: 10px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color .15s;
+}
+#ai-input-wrap:focus-within { border-color: var(--ai-accent); }
+
+#ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ai-msg-txt);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  font-family: inherit;
+}
+#ai-input::placeholder { color: var(--ai-muted); }
+
+#ai-send {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: none; cursor: pointer; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f6ef7, #7c5af5);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s, transform .1s;
+}
+#ai-send:hover  { opacity: .9; }
+#ai-send:active { transform: scale(.93); }
+#ai-send:disabled { opacity: .4; cursor: default; }
+
+/* ── Quick suggestion chips ── */
+#ai-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.ai-sug {
+  font-size: 11px; padding: 5px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.2); cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+  font-weight: 500;
+}
+.ai-sug:hover { background: rgba(79,110,247,.2); }
+
+/* ── Follow-up suggestion chips ── */
+.ai-follow-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 0 2px; margin-top: 6px;
+  align-self: flex-start; max-width: 96%;
+}
+.ai-follow-label {
+  width: 100%; font-size: 10px; color: var(--ai-muted);
+  font-weight: 600; letter-spacing: .03em; margin-bottom: 2px;
+}
+.ai-follow-chip {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.08); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.18); cursor: pointer;
+  transition: background .15s, border-color .15s; white-space: nowrap;
+  font-weight: 500; display: inline-flex; align-items: center; gap: 4px;
+}
+.ai-follow-chip::before { content: '↪'; font-size: 10px; opacity: .7; }
+.ai-follow-chip:hover {
+  background: rgba(79,110,247,.18); border-color: rgba(79,110,247,.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ai-win { transition: none; }
+  .ai-typing span { animation: none; opacity: .7; }
+  #ai-dot { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Language: follows the same document.documentElement.lang set by applyI18n() ── */
+  function _lang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'tr';
+  }
+
+  const WELCOME = {
+    tr: 'Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.\n\nÖrnekler:',
+    en: 'Hello! You can ask questions about your infrastructure data.\n\nExamples:',
+  };
+
+  /* ── Static widget chrome strings ── */
+  const WI18N = {
+    tr: {
+      title:        'AI Asistan',
+      openLabel:    'AI Asistanı aç',
+      statusIdle:   'Altyapı verilerini analiz ediyor',
+      close:        'Kapat',
+      inputPh:      'Bir soru sorun…',
+      inputAria:    'Soru girin',
+      sendTitle:    'Gönder (Enter)',
+      sendAria:     'Gönder',
+      footerNote:   'Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder',
+      followLabel:  'Devam edebilirsiniz:',
+      serverError:  'Sunucu hatası (',
+      connError:    'Bağlantı hatası: ',
+      costHeaders:  ['Bileşen', 'Miktar', 'Tutar'],
+      chipCost:     'Maliyet Hesabı',
+      chipVcenter:  'vCenter Verisi',
+    },
+    en: {
+      title:        'AI Assistant',
+      openLabel:    'Open AI Assistant',
+      statusIdle:   'Analyzing infrastructure data',
+      close:        'Close',
+      inputPh:      'Ask a question…',
+      inputAria:    'Enter your question',
+      sendTitle:    'Send (Enter)',
+      sendAria:     'Send',
+      footerNote:   'Answers using your real infrastructure data &nbsp;·&nbsp; Enter = send',
+      followLabel:  'You can continue:',
+      serverError:  'Server error (',
+      connError:    'Connection error: ',
+      costHeaders:  ['Component', 'Quantity', 'Amount'],
+      chipCost:     'Cost Calculation',
+      chipVcenter:  'vCenter Data',
+    },
+  };
+  function _wt(key) { return (WI18N[_lang()] || WI18N.tr)[key]; }
+
+  /* ── Sayfaya özel hazır sorular — anahtar, sayfanın URL path'idir (en spesifik eşleşme kazanır). ── */
+  const SUGGESTION_MAP = {
+    tr: {
+      '/vcenter':                ['Kaç VM var?', 'Kapalı VM\'ler neler?', 'Tag\'siz VM\'ler neler?', 'En fazla RAM kullanan 10 VM?'],
+      '/rvtools':                ['Kaç VM var?', 'Snapshot var mı?', 'En fazla RAM kullanan 10 VM?', 'Kapalı VM\'ler neler?'],
+      '/licenses':               ['Lisans envanteri', 'Süresi dolmuş lisanslar?', '30 gün içinde dolacak lisanslar?'],
+      '/operations':             ['Bekleyen operasyonlar', 'Başarısız işlemler?', 'Bugün tamamlanan işlemler?'],
+      '/calculator':             ['Teklifler neler?', '32 GB RAM, 8 CPU, 500 GB disk maliyeti?'],
+      '/vm-host':                ['ESXi host listesi', 'Hangi host\'ta en çok VM var?'],
+      '/physical':               ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/opmanager':              ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/reports/notags-vms':     ['Tag\'siz VM\'ler neler?'],
+      '/reports/poc-vms':        ['POC VM\'ler neler?'],
+      '/reports/willdelete-vms': ['Silinecek VM\'ler neler?'],
+      '/reports/poweredoff-vms': ['Kapalı VM\'ler neler?'],
+    },
+    en: {
+      '/vcenter':                ['How many VMs are there?', 'Which VMs are powered off?', 'Which VMs are untagged?', 'Top 10 VMs by RAM usage?'],
+      '/rvtools':                ['How many VMs are there?', 'Are there any snapshots?', 'Top 10 VMs by RAM usage?', 'Which VMs are powered off?'],
+      '/licenses':               ['License inventory', 'Which licenses have expired?', 'Which licenses expire within 30 days?'],
+      '/operations':             ['Pending operations', 'Failed operations?', 'Operations completed today?'],
+      '/calculator':             ['What are the quotes?', 'Cost for 32 GB RAM, 8 CPU, 500 GB disk?'],
+      '/vm-host':                ['ESXi host list', 'Which host has the most VMs?'],
+      '/physical':               ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/opmanager':              ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/reports/notags-vms':     ['Which VMs are untagged?'],
+      '/reports/poc-vms':        ['What are the POC VMs?'],
+      '/reports/willdelete-vms': ['Which VMs are marked for deletion?'],
+      '/reports/poweredoff-vms': ['Which VMs are powered off?'],
+    },
+  };
+  const DASHBOARD_SUGGESTIONS = {
+    tr: ['Altyapımı özetle', 'Kaç VM var?', 'Bekleyen operasyonlar', 'Süresi dolmuş lisanslar?'],
+    en: ['Summarize my infrastructure', 'How many VMs are there?', 'Pending operations', 'Which licenses have expired?'],
+  };
+  const DEFAULT_SUGGESTIONS = {
+    tr: [
+      'Kaç VM var?',
+      'Tag\'siz VM\'ler neler?',
+      'Lisans envanteri',
+      'Bekleyen operasyonlar',
+      'Fiziksel cihaz durumu',
+      'Teklifler neler?',
+      'ESXi host listesi',
+      'Silinecek VM\'ler?',
+      'Süresi dolmuş lisanslar?',
+      '32 GB RAM, 8 CPU, 500 GB disk maliyeti?',
+    ],
+    en: [
+      'How many VMs are there?',
+      'Which VMs are untagged?',
+      'License inventory',
+      'Pending operations',
+      'Physical device status',
+      'What are the quotes?',
+      'ESXi host list',
+      'Which VMs are marked for deletion?',
+      'Which licenses have expired?',
+      'Cost for 32 GB RAM, 8 CPU, 500 GB disk?',
+    ],
+  };
+
+  /* ── Sayfaya göre hazır soru listesini seç ── */
+  function _pageSuggestions() {
+    const root = document.getElementById('ai-root');
+    const path = (root && root.dataset.page) || '/';
+    const lang = _lang();
+    if (path === '/') return DASHBOARD_SUGGESTIONS[lang];
+    const map = SUGGESTION_MAP[lang];
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      if (path === k || path.startsWith(k + '/')) return map[k];
+    }
+    return DEFAULT_SUGGESTIONS[lang];
+  }
+
+  /* ── Apply static chrome translations ── */
+  function _applyWidgetI18n() {
+    const btn = document.getElementById('ai-btn');
+    if (btn) { btn.title = _wt('title'); btn.setAttribute('aria-label', _wt('openLabel')); }
+    const win = document.getElementById('ai-win');
+    if (win) win.setAttribute('aria-label', _wt('title'));
+    const titleTxt = document.getElementById('ai-title-txt');
+    if (titleTxt) titleTxt.textContent = _wt('title');
+    const statusTxt = document.getElementById('ai-status-txt');
+    if (statusTxt) statusTxt.textContent = _wt('statusIdle');
+    const closeBtn = document.getElementById('ai-close-btn');
+    if (closeBtn) closeBtn.title = _wt('close');
+    const inp = document.getElementById('ai-input');
+    if (inp) { inp.placeholder = _wt('inputPh'); inp.setAttribute('aria-label', _wt('inputAria')); }
+    const sendBtn = document.getElementById('ai-send');
+    if (sendBtn) { sendBtn.title = _wt('sendTitle'); sendBtn.setAttribute('aria-label', _wt('sendAria')); }
+    const footNote = document.getElementById('ai-footer-note');
+    if (footNote) footNote.innerHTML = _wt('footerNote');
+  }
+
+  let _open = false;
+  let _busy = false;
+
+  /* ── Bold markdown (**text**) → <strong> ── */
+  function _md(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+  }
+  function _e(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Scroll to bottom ── */
+  function _scroll() {
+    const m = document.getElementById('ai-msgs');
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  /* ── Follow-up suggestions after bot response ── */
+  function _addFollowSuggestions(suggestions) {
+    if (!suggestions || !suggestions.length) return;
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const row = document.createElement('div');
+    row.className = 'ai-follow-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'ai-follow-label';
+    lbl.textContent = _wt('followLabel');
+    row.appendChild(lbl);
+    for (const s of suggestions) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-follow-chip';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      row.appendChild(btn);
+    }
+    msgs.appendChild(row);
+    _scroll();
+  }
+
+  /* ── Append message bubble ── */
+  function _addBubble(role, html, detail, extra) {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    // Remove initial suggestions and any follow-up rows
+    const sug = msgs.querySelector('#ai-suggestions');
+    if (sug) sug.remove();
+    msgs.querySelectorAll('.ai-follow-row').forEach(el => el.remove());
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column';
+
+    const bbl = document.createElement('div');
+    bbl.className = `ai-bubble ${role}`;
+    bbl.innerHTML = html;
+    wrap.appendChild(bbl);
+
+    if (detail) {
+      const det = document.createElement('div');
+      det.className = 'ai-detail';
+      det.innerHTML = _md(detail);
+      wrap.appendChild(det);
+    }
+    if (extra) {
+      const ex = document.createElement('div');
+      ex.innerHTML = extra;
+      wrap.appendChild(ex);
+    }
+    msgs.appendChild(wrap);
+    _scroll();
+    return wrap;
+  }
+
+  /* ── Typing indicator ── */
+  function _showTyping() {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return null;
+    const el = document.createElement('div');
+    el.id = 'ai-typing-el';
+    el.className = 'ai-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    _scroll();
+    return el;
+  }
+  function _removeTyping() {
+    const el = document.getElementById('ai-typing-el');
+    if (el) el.remove();
+  }
+
+  /* ── Render bot response ── */
+  function _renderBot(data) {
+    const type = data.type || '';
+
+    if (type === 'cost' && data.table) {
+      const [hComp, hQty, hAmt] = _wt('costHeaders');
+      let tbl = `<table class="ai-cost-table">
+        <thead><tr><th>${_e(hComp)}</th><th>${_e(hQty)}</th><th>${_e(hAmt)}</th></tr></thead><tbody>`;
+      for (const [comp, qty, price] of data.table) {
+        tbl += `<tr><td>${_e(comp)}</td><td>${_e(qty)}</td><td style="text-align:right;font-weight:600">${_e(price)}</td></tr>`;
+      }
+      tbl += `</tbody></table>`;
+      if (data.total) {
+        tbl += `<div class="ai-cost-total">${_e(data.total)}</div>`;
+      }
+      _addBubble('bot', _md(data.answer) + tbl, '', _chip(_wt('chipCost'), 'calculator'));
+      return;
+    }
+
+    if (type === 'vm_count' || type === 'vm_filter') {
+      const detail = data.detail || '';
+      _addBubble('bot', _md(data.answer), detail, _chip(_wt('chipVcenter'), 'vcenter'));
+      return;
+    }
+
+    if (type === 'llm') {
+      const model = data.model ? _e(data.model) : 'AI';
+      _addBubble('bot', _md(data.answer), '', _chip(model, 'llm'));
+      return;
+    }
+
+    if (type === 'error') {
+      _addBubble('error', _md(data.answer), '', '');
+      return;
+    }
+
+    // cost_hint / unknown / fallback
+    _addBubble('bot', _md(data.answer), '', '');
+  }
+
+  function _chip(label, kind) {
+    const icons = {
+      vcenter:    '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>',
+      calculator: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>',
+      llm:        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
+    };
+    return `<span class="ai-chip">${icons[kind] || ''} ${_e(label)}</span>`;
+  }
+
+  /* ── Send question ── */
+  async function aiSend() {
+    if (_busy) return;
+    const inp = document.getElementById('ai-input');
+    const q   = (inp.value || '').trim();
+    if (!q) return;
+
+    inp.value = '';
+    inp.style.height = '';
+    _addBubble('user', _e(q), '', '');
+
+    _busy = true;
+    document.getElementById('ai-send').disabled = true;
+    const tyEl = _showTyping();
+
+    try {
+      const r = await fetch('/ai/chat', {
+        method:  'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:    JSON.stringify({ q, lang: _lang() }),
+      });
+      _removeTyping();
+      if (!r.ok) { _addBubble('error', _wt('serverError') + r.status + ')', '', ''); return; }
+      const data = await r.json();
+      _renderBot(data);
+      _addFollowSuggestions(data.suggestions || []);
+    } catch (err) {
+      _removeTyping();
+      _addBubble('error', _wt('connError') + _e(err.message), '', '');
+    } finally {
+      _busy = false;
+      document.getElementById('ai-send').disabled = false;
+      inp.focus();
+    }
+  }
+
+  /* ── Toggle open/close ── */
+  function aiToggle() {
+    _open = !_open;
+    const win = document.getElementById('ai-win');
+    const btn = document.getElementById('ai-btn');
+    win.classList.toggle('visible', _open);
+    win.setAttribute('aria-hidden', String(!_open));
+    btn.setAttribute('aria-expanded', String(_open));
+    btn.classList.toggle('open', _open);
+    document.getElementById('ai-btn-open').style.display  = _open ? 'none' : '';
+    document.getElementById('ai-btn-close').style.display = _open ? '' : 'none';
+    document.getElementById('ai-dot').style.display = 'none';
+    if (_open) {
+      document.getElementById('ai-input').focus();
+      _scroll();
+    }
+  }
+
+  /* ── Textarea auto-resize ── */
+  function aiResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  /* ── Enter key handling ── */
+  function aiKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      aiSend();
+    }
+  }
+
+  /* ── Build suggestions ── */
+  function _buildSuggestions() {
+    const div = document.createElement('div');
+    div.id = 'ai-suggestions';
+    for (const s of _pageSuggestions()) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-sug';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      div.appendChild(btn);
+    }
+    return div;
+  }
+
+  /* ── Init welcome ── */
+  function _init() {
+    _applyWidgetI18n();
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const bbl = document.createElement('div');
+    bbl.className = 'ai-bubble bot';
+    bbl.innerHTML = _md(WELCOME[_lang()]);
+    msgs.appendChild(bbl);
+    msgs.appendChild(_buildSuggestions());
+
+    // Check Ollama status quietly
+    fetch('/ai/status').then(r => r.json()).then(d => {
+      if (d.ollama && d.model) {
+        const txt = document.getElementById('ai-status-txt');
+        if (txt) txt.textContent = `Ollama · ${d.model}`;
+      }
+    }).catch(() => {});
+
+    // Show unread dot if window is closed after 1.5 s
+    setTimeout(() => {
+      if (!_open) document.getElementById('ai-dot').style.display = '';
+    }, 1500);
+  }
+
+  // Expose to HTML inline handlers
+  window.aiToggle = aiToggle;
+  window.aiSend   = aiSend;
+  window.aiResize = aiResize;
+  window.aiKey    = aiKey;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+})();
+</script>
+
+</body></html>

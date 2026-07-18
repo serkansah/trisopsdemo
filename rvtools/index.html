@@ -1,0 +1,2557 @@
+<!DOCTYPE html><html lang="tr" data-theme="light"><head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RVTools Analizi — PS Portal</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css?v=1784405152">
+<script>
+(function(){
+  function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  var t=_getCookie('ps_theme')||'light';
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+  window._PS_LANG=_getCookie('ps_lang')||'tr';
+  window._PS_TZ=_getCookie('ps_tz')||'Europe/Istanbul';
+})();
+</script>
+</head>
+<body>
+
+<div class="app">
+  
+
+
+
+
+<nav class="sidebar" id="sidebar">
+  <a href="/" class="sidebar-logo" style="display:block;text-decoration:none">
+    <img src="/static/default-logo.png" alt="PS Portal" class="logo-img logo-img-sm" id="sidebar-logo-img">
+  </a>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <a href="/daily-check" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+    <span data-i18n="nav.dailycheck">Günlük Kontrol</span>
+  </a>
+  
+
+  
+  
+  
+
+  
+  <div class="nav-section-label" data-i18n="nav.section.infra">Altyapı</div>
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.virt">Sanallaştırma</div>
+
+  
+  <a href="/vcenter" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+    <span data-i18n="nav.vcenter">vCenter</span>
+  </a>
+  
+
+  
+  <a href="/vm-host" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+    <span data-i18n="nav.vmhost">VM-Host Eşleme</span>
+  </a>
+  
+
+  
+  <a href="/rvtools" class="nav-item active" style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.rvtools">RVTools</span>
+  </a>
+  <a href="/capacity" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+    <span data-i18n="nav.capacity">Kapasite Trend Analizi</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.monitor">İzleme</div>
+
+  
+  <a href="/physical" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+    <span data-i18n="nav.physical">Fiziksel Mimari</span>
+  </a>
+  
+
+  
+  <a href="/delinea" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <span data-i18n="nav.delinea">Delinea PAM</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.dataprot">Veri Koruma</div>
+
+  
+  <a href="/itanalytics" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    <span data-i18n="nav.itanalytics">IT Analytics</span>
+  </a>
+  
+
+  
+  <a href="/netbackup" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    <span data-i18n="nav.netbackup">NetBackup</span>
+  </a>
+  
+
+  
+  <a href="/zerto" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-9 9M12 2h9v9"></path><path d="M3 22l9-9M12 22H3v-9"></path></svg>
+    <span data-i18n="nav.zerto">Zerto</span>
+  </a>
+  
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.mgmt">Yönetim</div>
+  
+
+  
+  <a href="/operations" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+    <span data-i18n="nav.operations">Operasyon</span>
+  </a>
+  
+
+  
+  <a href="/calculator" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+    <span data-i18n="nav.calculator">Teklifler</span>
+  </a>
+  
+
+  
+  <a href="/finops" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+    <span data-i18n="nav.finops">Maliyet Optimizasyonu</span>
+  </a>
+  
+
+  
+  <a href="/licenses" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 4v5M15 4v5M7 14h4M7 17h6"></path></svg>
+    <span data-i18n="nav.licenses">Lisans Yönetimi</span>
+  </a>
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
+
+  
+  <a href="/reports" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.reports">Raporlar</span>
+  </a>
+  
+
+  
+  <a href="/jobs" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span data-i18n="nav.jobs">Zamanlanmış Görevler</span>
+  </a>
+  
+  
+
+</nav>
+  <div class="main">
+    
+
+
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menüyü aç/kapat">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <!-- Global Arama — sadece vCenter yetkisi olanlara göster -->
+  
+  
+  <div class="search-wrap" id="search-wrap" style="max-width:400px">
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="search-input" class="search-input" type="text" placeholder="VM ara… (ad, IP, DNS, etiket)" autocomplete="off" spellcheck="false" oninput="onSearch(this.value)" onkeydown="onSearchKey(event)" onfocus="showDrop()">
+      <kbd class="search-kbd" id="search-kbd">Ctrl K</kbd>
+    </div>
+    <div class="search-drop" id="search-drop" style="display:none"></div>
+  </div>
+  <a href="/cmdb" class="btn-detail-search ">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span data-i18n="nav.cmdb">Detay arama</span>
+  </a>
+  
+
+  <div class="topbar-right">
+    <a href="/docs" title="Dokümantasyon" class="btn-docs">🛈</a>
+    <div class="topbar-user-chip" id="user-chip" onclick="toggleUserMenu()" style="cursor:pointer;user-select:none">
+      <div class="topbar-avatar">A</div>
+      <div class="topbar-user-info">
+        <div class="topbar-user-name">Admin</div>
+        <div class="topbar-user-role" data-i18n="user.role.admin">Yönetici</div>
+      </div>
+      <svg style="margin-left:4px;color:var(--text-dim);flex-shrink:0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div class="user-dropdown" id="user-dropdown">
+      <div class="ud-brand">
+        <img src="/static/default-logo.png" alt="PS Portal" class="ud-brand-logo">
+      </div>
+      <div class="ud-product">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+        <span class="ud-product-name">PS Portal</span>
+        <span class="ud-product-version">v1.34</span>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-userinfo">
+        <div class="ud-avatar">A</div>
+        <div class="ud-userinfo-text">
+          <div class="ud-username">Admin</div>
+          <div class="ud-userhandle">Admin</div>
+        </div>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      
+      
+      <a href="/settings" class="user-dropdown-item user-dropdown-item--normal" style="position:relative">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="nav.admin">Admin Panel</span>
+        
+      </a>
+      
+      <a href="/user/settings" class="user-dropdown-item user-dropdown-item--normal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="user.menu.settings">Kullanıcı Ayarları</span>
+      </a>
+      <a href="/logout" class="user-dropdown-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span data-i18n="user.menu.logout">Çıkış Yap</span>
+      </a>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-theme-row">
+        <span class="ud-theme-label" data-i18n="user.menu.theme">Görünüm</span>
+        <div class="ud-theme-toggle" id="ud-theme-toggle">
+          <button type="button" class="ud-theme-btn ud-theme-btn--active" data-mode="light" onclick="quickSetTheme('light')" title="Açık">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="dark" onclick="quickSetTheme('dark')" title="Koyu">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="auto" onclick="quickSetTheme('auto')" title="Sistem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleUserMenu() {
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('user-chip').contains(e.target)) {
+    document.getElementById('user-dropdown').classList.remove('open');
+  }
+});
+
+/* ── Hızlı görünüm (tema) değiştirici ────────────────────── */
+function _udGetCookie(n) {
+  var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)');
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function _udSyncThemeButtons() {
+  var current = _udGetCookie('ps_theme') || 'light';
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === current);
+  });
+}
+async function quickSetTheme(mode) {
+  var root = document.documentElement;
+  if (mode === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === mode);
+  });
+  try {
+    await fetch('/user/settings/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        language: window._PS_LANG || 'tr',
+        timezone: window._PS_TZ || 'Europe/Istanbul',
+        theme: mode,
+      }),
+    });
+  } catch (e) {}
+}
+_udSyncThemeButtons();
+</script>
+
+<footer class="app-footer">PS Portal © 2026</footer>
+
+<style>
+.btn-detail-search {
+  display: flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 14px; margin-right: 12px; flex-shrink: 0;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text-muted); font-size: 13px;
+  text-decoration: none; white-space: nowrap;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.btn-detail-search:hover,
+.btn-detail-search.active { color: var(--accent); border-color: var(--accent); background: var(--bg-hover); }
+
+.search-wrap {
+  flex: 1; max-width: 540px; margin: 0 24px; position: relative;
+}
+.search-bar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0 12px; height: 38px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.search-bar:focus-within {
+  border-color: var(--accent, #4a6ef5);
+  box-shadow: 0 0 0 3px rgba(74,110,245,.15);
+}
+.search-icon   { color: var(--text-dim); flex-shrink: 0; }
+.search-input  {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-size: 14px; min-width: 0;
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-kbd {
+  font-size: 11px; color: var(--text-dim);
+  background: var(--bg-hover, #1e2130); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2px 6px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Dropdown */
+.search-drop {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.1);
+  max-height: 440px; overflow-y: auto; z-index: 9999;
+}
+.search-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-dim); padding: 12px 16px 6px; border-bottom: 1px solid var(--border);
+}
+.search-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; cursor: pointer; transition: background .1s;
+}
+.search-item:hover, .search-item.active { background: var(--bg-hover); }
+.search-item-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.si-on  { background: var(--badge-ok-bg);     color: var(--badge-ok-color); }
+.si-off { background: var(--badge-danger-bg); color: var(--badge-danger-color); }
+.search-item-body { flex: 1; min-width: 0; }
+.search-item-name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-item-meta { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.search-item-vc   { font-size: 11px; color: var(--text-dim); white-space: nowrap; flex-shrink: 0; background: var(--bg-hover); border-radius: 5px; padding: 2px 7px; }
+.search-empty     { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+.search-loading   { padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+
+<script>
+// Ctrl+K / Cmd+K ile arama çubuğuna focus
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+    showDrop();
+  }
+  if (e.key === 'Escape') closeDrop();
+});
+
+document.addEventListener('click', e => {
+  if (!document.getElementById('search-wrap').contains(e.target)) closeDrop();
+});
+
+let _searchTimer = null;
+let _activeIdx = -1;
+
+function showDrop() {
+  const drop = document.getElementById('search-drop');
+  const inp  = document.getElementById('search-input');
+  if (inp.value.length >= 2) drop.style.display = 'block';
+  document.getElementById('search-kbd').style.display = 'none';
+}
+
+function closeDrop() {
+  document.getElementById('search-drop').style.display = 'none';
+  document.getElementById('search-kbd').style.display = '';
+  _activeIdx = -1;
+}
+
+function onSearch(val) {
+  clearTimeout(_searchTimer);
+  if (val.length < 2) {
+    document.getElementById('search-drop').style.display = 'none';
+    return;
+  }
+  const drop = document.getElementById('search-drop');
+  drop.innerHTML = '<div class="search-loading">Aranıyor…</div>';
+  drop.style.display = 'block';
+  _searchTimer = setTimeout(() => doSearch(val), 280);
+}
+
+async function doSearch(q) {
+  try {
+    const resp = await fetch('/search?q=' + encodeURIComponent(q));
+    const data = await resp.json();
+    renderResults(data.results, q);
+  } catch(e) {
+    document.getElementById('search-drop').innerHTML =
+      '<div class="search-empty">Arama hatası.</div>';
+  }
+}
+
+function powerIcon(state) {
+  if (state === 'poweredOn')
+    return '<div class="search-item-icon si-on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
+  return '<div class="search-item-icon si-off"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>';
+}
+
+function highlight(text, q) {
+  if (!text) return '';
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx)
+    + '<mark style="background:#dbeafe;color:#1d4ed8;border-radius:3px;padding:0 1px;font-weight:700">'
+    + text.slice(idx, idx + q.length)
+    + '</mark>'
+    + text.slice(idx + q.length);
+}
+
+function renderResults(results, q) {
+  const drop = document.getElementById('search-drop');
+  if (!results.length) {
+    drop.innerHTML = '<div class="search-empty">Sonuç bulunamadı.</div>';
+    return;
+  }
+  let html = `<div class="search-section-label">Sanal Makineler (${results.length})</div>`;
+  results.forEach((r, i) => {
+    const meta = [
+      r.ip_address, r.dns_name, r.guest_os
+    ].filter(Boolean).join(' · ');
+    html += `<div class="search-item" data-idx="${i}" onclick="goToVM('${encodeURIComponent(r.vm_name)}')">
+      ${powerIcon(r.power_state)}
+      <div class="search-item-body">
+        <div class="search-item-name">${highlight(r.vm_name, q)}</div>
+        <div class="search-item-meta">${highlight(meta, q)}</div>
+      </div>
+      <span class="search-item-vc">${r.vcenter.split('.')[0]}</span>
+    </div>`;
+  });
+  drop.innerHTML = html;
+  _activeIdx = -1;
+}
+
+function goToVM(name) {
+  closeDrop();
+  document.getElementById('search-input').value = '';
+  window.location.href = '/vcenter?highlight=' + name;
+}
+
+function onSearchKey(e) {
+  const items = document.querySelectorAll('.search-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    _activeIdx = Math.min(_activeIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    _activeIdx = Math.max(_activeIdx - 1, 0);
+  } else if (e.key === 'Enter' && _activeIdx >= 0) {
+    items[_activeIdx].click();
+    return;
+  } else return;
+  items.forEach((el, i) => el.classList.toggle('active', i === _activeIdx));
+  items[_activeIdx]?.scrollIntoView({ block: 'nearest' });
+}
+</script>
+    <div class="content">
+
+      <!-- ── Başlık + Tarih Seçici ─────────────────────────────────────────── -->
+      <div class="page-header" style="margin-bottom:16px">
+        <div>
+          <h2 class="page-title">RVTools Analizi</h2>
+          <p class="page-sub" id="rv-file-info">Veri alınamadı.</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <label style="font-size:12px;color:var(--text-dim)">Tarih:</label>
+          <select id="rv-date-sel" class="rv-select" onchange="onDateChange(this.value)">
+            
+          </select>
+          <button id="rv-refresh-btn" class="btn-ghost" onclick="refreshData()" style="display:flex;align-items:center;gap:5px">
+            <svg id="rv-refresh-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-.18-4.57"></path></svg>
+            <span id="rv-refresh-label">Yenile</span>
+          </button>
+          
+          <button class="btn-ghost" onclick="document.getElementById('rv-upload-input').click()" style="display:flex;align-items:center;gap:5px">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span id="rv-upload-label">Excel Yükle</span>
+          </button>
+          <input type="file" id="rv-upload-input" accept=".xlsx" style="display:none" onchange="uploadRvFile(this)">
+          
+        </div>
+      </div>
+
+      <!-- ── Tab Navigasyonu ───────────────────────────────────────────────── -->
+      <div class="rv-tabs" style="margin-bottom:16px">
+        <button class="rv-tab active" onclick="switchTab('summary',this)">Özet</button>
+        <button class="rv-tab" onclick="switchTab('inventory',this)">VM Envanteri</button>
+        <button class="rv-tab" onclick="switchTab('capacity',this)">Kapasite</button>
+        <button class="rv-tab" onclick="switchTab('partitions',this)">Disk Doluluk</button>
+        <button class="rv-tab" onclick="switchTab('health',this)">Health</button>
+        <button class="rv-tab" onclick="switchTab('tools',this)">VMware Tools</button>
+        <button class="rv-tab" onclick="switchTab('snapshots',this)">Snapshot</button>
+        <button class="rv-tab" onclick="switchTab('datastores',this)">Datastore</button>
+        <button class="rv-tab" onclick="switchTab('trend',this)">Trend</button>
+        <button class="rv-tab" onclick="switchTab('delta',this)">VM Delta</button>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: ÖZET                                                              -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-summary">
+        <div class="metrics-grid" style="margin-bottom:16px">
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#111c38;color:#4a6ef5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Toplam VM</div><div class="metric-value" id="s-total"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-ok" id="s-on-badge">—</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#1f0e0e;color:#c82828">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Kapalı VM</div><div class="metric-value" id="s-off"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-warn">poweredOff</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#111c38;color:#4a6ef5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="6 3 20 3 20 17"></polyline><path d="M6 21H4a2 2 0 0 1-2-2V5"></path><rect x="6" y="7" width="14" height="14" rx="2"></rect></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Toplam vCPU</div><div class="metric-value" id="s-vcpu"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-info">vCPU</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#0b1f13;color:#1a9e50">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Toplam RAM</div><div class="metric-value" id="s-mem"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-ok">GiB</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#111c38;color:#4a6ef5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"></path></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Toplam Disk</div><div class="metric-value" id="s-disk"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-info">TiB</div>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px">
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#0b1f13;color:#1a9e50">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Cluster Sayısı</div><div class="metric-value" id="s-clusters"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-ok">Cluster</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#111c38;color:#4a6ef5">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Host Sayısı</div><div class="metric-value" id="s-hosts"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-info">ESXi</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon" style="background:#1f0e0e;color:#c82828">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <div class="metric-body"><div class="metric-label">Health Uyarı/Hata</div><div class="metric-value" id="s-health"><span class="rv-skel-val"></span></div></div>
+            <div class="metric-badge badge-danger" id="s-health-badge">vHealth</div>
+          </div>
+        </div>
+
+        <!-- Datastore + Snapshot özet -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="settings-card">
+            <div class="settings-card-head">
+              <div class="settings-card-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"></path></svg>
+                Datastore Kapasitesi
+              </div>
+              <span id="s-ds-sub" class="settings-hint"></span>
+            </div>
+            <div style="padding:16px 20px">
+              <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px">
+                <span>Toplam: <strong id="s-ds-cap">—</strong> TiB</span>
+                <span>Boş: <strong id="s-ds-free">—</strong> TiB</span>
+                <span style="color:var(--text-dim)">Kullanım: <strong id="s-ds-pct">—</strong>%</span>
+              </div>
+              <div class="rv-bar-bg"><div class="rv-bar-fill" id="s-ds-bar" style="width:0%"></div></div>
+            </div>
+          </div>
+          <div class="settings-card">
+            <div class="settings-card-head">
+              <div class="settings-card-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                Snapshot &amp; Health
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;padding:16px 20px;gap:16px">
+              <div style="text-align:center">
+                <div style="font-size:28px;font-weight:700;color:var(--text)" id="s-snap-count">—</div>
+                <div style="font-size:12px;color:var(--text-dim);margin-top:4px">Aktif Snapshot</div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-size:28px;font-weight:700" id="s-health-count">—</div>
+                <div style="font-size:12px;color:var(--text-dim);margin-top:4px">Health Mesajı</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: VM ENVANTERİ                                                     -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-inventory" style="display:none">
+        <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+          <input id="inv-search" type="text" class="rv-input" placeholder="VM adı, IP, host, OS ara…" oninput="filterTable('inv-tbody','inv-search')" style="flex:1;min-width:200px">
+          <select id="inv-state" class="rv-select" onchange="filterInventory()">
+            <option value="">Tüm Durumlar</option>
+            <option value="poweredOn">Açık</option>
+            <option value="poweredOff">Kapalı</option>
+          </select>
+          <select id="inv-cluster" class="rv-select" onchange="filterInventory()">
+            <option value="">Tüm Cluster'lar</option>
+          </select>
+          <span id="inv-count" class="settings-hint" style="align-self:center"></span>
+        </div>
+        <div class="settings-card" style="overflow:auto">
+          <table class="rv-table" id="inv-table">
+            <thead><tr>
+              <th onclick="sortTable('inv-table',0)">VM <span class="rv-sort">↕</span></th>
+              <th onclick="sortTable('inv-table',1)">Durum</th>
+              <th onclick="sortTable('inv-table',2)" style="text-align:right">CPU <span class="rv-sort">↕</span></th>
+              <th onclick="sortTable('inv-table',3)" style="text-align:right">RAM(GB) <span class="rv-sort">↕</span></th>
+              <th onclick="sortTable('inv-table',4)" style="text-align:right">Disk(GB) <span class="rv-sort">↕</span></th>
+              <th>IP</th>
+              <th>Cluster</th>
+              <th>Host</th>
+              <th>OS</th>
+              <th>HW</th>
+            </tr></thead>
+            <tbody id="inv-tbody"><tr><td colspan="10" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: KAPASİTE                                                         -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-capacity" style="display:none">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <!-- Cluster tablosu -->
+          <div class="settings-card">
+            <div class="settings-card-head">
+              <div class="settings-card-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                Cluster'lar
+              </div>
+            </div>
+            <div style="overflow:auto"><table class="rv-table" id="cap-cluster-table">
+              <thead><tr>
+                <th>Cluster</th>
+                <th style="text-align:right">Host</th>
+                <th style="text-align:right">CPU(GHz)</th>
+                <th style="text-align:right">RAM(GB)</th>
+                <th style="text-align:center">HA</th>
+                <th style="text-align:center">DRS</th>
+                <th style="text-align:right">vMotion</th>
+              </tr></thead>
+              <tbody id="cap-cluster-tbody"><tr><td colspan="7" class="rv-loading-cell"><span class="rv-spin"></span></td></tr></tbody>
+            </table></div>
+          </div>
+          <!-- Host özet -->
+          <div class="settings-card">
+            <div class="settings-card-head">
+              <div class="settings-card-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+                ESXi Host Kullanımı
+              </div>
+              <input id="cap-host-search" type="text" class="rv-input" placeholder="Host ara…" oninput="filterTable('cap-host-tbody','cap-host-search')" style="width:140px">
+            </div>
+            <div style="overflow:auto;max-height:340px"><table class="rv-table" id="cap-host-table">
+              <thead><tr>
+                <th onclick="sortTable('cap-host-table',0)">Host <span class="rv-sort">↕</span></th>
+                <th>Cluster</th>
+                <th style="text-align:right">Core</th>
+                <th style="text-align:right">CPU%</th>
+                <th style="text-align:right">RAM(GB)</th>
+                <th style="text-align:right">RAM%</th>
+                <th style="text-align:right">VM</th>
+                <th>ESX Ver.</th>
+              </tr></thead>
+              <tbody id="cap-host-tbody"><tr><td colspan="8" class="rv-loading-cell"><span class="rv-spin"></span></td></tr></tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: DİSK DOLULUK (Partition)                                         -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-partitions" style="display:none">
+        <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+          <input id="part-search" type="text" class="rv-input" placeholder="VM adı, disk, cluster…" oninput="filterTable('part-tbody','part-search')">
+          <label style="display:flex;align-items:center;gap:6px;font-size:13px">
+            <span style="color:var(--text-dim)">Min doluluk:</span>
+            <select id="part-threshold" class="rv-select" onchange="loadPartitions()">
+              <option value="0">Tümü</option>
+              <option value="70">≥70%</option>
+              <option value="80" selected="">≥80%</option>
+              <option value="85">≥85%</option>
+              <option value="90">≥90%</option>
+              <option value="95">≥95%</option>
+            </select>
+          </label>
+          <span id="part-count" class="settings-hint" style="align-self:center"></span>
+        </div>
+        <div class="settings-card" style="overflow:auto">
+          <table class="rv-table" id="part-table">
+            <thead><tr>
+              <th onclick="sortTable('part-table',0)">VM <span class="rv-sort">↕</span></th>
+              <th>Durum</th>
+              <th>Disk</th>
+              <th style="text-align:right">Kapasite</th>
+              <th style="text-align:right">Boş</th>
+              <th onclick="sortTable('part-table',5)" style="text-align:right">Kullanım% <span class="rv-sort">↕</span></th>
+              <th style="min-width:100px">Doluluk</th>
+              <th>Cluster</th>
+              <th>Host</th>
+            </tr></thead>
+            <tbody id="part-tbody"><tr><td colspan="9" class="rv-loading-cell"><span class="rv-spin"></span></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: HEALTH                                                            -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-health" style="display:none">
+        <div style="display:flex;gap:10px;margin-bottom:12px">
+          <input id="health-search" type="text" class="rv-input" placeholder="İsim veya mesaj ara…" oninput="filterTable('health-tbody','health-search')" style="flex:1">
+          <select id="health-type" class="rv-select" onchange="filterHealth()">
+            <option value="">Tüm Tipler</option>
+            <option value="error">Error</option>
+            <option value="warning">Warning</option>
+            <option value="info">Info</option>
+          </select>
+          <span id="health-count" class="settings-hint" style="align-self:center"></span>
+        </div>
+        <div class="settings-card" style="overflow:auto">
+          <table class="rv-table" id="health-table">
+            <thead><tr>
+              <th>Tip</th>
+              <th onclick="sortTable('health-table',1)">İsim <span class="rv-sort">↕</span></th>
+              <th>Mesaj</th>
+              <th>Server</th>
+            </tr></thead>
+            <tbody id="health-tbody"><tr><td colspan="4" class="rv-loading-cell"><span class="rv-spin"></span></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: VMWARE TOOLS                                                     -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-tools" style="display:none">
+        <div style="display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+          <input id="tools-search" type="text" class="rv-input" placeholder="VM adı, cluster, host ara…" oninput="filterTable('tools-tbody','tools-search')" style="flex:1">
+          <select id="tools-status" class="rv-select" onchange="filterTools()">
+            <option value="">Tüm Durumlar</option>
+            <option value="toolsOk">OK</option>
+            <option value="toolsOld">Eski</option>
+            <option value="toolsNotInstalled">Kurulu Değil</option>
+            <option value="toolsNotRunning">Çalışmıyor</option>
+          </select>
+          <select id="tools-upgr" class="rv-select" onchange="filterTools()">
+            <option value="">Tümü</option>
+            <option value="true">Güncellenebilir</option>
+          </select>
+          <span id="tools-count" class="settings-hint" style="align-self:center"></span>
+        </div>
+        <div class="settings-card" style="overflow:auto">
+          <table class="rv-table" id="tools-table">
+            <thead><tr>
+              <th onclick="sortTable('tools-table',0)">VM <span class="rv-sort">↕</span></th>
+              <th>Durum</th>
+              <th>Tools Durumu</th>
+              <th>Versiyon</th>
+              <th>Güncellenebilir</th>
+              <th>App Status</th>
+              <th>Heartbeat</th>
+              <th>Cluster</th>
+            </tr></thead>
+            <tbody id="tools-tbody"><tr><td colspan="8" class="rv-loading-cell"><span class="rv-spin"></span></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: SNAPSHOT'LAR                                                     -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-snapshots" style="display:none">
+        <div id="snap-summary" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px"></div>
+        <div style="display:flex;gap:10px;margin-bottom:12px">
+          <input id="snap-search" type="text" class="rv-input" placeholder="VM adı, snapshot adı…" oninput="filterTable('snap-tbody','snap-search')" style="flex:1">
+          <span id="snap-count" class="settings-hint" style="align-self:center"></span>
+        </div>
+        <div class="settings-card" style="overflow:auto">
+          <table class="rv-table" id="snap-table">
+            <thead><tr>
+              <th onclick="sortTable('snap-table',0)">VM <span class="rv-sort">↕</span></th>
+              <th>Durum</th>
+              <th>Snapshot Adı</th>
+              <th>Açıklama</th>
+              <th onclick="sortTable('snap-table',4)">Oluşturulma <span class="rv-sort">↕</span></th>
+              <th onclick="sortTable('snap-table',5)" style="text-align:right">Boyut(GB) <span class="rv-sort">↕</span></th>
+              <th>Cluster</th>
+              <th>Host</th>
+            </tr></thead>
+            <tbody id="snap-tbody"><tr><td colspan="8" class="rv-loading-cell"><span class="rv-spin"></span></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: DATASTORE                                                         -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-datastores" style="display:none">
+        <div style="display:flex;gap:10px;margin-bottom:12px">
+          <input id="ds-search" type="text" class="rv-input" placeholder="Datastore adı, cluster…" oninput="filterTable('ds-tbody','ds-search')" style="flex:1">
+          <select id="ds-type" class="rv-select" onchange="filterDatastores()">
+            <option value="">Tüm Tipler</option>
+            <option value="VMFS">VMFS</option>
+            <option value="NFS">NFS</option>
+            <option value="vSAN">vSAN</option>
+            <option value="vvol">vVOL</option>
+          </select>
+          <span id="ds-count" class="settings-hint" style="align-self:center"></span>
+        </div>
+        <div class="settings-card" style="overflow:auto">
+          <table class="rv-table" id="ds-table">
+            <thead><tr>
+              <th onclick="sortTable('ds-table',0)">Datastore <span class="rv-sort">↕</span></th>
+              <th>Tip</th>
+              <th style="text-align:right">Kapasite(GB)</th>
+              <th style="text-align:right">Tahsis(GB)</th>
+              <th style="text-align:right">Boş(GB)</th>
+              <th onclick="sortTable('ds-table',5)" style="text-align:right">Kullanım% <span class="rv-sort">↕</span></th>
+              <th style="min-width:90px">Doluluk</th>
+              <th style="text-align:right">VM</th>
+              <th>Cluster</th>
+              <th>Versiyon</th>
+            </tr></thead>
+            <tbody id="ds-tbody"><tr><td colspan="10" class="rv-loading-cell"><span class="rv-spin"></span></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: TREND                                                             -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-trend" style="display:none">
+        <div style="display:flex;gap:10px;margin-bottom:14px;align-items:center">
+          <label style="font-size:12px;color:var(--text-dim)">Son:</label>
+          <select id="trend-days" class="rv-select" onchange="loadTrend()">
+            <option value="1">1 Gün</option>
+            <option value="7">1 Hafta</option>
+            <option value="15">15 Gün</option>
+            <option value="30" selected="">1 Ay</option>
+            <option value="90">3 Ay</option>
+            <option value="180">6 Ay</option>
+            <option value="365">1 Yıl</option>
+            <option value="9999">Tümü</option>
+          </select>
+        </div>
+        <div class="settings-card" style="margin-bottom:16px">
+          <div class="settings-card-head">
+            <div class="settings-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              VM Sayısı Trendi
+            </div>
+          </div>
+          <div style="padding:16px;min-height:280px;display:flex;align-items:center;justify-content:center;position:relative">
+            <div id="trend-loading-overlay" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--bg-card,#fff);z-index:10;border-radius:0 0 8px 8px;gap:14px">
+              <span class="rv-spin" style="width:40px;height:40px;border-width:4px"></span>
+              <span style="font-size:13px;color:var(--text-dim)">Trend verileri hesaplanıyor…</span>
+            </div>
+            <canvas id="trend-chart" style="max-height:260px;width:100%"></canvas>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="settings-card-head"><div class="settings-card-title">Günlük Veriler</div></div>
+          <div style="overflow:auto"><table class="rv-table" id="trend-table">
+            <thead><tr><th>Tarih</th><th style="text-align:right">Toplam VM</th><th style="text-align:right">Açık</th><th style="text-align:right">Kapalı</th><th style="text-align:right">Değişim</th></tr></thead>
+            <tbody id="trend-tbody"><tr><td colspan="5" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr></tbody>
+          </table></div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <!-- TAB: VM DELTA                                                          -->
+      <!-- ══════════════════════════════════════════════════════════════════════ -->
+      <div id="tab-delta" style="display:none">
+        <div class="settings-card" style="margin-bottom:14px">
+          <div style="display:flex;gap:16px;align-items:flex-end;padding:16px 20px;flex-wrap:wrap">
+            <div>
+              <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">Başlangıç Tarihi</label>
+              <select id="delta-date1" class="rv-select">
+                
+              </select>
+            </div>
+            <div>
+              <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">Bitiş Tarihi</label>
+              <select id="delta-date2" class="rv-select">
+                
+              </select>
+            </div>
+            <button class="btn-primary" onclick="loadDelta()" style="height:34px">Karşılaştır</button>
+          </div>
+        </div>
+        <div id="delta-stats" style="display:none;margin-bottom:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+          <div class="metric-card"><div class="metric-icon" style="background:#0b1f13;color:#1a9e50"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></div><div class="metric-body"><div class="metric-label">Eklenen VM</div><div class="metric-value" id="d-added">—</div></div><div class="metric-badge badge-ok">+</div></div>
+          <div class="metric-card"><div class="metric-icon" style="background:#1f0e0e;color:#c82828"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="5" y1="12" x2="19" y2="12"></line></svg></div><div class="metric-body"><div class="metric-label">Silinen VM</div><div class="metric-value" id="d-removed">—</div></div><div class="metric-badge badge-danger">−</div></div>
+          <div class="metric-card"><div class="metric-icon" style="background:#111c38;color:#4a6ef5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></div><div class="metric-body"><div class="metric-label">Değişen VM</div><div class="metric-value" id="d-changed">—</div></div><div class="metric-badge badge-info">Δ</div></div>
+          <div class="metric-card"><div class="metric-icon" style="background:#111c38;color:#4a6ef5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect></svg></div><div class="metric-body"><div class="metric-label">Net Değişim</div><div class="metric-value" id="d-net">—</div></div><div class="metric-badge badge-info">VM</div></div>
+        </div>
+        <div id="delta-content">
+          <div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px">İki tarih seçip <strong>Karşılaştır</strong> butonuna tıklayın.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── Styles ──────────────────────────────────────────────────────────────── -->
+<style>
+/* Tabs */
+.rv-tabs { display:flex; gap:4px; border-bottom:1px solid var(--border); padding-bottom:0; flex-wrap:wrap; }
+.rv-tab {
+  background:none; border:none; border-bottom:2px solid transparent;
+  padding:8px 14px; font-size:13px; color:var(--text-dim); cursor:pointer;
+  transition:color .12s, border-color .12s; margin-bottom:-1px; white-space:nowrap;
+}
+.rv-tab:hover { color:var(--text-primary); }
+.rv-tab.active { color:var(--accent); border-bottom-color:var(--accent); font-weight:600; }
+
+/* Form controls */
+.rv-select {
+  background:var(--bg-elevated); border:1px solid var(--border); border-radius:6px;
+  color:var(--text-primary); padding:6px 10px; font-size:13px; cursor:pointer;
+  outline:none; min-width:100px;
+}
+.rv-input {
+  background:var(--bg-elevated); border:1px solid var(--border); border-radius:6px;
+  color:var(--text-primary); padding:6px 10px; font-size:13px; outline:none;
+}
+.rv-input:focus, .rv-select:focus { border-color:var(--accent); }
+
+/* Tables */
+.rv-table { width:100%; border-collapse:collapse; font-size:12.5px; }
+.rv-table thead tr {
+  font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.04em;
+  color:var(--text-dim); border-bottom:1px solid var(--border); background:var(--table-head-bg);
+  position:sticky; top:0; z-index:1;
+}
+.rv-table th { padding:8px 10px; text-align:left; cursor:pointer; user-select:none; white-space:nowrap; }
+.rv-table th:hover { color:var(--text-primary); }
+.rv-table td { padding:7px 10px; border-bottom:1px solid var(--border); vertical-align:middle; }
+.rv-table tbody tr:hover { background:var(--bg-hover); }
+.rv-table tbody tr:last-child td { border-bottom:none; }
+.rv-sort { font-size:10px; opacity:.5; }
+
+/* Loading */
+.rv-loading-cell { text-align:center; padding:24px; color:var(--text-dim); }
+.rv-spin {
+  display:inline-block; width:12px; height:12px;
+  border:1.5px solid var(--border); border-top-color:var(--accent);
+  border-radius:50%; animation:rv-rotate .7s linear infinite; vertical-align:middle; margin-right:6px;
+}
+@keyframes rv-rotate { to { transform:rotate(360deg); } }
+
+/* Skeleton */
+.rv-skel-val {
+  display:inline-block; width:52px; height:22px; border-radius:4px; vertical-align:middle;
+  background:linear-gradient(90deg,var(--border) 25%,var(--bg-hover) 50%,var(--border) 75%);
+  background-size:200% 100%; animation:rv-shimmer 1.4s infinite;
+}
+@keyframes rv-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* Bar */
+.rv-bar-bg { background:var(--border); border-radius:4px; height:8px; overflow:hidden; }
+.rv-bar-fill { height:100%; border-radius:4px; background:var(--accent); transition:width .4s; }
+
+/* Badges inline */
+.rv-badge {
+  display:inline-flex; align-items:center; font-size:11px; font-weight:600;
+  padding:2px 7px; border-radius:99px; border:1px solid transparent; white-space:nowrap;
+}
+.rv-ok   { background:var(--badge-ok-bg);   color:var(--badge-ok-color);   border-color:var(--badge-ok-border); }
+.rv-warn { background:var(--badge-warn-bg); color:var(--badge-warn-color); border-color:var(--badge-warn-border); }
+.rv-err  { background:var(--badge-danger-bg);color:var(--badge-danger-color);border-color:var(--badge-danger-border); }
+.rv-info { background:var(--badge-info-bg); color:var(--badge-info-color); border-color:var(--badge-info-border); }
+.rv-dim  { background:var(--bg-hover); color:var(--text-dim); border-color:var(--border); }
+
+/* Delta sections */
+.delta-section { margin-bottom:12px; }
+.delta-section-title {
+  font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px; border-bottom:1px solid var(--border); color:var(--text-dim);
+}
+</style>
+
+<!-- ── Scripts ─────────────────────────────────────────────────────────────── -->
+<script src="/static/chart.umd.min.js?v=1784405152"></script>
+<script>
+// ── State ────────────────────────────────────────────────────────────────────
+let _activeTab = 'summary';
+let _date = document.getElementById('rv-date-sel')?.value || '';
+let _trendChart = null;
+let _allInventory = [], _allPartitions = [], _allHealth = [], _allTools = [];
+let _allDatastores = [];
+
+// ── Tab switching ─────────────────────────────────────────────────────────────
+function switchTab(name, btn) {
+  document.querySelectorAll('.rv-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('[id^="tab-"]').forEach(el => el.style.display = 'none');
+  document.getElementById('tab-' + name).style.display = '';
+  _activeTab = name;
+  loadTab(name);
+}
+
+function reloadTab() { loadTab(_activeTab, true); }
+
+async function refreshData() {
+  const btn  = el('rv-refresh-btn');
+  const icon = el('rv-refresh-icon');
+  const lbl  = el('rv-refresh-label');
+  btn.disabled = true;
+  lbl.textContent = 'Yenileniyor…';
+  icon.style.animation = 'rv-rotate 0.8s linear infinite';
+  try {
+    const res = await fetch('/rvtools/refresh', { method: 'POST' });
+    if (res.ok) {
+      const json = await res.json();
+      // Tarih seçiciyi güncelle
+      const sel = el('rv-date-sel');
+      const cur = sel.value;
+      sel.innerHTML = json.dates.map((d, i) =>
+        `<option value="${d}"${i === 0 ? ' selected' : ''}>${d}</option>`
+      ).join('');
+      // Önceki tarih hâlâ varsa seç, yoksa en yeni tarihe geç
+      if (json.dates.includes(cur)) { sel.value = cur; _date = cur; }
+      else { _date = json.dates[0] || _date; }
+      // Tüm cache'leri temizle ve aktif sekmeyi yenile
+      _allInventory = []; _allPartitions = []; _allHealth = [];
+      _allTools = []; _allDatastores = [];
+      loadTab(_activeTab, true);
+      lbl.textContent = `Güncellendi (${json.count} tarih)`;
+      setTimeout(() => { lbl.textContent = 'Yenile'; }, 2500);
+    } else {
+      lbl.textContent = 'Hata!';
+      setTimeout(() => { lbl.textContent = 'Yenile'; }, 2000);
+    }
+  } catch {
+    lbl.textContent = 'Hata!';
+    setTimeout(() => { lbl.textContent = 'Yenile'; }, 2000);
+  } finally {
+    btn.disabled = false;
+    icon.style.animation = '';
+  }
+}
+
+async function uploadRvFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  input.value = '';
+  const lbl = el('rv-upload-label');
+  lbl.textContent = 'Yükleniyor…';
+  const fd = new FormData();
+  fd.append('file', file);
+  try {
+    const res = await fetch('/rvtools/upload', { method: 'POST', body: fd });
+    const d = await res.json();
+    if (!res.ok || !d.ok) { lbl.textContent = d.detail || 'Hata!'; setTimeout(() => { lbl.textContent = 'Excel Yükle'; }, 3000); return; }
+    // Tarih listesini güncelle ve yeni tarihe geç
+    const sel = el('rv-date-sel');
+    sel.innerHTML = d.dates.map((dt, i) =>
+      `<option value="${dt}"${i === 0 ? ' selected' : ''}>${dt}</option>`
+    ).join('');
+    _date = d.dates[0] || _date;
+    _allInventory = []; _allPartitions = []; _allHealth = []; _allTools = []; _allDatastores = [];
+    loadTab(_activeTab, true);
+    lbl.textContent = 'Yüklendi ✓';
+    setTimeout(() => { lbl.textContent = 'Excel Yükle'; }, 3000);
+  } catch {
+    lbl.textContent = 'Hata!';
+    setTimeout(() => { lbl.textContent = 'Excel Yükle'; }, 3000);
+  }
+}
+
+function onDateChange(val) {
+  _date = val;
+  // Clear caches for data that depends on date
+  _allInventory = []; _allPartitions = []; _allHealth = [];
+  _allTools = []; _allDatastores = [];
+  loadTab(_activeTab, true);
+}
+
+function loadTab(name, force) {
+  switch(name) {
+    case 'summary':    loadSummary(force); break;
+    case 'inventory':  if (!_allInventory.length || force) loadInventory(); break;
+    case 'capacity':   loadCapacity(force); break;
+    case 'partitions': loadPartitions(force); break;
+    case 'health':     if (!_allHealth.length || force) loadHealth(); break;
+    case 'tools':      if (!_allTools.length || force) loadTools(); break;
+    case 'snapshots':  loadSnapshots(force); break;
+    case 'datastores': if (!_allDatastores.length || force) loadDatastores(); break;
+    case 'trend':      loadTrend(force); break;
+  }
+}
+
+// ── Utility ──────────────────────────────────────────────────────────────────
+async function jfetch(url) {
+  try {
+    const r = await fetch(url);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }
+}
+
+function qs(sel) { return document.querySelector(sel); }
+function el(id)  { return document.getElementById(id); }
+
+function stateBadge(state) {
+  if (state === 'poweredOn')  return '<span class="rv-badge rv-ok">Açık</span>';
+  if (state === 'poweredOff') return '<span class="rv-badge rv-err">Kapalı</span>';
+  if (state === 'suspended')  return '<span class="rv-badge rv-warn">Askıda</span>';
+  return `<span class="rv-badge rv-dim">${state||'—'}</span>`;
+}
+
+function usageBadge(pct) {
+  const cls = pct >= 90 ? 'rv-err' : pct >= 80 ? 'rv-warn' : 'rv-ok';
+  return `<span class="rv-badge ${cls}">${pct}%</span>`;
+}
+
+function usageBar(pct) {
+  const color = pct >= 90 ? '#c82828' : pct >= 80 ? '#c08000' : 'var(--accent)';
+  return `<div class="rv-bar-bg" style="min-width:80px"><div class="rv-bar-fill" style="width:${pct}%;background:${color}"></div></div>`;
+}
+
+function healthBadge(type) {
+  const t = (type || '').toLowerCase();
+  if (t === 'error')   return '<span class="rv-badge rv-err">Error</span>';
+  if (t === 'warning') return '<span class="rv-badge rv-warn">Warning</span>';
+  if (t === 'info')    return '<span class="rv-badge rv-info">Info</span>';
+  return `<span class="rv-badge rv-dim">${type||'—'}</span>`;
+}
+
+function toolsBadge(status) {
+  const s = status || '';
+  if (s === 'toolsOk')           return '<span class="rv-badge rv-ok">OK</span>';
+  if (s === 'toolsOld')          return '<span class="rv-badge rv-warn">Eski</span>';
+  if (s === 'toolsNotInstalled') return '<span class="rv-badge rv-err">Kurulu Değil</span>';
+  if (s === 'toolsNotRunning')   return '<span class="rv-badge rv-warn">Çalışmıyor</span>';
+  return `<span class="rv-badge rv-dim">${s||'—'}</span>`;
+}
+
+function trunc(s, n=40) {
+  if (!s) return '—';
+  return s.length > n ? `<span title="${s.replace(/"/g,'&quot;')}">${s.slice(0,n)}…</span>` : s;
+}
+
+// ── Table filter (text search across visible rows) ────────────────────────────
+function filterTable(tbodyId, inputId) {
+  const q = (el(inputId)?.value || '').toLowerCase();
+  const rows = el(tbodyId)?.querySelectorAll('tr') || [];
+  let vis = 0;
+  rows.forEach(tr => {
+    const match = !q || tr.textContent.toLowerCase().includes(q);
+    tr.style.display = match ? '' : 'none';
+    if (match) vis++;
+  });
+  return vis;
+}
+
+// ── Sort table ────────────────────────────────────────────────────────────────
+let _sortState = {};
+function sortTable(tableId, colIdx) {
+  const key = `${tableId}_${colIdx}`;
+  const asc = !_sortState[key];
+  _sortState[key] = asc;
+  const tbody = el(tableId)?.querySelector('tbody');
+  if (!tbody) return;
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort((a, b) => {
+    const av = a.cells[colIdx]?.textContent.trim() || '';
+    const bv = b.cells[colIdx]?.textContent.trim() || '';
+    const an = parseFloat(av), bn = parseFloat(bv);
+    const numCmp = isNaN(an) || isNaN(bn) ? 0 : (an - bn);
+    const res = numCmp || av.localeCompare(bv, 'tr');
+    return asc ? res : -res;
+  });
+  rows.forEach(r => tbody.appendChild(r));
+}
+
+// ── Summary ───────────────────────────────────────────────────────────────────
+async function loadSummary(force) {
+  const d = await jfetch(`/rvtools/summary?date=${_date}`);
+  if (!d || d.error) {
+    el('rv-file-info').textContent = 'Veri alınamadı.';
+    return;
+  }
+  el('rv-file-info').textContent = `📁 ${d.file} · ${d.date}`;
+  el('s-total').textContent  = d.total_vms.toLocaleString();
+  el('s-off').textContent    = d.powered_off.toLocaleString();
+  el('s-vcpu').textContent   = d.total_vcpu.toLocaleString();
+  el('s-mem').textContent    = d.total_mem_gib.toLocaleString();
+  el('s-disk').textContent   = d.total_disk_tib.toLocaleString();
+  el('s-clusters').textContent = d.cluster_count;
+  el('s-hosts').textContent    = d.host_count;
+  el('s-on-badge').textContent = `${d.powered_on} açık`;
+
+  const totalHealth = d.health_errors + d.health_warnings;
+  el('s-health').textContent = `${d.health_errors} hata / ${d.health_warnings} uyarı`;
+  el('s-health-count').textContent = totalHealth;
+  if (totalHealth > 0) el('s-health-count').style.color = d.health_errors ? '#c82828' : '#c08000';
+
+  el('s-snap-count').textContent = d.snapshots;
+
+  el('s-ds-cap').textContent  = d.ds_capacity_tib;
+  el('s-ds-free').textContent = d.ds_free_tib;
+  el('s-ds-pct').textContent  = d.ds_used_pct;
+  const bar = el('s-ds-bar');
+  if (bar) {
+    bar.style.width = d.ds_used_pct + '%';
+    bar.style.background = d.ds_used_pct >= 85 ? '#c82828' : d.ds_used_pct >= 75 ? '#c08000' : 'var(--accent)';
+  }
+  el('s-ds-sub').textContent = `${d.ds_capacity_tib} TiB toplam · ${d.ds_free_tib} TiB boş`;
+}
+
+// ── VM Inventory ──────────────────────────────────────────────────────────────
+async function loadInventory() {
+  el('inv-tbody').innerHTML = '<tr><td colspan="10" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr>';
+  const data = await jfetch(`/rvtools/vm-inventory?date=${_date}`);
+  if (!data) { el('inv-tbody').innerHTML = '<tr><td colspan="10" class="rv-loading-cell">Veri alınamadı.</td></tr>'; return; }
+  _allInventory = data;
+
+  // Populate cluster filter
+  const clusters = [...new Set(data.map(v => v.cluster).filter(Boolean))].sort();
+  const clSel = el('inv-cluster');
+  clSel.innerHTML = '<option value="">Tüm Cluster\'lar</option>' +
+    clusters.map(c => `<option value="${c}">${c}</option>`).join('');
+
+  renderInventory();
+}
+
+function filterInventory() {
+  const stateF = el('inv-state').value;
+  const clustF = el('inv-cluster').value;
+  const q = (el('inv-search').value || '').toLowerCase();
+  const rows = el('inv-tbody')?.querySelectorAll('tr') || [];
+  let vis = 0;
+  rows.forEach(tr => {
+    const vm = tr.dataset.vm || '';
+    const state = tr.dataset.state || '';
+    const cluster = tr.dataset.cluster || '';
+    const text = tr.textContent.toLowerCase();
+    const match = (!stateF || state === stateF) && (!clustF || cluster === clustF) && (!q || text.includes(q));
+    tr.style.display = match ? '' : 'none';
+    if (match) vis++;
+  });
+  el('inv-count').textContent = `${vis} VM gösteriliyor`;
+}
+
+function renderInventory() {
+  const tbody = el('inv-tbody');
+  if (!_allInventory.length) {
+    tbody.innerHTML = '<tr><td colspan="10" class="rv-loading-cell">Veri bulunamadı.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = _allInventory.map(v =>
+    `<tr data-vm="${v.vm}" data-state="${v.state}" data-cluster="${v.cluster}">
+      <td style="font-weight:500;white-space:nowrap">${v.vm}</td>
+      <td>${stateBadge(v.state)}</td>
+      <td style="text-align:right">${v.cpu}</td>
+      <td style="text-align:right">${v.mem_gb}</td>
+      <td style="text-align:right">${v.disk_gb}</td>
+      <td style="font-size:12px;color:var(--text-dim)">${v.ip||'—'}</td>
+      <td style="font-size:12px">${v.cluster||'—'}</td>
+      <td style="font-size:12px;color:var(--text-dim);white-space:nowrap">${trunc(v.host,25)}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${trunc(v.os_tools || v.os_cfg, 30)}</td>
+      <td style="font-size:11px;color:var(--text-dim)">${v.hw_ver||'—'}</td>
+    </tr>`
+  ).join('');
+  el('inv-count').textContent = `${_allInventory.length} VM`;
+  filterInventory();
+}
+
+// ── Capacity ──────────────────────────────────────────────────────────────────
+async function loadCapacity(force) {
+  const data = await jfetch(`/rvtools/capacity?date=${_date}`);
+  if (!data) return;
+
+  // Clusters
+  const ctbody = el('cap-cluster-tbody');
+  if (data.clusters.length) {
+    ctbody.innerHTML = data.clusters.map(c => `<tr>
+      <td style="font-weight:500">${c.name}</td>
+      <td style="text-align:right">${c.hosts} (${c.eff_hosts} eff)</td>
+      <td style="text-align:right">${(c.total_cpu_mhz/1000).toFixed(1)}</td>
+      <td style="text-align:right">${c.total_mem_gb}</td>
+      <td style="text-align:center">${c.ha ? '<span class="rv-badge rv-ok">HA</span>' : '<span class="rv-badge rv-dim">—</span>'}</td>
+      <td style="text-align:center">${c.drs ? '<span class="rv-badge rv-info">DRS</span>' : '<span class="rv-badge rv-dim">—</span>'}</td>
+      <td style="text-align:right">${c.vmotions}</td>
+    </tr>`).join('');
+  } else {
+    ctbody.innerHTML = '<tr><td colspan="7" class="rv-loading-cell">Veri yok</td></tr>';
+  }
+
+  // Hosts
+  const htbody = el('cap-host-tbody');
+  if (data.hosts.length) {
+    htbody.innerHTML = data.hosts.map(h => {
+      const cpuCls = h.cpu_usage_pct >= 80 ? 'rv-err' : h.cpu_usage_pct >= 60 ? 'rv-warn' : 'rv-ok';
+      const memCls = h.mem_usage_pct >= 85 ? 'rv-err' : h.mem_usage_pct >= 70 ? 'rv-warn' : 'rv-ok';
+      return `<tr>
+        <td style="font-weight:500;font-size:12px">${trunc(h.host,24)}</td>
+        <td style="font-size:11px;color:var(--text-dim)">${h.cluster||'—'}</td>
+        <td style="text-align:right">${h.cpu_cores}</td>
+        <td style="text-align:right"><span class="rv-badge ${cpuCls}">${h.cpu_usage_pct}%</span></td>
+        <td style="text-align:right">${h.mem_gb}</td>
+        <td style="text-align:right"><span class="rv-badge ${memCls}">${h.mem_usage_pct}%</span></td>
+        <td style="text-align:right">${h.vm_count}</td>
+        <td style="font-size:11px;color:var(--text-dim)">${h.esx_version||'—'}</td>
+      </tr>`;
+    }).join('');
+  } else {
+    htbody.innerHTML = '<tr><td colspan="8" class="rv-loading-cell">Veri yok</td></tr>';
+  }
+}
+
+// ── Partitions ────────────────────────────────────────────────────────────────
+async function loadPartitions(force) {
+  const thr = el('part-threshold').value || '0';
+  el('part-tbody').innerHTML = '<tr><td colspan="9" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr>';
+  const data = await jfetch(`/rvtools/partitions?date=${_date}&threshold=${thr}`);
+  if (!data) { el('part-tbody').innerHTML = '<tr><td colspan="9" class="rv-loading-cell">Veri alınamadı.</td></tr>'; return; }
+  _allPartitions = data;
+  renderPartitions();
+}
+
+function renderPartitions() {
+  const tbody = el('part-tbody');
+  if (!_allPartitions.length) {
+    tbody.innerHTML = '<tr><td colspan="9" class="rv-loading-cell">Bu eşikte doluluk bulunamadı.</td></tr>';
+    el('part-count').textContent = '';
+    return;
+  }
+  tbody.innerHTML = _allPartitions.map(p => `<tr>
+    <td style="font-weight:500;white-space:nowrap">${p.vm}</td>
+    <td>${stateBadge(p.state)}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${p.disk||'—'}</td>
+    <td style="text-align:right">${p.cap_gb} GB</td>
+    <td style="text-align:right">${p.free_gb} GB</td>
+    <td style="text-align:right">${usageBadge(p.used_pct)}</td>
+    <td>${usageBar(p.used_pct)}</td>
+    <td style="font-size:12px">${p.cluster||'—'}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${trunc(p.host,24)}</td>
+  </tr>`).join('');
+  el('part-count').textContent = `${_allPartitions.length} partition`;
+}
+
+// ── Health ────────────────────────────────────────────────────────────────────
+async function loadHealth() {
+  el('health-tbody').innerHTML = '<tr><td colspan="4" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr>';
+  const data = await jfetch(`/rvtools/health?date=${_date}`);
+  if (!data) { el('health-tbody').innerHTML = '<tr><td colspan="4" class="rv-loading-cell">Veri alınamadı.</td></tr>'; return; }
+  _allHealth = data;
+  renderHealth();
+}
+
+function renderHealth() {
+  const tbody = el('health-tbody');
+  if (!_allHealth.length) {
+    tbody.innerHTML = '<tr><td colspan="4" class="rv-loading-cell">Health verisi bulunamadı.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = _allHealth.map(h => `<tr data-type="${h.type.toLowerCase()}">
+    <td>${healthBadge(h.type)}</td>
+    <td style="font-weight:500;font-size:12px">${trunc(h.name,40)}</td>
+    <td style="font-size:12px;line-height:1.4">${h.message||'—'}</td>
+    <td style="font-size:11px;color:var(--text-dim)">${h.server||'—'}</td>
+  </tr>`).join('');
+  el('health-count').textContent = `${_allHealth.length} mesaj`;
+  filterHealth();
+}
+
+function filterHealth() {
+  const typeF = (el('health-type').value || '').toLowerCase();
+  const q = (el('health-search').value || '').toLowerCase();
+  const rows = el('health-tbody')?.querySelectorAll('tr') || [];
+  let vis = 0;
+  rows.forEach(tr => {
+    const type = (tr.dataset.type || '').toLowerCase();
+    const match = (!typeF || type === typeF) && (!q || tr.textContent.toLowerCase().includes(q));
+    tr.style.display = match ? '' : 'none';
+    if (match) vis++;
+  });
+  el('health-count').textContent = `${vis} / ${_allHealth.length} mesaj`;
+}
+
+// ── VMware Tools ──────────────────────────────────────────────────────────────
+async function loadTools() {
+  el('tools-tbody').innerHTML = '<tr><td colspan="8" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr>';
+  const data = await jfetch(`/rvtools/tools?date=${_date}`);
+  if (!data) { el('tools-tbody').innerHTML = '<tr><td colspan="8" class="rv-loading-cell">Veri alınamadı.</td></tr>'; return; }
+  _allTools = data;
+  renderTools();
+}
+
+function renderTools() {
+  const tbody = el('tools-tbody');
+  if (!_allTools.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="rv-loading-cell">Veri bulunamadı.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = _allTools.map(t => `<tr data-tools="${t.tools_status}" data-upgr="${t.upgradeable}">
+    <td style="font-weight:500;white-space:nowrap">${t.vm}</td>
+    <td>${stateBadge(t.state)}</td>
+    <td>${toolsBadge(t.tools_status)}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${t.tools_version||'—'}</td>
+    <td style="text-align:center">${t.upgradeable ? '<span class="rv-badge rv-warn">Evet</span>' : '<span class="rv-badge rv-ok">Hayır</span>'}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${t.app_status||'—'}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${t.heartbeat||'—'}</td>
+    <td style="font-size:12px">${t.cluster||'—'}</td>
+  </tr>`).join('');
+  filterTools();
+}
+
+function filterTools() {
+  const statusF = el('tools-status').value;
+  const upgrF   = el('tools-upgr').value;
+  const q = (el('tools-search').value || '').toLowerCase();
+  const rows = el('tools-tbody')?.querySelectorAll('tr') || [];
+  let vis = 0;
+  rows.forEach(tr => {
+    const ts = tr.dataset.tools || '';
+    const up = tr.dataset.upgr || '';
+    const match = (!statusF || ts === statusF) && (!upgrF || up === 'true') && (!q || tr.textContent.toLowerCase().includes(q));
+    tr.style.display = match ? '' : 'none';
+    if (match) vis++;
+  });
+  el('tools-count').textContent = `${vis} / ${_allTools.length} VM`;
+}
+
+// ── Snapshots ─────────────────────────────────────────────────────────────────
+async function loadSnapshots(force) {
+  el('snap-tbody').innerHTML = '<tr><td colspan="8" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr>';
+  const data = await jfetch(`/rvtools/snapshots?date=${_date}`);
+  if (!data) { el('snap-tbody').innerHTML = '<tr><td colspan="8" class="rv-loading-cell">Veri alınamadı.</td></tr>'; return; }
+
+  const sumEl = el('snap-summary');
+  if (!data.length) {
+    el('snap-tbody').innerHTML = '<tr><td colspan="8" class="rv-loading-cell">Snapshot bulunamadı.</td></tr>';
+    sumEl.innerHTML = '';
+    el('snap-count').textContent = '0 snapshot';
+    return;
+  }
+
+  const totalGb = data.reduce((s, r) => s + r.size_gb, 0).toFixed(1);
+  sumEl.innerHTML = `
+    <div class="metric-card"><div class="metric-body"><div class="metric-label">Toplam Snapshot</div><div class="metric-value">${data.length}</div></div></div>
+    <div class="metric-card"><div class="metric-body"><div class="metric-label">Toplam Boyut</div><div class="metric-value">${totalGb} GB</div></div></div>
+    <div class="metric-card"><div class="metric-body"><div class="metric-label">Etkilenen VM</div><div class="metric-value">${new Set(data.map(r=>r.vm)).size}</div></div></div>
+  `;
+
+  el('snap-tbody').innerHTML = data.map(s => `<tr>
+    <td style="font-weight:500;white-space:nowrap">${s.vm}</td>
+    <td>${stateBadge(s.state)}</td>
+    <td style="font-size:12px">${s.name||'—'}</td>
+    <td style="font-size:11px;color:var(--text-dim)">${trunc(s.description,30)}</td>
+    <td style="font-size:12px;color:var(--text-dim);white-space:nowrap">${s.created||'—'}</td>
+    <td style="text-align:right">${s.size_gb}</td>
+    <td style="font-size:12px">${s.cluster||'—'}</td>
+    <td style="font-size:12px;color:var(--text-dim)">${trunc(s.host,24)}</td>
+  </tr>`).join('');
+  el('snap-count').textContent = `${data.length} snapshot`;
+}
+
+// ── Datastores ────────────────────────────────────────────────────────────────
+async function loadDatastores() {
+  el('ds-tbody').innerHTML = '<tr><td colspan="10" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr>';
+  const data = await jfetch(`/rvtools/datastores?date=${_date}`);
+  if (!data) { el('ds-tbody').innerHTML = '<tr><td colspan="10" class="rv-loading-cell">Veri alınamadı.</td></tr>'; return; }
+  _allDatastores = data;
+
+  // Populate type filter
+  const types = [...new Set(data.map(d => d.type).filter(Boolean))].sort();
+  const typSel = el('ds-type');
+  typSel.innerHTML = '<option value="">Tüm Tipler</option>' + types.map(t => `<option value="${t}">${t}</option>`).join('');
+
+  renderDatastores();
+}
+
+function renderDatastores() {
+  const tbody = el('ds-tbody');
+  if (!_allDatastores.length) { tbody.innerHTML = '<tr><td colspan="10" class="rv-loading-cell">Veri bulunamadı.</td></tr>'; return; }
+  tbody.innerHTML = _allDatastores.map(d => `<tr data-type="${d.type}" data-name="${d.name}" data-cluster="${d.cluster}">
+    <td style="font-weight:500;white-space:nowrap">${trunc(d.name,30)}</td>
+    <td style="font-size:11px"><span class="rv-badge rv-info">${d.type||'—'}</span></td>
+    <td style="text-align:right">${d.cap_gb.toLocaleString()}</td>
+    <td style="text-align:right">${d.prov_gb.toLocaleString()}</td>
+    <td style="text-align:right">${d.free_gb.toLocaleString()}</td>
+    <td style="text-align:right">${usageBadge(d.used_pct)}</td>
+    <td>${usageBar(d.used_pct)}</td>
+    <td style="text-align:right">${d.vms_total}</td>
+    <td style="font-size:12px">${d.cluster||'—'}</td>
+    <td style="font-size:11px;color:var(--text-dim)">${d.version||'—'}</td>
+  </tr>`).join('');
+  el('ds-count').textContent = `${_allDatastores.length} datastore`;
+  filterDatastores();
+}
+
+function filterDatastores() {
+  const typeF = el('ds-type').value;
+  const q = (el('ds-search').value || '').toLowerCase();
+  const rows = el('ds-tbody')?.querySelectorAll('tr') || [];
+  let vis = 0;
+  rows.forEach(tr => {
+    const type = tr.dataset.type || '';
+    const match = (!typeF || type === typeF) && (!q || tr.textContent.toLowerCase().includes(q));
+    tr.style.display = match ? '' : 'none';
+    if (match) vis++;
+  });
+  el('ds-count').textContent = `${vis} / ${_allDatastores.length} datastore`;
+}
+
+// ── Trend ─────────────────────────────────────────────────────────────────────
+async function loadTrend(force) {
+  const days = el('trend-days').value || '30';
+  el('trend-loading-overlay').style.display = 'flex';
+  el('trend-tbody').innerHTML = '<tr><td colspan="5" class="rv-loading-cell"><span class="rv-spin"></span> Yükleniyor…</td></tr>';
+  const data = await jfetch(`/rvtools/trend?days=${days}`);
+  el('trend-loading-overlay').style.display = 'none';
+  if (!data || !data.length) {
+    el('trend-tbody').innerHTML = '<tr><td colspan="5" class="rv-loading-cell">Veri alınamadı.</td></tr>';
+    return;
+  }
+
+  // Chart
+  if (_trendChart) { _trendChart.destroy(); _trendChart = null; }
+  const ctx = el('trend-chart');
+  const labels = data.map(p => p.date.slice(5)); // MM-DD
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  const gridColor = isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)';
+  const txtColor  = isDark ? '#8891b5' : '#8891b5';
+  _trendChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        { label:'Toplam', data:data.map(p=>p.total), borderColor:'#4a6ef5', backgroundColor:'rgba(74,110,245,.12)', fill:true, tension:.3, pointRadius:3 },
+        { label:'Açık',   data:data.map(p=>p.on),    borderColor:'#1a9e50', backgroundColor:'transparent', tension:.3, pointRadius:2 },
+        { label:'Kapalı', data:data.map(p=>p.off),   borderColor:'#c82828', backgroundColor:'transparent', tension:.3, pointRadius:2 },
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{
+        legend:{ labels:{ color:txtColor, font:{size:12} } },
+        tooltip:{ backgroundColor:'var(--card-bg,#1a1d2e)' }
+      },
+      scales:{
+        x:{ grid:{ color:gridColor }, ticks:{ color:txtColor, maxRotation:45 } },
+        y:{ grid:{ color:gridColor }, ticks:{ color:txtColor }, beginAtZero:false }
+      }
+    }
+  });
+
+  // Table
+  let prevTotal = null;
+  el('trend-tbody').innerHTML = [...data].reverse().map(p => {
+    const delta = prevTotal !== null ? p.total - prevTotal : null;
+    prevTotal = p.total;
+    const deltaHtml = delta === null ? '—'
+      : delta > 0 ? `<span style="color:#1a9e50">+${delta}</span>`
+      : delta < 0 ? `<span style="color:#c82828">${delta}</span>`
+      : '<span style="color:var(--text-dim)">0</span>';
+    return `<tr>
+      <td>${p.date}</td>
+      <td style="text-align:right;font-weight:600">${p.total}</td>
+      <td style="text-align:right;color:#1a9e50">${p.on}</td>
+      <td style="text-align:right;color:#c82828">${p.off}</td>
+      <td style="text-align:right">${deltaHtml}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Delta ─────────────────────────────────────────────────────────────────────
+async function loadDelta() {
+  const d1 = el('delta-date1').value;
+  const d2 = el('delta-date2').value;
+  if (!d1 || !d2 || d1 === d2) {
+    el('delta-content').innerHTML = '<div style="padding:20px;color:#c82828;font-size:13px">Lütfen farklı iki tarih seçin.</div>';
+    return;
+  }
+  el('delta-content').innerHTML = '<div style="text-align:center;padding:30px;color:var(--text-dim)"><span class="rv-spin"></span> Karşılaştırılıyor…</div>';
+  el('delta-stats').style.display = 'none';
+
+  const data = await jfetch(`/rvtools/delta?date1=${d1}&date2=${d2}`);
+  if (!data || data.error) {
+    el('delta-content').innerHTML = `<div style="padding:20px;color:#c82828;font-size:13px">Hata: ${data?.error||'Veri alınamadı'}</div>`;
+    return;
+  }
+
+  el('d-added').textContent   = data.added.length;
+  el('d-removed').textContent = data.removed.length;
+  el('d-changed').textContent = data.changed.length;
+  const net = data.total2 - data.total1;
+  const netEl = el('d-net');
+  netEl.textContent = (net >= 0 ? '+' : '') + net;
+  netEl.style.color = net > 0 ? '#1a9e50' : net < 0 ? '#c82828' : 'var(--text)';
+  el('delta-stats').style.display = 'grid';
+
+  let html = '';
+
+  // Added
+  html += `<div class="settings-card delta-section">
+    <div class="delta-section-title" style="color:#1a9e50">+ Eklenen VM'ler (${data.added.length})</div>`;
+  if (data.added.length) {
+    html += `<table class="rv-table"><thead><tr><th>VM</th><th>Durum</th><th style="text-align:right">CPU</th><th style="text-align:right">RAM(GB)</th><th>Cluster</th><th>Host</th></tr></thead><tbody>` +
+      data.added.map(v => `<tr><td style="font-weight:500">${v.vm}</td><td>${stateBadge(v.state)}</td><td style="text-align:right">${v.cpu}</td><td style="text-align:right">${v.mem_gb}</td><td>${v.cluster||'—'}</td><td style="font-size:12px;color:var(--text-dim)">${trunc(v.host,24)}</td></tr>`).join('') +
+      `</tbody></table>`;
+  } else {
+    html += '<div style="padding:12px 16px;font-size:13px;color:var(--text-dim)">Eklenen VM yok.</div>';
+  }
+  html += '</div>';
+
+  // Removed
+  html += `<div class="settings-card delta-section">
+    <div class="delta-section-title" style="color:#c82828">− Silinen VM'ler (${data.removed.length})</div>`;
+  if (data.removed.length) {
+    html += `<table class="rv-table"><thead><tr><th>VM</th><th>Durum</th><th style="text-align:right">CPU</th><th style="text-align:right">RAM(GB)</th><th>Cluster</th><th>Host</th></tr></thead><tbody>` +
+      data.removed.map(v => `<tr><td style="font-weight:500">${v.vm}</td><td>${stateBadge(v.state)}</td><td style="text-align:right">${v.cpu}</td><td style="text-align:right">${v.mem_gb}</td><td>${v.cluster||'—'}</td><td style="font-size:12px;color:var(--text-dim)">${trunc(v.host,24)}</td></tr>`).join('') +
+      `</tbody></table>`;
+  } else {
+    html += '<div style="padding:12px 16px;font-size:13px;color:var(--text-dim)">Silinen VM yok.</div>';
+  }
+  html += '</div>';
+
+  // Changed
+  html += `<div class="settings-card delta-section">
+    <div class="delta-section-title" style="color:#4a6ef5">Δ Değişen VM'ler (${data.changed.length})</div>`;
+  if (data.changed.length) {
+    html += `<table class="rv-table"><thead><tr><th>VM</th><th>Alan</th><th>Önceki (${d1})</th><th>Sonraki (${d2})</th></tr></thead><tbody>` +
+      data.changed.flatMap(v =>
+        Object.entries(v.changes).map(([field, chg]) =>
+          `<tr><td style="font-weight:500">${v.vm}</td><td style="font-size:12px;color:var(--text-dim)">${field}</td><td style="color:#c82828">${chg.before}</td><td style="color:#1a9e50">${chg.after}</td></tr>`
+        )
+      ).join('') +
+      `</tbody></table>`;
+  } else {
+    html += '<div style="padding:12px 16px;font-size:13px;color:var(--text-dim)">Konfigürasyon değişikliği yok.</div>';
+  }
+  html += '</div>';
+
+  el('delta-content').innerHTML = html;
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+loadSummary();
+</script>
+
+<script src="/static/app.js?v=1784405152"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
+<!-- AI Chat Widget — floating button + chat window, visible on all pages -->
+<div id="ai-root" aria-live="polite" data-page="/rvtools">
+
+  <!-- Floating trigger button -->
+  <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
+    <!-- Closed: chat icon -->
+    <svg id="ai-btn-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r=".5" fill="currentColor"></circle>
+    </svg>
+    <!-- Open: close icon -->
+    <svg id="ai-btn-close" width="20" height="20" viewBox="0 0 24 24" style="display:none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <!-- Unread dot -->
+    <span id="ai-dot" style="display:none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ai-win" role="dialog" aria-label="AI Asistan" aria-hidden="true">
+    <!-- Header -->
+    <div id="ai-hd">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div id="ai-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <div>
+          <div id="ai-title-txt" style="font-size:13px;font-weight:700;line-height:1.1">AI Asistan</div>
+          <div id="ai-status-txt" style="font-size:10px;opacity:.65;line-height:1">Altyapı verilerini analiz ediyor</div>
+        </div>
+      </div>
+      <button id="ai-close-btn" onclick="aiToggle()" title="Kapat" style="background:none;border:none;cursor:pointer;padding:4px;border-radius:5px;
+                     color:inherit;opacity:.7;display:flex;align-items:center;transition:opacity .15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="ai-msgs" role="log">
+      <!-- Welcome message injected by JS -->
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Kaç VM var?</button><button class="ai-sug">Snapshot var mı?</button><button class="ai-sug">En fazla RAM kullanan 10 VM?</button><button class="ai-sug">Kapalı VM'ler neler?</button></div></div>
+
+    <!-- Input area -->
+    <div id="ai-footer">
+      <div id="ai-input-wrap">
+        <textarea id="ai-input" rows="1" placeholder="Bir soru sorun…" maxlength="600" onkeydown="aiKey(event)" oninput="aiResize(this)" aria-label="Soru girin"></textarea>
+        <button id="ai-send" onclick="aiSend()" title="Gönder (Enter)" aria-label="Gönder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-footer-note" style="font-size:10px;color:var(--ai-muted);text-align:center;margin-top:6px;line-height:1.3">Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Tokens ── */
+:root {
+  --ai-accent:   #4f6ef7;
+  --ai-accent2:  #7c5af5;
+  --ai-win-bg:   #ffffff;
+  --ai-hd-bg:    linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  --ai-hd-txt:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-user-bg:  linear-gradient(135deg, #4f6ef7, #7c5af5);
+  --ai-user-txt: #ffffff;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+  --ai-radius:   14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-win-bg:   #1a1d23;
+    --ai-msg-bg:   #252830;
+    --ai-msg-txt:  #e5e7eb;
+    --ai-border:   rgba(255,255,255,.08);
+    --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+    --ai-muted:    #6b7280;
+    --ai-input-bg: #1e2128;
+    --ai-table-hd: #1e2128;
+  }
+}
+:root[data-theme="dark"] {
+  --ai-win-bg:   #1a1d23;
+  --ai-msg-bg:   #252830;
+  --ai-msg-txt:  #e5e7eb;
+  --ai-border:   rgba(255,255,255,.08);
+  --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+  --ai-muted:    #6b7280;
+  --ai-input-bg: #1e2128;
+  --ai-table-hd: #1e2128;
+}
+:root[data-theme="light"] {
+  --ai-win-bg:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+}
+
+/* ── Trigger button ── */
+#ai-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79,110,247,.45);
+  transition: transform .2s, box-shadow .2s;
+}
+#ai-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,110,247,.6); }
+#ai-btn:active { transform: scale(.96); }
+#ai-btn.open   { box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+
+/* Unread dot */
+#ai-dot {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background: #f87171;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: .7; }
+}
+
+/* ── Chat window ── */
+#ai-win {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 9997;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--ai-win-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.85) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+}
+#ai-win.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Header ── */
+#ai-hd {
+  background: var(--ai-hd-bg);
+  color: var(--ai-hd-txt);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+#ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Messages ── */
+#ai-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+#ai-msgs::-webkit-scrollbar { width: 4px; }
+#ai-msgs::-webkit-scrollbar-track { background: transparent; }
+#ai-msgs::-webkit-scrollbar-thumb { background: var(--ai-border); border-radius: 4px; }
+
+/* Bubbles */
+.ai-bubble {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ai-bubble.bot {
+  background: var(--ai-msg-bg);
+  color: var(--ai-msg-txt);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.ai-bubble.user {
+  background: var(--ai-user-bg);
+  color: var(--ai-user-txt);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+.ai-bubble.error {
+  background: rgba(239,68,68,.1);
+  color: #dc2626;
+  align-self: flex-start;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Detail text below bubble */
+.ai-detail {
+  font-size: 11px;
+  color: var(--ai-muted);
+  margin-top: 5px;
+  padding: 0 2px;
+  align-self: flex-start;
+  max-width: 88%;
+  line-height: 1.5;
+}
+
+/* Cost table */
+.ai-cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ai-cost-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding: 5px 8px;
+  background: var(--ai-table-hd);
+  border-bottom: 1px solid var(--ai-border);
+}
+.ai-cost-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--ai-border);
+  color: var(--ai-msg-txt);
+}
+.ai-cost-table tr:last-child td { border-bottom: none; }
+.ai-cost-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ai-accent);
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--ai-table-hd);
+  border-radius: 6px;
+}
+
+/* Source chip */
+.ai-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  padding: 2px 7px; border-radius: 10px; margin-top: 5px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; gap: 5px; align-items: center;
+  padding: 12px 14px;
+  background: var(--ai-msg-bg);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+.ai-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ai-muted);
+  animation: ai-bounce .9s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .15s; }
+.ai-typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes ai-bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ── */
+#ai-footer {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--ai-border);
+  flex-shrink: 0;
+  background: var(--ai-win-bg);
+}
+#ai-input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--ai-input-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: 10px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color .15s;
+}
+#ai-input-wrap:focus-within { border-color: var(--ai-accent); }
+
+#ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ai-msg-txt);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  font-family: inherit;
+}
+#ai-input::placeholder { color: var(--ai-muted); }
+
+#ai-send {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: none; cursor: pointer; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f6ef7, #7c5af5);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s, transform .1s;
+}
+#ai-send:hover  { opacity: .9; }
+#ai-send:active { transform: scale(.93); }
+#ai-send:disabled { opacity: .4; cursor: default; }
+
+/* ── Quick suggestion chips ── */
+#ai-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.ai-sug {
+  font-size: 11px; padding: 5px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.2); cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+  font-weight: 500;
+}
+.ai-sug:hover { background: rgba(79,110,247,.2); }
+
+/* ── Follow-up suggestion chips ── */
+.ai-follow-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 0 2px; margin-top: 6px;
+  align-self: flex-start; max-width: 96%;
+}
+.ai-follow-label {
+  width: 100%; font-size: 10px; color: var(--ai-muted);
+  font-weight: 600; letter-spacing: .03em; margin-bottom: 2px;
+}
+.ai-follow-chip {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.08); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.18); cursor: pointer;
+  transition: background .15s, border-color .15s; white-space: nowrap;
+  font-weight: 500; display: inline-flex; align-items: center; gap: 4px;
+}
+.ai-follow-chip::before { content: '↪'; font-size: 10px; opacity: .7; }
+.ai-follow-chip:hover {
+  background: rgba(79,110,247,.18); border-color: rgba(79,110,247,.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ai-win { transition: none; }
+  .ai-typing span { animation: none; opacity: .7; }
+  #ai-dot { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Language: follows the same document.documentElement.lang set by applyI18n() ── */
+  function _lang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'tr';
+  }
+
+  const WELCOME = {
+    tr: 'Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.\n\nÖrnekler:',
+    en: 'Hello! You can ask questions about your infrastructure data.\n\nExamples:',
+  };
+
+  /* ── Static widget chrome strings ── */
+  const WI18N = {
+    tr: {
+      title:        'AI Asistan',
+      openLabel:    'AI Asistanı aç',
+      statusIdle:   'Altyapı verilerini analiz ediyor',
+      close:        'Kapat',
+      inputPh:      'Bir soru sorun…',
+      inputAria:    'Soru girin',
+      sendTitle:    'Gönder (Enter)',
+      sendAria:     'Gönder',
+      footerNote:   'Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder',
+      followLabel:  'Devam edebilirsiniz:',
+      serverError:  'Sunucu hatası (',
+      connError:    'Bağlantı hatası: ',
+      costHeaders:  ['Bileşen', 'Miktar', 'Tutar'],
+      chipCost:     'Maliyet Hesabı',
+      chipVcenter:  'vCenter Verisi',
+    },
+    en: {
+      title:        'AI Assistant',
+      openLabel:    'Open AI Assistant',
+      statusIdle:   'Analyzing infrastructure data',
+      close:        'Close',
+      inputPh:      'Ask a question…',
+      inputAria:    'Enter your question',
+      sendTitle:    'Send (Enter)',
+      sendAria:     'Send',
+      footerNote:   'Answers using your real infrastructure data &nbsp;·&nbsp; Enter = send',
+      followLabel:  'You can continue:',
+      serverError:  'Server error (',
+      connError:    'Connection error: ',
+      costHeaders:  ['Component', 'Quantity', 'Amount'],
+      chipCost:     'Cost Calculation',
+      chipVcenter:  'vCenter Data',
+    },
+  };
+  function _wt(key) { return (WI18N[_lang()] || WI18N.tr)[key]; }
+
+  /* ── Sayfaya özel hazır sorular — anahtar, sayfanın URL path'idir (en spesifik eşleşme kazanır). ── */
+  const SUGGESTION_MAP = {
+    tr: {
+      '/vcenter':                ['Kaç VM var?', 'Kapalı VM\'ler neler?', 'Tag\'siz VM\'ler neler?', 'En fazla RAM kullanan 10 VM?'],
+      '/rvtools':                ['Kaç VM var?', 'Snapshot var mı?', 'En fazla RAM kullanan 10 VM?', 'Kapalı VM\'ler neler?'],
+      '/licenses':               ['Lisans envanteri', 'Süresi dolmuş lisanslar?', '30 gün içinde dolacak lisanslar?'],
+      '/operations':             ['Bekleyen operasyonlar', 'Başarısız işlemler?', 'Bugün tamamlanan işlemler?'],
+      '/calculator':             ['Teklifler neler?', '32 GB RAM, 8 CPU, 500 GB disk maliyeti?'],
+      '/vm-host':                ['ESXi host listesi', 'Hangi host\'ta en çok VM var?'],
+      '/physical':               ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/opmanager':              ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/reports/notags-vms':     ['Tag\'siz VM\'ler neler?'],
+      '/reports/poc-vms':        ['POC VM\'ler neler?'],
+      '/reports/willdelete-vms': ['Silinecek VM\'ler neler?'],
+      '/reports/poweredoff-vms': ['Kapalı VM\'ler neler?'],
+    },
+    en: {
+      '/vcenter':                ['How many VMs are there?', 'Which VMs are powered off?', 'Which VMs are untagged?', 'Top 10 VMs by RAM usage?'],
+      '/rvtools':                ['How many VMs are there?', 'Are there any snapshots?', 'Top 10 VMs by RAM usage?', 'Which VMs are powered off?'],
+      '/licenses':               ['License inventory', 'Which licenses have expired?', 'Which licenses expire within 30 days?'],
+      '/operations':             ['Pending operations', 'Failed operations?', 'Operations completed today?'],
+      '/calculator':             ['What are the quotes?', 'Cost for 32 GB RAM, 8 CPU, 500 GB disk?'],
+      '/vm-host':                ['ESXi host list', 'Which host has the most VMs?'],
+      '/physical':               ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/opmanager':              ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/reports/notags-vms':     ['Which VMs are untagged?'],
+      '/reports/poc-vms':        ['What are the POC VMs?'],
+      '/reports/willdelete-vms': ['Which VMs are marked for deletion?'],
+      '/reports/poweredoff-vms': ['Which VMs are powered off?'],
+    },
+  };
+  const DASHBOARD_SUGGESTIONS = {
+    tr: ['Altyapımı özetle', 'Kaç VM var?', 'Bekleyen operasyonlar', 'Süresi dolmuş lisanslar?'],
+    en: ['Summarize my infrastructure', 'How many VMs are there?', 'Pending operations', 'Which licenses have expired?'],
+  };
+  const DEFAULT_SUGGESTIONS = {
+    tr: [
+      'Kaç VM var?',
+      'Tag\'siz VM\'ler neler?',
+      'Lisans envanteri',
+      'Bekleyen operasyonlar',
+      'Fiziksel cihaz durumu',
+      'Teklifler neler?',
+      'ESXi host listesi',
+      'Silinecek VM\'ler?',
+      'Süresi dolmuş lisanslar?',
+      '32 GB RAM, 8 CPU, 500 GB disk maliyeti?',
+    ],
+    en: [
+      'How many VMs are there?',
+      'Which VMs are untagged?',
+      'License inventory',
+      'Pending operations',
+      'Physical device status',
+      'What are the quotes?',
+      'ESXi host list',
+      'Which VMs are marked for deletion?',
+      'Which licenses have expired?',
+      'Cost for 32 GB RAM, 8 CPU, 500 GB disk?',
+    ],
+  };
+
+  /* ── Sayfaya göre hazır soru listesini seç ── */
+  function _pageSuggestions() {
+    const root = document.getElementById('ai-root');
+    const path = (root && root.dataset.page) || '/';
+    const lang = _lang();
+    if (path === '/') return DASHBOARD_SUGGESTIONS[lang];
+    const map = SUGGESTION_MAP[lang];
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      if (path === k || path.startsWith(k + '/')) return map[k];
+    }
+    return DEFAULT_SUGGESTIONS[lang];
+  }
+
+  /* ── Apply static chrome translations ── */
+  function _applyWidgetI18n() {
+    const btn = document.getElementById('ai-btn');
+    if (btn) { btn.title = _wt('title'); btn.setAttribute('aria-label', _wt('openLabel')); }
+    const win = document.getElementById('ai-win');
+    if (win) win.setAttribute('aria-label', _wt('title'));
+    const titleTxt = document.getElementById('ai-title-txt');
+    if (titleTxt) titleTxt.textContent = _wt('title');
+    const statusTxt = document.getElementById('ai-status-txt');
+    if (statusTxt) statusTxt.textContent = _wt('statusIdle');
+    const closeBtn = document.getElementById('ai-close-btn');
+    if (closeBtn) closeBtn.title = _wt('close');
+    const inp = document.getElementById('ai-input');
+    if (inp) { inp.placeholder = _wt('inputPh'); inp.setAttribute('aria-label', _wt('inputAria')); }
+    const sendBtn = document.getElementById('ai-send');
+    if (sendBtn) { sendBtn.title = _wt('sendTitle'); sendBtn.setAttribute('aria-label', _wt('sendAria')); }
+    const footNote = document.getElementById('ai-footer-note');
+    if (footNote) footNote.innerHTML = _wt('footerNote');
+  }
+
+  let _open = false;
+  let _busy = false;
+
+  /* ── Bold markdown (**text**) → <strong> ── */
+  function _md(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+  }
+  function _e(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Scroll to bottom ── */
+  function _scroll() {
+    const m = document.getElementById('ai-msgs');
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  /* ── Follow-up suggestions after bot response ── */
+  function _addFollowSuggestions(suggestions) {
+    if (!suggestions || !suggestions.length) return;
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const row = document.createElement('div');
+    row.className = 'ai-follow-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'ai-follow-label';
+    lbl.textContent = _wt('followLabel');
+    row.appendChild(lbl);
+    for (const s of suggestions) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-follow-chip';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      row.appendChild(btn);
+    }
+    msgs.appendChild(row);
+    _scroll();
+  }
+
+  /* ── Append message bubble ── */
+  function _addBubble(role, html, detail, extra) {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    // Remove initial suggestions and any follow-up rows
+    const sug = msgs.querySelector('#ai-suggestions');
+    if (sug) sug.remove();
+    msgs.querySelectorAll('.ai-follow-row').forEach(el => el.remove());
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column';
+
+    const bbl = document.createElement('div');
+    bbl.className = `ai-bubble ${role}`;
+    bbl.innerHTML = html;
+    wrap.appendChild(bbl);
+
+    if (detail) {
+      const det = document.createElement('div');
+      det.className = 'ai-detail';
+      det.innerHTML = _md(detail);
+      wrap.appendChild(det);
+    }
+    if (extra) {
+      const ex = document.createElement('div');
+      ex.innerHTML = extra;
+      wrap.appendChild(ex);
+    }
+    msgs.appendChild(wrap);
+    _scroll();
+    return wrap;
+  }
+
+  /* ── Typing indicator ── */
+  function _showTyping() {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return null;
+    const el = document.createElement('div');
+    el.id = 'ai-typing-el';
+    el.className = 'ai-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    _scroll();
+    return el;
+  }
+  function _removeTyping() {
+    const el = document.getElementById('ai-typing-el');
+    if (el) el.remove();
+  }
+
+  /* ── Render bot response ── */
+  function _renderBot(data) {
+    const type = data.type || '';
+
+    if (type === 'cost' && data.table) {
+      const [hComp, hQty, hAmt] = _wt('costHeaders');
+      let tbl = `<table class="ai-cost-table">
+        <thead><tr><th>${_e(hComp)}</th><th>${_e(hQty)}</th><th>${_e(hAmt)}</th></tr></thead><tbody>`;
+      for (const [comp, qty, price] of data.table) {
+        tbl += `<tr><td>${_e(comp)}</td><td>${_e(qty)}</td><td style="text-align:right;font-weight:600">${_e(price)}</td></tr>`;
+      }
+      tbl += `</tbody></table>`;
+      if (data.total) {
+        tbl += `<div class="ai-cost-total">${_e(data.total)}</div>`;
+      }
+      _addBubble('bot', _md(data.answer) + tbl, '', _chip(_wt('chipCost'), 'calculator'));
+      return;
+    }
+
+    if (type === 'vm_count' || type === 'vm_filter') {
+      const detail = data.detail || '';
+      _addBubble('bot', _md(data.answer), detail, _chip(_wt('chipVcenter'), 'vcenter'));
+      return;
+    }
+
+    if (type === 'llm') {
+      const model = data.model ? _e(data.model) : 'AI';
+      _addBubble('bot', _md(data.answer), '', _chip(model, 'llm'));
+      return;
+    }
+
+    if (type === 'error') {
+      _addBubble('error', _md(data.answer), '', '');
+      return;
+    }
+
+    // cost_hint / unknown / fallback
+    _addBubble('bot', _md(data.answer), '', '');
+  }
+
+  function _chip(label, kind) {
+    const icons = {
+      vcenter:    '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>',
+      calculator: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>',
+      llm:        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
+    };
+    return `<span class="ai-chip">${icons[kind] || ''} ${_e(label)}</span>`;
+  }
+
+  /* ── Send question ── */
+  async function aiSend() {
+    if (_busy) return;
+    const inp = document.getElementById('ai-input');
+    const q   = (inp.value || '').trim();
+    if (!q) return;
+
+    inp.value = '';
+    inp.style.height = '';
+    _addBubble('user', _e(q), '', '');
+
+    _busy = true;
+    document.getElementById('ai-send').disabled = true;
+    const tyEl = _showTyping();
+
+    try {
+      const r = await fetch('/ai/chat', {
+        method:  'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:    JSON.stringify({ q, lang: _lang() }),
+      });
+      _removeTyping();
+      if (!r.ok) { _addBubble('error', _wt('serverError') + r.status + ')', '', ''); return; }
+      const data = await r.json();
+      _renderBot(data);
+      _addFollowSuggestions(data.suggestions || []);
+    } catch (err) {
+      _removeTyping();
+      _addBubble('error', _wt('connError') + _e(err.message), '', '');
+    } finally {
+      _busy = false;
+      document.getElementById('ai-send').disabled = false;
+      inp.focus();
+    }
+  }
+
+  /* ── Toggle open/close ── */
+  function aiToggle() {
+    _open = !_open;
+    const win = document.getElementById('ai-win');
+    const btn = document.getElementById('ai-btn');
+    win.classList.toggle('visible', _open);
+    win.setAttribute('aria-hidden', String(!_open));
+    btn.setAttribute('aria-expanded', String(_open));
+    btn.classList.toggle('open', _open);
+    document.getElementById('ai-btn-open').style.display  = _open ? 'none' : '';
+    document.getElementById('ai-btn-close').style.display = _open ? '' : 'none';
+    document.getElementById('ai-dot').style.display = 'none';
+    if (_open) {
+      document.getElementById('ai-input').focus();
+      _scroll();
+    }
+  }
+
+  /* ── Textarea auto-resize ── */
+  function aiResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  /* ── Enter key handling ── */
+  function aiKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      aiSend();
+    }
+  }
+
+  /* ── Build suggestions ── */
+  function _buildSuggestions() {
+    const div = document.createElement('div');
+    div.id = 'ai-suggestions';
+    for (const s of _pageSuggestions()) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-sug';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      div.appendChild(btn);
+    }
+    return div;
+  }
+
+  /* ── Init welcome ── */
+  function _init() {
+    _applyWidgetI18n();
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const bbl = document.createElement('div');
+    bbl.className = 'ai-bubble bot';
+    bbl.innerHTML = _md(WELCOME[_lang()]);
+    msgs.appendChild(bbl);
+    msgs.appendChild(_buildSuggestions());
+
+    // Check Ollama status quietly
+    fetch('/ai/status').then(r => r.json()).then(d => {
+      if (d.ollama && d.model) {
+        const txt = document.getElementById('ai-status-txt');
+        if (txt) txt.textContent = `Ollama · ${d.model}`;
+      }
+    }).catch(() => {});
+
+    // Show unread dot if window is closed after 1.5 s
+    setTimeout(() => {
+      if (!_open) document.getElementById('ai-dot').style.display = '';
+    }, 1500);
+  }
+
+  // Expose to HTML inline handlers
+  window.aiToggle = aiToggle;
+  window.aiSend   = aiSend;
+  window.aiResize = aiResize;
+  window.aiKey    = aiKey;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+})();
+</script>
+
+</body></html>

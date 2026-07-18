@@ -1,0 +1,1049 @@
+<!DOCTYPE html><html lang="tr" data-theme="light"><head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lisans — PS Portal</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css?v=1784405152">
+<script>
+(function(){
+  function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  var t=_getCookie('ps_theme')||'light';
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+  window._PS_LANG=_getCookie('ps_lang')||'tr';
+  window._PS_TZ=_getCookie('ps_tz')||'Europe/Istanbul';
+})();
+</script>
+</head>
+<body>
+
+<style>
+.lic-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-base);
+  padding: 24px;
+}
+.lic-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  max-width: 640px;
+  width: 100%;
+  padding: 48px 40px 40px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18);
+}
+.lic-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.lic-logo img { height: 28px; opacity: .85; }
+.lic-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 6px;
+  text-align: center;
+}
+.lic-sub {
+  font-size: 14px;
+  color: var(--text-dim);
+  text-align: center;
+  margin: 0 0 24px;
+}
+.lic-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.lic-badge-ok    { background: rgba(40,167,69,.1); color: #28a745; border: 1px solid rgba(40,167,69,.25); }
+.lic-badge-warn  { background: rgba(255,193,7,.12); color: #b8860b; border: 1px solid rgba(255,193,7,.3); }
+.lic-badge-bad   { background: rgba(220,53,69,.1); color: #dc3545; border: 1px solid rgba(220,53,69,.25); }
+.lic-badge-row { display: flex; justify-content: center; margin-bottom: 24px; }
+.lic-info {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+.lic-info-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 6px 0;
+}
+.lic-info-row + .lic-info-row { border-top: 1px solid var(--border); }
+.lic-info-label { color: var(--text-dim); }
+.lic-info-val { color: var(--text); font-weight: 600; }
+.lic-divider { height: 1px; background: var(--border); margin: 0 0 24px; }
+.lic-form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin-bottom: 8px;
+}
+.lic-form textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.lic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff;
+  cursor: pointer;
+}
+.lic-msg { font-size: 13px; border-radius: 8px; padding: 10px 14px; margin-bottom: 16px; }
+.lic-msg-ok  { background: rgba(40,167,69,.1); color: #28a745; border: 1px solid rgba(40,167,69,.25); }
+.lic-msg-bad { background: rgba(220,53,69,.1); color: #dc3545; border: 1px solid rgba(220,53,69,.25); }
+.lic-contact {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.btn-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  text-decoration: none;
+  margin-top: 20px;
+}
+.btn-logout:hover { background: rgba(220,53,69,.1); border-color: rgba(220,53,69,.4); color: #dc3545; }
+.lic-actions { display: flex; justify-content: center; }
+</style>
+
+
+
+<div class="lic-wrap">
+  <div class="lic-card">
+
+    <div class="lic-logo">
+      <img src="/static/default-logo.png" alt="PS Portal">
+    </div>
+
+    <div class="lic-title">Lisans Durumu</div>
+    <div class="lic-sub">PS Portal</div>
+
+    <div class="lic-badge-row">
+      
+        <span class="lic-badge lic-badge-ok">Geçerli — 3454 gün kaldı</span>
+      
+    </div>
+
+    
+    
+
+    
+    <div class="lic-info">
+      <div class="lic-info-row"><span class="lic-info-label">Durum</span><span class="lic-info-val">Lisans geçerli.</span></div>
+      <div class="lic-info-row"><span class="lic-info-label">Müşteri</span><span class="lic-info-val">Trisops Demo</span></div>
+      <div class="lic-info-row"><span class="lic-info-label">Geçerlilik Bitişi</span><span class="lic-info-val">2036-01-01</span></div>
+      <div class="lic-info-row"><span class="lic-info-label">Kullanıcı</span><span class="lic-info-val">3 / 999</span></div>
+      <div class="lic-info-row"><span class="lic-info-label">Modüller</span><span class="lic-info-val">Tümü</span></div>
+    </div>
+    
+
+    
+      <div class="lic-actions" style="margin-bottom:20px">
+        <a href="/" class="lic-btn" style="text-decoration:none">Uygulamaya Dön</a>
+      </div>
+    
+
+    
+      <div class="lic-divider"></div>
+      <form class="lic-form" method="post" action="/license">
+        <label>Yeni Lisans Anahtarı</label>
+        <textarea name="license_key" placeholder="Lisans sağlayıcınızdan aldığınız anahtarı buraya yapıştırın" required=""></textarea>
+        <div class="lic-actions">
+          <button type="submit" class="lic-btn">Kaydet</button>
+        </div>
+      </form>
+    
+
+    <div class="lic-actions">
+      <a href="/logout" class="btn-logout">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        Oturumu Kapat
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<script src="/static/app.js?v=1784405152"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
+<!-- AI Chat Widget — floating button + chat window, visible on all pages -->
+<div id="ai-root" aria-live="polite" data-page="/license">
+
+  <!-- Floating trigger button -->
+  <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
+    <!-- Closed: chat icon -->
+    <svg id="ai-btn-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r=".5" fill="currentColor"></circle>
+    </svg>
+    <!-- Open: close icon -->
+    <svg id="ai-btn-close" width="20" height="20" viewBox="0 0 24 24" style="display:none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <!-- Unread dot -->
+    <span id="ai-dot" style="display:none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ai-win" role="dialog" aria-label="AI Asistan" aria-hidden="true">
+    <!-- Header -->
+    <div id="ai-hd">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div id="ai-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <div>
+          <div id="ai-title-txt" style="font-size:13px;font-weight:700;line-height:1.1">AI Asistan</div>
+          <div id="ai-status-txt" style="font-size:10px;opacity:.65;line-height:1">Altyapı verilerini analiz ediyor</div>
+        </div>
+      </div>
+      <button id="ai-close-btn" onclick="aiToggle()" title="Kapat" style="background:none;border:none;cursor:pointer;padding:4px;border-radius:5px;
+                     color:inherit;opacity:.7;display:flex;align-items:center;transition:opacity .15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="ai-msgs" role="log">
+      <!-- Welcome message injected by JS -->
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Kaç VM var?</button><button class="ai-sug">Tag'siz VM'ler neler?</button><button class="ai-sug">Lisans envanteri</button><button class="ai-sug">Bekleyen operasyonlar</button><button class="ai-sug">Fiziksel cihaz durumu</button><button class="ai-sug">Teklifler neler?</button><button class="ai-sug">ESXi host listesi</button><button class="ai-sug">Silinecek VM'ler?</button><button class="ai-sug">Süresi dolmuş lisanslar?</button><button class="ai-sug">32 GB RAM, 8 CPU, 500 GB disk maliyeti?</button></div></div>
+
+    <!-- Input area -->
+    <div id="ai-footer">
+      <div id="ai-input-wrap">
+        <textarea id="ai-input" rows="1" placeholder="Bir soru sorun…" maxlength="600" onkeydown="aiKey(event)" oninput="aiResize(this)" aria-label="Soru girin"></textarea>
+        <button id="ai-send" onclick="aiSend()" title="Gönder (Enter)" aria-label="Gönder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-footer-note" style="font-size:10px;color:var(--ai-muted);text-align:center;margin-top:6px;line-height:1.3">Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Tokens ── */
+:root {
+  --ai-accent:   #4f6ef7;
+  --ai-accent2:  #7c5af5;
+  --ai-win-bg:   #ffffff;
+  --ai-hd-bg:    linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  --ai-hd-txt:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-user-bg:  linear-gradient(135deg, #4f6ef7, #7c5af5);
+  --ai-user-txt: #ffffff;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+  --ai-radius:   14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-win-bg:   #1a1d23;
+    --ai-msg-bg:   #252830;
+    --ai-msg-txt:  #e5e7eb;
+    --ai-border:   rgba(255,255,255,.08);
+    --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+    --ai-muted:    #6b7280;
+    --ai-input-bg: #1e2128;
+    --ai-table-hd: #1e2128;
+  }
+}
+:root[data-theme="dark"] {
+  --ai-win-bg:   #1a1d23;
+  --ai-msg-bg:   #252830;
+  --ai-msg-txt:  #e5e7eb;
+  --ai-border:   rgba(255,255,255,.08);
+  --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+  --ai-muted:    #6b7280;
+  --ai-input-bg: #1e2128;
+  --ai-table-hd: #1e2128;
+}
+:root[data-theme="light"] {
+  --ai-win-bg:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+}
+
+/* ── Trigger button ── */
+#ai-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79,110,247,.45);
+  transition: transform .2s, box-shadow .2s;
+}
+#ai-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,110,247,.6); }
+#ai-btn:active { transform: scale(.96); }
+#ai-btn.open   { box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+
+/* Unread dot */
+#ai-dot {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background: #f87171;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: .7; }
+}
+
+/* ── Chat window ── */
+#ai-win {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 9997;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--ai-win-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.85) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+}
+#ai-win.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Header ── */
+#ai-hd {
+  background: var(--ai-hd-bg);
+  color: var(--ai-hd-txt);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+#ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Messages ── */
+#ai-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+#ai-msgs::-webkit-scrollbar { width: 4px; }
+#ai-msgs::-webkit-scrollbar-track { background: transparent; }
+#ai-msgs::-webkit-scrollbar-thumb { background: var(--ai-border); border-radius: 4px; }
+
+/* Bubbles */
+.ai-bubble {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ai-bubble.bot {
+  background: var(--ai-msg-bg);
+  color: var(--ai-msg-txt);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.ai-bubble.user {
+  background: var(--ai-user-bg);
+  color: var(--ai-user-txt);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+.ai-bubble.error {
+  background: rgba(239,68,68,.1);
+  color: #dc2626;
+  align-self: flex-start;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Detail text below bubble */
+.ai-detail {
+  font-size: 11px;
+  color: var(--ai-muted);
+  margin-top: 5px;
+  padding: 0 2px;
+  align-self: flex-start;
+  max-width: 88%;
+  line-height: 1.5;
+}
+
+/* Cost table */
+.ai-cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ai-cost-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding: 5px 8px;
+  background: var(--ai-table-hd);
+  border-bottom: 1px solid var(--ai-border);
+}
+.ai-cost-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--ai-border);
+  color: var(--ai-msg-txt);
+}
+.ai-cost-table tr:last-child td { border-bottom: none; }
+.ai-cost-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ai-accent);
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--ai-table-hd);
+  border-radius: 6px;
+}
+
+/* Source chip */
+.ai-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  padding: 2px 7px; border-radius: 10px; margin-top: 5px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; gap: 5px; align-items: center;
+  padding: 12px 14px;
+  background: var(--ai-msg-bg);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+.ai-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ai-muted);
+  animation: ai-bounce .9s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .15s; }
+.ai-typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes ai-bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ── */
+#ai-footer {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--ai-border);
+  flex-shrink: 0;
+  background: var(--ai-win-bg);
+}
+#ai-input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--ai-input-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: 10px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color .15s;
+}
+#ai-input-wrap:focus-within { border-color: var(--ai-accent); }
+
+#ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ai-msg-txt);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  font-family: inherit;
+}
+#ai-input::placeholder { color: var(--ai-muted); }
+
+#ai-send {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: none; cursor: pointer; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f6ef7, #7c5af5);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s, transform .1s;
+}
+#ai-send:hover  { opacity: .9; }
+#ai-send:active { transform: scale(.93); }
+#ai-send:disabled { opacity: .4; cursor: default; }
+
+/* ── Quick suggestion chips ── */
+#ai-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.ai-sug {
+  font-size: 11px; padding: 5px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.2); cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+  font-weight: 500;
+}
+.ai-sug:hover { background: rgba(79,110,247,.2); }
+
+/* ── Follow-up suggestion chips ── */
+.ai-follow-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 0 2px; margin-top: 6px;
+  align-self: flex-start; max-width: 96%;
+}
+.ai-follow-label {
+  width: 100%; font-size: 10px; color: var(--ai-muted);
+  font-weight: 600; letter-spacing: .03em; margin-bottom: 2px;
+}
+.ai-follow-chip {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.08); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.18); cursor: pointer;
+  transition: background .15s, border-color .15s; white-space: nowrap;
+  font-weight: 500; display: inline-flex; align-items: center; gap: 4px;
+}
+.ai-follow-chip::before { content: '↪'; font-size: 10px; opacity: .7; }
+.ai-follow-chip:hover {
+  background: rgba(79,110,247,.18); border-color: rgba(79,110,247,.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ai-win { transition: none; }
+  .ai-typing span { animation: none; opacity: .7; }
+  #ai-dot { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Language: follows the same document.documentElement.lang set by applyI18n() ── */
+  function _lang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'tr';
+  }
+
+  const WELCOME = {
+    tr: 'Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.\n\nÖrnekler:',
+    en: 'Hello! You can ask questions about your infrastructure data.\n\nExamples:',
+  };
+
+  /* ── Static widget chrome strings ── */
+  const WI18N = {
+    tr: {
+      title:        'AI Asistan',
+      openLabel:    'AI Asistanı aç',
+      statusIdle:   'Altyapı verilerini analiz ediyor',
+      close:        'Kapat',
+      inputPh:      'Bir soru sorun…',
+      inputAria:    'Soru girin',
+      sendTitle:    'Gönder (Enter)',
+      sendAria:     'Gönder',
+      footerNote:   'Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder',
+      followLabel:  'Devam edebilirsiniz:',
+      serverError:  'Sunucu hatası (',
+      connError:    'Bağlantı hatası: ',
+      costHeaders:  ['Bileşen', 'Miktar', 'Tutar'],
+      chipCost:     'Maliyet Hesabı',
+      chipVcenter:  'vCenter Verisi',
+    },
+    en: {
+      title:        'AI Assistant',
+      openLabel:    'Open AI Assistant',
+      statusIdle:   'Analyzing infrastructure data',
+      close:        'Close',
+      inputPh:      'Ask a question…',
+      inputAria:    'Enter your question',
+      sendTitle:    'Send (Enter)',
+      sendAria:     'Send',
+      footerNote:   'Answers using your real infrastructure data &nbsp;·&nbsp; Enter = send',
+      followLabel:  'You can continue:',
+      serverError:  'Server error (',
+      connError:    'Connection error: ',
+      costHeaders:  ['Component', 'Quantity', 'Amount'],
+      chipCost:     'Cost Calculation',
+      chipVcenter:  'vCenter Data',
+    },
+  };
+  function _wt(key) { return (WI18N[_lang()] || WI18N.tr)[key]; }
+
+  /* ── Sayfaya özel hazır sorular — anahtar, sayfanın URL path'idir (en spesifik eşleşme kazanır). ── */
+  const SUGGESTION_MAP = {
+    tr: {
+      '/vcenter':                ['Kaç VM var?', 'Kapalı VM\'ler neler?', 'Tag\'siz VM\'ler neler?', 'En fazla RAM kullanan 10 VM?'],
+      '/rvtools':                ['Kaç VM var?', 'Snapshot var mı?', 'En fazla RAM kullanan 10 VM?', 'Kapalı VM\'ler neler?'],
+      '/licenses':               ['Lisans envanteri', 'Süresi dolmuş lisanslar?', '30 gün içinde dolacak lisanslar?'],
+      '/operations':             ['Bekleyen operasyonlar', 'Başarısız işlemler?', 'Bugün tamamlanan işlemler?'],
+      '/calculator':             ['Teklifler neler?', '32 GB RAM, 8 CPU, 500 GB disk maliyeti?'],
+      '/vm-host':                ['ESXi host listesi', 'Hangi host\'ta en çok VM var?'],
+      '/physical':               ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/opmanager':              ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/reports/notags-vms':     ['Tag\'siz VM\'ler neler?'],
+      '/reports/poc-vms':        ['POC VM\'ler neler?'],
+      '/reports/willdelete-vms': ['Silinecek VM\'ler neler?'],
+      '/reports/poweredoff-vms': ['Kapalı VM\'ler neler?'],
+    },
+    en: {
+      '/vcenter':                ['How many VMs are there?', 'Which VMs are powered off?', 'Which VMs are untagged?', 'Top 10 VMs by RAM usage?'],
+      '/rvtools':                ['How many VMs are there?', 'Are there any snapshots?', 'Top 10 VMs by RAM usage?', 'Which VMs are powered off?'],
+      '/licenses':               ['License inventory', 'Which licenses have expired?', 'Which licenses expire within 30 days?'],
+      '/operations':             ['Pending operations', 'Failed operations?', 'Operations completed today?'],
+      '/calculator':             ['What are the quotes?', 'Cost for 32 GB RAM, 8 CPU, 500 GB disk?'],
+      '/vm-host':                ['ESXi host list', 'Which host has the most VMs?'],
+      '/physical':               ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/opmanager':              ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/reports/notags-vms':     ['Which VMs are untagged?'],
+      '/reports/poc-vms':        ['What are the POC VMs?'],
+      '/reports/willdelete-vms': ['Which VMs are marked for deletion?'],
+      '/reports/poweredoff-vms': ['Which VMs are powered off?'],
+    },
+  };
+  const DASHBOARD_SUGGESTIONS = {
+    tr: ['Altyapımı özetle', 'Kaç VM var?', 'Bekleyen operasyonlar', 'Süresi dolmuş lisanslar?'],
+    en: ['Summarize my infrastructure', 'How many VMs are there?', 'Pending operations', 'Which licenses have expired?'],
+  };
+  const DEFAULT_SUGGESTIONS = {
+    tr: [
+      'Kaç VM var?',
+      'Tag\'siz VM\'ler neler?',
+      'Lisans envanteri',
+      'Bekleyen operasyonlar',
+      'Fiziksel cihaz durumu',
+      'Teklifler neler?',
+      'ESXi host listesi',
+      'Silinecek VM\'ler?',
+      'Süresi dolmuş lisanslar?',
+      '32 GB RAM, 8 CPU, 500 GB disk maliyeti?',
+    ],
+    en: [
+      'How many VMs are there?',
+      'Which VMs are untagged?',
+      'License inventory',
+      'Pending operations',
+      'Physical device status',
+      'What are the quotes?',
+      'ESXi host list',
+      'Which VMs are marked for deletion?',
+      'Which licenses have expired?',
+      'Cost for 32 GB RAM, 8 CPU, 500 GB disk?',
+    ],
+  };
+
+  /* ── Sayfaya göre hazır soru listesini seç ── */
+  function _pageSuggestions() {
+    const root = document.getElementById('ai-root');
+    const path = (root && root.dataset.page) || '/';
+    const lang = _lang();
+    if (path === '/') return DASHBOARD_SUGGESTIONS[lang];
+    const map = SUGGESTION_MAP[lang];
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      if (path === k || path.startsWith(k + '/')) return map[k];
+    }
+    return DEFAULT_SUGGESTIONS[lang];
+  }
+
+  /* ── Apply static chrome translations ── */
+  function _applyWidgetI18n() {
+    const btn = document.getElementById('ai-btn');
+    if (btn) { btn.title = _wt('title'); btn.setAttribute('aria-label', _wt('openLabel')); }
+    const win = document.getElementById('ai-win');
+    if (win) win.setAttribute('aria-label', _wt('title'));
+    const titleTxt = document.getElementById('ai-title-txt');
+    if (titleTxt) titleTxt.textContent = _wt('title');
+    const statusTxt = document.getElementById('ai-status-txt');
+    if (statusTxt) statusTxt.textContent = _wt('statusIdle');
+    const closeBtn = document.getElementById('ai-close-btn');
+    if (closeBtn) closeBtn.title = _wt('close');
+    const inp = document.getElementById('ai-input');
+    if (inp) { inp.placeholder = _wt('inputPh'); inp.setAttribute('aria-label', _wt('inputAria')); }
+    const sendBtn = document.getElementById('ai-send');
+    if (sendBtn) { sendBtn.title = _wt('sendTitle'); sendBtn.setAttribute('aria-label', _wt('sendAria')); }
+    const footNote = document.getElementById('ai-footer-note');
+    if (footNote) footNote.innerHTML = _wt('footerNote');
+  }
+
+  let _open = false;
+  let _busy = false;
+
+  /* ── Bold markdown (**text**) → <strong> ── */
+  function _md(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+  }
+  function _e(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Scroll to bottom ── */
+  function _scroll() {
+    const m = document.getElementById('ai-msgs');
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  /* ── Follow-up suggestions after bot response ── */
+  function _addFollowSuggestions(suggestions) {
+    if (!suggestions || !suggestions.length) return;
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const row = document.createElement('div');
+    row.className = 'ai-follow-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'ai-follow-label';
+    lbl.textContent = _wt('followLabel');
+    row.appendChild(lbl);
+    for (const s of suggestions) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-follow-chip';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      row.appendChild(btn);
+    }
+    msgs.appendChild(row);
+    _scroll();
+  }
+
+  /* ── Append message bubble ── */
+  function _addBubble(role, html, detail, extra) {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    // Remove initial suggestions and any follow-up rows
+    const sug = msgs.querySelector('#ai-suggestions');
+    if (sug) sug.remove();
+    msgs.querySelectorAll('.ai-follow-row').forEach(el => el.remove());
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column';
+
+    const bbl = document.createElement('div');
+    bbl.className = `ai-bubble ${role}`;
+    bbl.innerHTML = html;
+    wrap.appendChild(bbl);
+
+    if (detail) {
+      const det = document.createElement('div');
+      det.className = 'ai-detail';
+      det.innerHTML = _md(detail);
+      wrap.appendChild(det);
+    }
+    if (extra) {
+      const ex = document.createElement('div');
+      ex.innerHTML = extra;
+      wrap.appendChild(ex);
+    }
+    msgs.appendChild(wrap);
+    _scroll();
+    return wrap;
+  }
+
+  /* ── Typing indicator ── */
+  function _showTyping() {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return null;
+    const el = document.createElement('div');
+    el.id = 'ai-typing-el';
+    el.className = 'ai-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    _scroll();
+    return el;
+  }
+  function _removeTyping() {
+    const el = document.getElementById('ai-typing-el');
+    if (el) el.remove();
+  }
+
+  /* ── Render bot response ── */
+  function _renderBot(data) {
+    const type = data.type || '';
+
+    if (type === 'cost' && data.table) {
+      const [hComp, hQty, hAmt] = _wt('costHeaders');
+      let tbl = `<table class="ai-cost-table">
+        <thead><tr><th>${_e(hComp)}</th><th>${_e(hQty)}</th><th>${_e(hAmt)}</th></tr></thead><tbody>`;
+      for (const [comp, qty, price] of data.table) {
+        tbl += `<tr><td>${_e(comp)}</td><td>${_e(qty)}</td><td style="text-align:right;font-weight:600">${_e(price)}</td></tr>`;
+      }
+      tbl += `</tbody></table>`;
+      if (data.total) {
+        tbl += `<div class="ai-cost-total">${_e(data.total)}</div>`;
+      }
+      _addBubble('bot', _md(data.answer) + tbl, '', _chip(_wt('chipCost'), 'calculator'));
+      return;
+    }
+
+    if (type === 'vm_count' || type === 'vm_filter') {
+      const detail = data.detail || '';
+      _addBubble('bot', _md(data.answer), detail, _chip(_wt('chipVcenter'), 'vcenter'));
+      return;
+    }
+
+    if (type === 'llm') {
+      const model = data.model ? _e(data.model) : 'AI';
+      _addBubble('bot', _md(data.answer), '', _chip(model, 'llm'));
+      return;
+    }
+
+    if (type === 'error') {
+      _addBubble('error', _md(data.answer), '', '');
+      return;
+    }
+
+    // cost_hint / unknown / fallback
+    _addBubble('bot', _md(data.answer), '', '');
+  }
+
+  function _chip(label, kind) {
+    const icons = {
+      vcenter:    '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>',
+      calculator: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>',
+      llm:        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
+    };
+    return `<span class="ai-chip">${icons[kind] || ''} ${_e(label)}</span>`;
+  }
+
+  /* ── Send question ── */
+  async function aiSend() {
+    if (_busy) return;
+    const inp = document.getElementById('ai-input');
+    const q   = (inp.value || '').trim();
+    if (!q) return;
+
+    inp.value = '';
+    inp.style.height = '';
+    _addBubble('user', _e(q), '', '');
+
+    _busy = true;
+    document.getElementById('ai-send').disabled = true;
+    const tyEl = _showTyping();
+
+    try {
+      const r = await fetch('/ai/chat', {
+        method:  'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:    JSON.stringify({ q, lang: _lang() }),
+      });
+      _removeTyping();
+      if (!r.ok) { _addBubble('error', _wt('serverError') + r.status + ')', '', ''); return; }
+      const data = await r.json();
+      _renderBot(data);
+      _addFollowSuggestions(data.suggestions || []);
+    } catch (err) {
+      _removeTyping();
+      _addBubble('error', _wt('connError') + _e(err.message), '', '');
+    } finally {
+      _busy = false;
+      document.getElementById('ai-send').disabled = false;
+      inp.focus();
+    }
+  }
+
+  /* ── Toggle open/close ── */
+  function aiToggle() {
+    _open = !_open;
+    const win = document.getElementById('ai-win');
+    const btn = document.getElementById('ai-btn');
+    win.classList.toggle('visible', _open);
+    win.setAttribute('aria-hidden', String(!_open));
+    btn.setAttribute('aria-expanded', String(_open));
+    btn.classList.toggle('open', _open);
+    document.getElementById('ai-btn-open').style.display  = _open ? 'none' : '';
+    document.getElementById('ai-btn-close').style.display = _open ? '' : 'none';
+    document.getElementById('ai-dot').style.display = 'none';
+    if (_open) {
+      document.getElementById('ai-input').focus();
+      _scroll();
+    }
+  }
+
+  /* ── Textarea auto-resize ── */
+  function aiResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  /* ── Enter key handling ── */
+  function aiKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      aiSend();
+    }
+  }
+
+  /* ── Build suggestions ── */
+  function _buildSuggestions() {
+    const div = document.createElement('div');
+    div.id = 'ai-suggestions';
+    for (const s of _pageSuggestions()) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-sug';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      div.appendChild(btn);
+    }
+    return div;
+  }
+
+  /* ── Init welcome ── */
+  function _init() {
+    _applyWidgetI18n();
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const bbl = document.createElement('div');
+    bbl.className = 'ai-bubble bot';
+    bbl.innerHTML = _md(WELCOME[_lang()]);
+    msgs.appendChild(bbl);
+    msgs.appendChild(_buildSuggestions());
+
+    // Check Ollama status quietly
+    fetch('/ai/status').then(r => r.json()).then(d => {
+      if (d.ollama && d.model) {
+        const txt = document.getElementById('ai-status-txt');
+        if (txt) txt.textContent = `Ollama · ${d.model}`;
+      }
+    }).catch(() => {});
+
+    // Show unread dot if window is closed after 1.5 s
+    setTimeout(() => {
+      if (!_open) document.getElementById('ai-dot').style.display = '';
+    }, 1500);
+  }
+
+  // Expose to HTML inline handlers
+  window.aiToggle = aiToggle;
+  window.aiSend   = aiSend;
+  window.aiResize = aiResize;
+  window.aiKey    = aiKey;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+})();
+</script>
+
+</body></html>

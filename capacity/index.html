@@ -1,0 +1,2041 @@
+<!DOCTYPE html><html lang="tr" data-theme="light"><head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kapasite Trend Analizi — PS Portal</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css?v=1784405152">
+<script>
+(function(){
+  function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  var t=_getCookie('ps_theme')||'light';
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+  window._PS_LANG=_getCookie('ps_lang')||'tr';
+  window._PS_TZ=_getCookie('ps_tz')||'Europe/Istanbul';
+})();
+</script>
+</head>
+<body>
+
+<div class="app">
+  
+
+
+
+
+<nav class="sidebar" id="sidebar">
+  <a href="/" class="sidebar-logo" style="display:block;text-decoration:none">
+    <img src="/static/default-logo.png" alt="PS Portal" class="logo-img logo-img-sm" id="sidebar-logo-img">
+  </a>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <a href="/daily-check" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+    <span data-i18n="nav.dailycheck">Günlük Kontrol</span>
+  </a>
+  
+
+  
+  
+  
+
+  
+  <div class="nav-section-label" data-i18n="nav.section.infra">Altyapı</div>
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.virt">Sanallaştırma</div>
+
+  
+  <a href="/vcenter" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+    <span data-i18n="nav.vcenter">vCenter</span>
+  </a>
+  
+
+  
+  <a href="/vm-host" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+    <span data-i18n="nav.vmhost">VM-Host Eşleme</span>
+  </a>
+  
+
+  
+  <a href="/rvtools" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.rvtools">RVTools</span>
+  </a>
+  <a href="/capacity" class="nav-item active" style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+    <span data-i18n="nav.capacity">Kapasite Trend Analizi</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.monitor">İzleme</div>
+
+  
+  <a href="/physical" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+    <span data-i18n="nav.physical">Fiziksel Mimari</span>
+  </a>
+  
+
+  
+  <a href="/delinea" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <span data-i18n="nav.delinea">Delinea PAM</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.dataprot">Veri Koruma</div>
+
+  
+  <a href="/itanalytics" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    <span data-i18n="nav.itanalytics">IT Analytics</span>
+  </a>
+  
+
+  
+  <a href="/netbackup" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    <span data-i18n="nav.netbackup">NetBackup</span>
+  </a>
+  
+
+  
+  <a href="/zerto" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-9 9M12 2h9v9"></path><path d="M3 22l9-9M12 22H3v-9"></path></svg>
+    <span data-i18n="nav.zerto">Zerto</span>
+  </a>
+  
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.mgmt">Yönetim</div>
+  
+
+  
+  <a href="/operations" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+    <span data-i18n="nav.operations">Operasyon</span>
+  </a>
+  
+
+  
+  <a href="/calculator" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+    <span data-i18n="nav.calculator">Teklifler</span>
+  </a>
+  
+
+  
+  <a href="/finops" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+    <span data-i18n="nav.finops">Maliyet Optimizasyonu</span>
+  </a>
+  
+
+  
+  <a href="/licenses" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 4v5M15 4v5M7 14h4M7 17h6"></path></svg>
+    <span data-i18n="nav.licenses">Lisans Yönetimi</span>
+  </a>
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
+
+  
+  <a href="/reports" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.reports">Raporlar</span>
+  </a>
+  
+
+  
+  <a href="/jobs" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span data-i18n="nav.jobs">Zamanlanmış Görevler</span>
+  </a>
+  
+  
+
+</nav>
+  <div class="main">
+    
+
+
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menüyü aç/kapat">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <!-- Global Arama — sadece vCenter yetkisi olanlara göster -->
+  
+  
+  <div class="search-wrap" id="search-wrap" style="max-width:400px">
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="search-input" class="search-input" type="text" placeholder="VM ara… (ad, IP, DNS, etiket)" autocomplete="off" spellcheck="false" oninput="onSearch(this.value)" onkeydown="onSearchKey(event)" onfocus="showDrop()">
+      <kbd class="search-kbd" id="search-kbd">Ctrl K</kbd>
+    </div>
+    <div class="search-drop" id="search-drop" style="display:none"></div>
+  </div>
+  <a href="/cmdb" class="btn-detail-search ">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span data-i18n="nav.cmdb">Detay arama</span>
+  </a>
+  
+
+  <div class="topbar-right">
+    <a href="/docs" title="Dokümantasyon" class="btn-docs">🛈</a>
+    <div class="topbar-user-chip" id="user-chip" onclick="toggleUserMenu()" style="cursor:pointer;user-select:none">
+      <div class="topbar-avatar">A</div>
+      <div class="topbar-user-info">
+        <div class="topbar-user-name">Admin</div>
+        <div class="topbar-user-role" data-i18n="user.role.admin">Yönetici</div>
+      </div>
+      <svg style="margin-left:4px;color:var(--text-dim);flex-shrink:0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div class="user-dropdown" id="user-dropdown">
+      <div class="ud-brand">
+        <img src="/static/default-logo.png" alt="PS Portal" class="ud-brand-logo">
+      </div>
+      <div class="ud-product">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+        <span class="ud-product-name">PS Portal</span>
+        <span class="ud-product-version">v1.34</span>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-userinfo">
+        <div class="ud-avatar">A</div>
+        <div class="ud-userinfo-text">
+          <div class="ud-username">Admin</div>
+          <div class="ud-userhandle">Admin</div>
+        </div>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      
+      
+      <a href="/settings" class="user-dropdown-item user-dropdown-item--normal" style="position:relative">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="nav.admin">Admin Panel</span>
+        
+      </a>
+      
+      <a href="/user/settings" class="user-dropdown-item user-dropdown-item--normal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="user.menu.settings">Kullanıcı Ayarları</span>
+      </a>
+      <a href="/logout" class="user-dropdown-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span data-i18n="user.menu.logout">Çıkış Yap</span>
+      </a>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-theme-row">
+        <span class="ud-theme-label" data-i18n="user.menu.theme">Görünüm</span>
+        <div class="ud-theme-toggle" id="ud-theme-toggle">
+          <button type="button" class="ud-theme-btn ud-theme-btn--active" data-mode="light" onclick="quickSetTheme('light')" title="Açık">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="dark" onclick="quickSetTheme('dark')" title="Koyu">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="auto" onclick="quickSetTheme('auto')" title="Sistem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleUserMenu() {
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('user-chip').contains(e.target)) {
+    document.getElementById('user-dropdown').classList.remove('open');
+  }
+});
+
+/* ── Hızlı görünüm (tema) değiştirici ────────────────────── */
+function _udGetCookie(n) {
+  var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)');
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function _udSyncThemeButtons() {
+  var current = _udGetCookie('ps_theme') || 'light';
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === current);
+  });
+}
+async function quickSetTheme(mode) {
+  var root = document.documentElement;
+  if (mode === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === mode);
+  });
+  try {
+    await fetch('/user/settings/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        language: window._PS_LANG || 'tr',
+        timezone: window._PS_TZ || 'Europe/Istanbul',
+        theme: mode,
+      }),
+    });
+  } catch (e) {}
+}
+_udSyncThemeButtons();
+</script>
+
+<footer class="app-footer">PS Portal © 2026</footer>
+
+<style>
+.btn-detail-search {
+  display: flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 14px; margin-right: 12px; flex-shrink: 0;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text-muted); font-size: 13px;
+  text-decoration: none; white-space: nowrap;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.btn-detail-search:hover,
+.btn-detail-search.active { color: var(--accent); border-color: var(--accent); background: var(--bg-hover); }
+
+.search-wrap {
+  flex: 1; max-width: 540px; margin: 0 24px; position: relative;
+}
+.search-bar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0 12px; height: 38px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.search-bar:focus-within {
+  border-color: var(--accent, #4a6ef5);
+  box-shadow: 0 0 0 3px rgba(74,110,245,.15);
+}
+.search-icon   { color: var(--text-dim); flex-shrink: 0; }
+.search-input  {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-size: 14px; min-width: 0;
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-kbd {
+  font-size: 11px; color: var(--text-dim);
+  background: var(--bg-hover, #1e2130); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2px 6px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Dropdown */
+.search-drop {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.1);
+  max-height: 440px; overflow-y: auto; z-index: 9999;
+}
+.search-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-dim); padding: 12px 16px 6px; border-bottom: 1px solid var(--border);
+}
+.search-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; cursor: pointer; transition: background .1s;
+}
+.search-item:hover, .search-item.active { background: var(--bg-hover); }
+.search-item-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.si-on  { background: var(--badge-ok-bg);     color: var(--badge-ok-color); }
+.si-off { background: var(--badge-danger-bg); color: var(--badge-danger-color); }
+.search-item-body { flex: 1; min-width: 0; }
+.search-item-name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-item-meta { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.search-item-vc   { font-size: 11px; color: var(--text-dim); white-space: nowrap; flex-shrink: 0; background: var(--bg-hover); border-radius: 5px; padding: 2px 7px; }
+.search-empty     { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+.search-loading   { padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+
+<script>
+// Ctrl+K / Cmd+K ile arama çubuğuna focus
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+    showDrop();
+  }
+  if (e.key === 'Escape') closeDrop();
+});
+
+document.addEventListener('click', e => {
+  if (!document.getElementById('search-wrap').contains(e.target)) closeDrop();
+});
+
+let _searchTimer = null;
+let _activeIdx = -1;
+
+function showDrop() {
+  const drop = document.getElementById('search-drop');
+  const inp  = document.getElementById('search-input');
+  if (inp.value.length >= 2) drop.style.display = 'block';
+  document.getElementById('search-kbd').style.display = 'none';
+}
+
+function closeDrop() {
+  document.getElementById('search-drop').style.display = 'none';
+  document.getElementById('search-kbd').style.display = '';
+  _activeIdx = -1;
+}
+
+function onSearch(val) {
+  clearTimeout(_searchTimer);
+  if (val.length < 2) {
+    document.getElementById('search-drop').style.display = 'none';
+    return;
+  }
+  const drop = document.getElementById('search-drop');
+  drop.innerHTML = '<div class="search-loading">Aranıyor…</div>';
+  drop.style.display = 'block';
+  _searchTimer = setTimeout(() => doSearch(val), 280);
+}
+
+async function doSearch(q) {
+  try {
+    const resp = await fetch('/search?q=' + encodeURIComponent(q));
+    const data = await resp.json();
+    renderResults(data.results, q);
+  } catch(e) {
+    document.getElementById('search-drop').innerHTML =
+      '<div class="search-empty">Arama hatası.</div>';
+  }
+}
+
+function powerIcon(state) {
+  if (state === 'poweredOn')
+    return '<div class="search-item-icon si-on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
+  return '<div class="search-item-icon si-off"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>';
+}
+
+function highlight(text, q) {
+  if (!text) return '';
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx)
+    + '<mark style="background:#dbeafe;color:#1d4ed8;border-radius:3px;padding:0 1px;font-weight:700">'
+    + text.slice(idx, idx + q.length)
+    + '</mark>'
+    + text.slice(idx + q.length);
+}
+
+function renderResults(results, q) {
+  const drop = document.getElementById('search-drop');
+  if (!results.length) {
+    drop.innerHTML = '<div class="search-empty">Sonuç bulunamadı.</div>';
+    return;
+  }
+  let html = `<div class="search-section-label">Sanal Makineler (${results.length})</div>`;
+  results.forEach((r, i) => {
+    const meta = [
+      r.ip_address, r.dns_name, r.guest_os
+    ].filter(Boolean).join(' · ');
+    html += `<div class="search-item" data-idx="${i}" onclick="goToVM('${encodeURIComponent(r.vm_name)}')">
+      ${powerIcon(r.power_state)}
+      <div class="search-item-body">
+        <div class="search-item-name">${highlight(r.vm_name, q)}</div>
+        <div class="search-item-meta">${highlight(meta, q)}</div>
+      </div>
+      <span class="search-item-vc">${r.vcenter.split('.')[0]}</span>
+    </div>`;
+  });
+  drop.innerHTML = html;
+  _activeIdx = -1;
+}
+
+function goToVM(name) {
+  closeDrop();
+  document.getElementById('search-input').value = '';
+  window.location.href = '/vcenter?highlight=' + name;
+}
+
+function onSearchKey(e) {
+  const items = document.querySelectorAll('.search-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    _activeIdx = Math.min(_activeIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    _activeIdx = Math.max(_activeIdx - 1, 0);
+  } else if (e.key === 'Enter' && _activeIdx >= 0) {
+    items[_activeIdx].click();
+    return;
+  } else return;
+  items.forEach((el, i) => el.classList.toggle('active', i === _activeIdx));
+  items[_activeIdx]?.scrollIntoView({ block: 'nearest' });
+}
+</script>
+    <div class="content">
+
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Kapasite Trend Analizi</h2>
+          <p class="page-sub">RVTools arşivine göre sürekli büyüyen sunucular ve gelecek kaynak ihtiyacı tahmini</p>
+        </div>
+        <button class="btn-ghost" onclick="loadData(true)" style="display:flex;align-items:center;gap:6px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-.18-4.57"></path></svg>
+          Yenile
+        </button>
+      </div>
+
+      <div class="settings-card" style="margin-bottom:16px;padding:12px 18px;font-size:12px;color:var(--text-dim)">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Tahminler, her sunucunun geçmiş RAM/disk/CPU değişikliklerine uygulanan <strong>doğrusal (lineer) regresyon</strong> ile hesaplanır — mevcut büyüme hızının aynen devam edeceği varsayılır.
+        Yalnızca en az 21 gündür izlenen, en az 2 ayrı değişikliğe sahip ve büyüme trendi tutarlı (R² ≥ 0.25) sunucular dahil edilir. Zerto VRA sistem VM'leri ve restore-test VM'leri hariç tutulur.
+        <strong>2-3 yıllık tahminler yalnızca ~1 yıllık arşiv verisine dayandığından geniş bir ekstrapolasyondur — kesin planlama kararlarından önce doğrulanmalıdır.</strong>
+      </div>
+
+      <div id="mail-result" style="display:none;margin-bottom:16px"></div>
+
+      <div class="metrics-grid" style="margin-bottom:20px">
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#111c38;color:#4a6ef5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">İzlenen Sunucu</div>
+            <div class="metric-value" id="stat-tracked">48</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#0e1a2b;color:#4a9eff">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">Analize Uygun (21+ gün)</div>
+            <div class="metric-value" id="stat-eligible">48</div>
+          </div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#0b1f13;color:#2ecc71">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">Sürekli Büyüyen Sunucu</div>
+            <div class="metric-value" id="stat-growing">14</div>
+          </div>
+          <div class="metric-badge badge-warn">Kapasite riski</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon" style="background:#1f1608;color:#f0a500">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-label">Datacenter Sayısı</div>
+            <div class="metric-value" id="stat-dcs">1</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="loading-wrap" style="display: none;">
+        <div class="settings-card" style="margin-bottom:16px">
+          <div class="vc-skeleton-wrap">
+            <div class="vc-skeleton"></div><div class="vc-skeleton" style="width:85%"></div>
+            <div class="vc-skeleton" style="width:70%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="data-wrap" style="display: block;">
+
+        <!-- Datacenter bazlı kapasite tahmini -->
+        <div class="settings-card" style="margin-bottom:16px">
+          <div class="settings-card-head">
+            <div class="settings-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+              Datacenter Bazlı Kapasite Tahmini
+            </div>
+            <div style="display:flex;gap:6px">
+              <button class="cap-metric-btn active" id="btn-metric-ram" onclick="switchMetric('ram')">RAM</button>
+              <button class="cap-metric-btn" id="btn-metric-disk" onclick="switchMetric('disk')">Disk</button>
+              <button class="cap-metric-btn" id="btn-metric-cpu" onclick="switchMetric('cpu')">CPU</button>
+            </div>
+          </div>
+          <div style="overflow-x:auto">
+            <table class="pam-table" id="dc-table">
+              <thead><tr>
+                <th>Datacenter</th><th>Sunucu</th><th>Büyüyen</th><th>Güncel</th>
+                <th>1 Ay</th><th>3 Ay</th><th>6 Ay</th><th>1 Yıl</th><th>2 Yıl</th><th>3 Yıl</th>
+              </tr></thead>
+              <tbody>
+    <tr>
+      <td><strong>Trisops-DC1</strong></td>
+      <td>48</td>
+      <td><span class="cap-r2-badge cap-r2-hi">14</span></td>
+      <td><strong>672.0 GB</strong></td>
+      <td>672.0 GB</td>
+      <td>672.0 GB</td>
+      <td>672.0 GB</td>
+      <td>672.0 GB</td>
+      <td>672.0 GB</td>
+      <td>672.0 GB</td>
+    </tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Sürekli büyüyen sunucular -->
+        <div class="settings-card">
+          <div class="settings-card-head">
+            <div class="settings-card-title">
+              Sürekli Büyüyen Sunucular
+              <span id="vm-count" class="perm-badge" style="margin-left:8px">14 sunucu</span>
+            </div>
+          </div>
+          <div style="padding:10px 20px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--border)">
+            <input type="text" id="vm-filter" placeholder="Filtrele (sunucu adı, datacenter…)" oninput="filterVms(this.value)" style="flex:1;background:var(--card-bg);border:1px solid var(--border);border-radius:6px;
+                          padding:6px 12px;color:var(--text);font-size:13px">
+          </div>
+          <div style="overflow-x:auto;max-height:560px;overflow-y:auto">
+            <table class="pam-table" id="vm-table">
+              <thead><tr>
+                <th>Sunucu</th><th>Datacenter</th><th>Güncel RAM</th><th>RAM/Ay</th>
+                <th>Güncel Disk</th><th>Disk/Ay</th><th>Güncel CPU</th><th>CPU/Yıl</th>
+                <th>Güven</th><th>İzlem</th><th></th>
+              </tr></thead>
+              <tbody>
+    <tr>
+      <td><strong>queue02-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>32.0 GB</td>
+      <td>—</td>
+      <td>620.0 GB</td>
+      <td><span style="color:#2ecc71">+310.00 GB</span></td>
+      <td>8.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.60</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('queue02-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>queue01-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>16.0 GB</td>
+      <td>—</td>
+      <td>580.0 GB</td>
+      <td><span style="color:#2ecc71">+290.00 GB</span></td>
+      <td>8.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-mid" title="Disk R²">D0.57</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('queue01-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>mon02-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>4.0 GB</td>
+      <td>—</td>
+      <td>580.0 GB</td>
+      <td><span style="color:#2ecc71">+290.00 GB</span></td>
+      <td>8.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-mid" title="Disk R²">D0.57</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('mon02-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>db01-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>16.0 GB</td>
+      <td>—</td>
+      <td>540.0 GB</td>
+      <td><span style="color:#2ecc71">+270.00 GB</span></td>
+      <td>2.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-mid" title="Disk R²">D0.54</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('db01-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>app02-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>8.0 GB</td>
+      <td>—</td>
+      <td>540.0 GB</td>
+      <td><span style="color:#2ecc71">+270.00 GB</span></td>
+      <td>4.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-mid" title="Disk R²">D0.54</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('app02-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>cache03-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>8.0 GB</td>
+      <td>—</td>
+      <td>540.0 GB</td>
+      <td><span style="color:#2ecc71">+270.00 GB</span></td>
+      <td>2.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-mid" title="Disk R²">D0.54</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('cache03-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>dc02-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>16.0 GB</td>
+      <td>—</td>
+      <td>300.0 GB</td>
+      <td><span style="color:#2ecc71">+150.00 GB</span></td>
+      <td>4.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.67</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('dc02-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>dc01-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>2.0 GB</td>
+      <td>—</td>
+      <td>280.0 GB</td>
+      <td><span style="color:#2ecc71">+140.00 GB</span></td>
+      <td>2.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.64</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('dc01-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>queue03-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>4.0 GB</td>
+      <td>—</td>
+      <td>280.0 GB</td>
+      <td><span style="color:#2ecc71">+140.00 GB</span></td>
+      <td>2.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.64</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('queue03-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>db03-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>16.0 GB</td>
+      <td>—</td>
+      <td>260.0 GB</td>
+      <td><span style="color:#2ecc71">+130.00 GB</span></td>
+      <td>2.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.62</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('db03-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>file01-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>16.0 GB</td>
+      <td>—</td>
+      <td>240.0 GB</td>
+      <td><span style="color:#2ecc71">+120.00 GB</span></td>
+      <td>4.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-mid" title="Disk R²">D0.59</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('file01-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>print01-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>4.0 GB</td>
+      <td>—</td>
+      <td>200.0 GB</td>
+      <td><span style="color:#2ecc71">+100.00 GB</span></td>
+      <td>8.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.73</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('print01-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>web02-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>32.0 GB</td>
+      <td>—</td>
+      <td>180.0 GB</td>
+      <td><span style="color:#2ecc71">+90.00 GB</span></td>
+      <td>8.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.71</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('web02-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr>
+    <tr>
+      <td><strong>auth03-trisops</strong></td>
+      <td style="color:var(--text-dim)">Trisops-DC1</td>
+      <td>4.0 GB</td>
+      <td>—</td>
+      <td>140.0 GB</td>
+      <td><span style="color:#2ecc71">+70.00 GB</span></td>
+      <td>2.0 vCPU</td>
+      <td>—</td>
+      <td>
+        
+        <span class="cap-r2-badge cap-r2-hi" title="Disk R²">D0.64</span>
+        
+      </td>
+      <td style="color:var(--text-dim)">60 gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('auth03-trisops')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        Grafik</a></td>
+    </tr></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Detay Grafik Modal -->
+<div id="cap-modal-bg" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+     z-index:1000;align-items:center;justify-content:center">
+  <div style="background:var(--bg-elevated,#fff);border-radius:12px;width:760px;max-width:95vw;
+              max-height:85vh;display:flex;flex-direction:column;
+              box-shadow:0 20px 60px rgba(0,0,0,.3);border:1px solid var(--border)">
+    <div style="padding:16px 22px;border-bottom:1px solid var(--border);
+                display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+      <h3 id="cap-modal-title" style="margin:0;font-size:15px;color:var(--text-primary)">Sunucu Trend Detayı</h3>
+      <button onclick="closeCapModal()" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-dim)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <div style="padding:20px 22px;overflow-y:auto">
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="cap-metric-btn active" id="modal-btn-ram" onclick="switchModalMetric('ram')">RAM (GB)</button>
+        <button class="cap-metric-btn" id="modal-btn-disk" onclick="switchModalMetric('disk')">Disk (GB)</button>
+        <button class="cap-metric-btn" id="modal-btn-cpu" onclick="switchModalMetric('cpu')">CPU (vCPU)</button>
+      </div>
+      <canvas id="cap-chart" height="200"></canvas>
+      <div id="cap-modal-forecast" style="margin-top:16px"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+.vc-skeleton-wrap { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+.vc-skeleton {
+  height: 14px; border-radius: 6px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover,#1e2130) 50%, var(--border) 75%);
+  background-size: 200% 100%; animation: vc-shimmer 1.4s infinite;
+}
+@keyframes vc-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+.vc-stat-loading {
+  display: inline-block; width: 48px; height: 22px; border-radius: 4px;
+  background: linear-gradient(90deg, var(--border) 25%, var(--bg-hover,#1e2130) 50%, var(--border) 75%);
+  background-size: 200% 100%; animation: vc-shimmer 1.4s infinite; vertical-align: middle;
+}
+.badge-warn { background: #2a2010; color: #f0a500; border: 1px solid #4a3a1a; border-radius: 6px; font-size: 11px; padding: 2px 8px; }
+
+.pam-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.pam-table thead tr { background: var(--bg-hover,#1e2130); }
+.pam-table th { padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 600;
+                text-transform: uppercase; letter-spacing: .04em; color: var(--text-dim);
+                border-bottom: 1px solid var(--border); white-space: nowrap; }
+.pam-table td { padding: 7px 12px; border-bottom: 1px solid var(--border); color: var(--text); white-space: nowrap; }
+.pam-table tbody tr:hover { background: var(--bg-hover,#1e2130); }
+.pam-table tbody tr:last-child td { border-bottom: none; }
+
+.cap-metric-btn {
+  font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--card-bg); color: var(--text-dim); cursor: pointer;
+}
+.cap-metric-btn.active { background: var(--accent,#4a6ef5); color: #fff; border-color: transparent; }
+
+.cap-r2-badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:11px; font-weight:600; }
+.cap-r2-hi  { background: rgba(46,204,113,.15); color: #2ecc71; }
+.cap-r2-mid { background: rgba(240,165,0,.15); color: #f0a500; }
+.cap-r2-lo  { background: rgba(226,75,74,.15); color: #e24b4a; }
+
+.cap-detail-link {
+  display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:4px 10px;
+  border-radius:6px;border:1px solid var(--border);color:var(--accent,#4a6ef5);background:var(--bg-hover);
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+}
+.cap-detail-link:hover { background: var(--accent,#4a6ef5); color: #fff; }
+</style>
+
+<script src="/static/chart.umd.min.js?v=1784405152"></script>
+<script>
+let _capData = null;
+let _dcMetric = 'ram';
+let _modalMetric = 'ram';
+let _capChart = null;
+let _modalSeries = null;
+
+function _e(s) {
+  if (s == null) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function _fmtGb(v) {
+  if (v == null) return '—';
+  return v >= 1024 ? (v/1024).toFixed(1) + ' TB' : v.toFixed(1) + ' GB';
+}
+function _fmtCpu(v) {
+  if (v == null) return '—';
+  return v.toFixed(1) + ' vCPU';
+}
+
+function switchMetric(m) {
+  _dcMetric = m;
+  document.getElementById('btn-metric-ram').classList.toggle('active', m === 'ram');
+  document.getElementById('btn-metric-disk').classList.toggle('active', m === 'disk');
+  document.getElementById('btn-metric-cpu').classList.toggle('active', m === 'cpu');
+  renderDcTable();
+}
+
+function renderDcTable() {
+  const tbody = document.querySelector('#dc-table tbody');
+  const fKey  = _dcMetric === 'ram' ? 'current_mem_gb' : _dcMetric === 'disk' ? 'current_disk_gb' : 'current_cpu';
+  const fcKey = _dcMetric === 'ram' ? 'mem_forecast'   : _dcMetric === 'disk' ? 'disk_forecast'   : 'cpu_forecast';
+  const fmt   = _dcMetric === 'cpu' ? _fmtCpu : _fmtGb;
+  tbody.innerHTML = _capData.datacenter_summary.map(dc => `
+    <tr>
+      <td><strong>${_e(dc.datacenter)}</strong></td>
+      <td>${dc.vm_count}</td>
+      <td>${dc.growing_count > 0 ? `<span class="cap-r2-badge cap-r2-hi">${dc.growing_count}</span>` : '—'}</td>
+      <td><strong>${fmt(dc[fKey])}</strong></td>
+      <td>${fmt(dc[fcKey]['1ay'])}</td>
+      <td>${fmt(dc[fcKey]['3ay'])}</td>
+      <td>${fmt(dc[fcKey]['6ay'])}</td>
+      <td>${fmt(dc[fcKey]['1yil'])}</td>
+      <td>${fmt(dc[fcKey]['2yil'])}</td>
+      <td>${fmt(dc[fcKey]['3yil'])}</td>
+    </tr>`).join('');
+}
+
+function _r2Class(r2) { return r2 >= 0.6 ? 'cap-r2-hi' : r2 >= 0.35 ? 'cap-r2-mid' : 'cap-r2-lo'; }
+
+function renderVmTable(vms) {
+  const tbody = document.querySelector('#vm-table tbody');
+  document.getElementById('vm-count').textContent = vms.length + ' sunucu';
+  if (!vms.length) {
+    tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:24px;color:var(--text-dim)">Sürekli büyüme trendinde sunucu bulunamadı.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = vms.map(v => `
+    <tr>
+      <td><strong>${_e(v.vm_name)}</strong></td>
+      <td style="color:var(--text-dim)">${_e(v.datacenter)}</td>
+      <td>${_fmtGb(v.current_mem_gb)}</td>
+      <td>${v.mem_growing ? '<span style="color:#2ecc71">+' + v.mem_growth_gb_per_month.toFixed(2) + ' GB</span>' : '—'}</td>
+      <td>${_fmtGb(v.current_disk_gb)}</td>
+      <td>${v.disk_growing ? '<span style="color:#2ecc71">+' + v.disk_growth_gb_per_month.toFixed(2) + ' GB</span>' : '—'}</td>
+      <td>${_fmtCpu(v.current_cpu)}</td>
+      <td>${v.cpu_growing ? '<span style="color:#2ecc71">+' + v.cpu_growth_per_year.toFixed(2) + ' vCPU</span>' : '—'}</td>
+      <td>
+        ${v.mem_growing ? `<span class="cap-r2-badge ${_r2Class(v.mem_r2)}" title="RAM R²">R${v.mem_r2.toFixed(2)}</span>` : ''}
+        ${v.disk_growing ? `<span class="cap-r2-badge ${_r2Class(v.disk_r2)}" title="Disk R²">D${v.disk_r2.toFixed(2)}</span>` : ''}
+        ${v.cpu_growing ? `<span class="cap-r2-badge ${_r2Class(v.cpu_r2)}" title="CPU R²">C${v.cpu_r2.toFixed(2)}</span>` : ''}
+      </td>
+      <td style="color:var(--text-dim)">${v.track_days} gün</td>
+      <td><a class="cap-detail-link" onclick="openCapModal('${_e(v.vm_name).replace(/'/g,"\\'")}')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Grafik</a></td>
+    </tr>`).join('');
+}
+
+async function loadData(force) {
+  document.getElementById('loading-wrap').style.display = 'block';
+  document.getElementById('data-wrap').style.display = 'none';
+  ['stat-tracked','stat-eligible','stat-growing','stat-dcs'].forEach(id => {
+    document.getElementById(id).innerHTML = '<span class="vc-stat-loading"></span>';
+  });
+  try {
+    const resp = await fetch('/capacity/data' + (force ? '?refresh=true' : ''));
+    const d = await resp.json();
+    _capData = d;
+
+    document.getElementById('stat-tracked').textContent  = d.tracked_vms;
+    document.getElementById('stat-eligible').textContent = d.eligible_vms;
+    document.getElementById('stat-growing').textContent  = d.growing_vms;
+    document.getElementById('stat-dcs').textContent      = d.datacenter_summary.length;
+
+    renderDcTable();
+    const originalVms = d.vm_trends;
+    renderVmTable(originalVms);
+    document.getElementById('vm-filter').value = '';
+    // rebind filter to always filter from the full original list
+    window._origVms = originalVms;
+
+    document.getElementById('loading-wrap').style.display = 'none';
+    document.getElementById('data-wrap').style.display = 'block';
+  } catch (e) {
+    document.getElementById('loading-wrap').innerHTML =
+      '<div class="settings-card"><div style="padding:20px;color:#e24b4a">Veri alınamadı.</div></div>';
+  }
+}
+
+function filterVms(q) {
+  const lq = q.toLowerCase();
+  const source = window._origVms || [];
+  const filtered = q ? source.filter(v =>
+    v.vm_name.toLowerCase().includes(lq) || v.datacenter.toLowerCase().includes(lq)
+  ) : source;
+  renderVmTable(filtered);
+}
+
+// ── Detay modal ──────────────────────────────────────────────────────────────
+
+async function openCapModal(vmName) {
+  document.getElementById('cap-modal-title').textContent = 'Sunucu Trend Detayı — ' + vmName;
+  document.getElementById('cap-modal-bg').style.display = 'flex';
+  document.getElementById('cap-modal-forecast').innerHTML = '<div style="text-align:center;padding:20px;color:var(--text-dim)">Yükleniyor…</div>';
+  try {
+    const resp = await fetch('/capacity/vm/' + encodeURIComponent(vmName));
+    const d = await resp.json();
+    if (d.error) {
+      document.getElementById('cap-modal-forecast').innerHTML = '<div style="color:var(--text-dim)">Veri bulunamadı.</div>';
+      return;
+    }
+    _modalSeries = d;
+    _modalMetric = 'ram';
+    document.getElementById('modal-btn-ram').classList.add('active');
+    document.getElementById('modal-btn-disk').classList.remove('active');
+    document.getElementById('modal-btn-cpu').classList.remove('active');
+    renderCapChart();
+  } catch (e) {
+    document.getElementById('cap-modal-forecast').innerHTML = '<div style="color:#e24b4a">Hata oluştu.</div>';
+  }
+}
+
+function switchModalMetric(m) {
+  _modalMetric = m;
+  document.getElementById('modal-btn-ram').classList.toggle('active', m === 'ram');
+  document.getElementById('modal-btn-disk').classList.toggle('active', m === 'disk');
+  document.getElementById('modal-btn-cpu').classList.toggle('active', m === 'cpu');
+  renderCapChart();
+}
+
+function renderCapChart() {
+  if (!_modalSeries) return;
+  const isRam = _modalMetric === 'ram';
+  const isCpu = _modalMetric === 'cpu';
+  const history  = isCpu ? _modalSeries.cpu_history  : isRam ? _modalSeries.mem_history  : _modalSeries.disk_history;
+  const forecast = isCpu ? _modalSeries.cpu_forecast : isRam ? _modalSeries.mem_forecast : _modalSeries.disk_forecast;
+  const r2       = isCpu ? _modalSeries.cpu_r2       : isRam ? _modalSeries.mem_r2       : _modalSeries.disk_r2;
+  const fmt      = isCpu ? _fmtCpu : _fmtGb;
+
+  const histLabels = history.map(p => p.date);
+  const histData   = history.map(p => p.value);
+
+  const horizonOrder = [['1ay',30],['3ay',91],['6ay',182],['1yil',365],['2yil',730],['3yil',1095]];
+  // build forecast points as absolute dates for x-axis continuity
+  const fDates = horizonOrder.map(([k, days]) => {
+    const base = new Date(histLabels[histLabels.length-1]);
+    const dt = new Date(base); dt.setDate(dt.getDate() + days);
+    return dt.toISOString().slice(0,10);
+  });
+
+  const allLabels = [...histLabels, ...fDates];
+  const historySeries = [...histData, ...new Array(fDates.length).fill(null)];
+  const forecastSeries = new Array(histData.length - 1).fill(null).concat(
+    [histData[histData.length-1], ...horizonOrder.map(([k]) => forecast[k])]
+  );
+
+  if (_capChart) { _capChart.destroy(); _capChart = null; }
+  const ctx = document.getElementById('cap-chart');
+  _capChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: allLabels,
+      datasets: [
+        { label: 'Geçmiş', data: historySeries, borderColor: '#4a6ef5', backgroundColor: 'rgba(74,110,245,.1)',
+          spanGaps: true, tension: 0.15, pointRadius: 2, fill: true },
+        { label: 'Tahmin', data: forecastSeries, borderColor: '#f0a500', borderDash: [6,4],
+          spanGaps: true, tension: 0.15, pointRadius: 3, fill: false },
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: true,
+      plugins: { legend: { labels: { color: '#8a93a8' } } },
+      scales: {
+        x: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 9 }, maxTicksLimit: 10 } },
+        y: { grid: { color: 'rgba(255,255,255,.06)' }, ticks: { color: '#6b7a99', font: { size: 10 } }, beginAtZero: true,
+             title: { display: true, text: isCpu ? 'CPU (vCPU)' : isRam ? 'RAM (GB)' : 'Disk (GB)', color: '#8a93a8' } }
+      }
+    }
+  });
+
+  const rows = horizonOrder.map(([k, days]) => {
+    const lbl = {'1ay':'1 Ay','3ay':'3 Ay','6ay':'6 Ay','1yil':'1 Yıl','2yil':'2 Yıl','3yil':'3 Yıl'}[k];
+    return `<tr><td>${lbl}</td><td><strong>${fmt(forecast[k])}</strong></td></tr>`;
+  }).join('');
+  document.getElementById('cap-modal-forecast').innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+      <div style="font-size:12px;font-weight:700;color:var(--text-primary)">Ufuk Bazlı Tahmin</div>
+      <span class="cap-r2-badge ${_r2Class(r2)}">R² = ${r2.toFixed(2)}</span>
+    </div>
+    <table class="pam-table"><thead><tr><th>Ufuk</th><th>Tahmini Değer</th></tr></thead><tbody>${rows}</tbody></table>
+  `;
+}
+
+function closeCapModal() { document.getElementById('cap-modal-bg').style.display = 'none'; }
+document.getElementById('cap-modal-bg').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeCapModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCapModal(); });
+
+loadData(false);
+</script>
+
+<script src="/static/app.js?v=1784405152"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
+<!-- AI Chat Widget — floating button + chat window, visible on all pages -->
+<div id="ai-root" aria-live="polite" data-page="/capacity">
+
+  <!-- Floating trigger button -->
+  <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
+    <!-- Closed: chat icon -->
+    <svg id="ai-btn-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r=".5" fill="currentColor"></circle>
+    </svg>
+    <!-- Open: close icon -->
+    <svg id="ai-btn-close" width="20" height="20" viewBox="0 0 24 24" style="display:none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <!-- Unread dot -->
+    <span id="ai-dot" style="display:none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ai-win" role="dialog" aria-label="AI Asistan" aria-hidden="true">
+    <!-- Header -->
+    <div id="ai-hd">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div id="ai-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <div>
+          <div id="ai-title-txt" style="font-size:13px;font-weight:700;line-height:1.1">AI Asistan</div>
+          <div id="ai-status-txt" style="font-size:10px;opacity:.65;line-height:1">Altyapı verilerini analiz ediyor</div>
+        </div>
+      </div>
+      <button id="ai-close-btn" onclick="aiToggle()" title="Kapat" style="background:none;border:none;cursor:pointer;padding:4px;border-radius:5px;
+                     color:inherit;opacity:.7;display:flex;align-items:center;transition:opacity .15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="ai-msgs" role="log">
+      <!-- Welcome message injected by JS -->
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Kaç VM var?</button><button class="ai-sug">Tag'siz VM'ler neler?</button><button class="ai-sug">Lisans envanteri</button><button class="ai-sug">Bekleyen operasyonlar</button><button class="ai-sug">Fiziksel cihaz durumu</button><button class="ai-sug">Teklifler neler?</button><button class="ai-sug">ESXi host listesi</button><button class="ai-sug">Silinecek VM'ler?</button><button class="ai-sug">Süresi dolmuş lisanslar?</button><button class="ai-sug">32 GB RAM, 8 CPU, 500 GB disk maliyeti?</button></div></div>
+
+    <!-- Input area -->
+    <div id="ai-footer">
+      <div id="ai-input-wrap">
+        <textarea id="ai-input" rows="1" placeholder="Bir soru sorun…" maxlength="600" onkeydown="aiKey(event)" oninput="aiResize(this)" aria-label="Soru girin"></textarea>
+        <button id="ai-send" onclick="aiSend()" title="Gönder (Enter)" aria-label="Gönder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-footer-note" style="font-size:10px;color:var(--ai-muted);text-align:center;margin-top:6px;line-height:1.3">Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Tokens ── */
+:root {
+  --ai-accent:   #4f6ef7;
+  --ai-accent2:  #7c5af5;
+  --ai-win-bg:   #ffffff;
+  --ai-hd-bg:    linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  --ai-hd-txt:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-user-bg:  linear-gradient(135deg, #4f6ef7, #7c5af5);
+  --ai-user-txt: #ffffff;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+  --ai-radius:   14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-win-bg:   #1a1d23;
+    --ai-msg-bg:   #252830;
+    --ai-msg-txt:  #e5e7eb;
+    --ai-border:   rgba(255,255,255,.08);
+    --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+    --ai-muted:    #6b7280;
+    --ai-input-bg: #1e2128;
+    --ai-table-hd: #1e2128;
+  }
+}
+:root[data-theme="dark"] {
+  --ai-win-bg:   #1a1d23;
+  --ai-msg-bg:   #252830;
+  --ai-msg-txt:  #e5e7eb;
+  --ai-border:   rgba(255,255,255,.08);
+  --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+  --ai-muted:    #6b7280;
+  --ai-input-bg: #1e2128;
+  --ai-table-hd: #1e2128;
+}
+:root[data-theme="light"] {
+  --ai-win-bg:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+}
+
+/* ── Trigger button ── */
+#ai-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79,110,247,.45);
+  transition: transform .2s, box-shadow .2s;
+}
+#ai-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,110,247,.6); }
+#ai-btn:active { transform: scale(.96); }
+#ai-btn.open   { box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+
+/* Unread dot */
+#ai-dot {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background: #f87171;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: .7; }
+}
+
+/* ── Chat window ── */
+#ai-win {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 9997;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--ai-win-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.85) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+}
+#ai-win.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Header ── */
+#ai-hd {
+  background: var(--ai-hd-bg);
+  color: var(--ai-hd-txt);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+#ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Messages ── */
+#ai-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+#ai-msgs::-webkit-scrollbar { width: 4px; }
+#ai-msgs::-webkit-scrollbar-track { background: transparent; }
+#ai-msgs::-webkit-scrollbar-thumb { background: var(--ai-border); border-radius: 4px; }
+
+/* Bubbles */
+.ai-bubble {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ai-bubble.bot {
+  background: var(--ai-msg-bg);
+  color: var(--ai-msg-txt);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.ai-bubble.user {
+  background: var(--ai-user-bg);
+  color: var(--ai-user-txt);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+.ai-bubble.error {
+  background: rgba(239,68,68,.1);
+  color: #dc2626;
+  align-self: flex-start;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Detail text below bubble */
+.ai-detail {
+  font-size: 11px;
+  color: var(--ai-muted);
+  margin-top: 5px;
+  padding: 0 2px;
+  align-self: flex-start;
+  max-width: 88%;
+  line-height: 1.5;
+}
+
+/* Cost table */
+.ai-cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ai-cost-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding: 5px 8px;
+  background: var(--ai-table-hd);
+  border-bottom: 1px solid var(--ai-border);
+}
+.ai-cost-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--ai-border);
+  color: var(--ai-msg-txt);
+}
+.ai-cost-table tr:last-child td { border-bottom: none; }
+.ai-cost-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ai-accent);
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--ai-table-hd);
+  border-radius: 6px;
+}
+
+/* Source chip */
+.ai-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  padding: 2px 7px; border-radius: 10px; margin-top: 5px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; gap: 5px; align-items: center;
+  padding: 12px 14px;
+  background: var(--ai-msg-bg);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+.ai-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ai-muted);
+  animation: ai-bounce .9s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .15s; }
+.ai-typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes ai-bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ── */
+#ai-footer {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--ai-border);
+  flex-shrink: 0;
+  background: var(--ai-win-bg);
+}
+#ai-input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--ai-input-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: 10px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color .15s;
+}
+#ai-input-wrap:focus-within { border-color: var(--ai-accent); }
+
+#ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ai-msg-txt);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  font-family: inherit;
+}
+#ai-input::placeholder { color: var(--ai-muted); }
+
+#ai-send {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: none; cursor: pointer; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f6ef7, #7c5af5);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s, transform .1s;
+}
+#ai-send:hover  { opacity: .9; }
+#ai-send:active { transform: scale(.93); }
+#ai-send:disabled { opacity: .4; cursor: default; }
+
+/* ── Quick suggestion chips ── */
+#ai-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.ai-sug {
+  font-size: 11px; padding: 5px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.2); cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+  font-weight: 500;
+}
+.ai-sug:hover { background: rgba(79,110,247,.2); }
+
+/* ── Follow-up suggestion chips ── */
+.ai-follow-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 0 2px; margin-top: 6px;
+  align-self: flex-start; max-width: 96%;
+}
+.ai-follow-label {
+  width: 100%; font-size: 10px; color: var(--ai-muted);
+  font-weight: 600; letter-spacing: .03em; margin-bottom: 2px;
+}
+.ai-follow-chip {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.08); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.18); cursor: pointer;
+  transition: background .15s, border-color .15s; white-space: nowrap;
+  font-weight: 500; display: inline-flex; align-items: center; gap: 4px;
+}
+.ai-follow-chip::before { content: '↪'; font-size: 10px; opacity: .7; }
+.ai-follow-chip:hover {
+  background: rgba(79,110,247,.18); border-color: rgba(79,110,247,.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ai-win { transition: none; }
+  .ai-typing span { animation: none; opacity: .7; }
+  #ai-dot { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Language: follows the same document.documentElement.lang set by applyI18n() ── */
+  function _lang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'tr';
+  }
+
+  const WELCOME = {
+    tr: 'Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.\n\nÖrnekler:',
+    en: 'Hello! You can ask questions about your infrastructure data.\n\nExamples:',
+  };
+
+  /* ── Static widget chrome strings ── */
+  const WI18N = {
+    tr: {
+      title:        'AI Asistan',
+      openLabel:    'AI Asistanı aç',
+      statusIdle:   'Altyapı verilerini analiz ediyor',
+      close:        'Kapat',
+      inputPh:      'Bir soru sorun…',
+      inputAria:    'Soru girin',
+      sendTitle:    'Gönder (Enter)',
+      sendAria:     'Gönder',
+      footerNote:   'Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder',
+      followLabel:  'Devam edebilirsiniz:',
+      serverError:  'Sunucu hatası (',
+      connError:    'Bağlantı hatası: ',
+      costHeaders:  ['Bileşen', 'Miktar', 'Tutar'],
+      chipCost:     'Maliyet Hesabı',
+      chipVcenter:  'vCenter Verisi',
+    },
+    en: {
+      title:        'AI Assistant',
+      openLabel:    'Open AI Assistant',
+      statusIdle:   'Analyzing infrastructure data',
+      close:        'Close',
+      inputPh:      'Ask a question…',
+      inputAria:    'Enter your question',
+      sendTitle:    'Send (Enter)',
+      sendAria:     'Send',
+      footerNote:   'Answers using your real infrastructure data &nbsp;·&nbsp; Enter = send',
+      followLabel:  'You can continue:',
+      serverError:  'Server error (',
+      connError:    'Connection error: ',
+      costHeaders:  ['Component', 'Quantity', 'Amount'],
+      chipCost:     'Cost Calculation',
+      chipVcenter:  'vCenter Data',
+    },
+  };
+  function _wt(key) { return (WI18N[_lang()] || WI18N.tr)[key]; }
+
+  /* ── Sayfaya özel hazır sorular — anahtar, sayfanın URL path'idir (en spesifik eşleşme kazanır). ── */
+  const SUGGESTION_MAP = {
+    tr: {
+      '/vcenter':                ['Kaç VM var?', 'Kapalı VM\'ler neler?', 'Tag\'siz VM\'ler neler?', 'En fazla RAM kullanan 10 VM?'],
+      '/rvtools':                ['Kaç VM var?', 'Snapshot var mı?', 'En fazla RAM kullanan 10 VM?', 'Kapalı VM\'ler neler?'],
+      '/licenses':               ['Lisans envanteri', 'Süresi dolmuş lisanslar?', '30 gün içinde dolacak lisanslar?'],
+      '/operations':             ['Bekleyen operasyonlar', 'Başarısız işlemler?', 'Bugün tamamlanan işlemler?'],
+      '/calculator':             ['Teklifler neler?', '32 GB RAM, 8 CPU, 500 GB disk maliyeti?'],
+      '/vm-host':                ['ESXi host listesi', 'Hangi host\'ta en çok VM var?'],
+      '/physical':               ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/opmanager':              ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/reports/notags-vms':     ['Tag\'siz VM\'ler neler?'],
+      '/reports/poc-vms':        ['POC VM\'ler neler?'],
+      '/reports/willdelete-vms': ['Silinecek VM\'ler neler?'],
+      '/reports/poweredoff-vms': ['Kapalı VM\'ler neler?'],
+    },
+    en: {
+      '/vcenter':                ['How many VMs are there?', 'Which VMs are powered off?', 'Which VMs are untagged?', 'Top 10 VMs by RAM usage?'],
+      '/rvtools':                ['How many VMs are there?', 'Are there any snapshots?', 'Top 10 VMs by RAM usage?', 'Which VMs are powered off?'],
+      '/licenses':               ['License inventory', 'Which licenses have expired?', 'Which licenses expire within 30 days?'],
+      '/operations':             ['Pending operations', 'Failed operations?', 'Operations completed today?'],
+      '/calculator':             ['What are the quotes?', 'Cost for 32 GB RAM, 8 CPU, 500 GB disk?'],
+      '/vm-host':                ['ESXi host list', 'Which host has the most VMs?'],
+      '/physical':               ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/opmanager':              ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/reports/notags-vms':     ['Which VMs are untagged?'],
+      '/reports/poc-vms':        ['What are the POC VMs?'],
+      '/reports/willdelete-vms': ['Which VMs are marked for deletion?'],
+      '/reports/poweredoff-vms': ['Which VMs are powered off?'],
+    },
+  };
+  const DASHBOARD_SUGGESTIONS = {
+    tr: ['Altyapımı özetle', 'Kaç VM var?', 'Bekleyen operasyonlar', 'Süresi dolmuş lisanslar?'],
+    en: ['Summarize my infrastructure', 'How many VMs are there?', 'Pending operations', 'Which licenses have expired?'],
+  };
+  const DEFAULT_SUGGESTIONS = {
+    tr: [
+      'Kaç VM var?',
+      'Tag\'siz VM\'ler neler?',
+      'Lisans envanteri',
+      'Bekleyen operasyonlar',
+      'Fiziksel cihaz durumu',
+      'Teklifler neler?',
+      'ESXi host listesi',
+      'Silinecek VM\'ler?',
+      'Süresi dolmuş lisanslar?',
+      '32 GB RAM, 8 CPU, 500 GB disk maliyeti?',
+    ],
+    en: [
+      'How many VMs are there?',
+      'Which VMs are untagged?',
+      'License inventory',
+      'Pending operations',
+      'Physical device status',
+      'What are the quotes?',
+      'ESXi host list',
+      'Which VMs are marked for deletion?',
+      'Which licenses have expired?',
+      'Cost for 32 GB RAM, 8 CPU, 500 GB disk?',
+    ],
+  };
+
+  /* ── Sayfaya göre hazır soru listesini seç ── */
+  function _pageSuggestions() {
+    const root = document.getElementById('ai-root');
+    const path = (root && root.dataset.page) || '/';
+    const lang = _lang();
+    if (path === '/') return DASHBOARD_SUGGESTIONS[lang];
+    const map = SUGGESTION_MAP[lang];
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      if (path === k || path.startsWith(k + '/')) return map[k];
+    }
+    return DEFAULT_SUGGESTIONS[lang];
+  }
+
+  /* ── Apply static chrome translations ── */
+  function _applyWidgetI18n() {
+    const btn = document.getElementById('ai-btn');
+    if (btn) { btn.title = _wt('title'); btn.setAttribute('aria-label', _wt('openLabel')); }
+    const win = document.getElementById('ai-win');
+    if (win) win.setAttribute('aria-label', _wt('title'));
+    const titleTxt = document.getElementById('ai-title-txt');
+    if (titleTxt) titleTxt.textContent = _wt('title');
+    const statusTxt = document.getElementById('ai-status-txt');
+    if (statusTxt) statusTxt.textContent = _wt('statusIdle');
+    const closeBtn = document.getElementById('ai-close-btn');
+    if (closeBtn) closeBtn.title = _wt('close');
+    const inp = document.getElementById('ai-input');
+    if (inp) { inp.placeholder = _wt('inputPh'); inp.setAttribute('aria-label', _wt('inputAria')); }
+    const sendBtn = document.getElementById('ai-send');
+    if (sendBtn) { sendBtn.title = _wt('sendTitle'); sendBtn.setAttribute('aria-label', _wt('sendAria')); }
+    const footNote = document.getElementById('ai-footer-note');
+    if (footNote) footNote.innerHTML = _wt('footerNote');
+  }
+
+  let _open = false;
+  let _busy = false;
+
+  /* ── Bold markdown (**text**) → <strong> ── */
+  function _md(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+  }
+  function _e(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Scroll to bottom ── */
+  function _scroll() {
+    const m = document.getElementById('ai-msgs');
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  /* ── Follow-up suggestions after bot response ── */
+  function _addFollowSuggestions(suggestions) {
+    if (!suggestions || !suggestions.length) return;
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const row = document.createElement('div');
+    row.className = 'ai-follow-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'ai-follow-label';
+    lbl.textContent = _wt('followLabel');
+    row.appendChild(lbl);
+    for (const s of suggestions) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-follow-chip';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      row.appendChild(btn);
+    }
+    msgs.appendChild(row);
+    _scroll();
+  }
+
+  /* ── Append message bubble ── */
+  function _addBubble(role, html, detail, extra) {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    // Remove initial suggestions and any follow-up rows
+    const sug = msgs.querySelector('#ai-suggestions');
+    if (sug) sug.remove();
+    msgs.querySelectorAll('.ai-follow-row').forEach(el => el.remove());
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column';
+
+    const bbl = document.createElement('div');
+    bbl.className = `ai-bubble ${role}`;
+    bbl.innerHTML = html;
+    wrap.appendChild(bbl);
+
+    if (detail) {
+      const det = document.createElement('div');
+      det.className = 'ai-detail';
+      det.innerHTML = _md(detail);
+      wrap.appendChild(det);
+    }
+    if (extra) {
+      const ex = document.createElement('div');
+      ex.innerHTML = extra;
+      wrap.appendChild(ex);
+    }
+    msgs.appendChild(wrap);
+    _scroll();
+    return wrap;
+  }
+
+  /* ── Typing indicator ── */
+  function _showTyping() {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return null;
+    const el = document.createElement('div');
+    el.id = 'ai-typing-el';
+    el.className = 'ai-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    _scroll();
+    return el;
+  }
+  function _removeTyping() {
+    const el = document.getElementById('ai-typing-el');
+    if (el) el.remove();
+  }
+
+  /* ── Render bot response ── */
+  function _renderBot(data) {
+    const type = data.type || '';
+
+    if (type === 'cost' && data.table) {
+      const [hComp, hQty, hAmt] = _wt('costHeaders');
+      let tbl = `<table class="ai-cost-table">
+        <thead><tr><th>${_e(hComp)}</th><th>${_e(hQty)}</th><th>${_e(hAmt)}</th></tr></thead><tbody>`;
+      for (const [comp, qty, price] of data.table) {
+        tbl += `<tr><td>${_e(comp)}</td><td>${_e(qty)}</td><td style="text-align:right;font-weight:600">${_e(price)}</td></tr>`;
+      }
+      tbl += `</tbody></table>`;
+      if (data.total) {
+        tbl += `<div class="ai-cost-total">${_e(data.total)}</div>`;
+      }
+      _addBubble('bot', _md(data.answer) + tbl, '', _chip(_wt('chipCost'), 'calculator'));
+      return;
+    }
+
+    if (type === 'vm_count' || type === 'vm_filter') {
+      const detail = data.detail || '';
+      _addBubble('bot', _md(data.answer), detail, _chip(_wt('chipVcenter'), 'vcenter'));
+      return;
+    }
+
+    if (type === 'llm') {
+      const model = data.model ? _e(data.model) : 'AI';
+      _addBubble('bot', _md(data.answer), '', _chip(model, 'llm'));
+      return;
+    }
+
+    if (type === 'error') {
+      _addBubble('error', _md(data.answer), '', '');
+      return;
+    }
+
+    // cost_hint / unknown / fallback
+    _addBubble('bot', _md(data.answer), '', '');
+  }
+
+  function _chip(label, kind) {
+    const icons = {
+      vcenter:    '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>',
+      calculator: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>',
+      llm:        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
+    };
+    return `<span class="ai-chip">${icons[kind] || ''} ${_e(label)}</span>`;
+  }
+
+  /* ── Send question ── */
+  async function aiSend() {
+    if (_busy) return;
+    const inp = document.getElementById('ai-input');
+    const q   = (inp.value || '').trim();
+    if (!q) return;
+
+    inp.value = '';
+    inp.style.height = '';
+    _addBubble('user', _e(q), '', '');
+
+    _busy = true;
+    document.getElementById('ai-send').disabled = true;
+    const tyEl = _showTyping();
+
+    try {
+      const r = await fetch('/ai/chat', {
+        method:  'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:    JSON.stringify({ q, lang: _lang() }),
+      });
+      _removeTyping();
+      if (!r.ok) { _addBubble('error', _wt('serverError') + r.status + ')', '', ''); return; }
+      const data = await r.json();
+      _renderBot(data);
+      _addFollowSuggestions(data.suggestions || []);
+    } catch (err) {
+      _removeTyping();
+      _addBubble('error', _wt('connError') + _e(err.message), '', '');
+    } finally {
+      _busy = false;
+      document.getElementById('ai-send').disabled = false;
+      inp.focus();
+    }
+  }
+
+  /* ── Toggle open/close ── */
+  function aiToggle() {
+    _open = !_open;
+    const win = document.getElementById('ai-win');
+    const btn = document.getElementById('ai-btn');
+    win.classList.toggle('visible', _open);
+    win.setAttribute('aria-hidden', String(!_open));
+    btn.setAttribute('aria-expanded', String(_open));
+    btn.classList.toggle('open', _open);
+    document.getElementById('ai-btn-open').style.display  = _open ? 'none' : '';
+    document.getElementById('ai-btn-close').style.display = _open ? '' : 'none';
+    document.getElementById('ai-dot').style.display = 'none';
+    if (_open) {
+      document.getElementById('ai-input').focus();
+      _scroll();
+    }
+  }
+
+  /* ── Textarea auto-resize ── */
+  function aiResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  /* ── Enter key handling ── */
+  function aiKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      aiSend();
+    }
+  }
+
+  /* ── Build suggestions ── */
+  function _buildSuggestions() {
+    const div = document.createElement('div');
+    div.id = 'ai-suggestions';
+    for (const s of _pageSuggestions()) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-sug';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      div.appendChild(btn);
+    }
+    return div;
+  }
+
+  /* ── Init welcome ── */
+  function _init() {
+    _applyWidgetI18n();
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const bbl = document.createElement('div');
+    bbl.className = 'ai-bubble bot';
+    bbl.innerHTML = _md(WELCOME[_lang()]);
+    msgs.appendChild(bbl);
+    msgs.appendChild(_buildSuggestions());
+
+    // Check Ollama status quietly
+    fetch('/ai/status').then(r => r.json()).then(d => {
+      if (d.ollama && d.model) {
+        const txt = document.getElementById('ai-status-txt');
+        if (txt) txt.textContent = `Ollama · ${d.model}`;
+      }
+    }).catch(() => {});
+
+    // Show unread dot if window is closed after 1.5 s
+    setTimeout(() => {
+      if (!_open) document.getElementById('ai-dot').style.display = '';
+    }, 1500);
+  }
+
+  // Expose to HTML inline handlers
+  window.aiToggle = aiToggle;
+  window.aiSend   = aiSend;
+  window.aiResize = aiResize;
+  window.aiKey    = aiKey;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+})();
+</script>
+
+</body></html>

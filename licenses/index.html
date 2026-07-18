@@ -1,0 +1,2181 @@
+<!DOCTYPE html><html lang="tr" data-theme="light"><head>
+<script src="/demo-shim.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lisans Yönetimi — PS Portal</title>
+<link rel="icon" href="/static/default-favicon.png">
+<link rel="stylesheet" href="/static/style.css?v=1784405152">
+<script>
+(function(){
+  function _getCookie(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):null;}
+  var t=_getCookie('ps_theme')||'light';
+  if(t==='dark') document.documentElement.setAttribute('data-theme','dark');
+  else if(t==='light') document.documentElement.setAttribute('data-theme','light');
+  else if(window.matchMedia('(prefers-color-scheme: dark)').matches) document.documentElement.setAttribute('data-theme','dark');
+  window._PS_LANG=_getCookie('ps_lang')||'tr';
+  window._PS_TZ=_getCookie('ps_tz')||'Europe/Istanbul';
+})();
+</script>
+</head>
+<body>
+
+<div class="app">
+  
+
+
+
+
+<nav class="sidebar" id="sidebar">
+  <a href="/" class="sidebar-logo" style="display:block;text-decoration:none">
+    <img src="/static/default-logo.png" alt="PS Portal" class="logo-img logo-img-sm" id="sidebar-logo-img">
+  </a>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  <a href="/daily-check" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+    <span data-i18n="nav.dailycheck">Günlük Kontrol</span>
+  </a>
+  
+
+  
+  
+  
+
+  
+  <div class="nav-section-label" data-i18n="nav.section.infra">Altyapı</div>
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.virt">Sanallaştırma</div>
+
+  
+  <a href="/vcenter" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+    <span data-i18n="nav.vcenter">vCenter</span>
+  </a>
+  
+
+  
+  <a href="/vm-host" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="13" y2="12"></line></svg>
+    <span data-i18n="nav.vmhost">VM-Host Eşleme</span>
+  </a>
+  
+
+  
+  <a href="/rvtools" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.rvtools">RVTools</span>
+  </a>
+  <a href="/capacity" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+    <span data-i18n="nav.capacity">Kapasite Trend Analizi</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.monitor">İzleme</div>
+
+  
+  <a href="/physical" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2"></rect><rect x="2" y="14" width="20" height="8" rx="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+    <span data-i18n="nav.physical">Fiziksel Mimari</span>
+  </a>
+  
+
+  
+  <a href="/delinea" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <span data-i18n="nav.delinea">Delinea PAM</span>
+  </a>
+  
+  
+
+  
+  <div class="nav-subgroup-label" data-i18n="nav.sub.dataprot">Veri Koruma</div>
+
+  
+  <a href="/itanalytics" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+    <span data-i18n="nav.itanalytics">IT Analytics</span>
+  </a>
+  
+
+  
+  <a href="/netbackup" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    <span data-i18n="nav.netbackup">NetBackup</span>
+  </a>
+  
+
+  
+  <a href="/zerto" class="nav-item " style="padding-left:28px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 2l-9 9M12 2h9v9"></path><path d="M3 22l9-9M12 22H3v-9"></path></svg>
+    <span data-i18n="nav.zerto">Zerto</span>
+  </a>
+  
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.mgmt">Yönetim</div>
+  
+
+  
+  <a href="/operations" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
+    <span data-i18n="nav.operations">Operasyon</span>
+  </a>
+  
+
+  
+  <a href="/calculator" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+    <span data-i18n="nav.calculator">Teklifler</span>
+  </a>
+  
+
+  
+  <a href="/finops" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+    <span data-i18n="nav.finops">Maliyet Optimizasyonu</span>
+  </a>
+  
+
+  
+  <a href="/licenses" class="nav-item active">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M9 4v5M15 4v5M7 14h4M7 17h6"></path></svg>
+    <span data-i18n="nav.licenses">Lisans Yönetimi</span>
+  </a>
+  
+
+  
+  
+  <div class="nav-section-label" data-i18n="nav.section.reports">Raporlar</div>
+
+  
+  <a href="/reports" class="nav-item ">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+    <span data-i18n="nav.reports">Raporlar</span>
+  </a>
+  
+
+  
+  <a href="/jobs" class="nav-item " style="padding-left:28px">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+    <span data-i18n="nav.jobs">Zamanlanmış Görevler</span>
+  </a>
+  
+  
+
+</nav>
+  <div class="main">
+    
+
+
+<header class="topbar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Menüyü aç/kapat">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <!-- Global Arama — sadece vCenter yetkisi olanlara göster -->
+  
+  
+  <div class="search-wrap" id="search-wrap" style="max-width:400px">
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="search-input" class="search-input" type="text" placeholder="Ürün, lisans, lokasyon…" autocomplete="off" spellcheck="false" oninput="onSearch(this.value)" onkeydown="onSearchKey(event)" onfocus="showDrop()">
+      <kbd class="search-kbd" id="search-kbd">Ctrl K</kbd>
+    </div>
+    <div class="search-drop" id="search-drop" style="display:none"></div>
+  </div>
+  <a href="/cmdb" class="btn-detail-search ">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <span data-i18n="nav.cmdb">Detay arama</span>
+  </a>
+  
+
+  <div class="topbar-right">
+    <a href="/docs" title="Dokümantasyon" class="btn-docs">🛈</a>
+    <div class="topbar-user-chip" id="user-chip" onclick="toggleUserMenu()" style="cursor:pointer;user-select:none">
+      <div class="topbar-avatar">A</div>
+      <div class="topbar-user-info">
+        <div class="topbar-user-name">Admin</div>
+        <div class="topbar-user-role" data-i18n="user.role.admin">Yönetici</div>
+      </div>
+      <svg style="margin-left:4px;color:var(--text-dim);flex-shrink:0" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </div>
+    <div class="user-dropdown" id="user-dropdown">
+      <div class="ud-brand">
+        <img src="/static/default-logo.png" alt="PS Portal" class="ud-brand-logo">
+      </div>
+      <div class="ud-product">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+        <span class="ud-product-name">PS Portal</span>
+        <span class="ud-product-version">v1.34</span>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-userinfo">
+        <div class="ud-avatar">A</div>
+        <div class="ud-userinfo-text">
+          <div class="ud-username">Admin</div>
+          <div class="ud-userhandle">Admin</div>
+        </div>
+      </div>
+
+      <div class="user-dropdown-divider"></div>
+
+      
+      
+      <a href="/settings" class="user-dropdown-item user-dropdown-item--normal" style="position:relative">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="nav.admin">Admin Panel</span>
+        
+      </a>
+      
+      <a href="/user/settings" class="user-dropdown-item user-dropdown-item--normal">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+        <span data-i18n="user.menu.settings">Kullanıcı Ayarları</span>
+      </a>
+      <a href="/logout" class="user-dropdown-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        <span data-i18n="user.menu.logout">Çıkış Yap</span>
+      </a>
+
+      <div class="user-dropdown-divider"></div>
+
+      <div class="ud-theme-row">
+        <span class="ud-theme-label" data-i18n="user.menu.theme">Görünüm</span>
+        <div class="ud-theme-toggle" id="ud-theme-toggle">
+          <button type="button" class="ud-theme-btn ud-theme-btn--active" data-mode="light" onclick="quickSetTheme('light')" title="Açık">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="dark" onclick="quickSetTheme('dark')" title="Koyu">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+          <button type="button" class="ud-theme-btn" data-mode="auto" onclick="quickSetTheme('auto')" title="Sistem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleUserMenu() {
+  document.getElementById('user-dropdown').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('user-chip').contains(e.target)) {
+    document.getElementById('user-dropdown').classList.remove('open');
+  }
+});
+
+/* ── Hızlı görünüm (tema) değiştirici ────────────────────── */
+function _udGetCookie(n) {
+  var m = document.cookie.match('(?:^|; )' + n + '=([^;]*)');
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function _udSyncThemeButtons() {
+  var current = _udGetCookie('ps_theme') || 'light';
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === current);
+  });
+}
+async function quickSetTheme(mode) {
+  var root = document.documentElement;
+  if (mode === 'auto') root.removeAttribute('data-theme');
+  else root.setAttribute('data-theme', mode);
+  document.querySelectorAll('#ud-theme-toggle .ud-theme-btn').forEach(function (btn) {
+    btn.classList.toggle('ud-theme-btn--active', btn.dataset.mode === mode);
+  });
+  try {
+    await fetch('/user/settings/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        language: window._PS_LANG || 'tr',
+        timezone: window._PS_TZ || 'Europe/Istanbul',
+        theme: mode,
+      }),
+    });
+  } catch (e) {}
+}
+_udSyncThemeButtons();
+</script>
+
+<footer class="app-footer">PS Portal © 2026</footer>
+
+<style>
+.btn-detail-search {
+  display: flex; align-items: center; gap: 7px;
+  height: 38px; padding: 0 14px; margin-right: 12px; flex-shrink: 0;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text-muted); font-size: 13px;
+  text-decoration: none; white-space: nowrap;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.btn-detail-search:hover,
+.btn-detail-search.active { color: var(--accent); border-color: var(--accent); background: var(--bg-hover); }
+
+.search-wrap {
+  flex: 1; max-width: 540px; margin: 0 24px; position: relative;
+}
+.search-bar {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: 8px; padding: 0 12px; height: 38px;
+  transition: border-color .15s, box-shadow .15s;
+}
+.search-bar:focus-within {
+  border-color: var(--accent, #4a6ef5);
+  box-shadow: 0 0 0 3px rgba(74,110,245,.15);
+}
+.search-icon   { color: var(--text-dim); flex-shrink: 0; }
+.search-input  {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--text); font-size: 14px; min-width: 0;
+}
+.search-input::placeholder { color: var(--text-dim); }
+.search-kbd {
+  font-size: 11px; color: var(--text-dim);
+  background: var(--bg-hover, #1e2130); border: 1px solid var(--border);
+  border-radius: 4px; padding: 2px 6px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* Dropdown */
+.search-drop {
+  position: absolute; top: calc(100% + 8px); left: 0; right: 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18), 0 2px 6px rgba(0,0,0,.1);
+  max-height: 440px; overflow-y: auto; z-index: 9999;
+}
+.search-section-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--text-dim); padding: 12px 16px 6px; border-bottom: 1px solid var(--border);
+}
+.search-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 16px; cursor: pointer; transition: background .1s;
+}
+.search-item:hover, .search-item.active { background: var(--bg-hover); }
+.search-item-icon {
+  width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.si-on  { background: var(--badge-ok-bg);     color: var(--badge-ok-color); }
+.si-off { background: var(--badge-danger-bg); color: var(--badge-danger-color); }
+.search-item-body { flex: 1; min-width: 0; }
+.search-item-name { font-size: 14px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.search-item-meta { font-size: 12px; color: var(--text-dim); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
+.search-item-vc   { font-size: 11px; color: var(--text-dim); white-space: nowrap; flex-shrink: 0; background: var(--bg-hover); border-radius: 5px; padding: 2px 7px; }
+.search-empty     { padding: 28px 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+.search-loading   { padding: 16px; text-align: center; color: var(--text-dim); font-size: 13px; }
+</style>
+
+<script>
+// Ctrl+K / Cmd+K ile arama çubuğuna focus
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('search-input').focus();
+    showDrop();
+  }
+  if (e.key === 'Escape') closeDrop();
+});
+
+document.addEventListener('click', e => {
+  if (!document.getElementById('search-wrap').contains(e.target)) closeDrop();
+});
+
+let _searchTimer = null;
+let _activeIdx = -1;
+
+function showDrop() {
+  const drop = document.getElementById('search-drop');
+  const inp  = document.getElementById('search-input');
+  if (inp.value.length >= 2) drop.style.display = 'block';
+  document.getElementById('search-kbd').style.display = 'none';
+}
+
+function closeDrop() {
+  document.getElementById('search-drop').style.display = 'none';
+  document.getElementById('search-kbd').style.display = '';
+  _activeIdx = -1;
+}
+
+function onSearch(val) {
+  clearTimeout(_searchTimer);
+  if (val.length < 2) {
+    document.getElementById('search-drop').style.display = 'none';
+    return;
+  }
+  const drop = document.getElementById('search-drop');
+  drop.innerHTML = '<div class="search-loading">Aranıyor…</div>';
+  drop.style.display = 'block';
+  _searchTimer = setTimeout(() => doSearch(val), 280);
+}
+
+async function doSearch(q) {
+  try {
+    const resp = await fetch('/search?q=' + encodeURIComponent(q));
+    const data = await resp.json();
+    renderResults(data.results, q);
+  } catch(e) {
+    document.getElementById('search-drop').innerHTML =
+      '<div class="search-empty">Arama hatası.</div>';
+  }
+}
+
+function powerIcon(state) {
+  if (state === 'poweredOn')
+    return '<div class="search-item-icon si-on"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>';
+  return '<div class="search-item-icon si-off"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64A9 9 0 1 1 5.64 19.36"/><line x1="12" y1="2" x2="12" y2="12"/></svg></div>';
+}
+
+function highlight(text, q) {
+  if (!text) return '';
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx)
+    + '<mark style="background:#dbeafe;color:#1d4ed8;border-radius:3px;padding:0 1px;font-weight:700">'
+    + text.slice(idx, idx + q.length)
+    + '</mark>'
+    + text.slice(idx + q.length);
+}
+
+function renderResults(results, q) {
+  const drop = document.getElementById('search-drop');
+  if (!results.length) {
+    drop.innerHTML = '<div class="search-empty">Sonuç bulunamadı.</div>';
+    return;
+  }
+  let html = `<div class="search-section-label">Sanal Makineler (${results.length})</div>`;
+  results.forEach((r, i) => {
+    const meta = [
+      r.ip_address, r.dns_name, r.guest_os
+    ].filter(Boolean).join(' · ');
+    html += `<div class="search-item" data-idx="${i}" onclick="goToVM('${encodeURIComponent(r.vm_name)}')">
+      ${powerIcon(r.power_state)}
+      <div class="search-item-body">
+        <div class="search-item-name">${highlight(r.vm_name, q)}</div>
+        <div class="search-item-meta">${highlight(meta, q)}</div>
+      </div>
+      <span class="search-item-vc">${r.vcenter.split('.')[0]}</span>
+    </div>`;
+  });
+  drop.innerHTML = html;
+  _activeIdx = -1;
+}
+
+function goToVM(name) {
+  closeDrop();
+  document.getElementById('search-input').value = '';
+  window.location.href = '/vcenter?highlight=' + name;
+}
+
+function onSearchKey(e) {
+  const items = document.querySelectorAll('.search-item');
+  if (!items.length) return;
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    _activeIdx = Math.min(_activeIdx + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    _activeIdx = Math.max(_activeIdx - 1, 0);
+  } else if (e.key === 'Enter' && _activeIdx >= 0) {
+    items[_activeIdx].click();
+    return;
+  } else return;
+  items.forEach((el, i) => el.classList.toggle('active', i === _activeIdx));
+  items[_activeIdx]?.scrollIntoView({ block: 'nearest' });
+}
+</script>
+    <div class="content">
+
+      <!-- ── Başlık ───────────────────────────────────────────────────────── -->
+      <div class="page-header">
+        <div>
+          <h2 class="page-title"><span class="lang-tr">Lisans Yönetimi</span><span class="lang-en">License Management</span></h2>
+          <p class="page-sub" id="lic-summary">8 lisans kayıtlı · 1 süresi dolmuş · 1 kritik · 1 uyarı</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <a href="/licenses/export" class="btn-ghost" style="display:flex;align-items:center;gap:6px;white-space:nowrap;text-decoration:none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="M8 13h8M8 17h5"></path></svg>
+            <span class="lang-tr">Excel İndir</span><span class="lang-en">Download Excel</span>
+          </a>
+          <button class="btn-ghost" onclick="document.getElementById('csv-input').click()" style="display:flex;align-items:center;gap:6px;white-space:nowrap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <span class="lang-tr">CSV İçe Aktar</span><span class="lang-en">Import CSV</span>
+          </button>
+          <input type="file" id="csv-input" accept=".csv,.txt" style="display:none" onchange="importCSV(this)">
+          <button class="btn-danger-ghost" onclick="delAllLicenses()" style="display:flex;align-items:center;gap:6px;white-space:nowrap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
+            <span class="lang-tr">Tümünü Sil</span><span class="lang-en">Delete All</span>
+          </button>
+          <button class="btn-primary" onclick="openModal()" style="display:flex;align-items:center;gap:6px;white-space:nowrap">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <span class="lang-tr">Lisans Ekle</span><span class="lang-en">Add License</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Özet kartları ─────────────────────────────────────────────────── -->
+      <div id="stat-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px">
+    <div class="stat-tile">
+      <div class="stat-tile-val" style="color:var(--text)">8</div>
+      <div class="stat-tile-lbl">Toplam</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-tile-val" style="color:#059669">5</div>
+      <div class="stat-tile-lbl">Aktif</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-tile-val" style="color:#d97706">2</div>
+      <div class="stat-tile-lbl">Yaklaşan</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-tile-val" style="color:#dc2626">1</div>
+      <div class="stat-tile-lbl">Süresi Dolmuş</div>
+    </div>
+    <div class="stat-tile">
+      <div class="stat-tile-val" style="color:var(--text-dim)">0</div>
+      <div class="stat-tile-lbl">Süresiz</div>
+    </div></div>
+
+      <!-- ── Filtre ────────────────────────────────────────────────────────── -->
+      <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
+        <input id="search-input" type="text" oninput="filterTable()" style="flex:1;min-width:200px;padding:7px 12px;border:1px solid var(--border);border-radius:6px;background:var(--bg-input);color:var(--text);font-size:13px">
+        <select id="status-filter" onchange="filterTable()" style="padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg-input);color:var(--text);font-size:13px">
+          <option value="">Tüm Durumlar</option>
+          <option value="Süresi Dolmuş">Süresi Dolmuş</option>
+          <option value="Kritik">Kritik</option>
+          <option value="Uyarı">Uyarı</option>
+          <option value="Aktif">Aktif</option>
+          <option value="Süresi Yok">Süresi Yok</option>
+        </select>
+      </div>
+
+      <!-- ── Tablo ─────────────────────────────────────────────────────────── -->
+      <div id="table-outer" style="overflow-x:auto;border:1px solid var(--border);border-radius:8px;scrollbar-width:none;-ms-overflow-style:none">
+        <table class="lic-table" id="lic-table">
+          <thead>
+            <tr>
+              <th data-col="lokasyon" style="width: 110px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Location</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="rol" style="width: 90px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Role</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="lisans" style="width: 150px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">License</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="lisans_anahtari" style="width: 140px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">License Key</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="product" style="width: 130px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Product</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="kullanim" style="width: 80px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Usage</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="kapasite" style="width: 80px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Capacity</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="durum" style="width: 90px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">State</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="expire_date" style="width: 100px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Expiration</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="status_label" style="width: 110px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Status</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th data-col="days" style="width: 70px; min-width: 50px; cursor: pointer;"><div class="th-inner"><span class="th-label">Days</span><span class="sort-arr"></span></div><div class="col-resize"></div></th>
+              <th style="width: 90px; min-width: 50px;"><div class="col-resize"></div></th>
+            </tr>
+          </thead>
+          <tbody id="lic-tbody"><tr data-status="Aktif" data-text="delinea professional trisops-dc1 secret server 12 15 aktif xxxxx-demo7-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>Secret Server</td>
+      <td>Professional</td>
+      <td><span class="lic-key" title="XXXXX-DEMO7-XXXXX">XXXXX-DEMO7-XXXXX</span></td>
+      <td style="font-weight:500">Delinea</td>
+      <td>12</td>
+      <td>15</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">15.12.2026</td>
+      <td><span class="lic-badge lic-badge-green">Aktif</span></td>
+      <td style="white-space:nowrap">150 gün</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(7)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(7, 'Delinea — Professional')">Sil</button>
+      </td></tr><tr data-status="Uyarı" data-text="microsoft datacenter 2022 trisops-dc1 windows server 18 20 aktif xxxxx-demo2-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>Windows Server</td>
+      <td>Datacenter 2022</td>
+      <td><span class="lic-key" title="XXXXX-DEMO2-XXXXX">XXXXX-DEMO2-XXXXX</span></td>
+      <td style="font-weight:500">Microsoft</td>
+      <td>18</td>
+      <td>20</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">12.08.2026</td>
+      <td><span class="lic-badge lic-badge-yellow">Uyarı</span></td>
+      <td style="white-space:nowrap">25 gün</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(2)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(2, 'Microsoft — Datacenter 2022')">Sil</button>
+      </td></tr><tr data-status="Aktif" data-text="microsoft enterprise 2022 trisops-dc1 sql server 8 8 aktif xxxxx-demo5-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>SQL Server</td>
+      <td>Enterprise 2022</td>
+      <td><span class="lic-key" title="XXXXX-DEMO5-XXXXX">XXXXX-DEMO5-XXXXX</span></td>
+      <td style="font-weight:500">Microsoft</td>
+      <td>8</td>
+      <td>8</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">22.08.2027</td>
+      <td><span class="lic-badge lic-badge-green">Aktif</span></td>
+      <td style="white-space:nowrap">400 gün</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(5)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(5, 'Microsoft — Enterprise 2022')">Sil</button>
+      </td></tr><tr data-status="Aktif" data-text="netbackup enterprise trisops-dc1 backup 48 60 aktif xxxxx-demo8-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>Backup</td>
+      <td>Enterprise</td>
+      <td><span class="lic-key" title="XXXXX-DEMO8-XXXXX">XXXXX-DEMO8-XXXXX</span></td>
+      <td style="font-weight:500">NetBackup</td>
+      <td>48</td>
+      <td>60</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">24.04.2027</td>
+      <td><span class="lic-badge lic-badge-green">Aktif</span></td>
+      <td style="white-space:nowrap">280 gün</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(8)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(8, 'NetBackup — Enterprise')">Sil</button>
+      </td></tr><tr data-status="Kritik" data-text="red hat standard trisops-dc1 rhel 10 15 aktif xxxxx-demo4-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>RHEL</td>
+      <td>Standard</td>
+      <td><span class="lic-key" title="XXXXX-DEMO4-XXXXX">XXXXX-DEMO4-XXXXX</span></td>
+      <td style="font-weight:500">Red Hat</td>
+      <td>10</td>
+      <td>15</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">28.07.2026</td>
+      <td><span class="lic-badge lic-badge-orange">Kritik</span></td>
+      <td style="white-space:nowrap;color:#ea580c">10 gün</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(4)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(4, 'Red Hat — Standard')">Sil</button>
+      </td></tr><tr data-status="Aktif" data-text="vmware vsphere 8 enterprise plus trisops-dc1 vsphere 48 64 aktif xxxxx-demo1-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>vSphere</td>
+      <td>vSphere 8 Enterprise Plus</td>
+      <td><span class="lic-key" title="XXXXX-DEMO1-XXXXX">XXXXX-DEMO1-XXXXX</span></td>
+      <td style="font-weight:500">VMware</td>
+      <td>48</td>
+      <td>64</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">23.06.2027</td>
+      <td><span class="lic-badge lic-badge-green">Aktif</span></td>
+      <td style="white-space:nowrap">340 gün</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(1)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(1, 'VMware — vSphere 8 Enterprise Plus')">Sil</button>
+      </td></tr><tr data-status="Aktif" data-text="veeam enterprise plus trisops-dc1 backup &amp; replication 48 50 aktif xxxxx-demo3-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>Backup &amp; Replication</td>
+      <td>Enterprise Plus</td>
+      <td><span class="lic-key" title="XXXXX-DEMO3-XXXXX">XXXXX-DEMO3-XXXXX</span></td>
+      <td style="font-weight:500">Veeam</td>
+      <td>48</td>
+      <td>50</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">03.02.2027</td>
+      <td><span class="lic-badge lic-badge-green">Aktif</span></td>
+      <td style="white-space:nowrap">200 gün</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(3)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(3, 'Veeam — Enterprise Plus')">Sil</button>
+      </td></tr><tr data-status="Süresi Dolmuş" data-text="zerto enterprise trisops-dc1 dr replication 30 40 aktif xxxxx-demo6-xxxxx">
+      <td>Trisops-DC1</td>
+      <td>DR Replication</td>
+      <td>Enterprise</td>
+      <td><span class="lic-key" title="XXXXX-DEMO6-XXXXX">XXXXX-DEMO6-XXXXX</span></td>
+      <td style="font-weight:500">Zerto</td>
+      <td>30</td>
+      <td>40</td>
+      <td style="color:var(--text-dim);font-size:12px">Aktif</td>
+      <td style="white-space:nowrap">13.07.2026</td>
+      <td><span class="lic-badge lic-badge-red">Süresi Dolmuş</span></td>
+      <td style="white-space:nowrap;color:#dc2626">5 gün geçti</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(6)">Düzenle</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(6, 'Zerto — Enterprise')">Sil</button>
+      </td></tr></tbody>
+        </table>
+      </div>
+      <!-- Viewport altına yapışan yatay scrollbar (position:fixed, JS ile pozisyonlanır) -->
+      <div id="sticky-scroll" style="position: fixed; bottom: 28px; overflow-x: auto; height: 14px; background: var(--bg-card); border-top: 1px solid var(--border); z-index: 100; box-sizing: border-box; left: 248px; width: 1004px;">
+        <div id="sticky-scroll-inner" style="height: 1px; width: 1240px;"></div>
+      </div>
+      <p id="no-results" style="display:none;text-align:center;color:var(--text-dim);padding:32px"><span class="lang-tr">Sonuç bulunamadı.</span><span class="lang-en">No results found.</span></p>
+
+      <!-- ── Bildirim Ayarları ──────────────────────────────────────────────── -->
+      <div class="settings-card" style="margin-top:28px">
+        <div class="settings-card-head" style="cursor:pointer" onclick="toggleNotif()">
+          <div class="settings-card-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span class="lang-tr">Expire Bildirimleri</span><span class="lang-en">Expiry Notifications</span>
+          </div>
+          <svg id="notif-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition:.2s"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div id="notif-body" style="display:none;padding:16px 20px">
+          <p style="font-size:13px;color:var(--text-dim);margin-bottom:16px">
+            <span class="lang-tr">Lisans expire süresi yaklaştığında otomatik mail gönderilir. SMTP ayarlarının yapılmış olması gerekir (Admin Panel → SMTP).</span>
+            <span class="lang-en">Automatic email is sent when a license's expiry date approaches. SMTP settings must be configured (Admin Panel → SMTP).</span>
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:12px;font-weight:500;color:var(--text-dim)"><span class="lang-tr">TO (her satıra bir adres)</span><span class="lang-en">TO (one address per line)</span></span>
+              <textarea id="notif-to" rows="3" placeholder="kisi@sirketiniz.com" style="padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg-input);color:var(--text);font-size:13px;resize:vertical;font-family:inherit"></textarea>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <span style="font-size:12px;font-weight:500;color:var(--text-dim)"><span class="lang-tr">CC (virgülle ayrılmış)</span><span class="lang-en">CC (comma-separated)</span></span>
+              <textarea id="notif-cc" rows="3" style="padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg-input);color:var(--text);font-size:13px;resize:vertical;font-family:inherit"></textarea>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px">
+              <span style="color:var(--text-dim)"><span class="lang-tr">Expire'dan kaç gün önce bildirim gönderilsin?</span><span class="lang-en">How many days before expiry should the notification be sent?</span></span>
+              <input id="notif-days" type="number" min="1" max="365" value="90" style="width:72px;padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--bg-input);color:var(--text);font-size:13px">
+              <span class="lang-tr">gün</span><span class="lang-en">days</span>
+            </label>
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer">
+              <input type="checkbox" id="notif-enabled" checked="">
+              <span class="lang-tr">Bildirimleri etkinleştir</span><span class="lang-en">Enable notifications</span>
+            </label>
+          </div>
+          <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:12px">
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px">
+              <span style="color:var(--text-dim)"><span class="lang-tr">Bildirim sıklığı</span><span class="lang-en">Notification frequency</span></span>
+              <select id="notif-repeat" onchange="updateRepeatNote()" style="padding:6px 8px;border:1px solid var(--border);border-radius:6px;background:var(--bg-input);color:var(--text);font-size:13px">
+                <option value="1" selected="">1 gün</option>
+                <option value="7">1 hafta</option>
+                <option value="30">1 ay</option>
+                <option value="90">3 ay</option>
+                <option value="180">6 ay</option>
+                <option value="365">1 yıl</option>
+              </select>
+            </label>
+          </div>
+          <p id="notif-repeat-note" style="font-size:12px;color:var(--text-dim);margin:6px 0 0">Her gün saat 08:00'de gönderilir.</p>
+          <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;align-items:center">
+            <button class="btn-primary" onclick="saveNotif()"><span class="lang-tr">Kaydet</span><span class="lang-en">Save</span></button>
+            <button class="btn-ghost" onclick="testEmail()" id="test-btn"><span class="lang-tr">Test Maili Gönder</span><span class="lang-en">Send Test Email</span></button>
+            <button class="btn-ghost" onclick="sendReport()" id="report-btn" style="display:flex;align-items:center;gap:6px">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.55 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span class="lang-tr">Anlık Rapor Gönder</span><span class="lang-en">Send Report Now</span>
+            </button>
+            <span id="notif-msg" style="font-size:13px;align-self:center;color:var(--text-dim)"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── Modal ─────────────────────────────────────────────────────────────────── -->
+<div id="lic-modal" style="display:none;position:fixed;inset:0;z-index:300;background:rgba(245,247,250,0.97);overflow-y:auto">
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:10px;max-width:680px;margin:60px auto 40px;padding:28px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h3 id="modal-title" style="font-size:16px;font-weight:600">Lisans Ekle</h3>
+      <button onclick="closeModal()" style="background:none;border:none;cursor:pointer;color:var(--text-dim)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <input type="hidden" id="f-id">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Ürün *</span><span class="lang-en">Product *</span></span>
+        <input id="f-product" class="form-input" type="text" placeholder="VMware, Zerto, NetBackup…">
+      </label>
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Lisans</span><span class="lang-en">License</span></span>
+        <input id="f-lisans" class="form-input" type="text" placeholder="Enterprise Plus, vSAN…">
+      </label>
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Lokasyon</span><span class="lang-en">Location</span></span>
+        <input id="f-lokasyon" class="form-input" type="text" placeholder="İstanbul DC, Ankara…">
+      </label>
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Rol</span><span class="lang-en">Role</span></span>
+        <input id="f-rol" class="form-input" type="text" placeholder="Production, DR, Test…">
+      </label>
+      <label class="form-group" style="grid-column:1/-1">
+        <span class="form-label"><span class="lang-tr">Lisans Anahtarı</span><span class="lang-en">License Key</span></span>
+        <input id="f-anahtar" class="form-input" type="text" placeholder="XXXXX-XXXXX-XXXXX" style="font-family:monospace">
+      </label>
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Kullanım</span><span class="lang-en">Usage</span></span>
+        <input id="f-kullanim" class="form-input" type="text" placeholder="85 / 64 CPU…">
+      </label>
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Kapasite</span><span class="lang-en">Capacity</span></span>
+        <input id="f-kapasite" class="form-input" type="text" placeholder="100 VM, 256 GB…">
+      </label>
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Durum</span><span class="lang-en">Status</span></span>
+        <input id="f-durum" class="form-input" type="text" placeholder="Aktif, PoC, Deneme…">
+      </label>
+      <label class="form-group">
+        <span class="form-label"><span class="lang-tr">Expire Tarihi</span><span class="lang-en">Expiry Date</span></span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <input id="f-expire" class="form-input" type="date" style="flex:1">
+          <label style="display:flex;align-items:center;gap:5px;font-size:13px;white-space:nowrap;cursor:pointer">
+            <input type="checkbox" id="f-never" onchange="toggleNever(this)">
+            Never Expire
+          </label>
+        </div>
+      </label>
+      <label class="form-group" style="grid-column:1/-1">
+        <span class="form-label"><span class="lang-tr">Notlar</span><span class="lang-en">Notes</span></span>
+        <textarea id="f-notes" class="form-input" rows="2" style="resize:vertical"></textarea>
+      </label>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+      <button class="btn-ghost" onclick="closeModal()"><span class="lang-tr">İptal</span><span class="lang-en">Cancel</span></button>
+      <button class="btn-primary" onclick="saveLicense()"><span class="lang-tr">Kaydet</span><span class="lang-en">Save</span></button>
+    </div>
+  </div>
+</div>
+
+<style>
+.lic-badge-green  { background:#d1fae5;color:#065f46 }
+.lic-badge-yellow { background:#fef3c7;color:#92400e }
+.lic-badge-orange { background:#ffedd5;color:#9a3412 }
+.lic-badge-red    { background:#fee2e2;color:#991b1b }
+.lic-badge-gray   { background:#f3f4f6;color:#6b7280 }
+[data-theme="dark"] .lic-badge-green  { background:#064e3b;color:#6ee7b7 }
+[data-theme="dark"] .lic-badge-yellow { background:#78350f;color:#fcd34d }
+[data-theme="dark"] .lic-badge-orange { background:#7c2d12;color:#fdba74 }
+[data-theme="dark"] .lic-badge-red    { background:#7f1d1d;color:#fca5a5 }
+[data-theme="dark"] .lic-badge-gray   { background:#374151;color:#9ca3af }
+.lic-badge { display:inline-block;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:600;letter-spacing:.3px;white-space:nowrap }
+.stat-tile { background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:14px 16px }
+.stat-tile-val { font-size:24px;font-weight:700;line-height:1.2 }
+.stat-tile-lbl { font-size:11px;color:var(--text-dim);margin-top:2px }
+.lic-table { width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed }
+.lic-table th { padding:9px 12px;text-align:left;font-size:11px;font-weight:600;color:var(--text-dim);letter-spacing:.4px;background:var(--bg-card-hover,#f9fafb);border-bottom:2px solid var(--border);white-space:nowrap;position:relative;overflow:hidden;user-select:none }
+.lic-table td { padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap }
+.lic-table tr:last-child td { border-bottom:none }
+.lic-table tr:hover td { background:var(--bg-hover,rgba(0,0,0,.02)) }
+.lic-key { font-family:monospace;font-size:12px;color:var(--text-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;display:block;cursor:default }
+.col-resize { position:absolute;right:0;top:0;height:100%;width:6px;cursor:col-resize;z-index:1 }
+.col-resize:hover,.col-resize.active { background:var(--accent,#1a56db);opacity:.35 }
+#table-outer::-webkit-scrollbar { display:none }
+.th-inner { display:flex;align-items:center;gap:3px;overflow:hidden }
+.th-label { overflow:hidden;text-overflow:ellipsis;white-space:nowrap }
+.sort-arr { flex-shrink:0;font-size:11px;width:10px;color:var(--accent,#1a56db) }
+.form-group { display:flex;flex-direction:column;gap:4px }
+.form-label { font-size:12px;font-weight:500;color:var(--text-dim) }
+.form-input { padding:7px 10px;border:1px solid var(--border);border-radius:6px;background:var(--bg-input);color:var(--text);font-size:13px }
+.form-input:focus { outline:none;border-color:var(--accent,#1a56db) }
+</style>
+
+<script>
+let allLicenses = [{"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2026-12-15", "id": 7, "kapasite": "15", "kullanim": "12", "last_notified": null, "lisans": "Professional", "lisans_anahtari": "XXXXX-DEMO7-XXXXX", "lokasyon": "Trisops-DC1", "notes": "", "product": "Delinea", "rol": "Secret Server", "status": {"cls": "lic-badge-green", "days": 150, "label": "Aktif", "sort": 2850}, "updated_at": "2026-07-18 20:05:53"}, {"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2026-08-12", "id": 2, "kapasite": "20", "kullanim": "18", "last_notified": null, "lisans": "Datacenter 2022", "lisans_anahtari": "XXXXX-DEMO2-XXXXX", "lokasyon": "Trisops-DC1", "notes": "Yak\u0131nda yenilenmeli", "product": "Microsoft", "rol": "Windows Server", "status": {"cls": "lic-badge-yellow", "days": 25, "label": "Uyar\u0131", "sort": 1975}, "updated_at": "2026-07-18 20:05:53"}, {"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2027-08-22", "id": 5, "kapasite": "8", "kullanim": "8", "last_notified": null, "lisans": "Enterprise 2022", "lisans_anahtari": "XXXXX-DEMO5-XXXXX", "lokasyon": "Trisops-DC1", "notes": "", "product": "Microsoft", "rol": "SQL Server", "status": {"cls": "lic-badge-green", "days": 400, "label": "Aktif", "sort": 2600}, "updated_at": "2026-07-18 20:05:53"}, {"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2027-04-24", "id": 8, "kapasite": "60", "kullanim": "48", "last_notified": null, "lisans": "Enterprise", "lisans_anahtari": "XXXXX-DEMO8-XXXXX", "lokasyon": "Trisops-DC1", "notes": "", "product": "NetBackup", "rol": "Backup", "status": {"cls": "lic-badge-green", "days": 280, "label": "Aktif", "sort": 2720}, "updated_at": "2026-07-18 20:05:53"}, {"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2026-07-28", "id": 4, "kapasite": "15", "kullanim": "10", "last_notified": null, "lisans": "Standard", "lisans_anahtari": "XXXXX-DEMO4-XXXXX", "lokasyon": "Trisops-DC1", "notes": "S\u00fcresi dolmak \u00fczere", "product": "Red Hat", "rol": "RHEL", "status": {"cls": "lic-badge-orange", "days": 10, "label": "Kritik", "sort": 990}, "updated_at": "2026-07-18 20:05:53"}, {"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2027-06-23", "id": 1, "kapasite": "64", "kullanim": "48", "last_notified": null, "lisans": "vSphere 8 Enterprise Plus", "lisans_anahtari": "XXXXX-DEMO1-XXXXX", "lokasyon": "Trisops-DC1", "notes": "", "product": "VMware", "rol": "vSphere", "status": {"cls": "lic-badge-green", "days": 340, "label": "Aktif", "sort": 2660}, "updated_at": "2026-07-18 20:05:53"}, {"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2027-02-03", "id": 3, "kapasite": "50", "kullanim": "48", "last_notified": null, "lisans": "Enterprise Plus", "lisans_anahtari": "XXXXX-DEMO3-XXXXX", "lokasyon": "Trisops-DC1", "notes": "", "product": "Veeam", "rol": "Backup \u0026 Replication", "status": {"cls": "lic-badge-green", "days": 200, "label": "Aktif", "sort": 2800}, "updated_at": "2026-07-18 20:05:53"}, {"created_at": "2026-07-18 20:05:53", "durum": "Aktif", "expire_date": "2026-07-13", "id": 6, "kapasite": "40", "kullanim": "30", "last_notified": null, "lisans": "Enterprise", "lisans_anahtari": "XXXXX-DEMO6-XXXXX", "lokasyon": "Trisops-DC1", "notes": "S\u00fcresi doldu \u2014 yenileme bekleniyor", "product": "Zerto", "rol": "DR Replication", "status": {"cls": "lic-badge-red", "days": -5, "label": "S\u00fcresi Dolmu\u015f", "sort": 5}, "updated_at": "2026-07-18 20:05:53"}];
+
+function _lang() { return (window._PS_LANG || document.documentElement.lang) === 'en' ? 'en' : 'tr'; }
+function _L(tr, en) { return _lang() === 'en' ? en : tr; }
+
+const STATUS_LABEL_EN = {
+  'Süresi Dolmuş': 'Expired', 'Kritik': 'Critical', 'Uyarı': 'Warning',
+  'Aktif': 'Active', 'Süresi Yok': 'No Expiry', 'Geçersiz': 'Invalid',
+};
+function statusLabel(trLabel) {
+  return _lang() === 'en' ? (STATUS_LABEL_EN[trLabel] || trLabel) : trLabel;
+}
+
+function applyStaticI18n() {
+  const search = document.getElementById('search-input');
+  if (search) search.placeholder = _L('Ürün, lisans, lokasyon…', 'Product, license, location…');
+  const statusOpts = {
+    '': _L('Tüm Durumlar', 'All Statuses'),
+    'Süresi Dolmuş': _L('Süresi Dolmuş', 'Expired'),
+    'Kritik': _L('Kritik', 'Critical'),
+    'Uyarı': _L('Uyarı', 'Warning'),
+    'Aktif': _L('Aktif', 'Active'),
+    'Süresi Yok': _L('Süresi Yok', 'No Expiry'),
+  };
+  document.querySelectorAll('#status-filter option').forEach(opt => {
+    if (opt.value in statusOpts) opt.textContent = statusOpts[opt.value];
+  });
+}
+applyStaticI18n();
+
+function renderTable(data) {
+  const tbody = document.getElementById('lic-tbody');
+  tbody.innerHTML = '';
+  const noRes = document.getElementById('no-results');
+  if (!data.length) { noRes.style.display = ''; return; }
+  noRes.style.display = 'none';
+
+  data.forEach(l => {
+    const s      = l.status;
+    const expStr = l.expire_date
+      ? new Date(l.expire_date + 'T00:00:00').toLocaleDateString('tr-TR')
+      : '—';
+    const daysColor = s.days !== null && s.days < 0  ? '#dc2626'
+                    : s.days !== null && s.days <= 15 ? '#ea580c' : '';
+    const daysStr = s.days === null  ? '—'
+      : s.days < 0   ? _L(`${Math.abs(s.days)} gün geçti`, `${Math.abs(s.days)} days ago`)
+      : s.days === 0  ? _L('Bugün!', 'Today!')
+      : _L(`${s.days} gün`, `${s.days} days`);
+    const keyHtml = l.lisans_anahtari
+      ? `<span class="lic-key" title="${esc(l.lisans_anahtari)}">${esc(l.lisans_anahtari)}</span>`
+      : '<span style="color:var(--text-dim)">—</span>';
+
+    const tr = document.createElement('tr');
+    tr.dataset.status = s.label;
+    tr.dataset.text = [l.product, l.lisans, l.lokasyon, l.rol, l.kullanim, l.kapasite, l.durum, l.lisans_anahtari].join(' ').toLowerCase();
+    tr.innerHTML = `
+      <td>${esc(l.lokasyon)}</td>
+      <td>${esc(l.rol)}</td>
+      <td>${esc(l.lisans)}</td>
+      <td>${keyHtml}</td>
+      <td style="font-weight:500">${esc(l.product)}</td>
+      <td>${esc(l.kullanim)}</td>
+      <td>${esc(l.kapasite)}</td>
+      <td style="color:var(--text-dim);font-size:12px">${esc(l.durum)}</td>
+      <td style="white-space:nowrap">${expStr}</td>
+      <td><span class="lic-badge ${s.cls}">${statusLabel(s.label)}</span></td>
+      <td style="white-space:nowrap${daysColor ? ';color:' + daysColor : ''}">${daysStr}</td>
+      <td style="white-space:nowrap">
+        <button class="btn-ghost btn-xs" onclick="editLicense(${l.id})">${_L('Düzenle', 'Edit')}</button>
+        <button class="btn-danger-ghost btn-xs" onclick="delLicense(${l.id}, '${esc(l.product)} — ${esc(l.lisans)}')">${_L('Sil', 'Delete')}</button>
+      </td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderStats(data) {
+  const expired  = data.filter(l => l.status.label === 'Süresi Dolmuş').length;
+  const critical = data.filter(l => l.status.label === 'Kritik').length;
+  const warning  = data.filter(l => l.status.label === 'Uyarı').length;
+  const never    = data.filter(l => l.status.label === 'Süresi Yok').length;
+  const active   = data.filter(l => l.status.label === 'Aktif').length;
+
+  document.getElementById('lic-summary').textContent =
+    _L(`${data.length} lisans kayıtlı`, `${data.length} license(s) registered`) +
+    (expired  ? _L(` · ${expired} süresi dolmuş`, ` · ${expired} expired`)   : '') +
+    (critical ? _L(` · ${critical} kritik`,        ` · ${critical} critical`) : '') +
+    (warning  ? _L(` · ${warning} uyarı`,          ` · ${warning} warning`)   : '');
+
+  const tiles = [
+    { val: data.length, lbl: _L('Toplam', 'Total'),                    color: 'var(--text)' },
+    { val: active,      lbl: _L('Aktif', 'Active'),                    color: '#059669' },
+    { val: warning + critical, lbl: _L('Yaklaşan', 'Upcoming'),        color: '#d97706' },
+    { val: expired,     lbl: _L('Süresi Dolmuş', 'Expired'),           color: '#dc2626' },
+    { val: never,       lbl: _L('Süresiz', 'No Expiry'),               color: 'var(--text-dim)' },
+  ];
+  document.getElementById('stat-row').innerHTML = tiles.map(t => `
+    <div class="stat-tile">
+      <div class="stat-tile-val" style="color:${t.color}">${t.val}</div>
+      <div class="stat-tile-lbl">${t.lbl}</div>
+    </div>`).join('');
+}
+
+// ── Kolon sıralama ───────────────────────────────────────────────────────────
+let sortState = { col: null, dir: 'asc' };
+
+function getColVal(l, key) {
+  if (!key) return '';
+  if (key === 'status_label') return l.status?.label ?? '';
+  if (key === 'days') return l.status?.days ?? null;
+  return String(l[key] ?? '');
+}
+
+function applySort(data) {
+  if (!sortState.col) return data;
+  const key = sortState.col;
+  const dir = sortState.dir === 'asc' ? 1 : -1;
+  return [...data].sort((a, b) => {
+    const va = getColVal(a, key), vb = getColVal(b, key);
+    if (key === 'days') {
+      if (va === null && vb === null) return 0;
+      if (va === null) return 1; if (vb === null) return -1;
+      return dir * (va - vb);
+    }
+    if (key === 'expire_date') {
+      if (!va && !vb) return 0;
+      if (!va) return 1; if (!vb) return -1;
+      return dir * va.localeCompare(vb);
+    }
+    return dir * String(va).localeCompare(String(vb), 'tr', { sensitivity: 'base' });
+  });
+}
+
+function filterTable() {
+  const q  = document.getElementById('search-input').value.toLowerCase();
+  const sf = document.getElementById('status-filter').value;
+  let data = allLicenses.filter(l => {
+    const textOk   = !q || [l.product,l.lisans,l.lokasyon,l.rol,l.kullanim,
+      l.kapasite,l.durum,l.lisans_anahtari].join(' ').toLowerCase().includes(q);
+    const statusOk = !sf || l.status.label === sf;
+    return textOk && statusOk;
+  });
+  renderTable(applySort(data));
+}
+
+function sortByCol(col) {
+  sortState.dir = sortState.col === col && sortState.dir === 'asc' ? 'desc' : 'asc';
+  sortState.col = col;
+  updateSortArrows();
+  filterTable();
+}
+
+function updateSortArrows() {
+  document.querySelectorAll('#lic-table th[data-col]').forEach(th => {
+    const arr = th.querySelector('.sort-arr');
+    if (arr) arr.textContent = th.dataset.col === sortState.col
+      ? (sortState.dir === 'asc' ? '↑' : '↓') : '';
+  });
+}
+
+function initSortFilter() {
+  document.querySelectorAll('#lic-table th[data-col]').forEach(th => {
+    const col = th.dataset.col;
+    const txt = [...th.childNodes].find(n => n.nodeType === 3 && n.textContent.trim());
+    if (txt) th.removeChild(txt);
+
+    const label = document.createElement('span');
+    label.className = 'th-label';
+    label.textContent = txt?.textContent.trim() || '';
+
+    const arr = document.createElement('span');
+    arr.className = 'sort-arr';
+
+    const inner = document.createElement('div');
+    inner.className = 'th-inner';
+    inner.appendChild(label);
+    inner.appendChild(arr);
+
+    const resize = th.querySelector('.col-resize');
+    resize ? th.insertBefore(inner, resize) : th.appendChild(inner);
+
+    th.style.cursor = 'pointer';
+    th.addEventListener('click', e => {
+      if (e.target.closest('.col-resize')) return;
+      sortByCol(col);
+    });
+  });
+}
+
+function openModal(lic) {
+  document.getElementById('modal-title').textContent = lic ? _L('Lisans Düzenle', 'Edit License') : _L('Lisans Ekle', 'Add License');
+  document.getElementById('f-id').value        = lic?.id       || '';
+  document.getElementById('f-product').value   = lic?.product  || '';
+  document.getElementById('f-lisans').value    = lic?.lisans   || '';
+  document.getElementById('f-lokasyon').value  = lic?.lokasyon || '';
+  document.getElementById('f-rol').value       = lic?.rol      || '';
+  document.getElementById('f-anahtar').value   = lic?.lisans_anahtari || '';
+  document.getElementById('f-kullanim').value  = lic?.kullanim || '';
+  document.getElementById('f-kapasite').value  = lic?.kapasite || '';
+  document.getElementById('f-durum').value     = lic?.durum    || '';
+  document.getElementById('f-notes').value     = lic?.notes    || '';
+  const never = !lic?.expire_date;
+  document.getElementById('f-never').checked   = never;
+  document.getElementById('f-expire').value    = never ? '' : (lic?.expire_date || '');
+  document.getElementById('f-expire').disabled = never;
+  document.getElementById('lic-modal').style.display = '';
+}
+
+function closeModal() { document.getElementById('lic-modal').style.display = 'none'; }
+
+function toggleNever(cb) {
+  const inp = document.getElementById('f-expire');
+  inp.disabled = cb.checked;
+  if (cb.checked) inp.value = '';
+}
+
+function editLicense(id) {
+  const lic = allLicenses.find(l => l.id === id);
+  if (lic) openModal(lic);
+}
+
+async function delLicense(id, name) {
+  if (!confirm(_L(`"${name}" silinsin mi?`, `Delete "${name}"?`))) return;
+  const r = await fetch(`/licenses/delete/${id}`, { method: 'POST' });
+  if ((await r.json()).ok) location.reload();
+}
+
+async function delAllLicenses() {
+  const total = allLicenses.length;
+  if (total === 0) { alert(_L('Silinecek lisans yok.', 'No licenses to delete.')); return; }
+  if (!confirm(_L(`Tüm ${total} lisans kaydı silinecek. Emin misiniz?`, `All ${total} license record(s) will be deleted. Are you sure?`))) return;
+  if (!confirm(_L('Bu işlem geri alınamaz. Silme işlemini onaylıyor musunuz?', 'This action cannot be undone. Confirm deletion?'))) return;
+  const r = await fetch('/licenses/delete-all', { method: 'POST' });
+  const d = await r.json();
+  if (d.ok) location.reload();
+}
+
+async function saveLicense() {
+  const never = document.getElementById('f-never').checked;
+  const body = {
+    id:              document.getElementById('f-id').value || null,
+    product:         document.getElementById('f-product').value.trim(),
+    lisans:          document.getElementById('f-lisans').value.trim(),
+    lokasyon:        document.getElementById('f-lokasyon').value.trim(),
+    rol:             document.getElementById('f-rol').value.trim(),
+    lisans_anahtari: document.getElementById('f-anahtar').value.trim(),
+    kullanim:        document.getElementById('f-kullanim').value.trim(),
+    kapasite:        document.getElementById('f-kapasite').value.trim(),
+    durum:           document.getElementById('f-durum').value.trim(),
+    expire_date:     never ? null : (document.getElementById('f-expire').value || null),
+    notes:           document.getElementById('f-notes').value.trim(),
+  };
+  if (!body.product) { alert('Ürün alanı zorunlu.'); return; }
+  const r = await fetch('/licenses/save', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(body),
+  });
+  if ((await r.json()).ok) location.reload();
+}
+
+function toggleNotif() {
+  const body = document.getElementById('notif-body');
+  const chev = document.getElementById('notif-chevron');
+  const open = body.style.display === 'none';
+  body.style.display = open ? '' : 'none';
+  chev.style.transform = open ? 'rotate(180deg)' : '';
+}
+
+const REPEAT_NOTES = {
+  '1':   _L('Her gün saat 08:00\'de gönderilir.', 'Sent every day at 08:00.'),
+  '7':   _L('Her hafta Pazartesi günü saat 08:00\'de gönderilir.', 'Sent every Monday at 08:00.'),
+  '30':  _L('Her ayın 1\'inde saat 08:00\'de gönderilir.', 'Sent on the 1st of every month at 08:00.'),
+  '90':  _L('3 ayda bir — Ocak, Nisan, Temmuz ve Ekim ayının 1\'inde saat 08:00\'de gönderilir.', 'Every 3 months — sent on the 1st of January, April, July, and October at 08:00.'),
+  '180': _L('6 ayda bir — Ocak ve Temmuz ayının 1\'inde saat 08:00\'de gönderilir.', 'Every 6 months — sent on the 1st of January and July at 08:00.'),
+  '365': _L('Her yılın 1 Ocak günü saat 08:00\'de gönderilir.', 'Sent every year on January 1st at 08:00.'),
+};
+function updateRepeatNote() {
+  const val  = document.getElementById('notif-repeat').value;
+  const note = document.getElementById('notif-repeat-note');
+  note.textContent = REPEAT_NOTES[val] || '';
+}
+
+async function saveNotif() {
+  const body = {
+    to:          document.getElementById('notif-to').value,
+    cc:          document.getElementById('notif-cc').value,
+    days:        document.getElementById('notif-days').value,
+    enabled:     document.getElementById('notif-enabled').checked ? '1' : '0',
+    repeat_days: document.getElementById('notif-repeat').value,
+  };
+  const r = await fetch('/licenses/notify-settings', {
+    method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)
+  });
+  const d = await r.json();
+  document.getElementById('notif-msg').textContent = d.ok ? _L('Kaydedildi.', 'Saved.') : _L('Hata!', 'Error!');
+  setTimeout(() => { document.getElementById('notif-msg').textContent = ''; }, 3000);
+}
+
+async function testEmail() {
+  const btn = document.getElementById('test-btn');
+  btn.disabled = true;
+  btn.textContent = _L('Gönderiliyor…', 'Sending…');
+  const r = await fetch('/licenses/test-email', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      to: document.getElementById('notif-to').value,
+      cc: document.getElementById('notif-cc').value,
+    }),
+  });
+  const d = await r.json();
+  document.getElementById('notif-msg').textContent = d.msg;
+  document.getElementById('notif-msg').style.color = d.ok ? '#059669' : '#dc2626';
+  btn.disabled = false;
+  btn.textContent = _L('Test Maili Gönder', 'Send Test Email');
+}
+
+async function sendReport() {
+  const btn = document.getElementById('report-btn');
+  const msg = document.getElementById('notif-msg');
+  btn.disabled = true;
+  btn.querySelector('svg').style.animation = 'spin 1s linear infinite';
+  msg.textContent = _L('Gönderiliyor…', 'Sending…');
+  msg.style.color = 'var(--text-dim)';
+  try {
+    const r = await fetch('/licenses/send-report', { method: 'POST' });
+    const d = await r.json();
+    msg.textContent = d.msg;
+    msg.style.color = d.ok ? '#059669' : '#dc2626';
+  } catch(e) {
+    msg.textContent = _L('Hata: ', 'Error: ') + e.message;
+    msg.style.color = '#dc2626';
+  }
+  btn.disabled = false;
+  btn.querySelector('svg').style.animation = '';
+  setTimeout(() => { msg.textContent = ''; }, 5000);
+}
+
+async function importCSV(input) {
+  const file = input.files[0];
+  if (!file) return;
+  input.value = '';
+  const fd = new FormData();
+  fd.append('file', file);
+  const btn = document.querySelector('[onclick*="csv-input"]');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> ' + _L('Aktarılıyor…', 'Importing…');
+  btn.disabled = true;
+  try {
+    const r = await fetch('/licenses/import', { method: 'POST', body: fd });
+    const d = await r.json();
+    alert(d.msg);
+    if (d.ok && d.imported > 0) location.reload();
+  } catch(e) {
+    alert(_L('Hata: ', 'Error: ') + e.message);
+  }
+  btn.innerHTML = orig;
+  btn.disabled = false;
+}
+
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Kolon resize ──────────────────────────────────────────────────────────────
+function initColResize() {
+  const table  = document.getElementById('lic-table');
+  const ths    = table.querySelectorAll('th');
+  const outer  = document.getElementById('table-outer');
+
+  // Başlangıç genişliklerini belirle
+  const defaultWidths = [110,90,150,140,130,80,80,90,100,110,70,90];
+  ths.forEach((th, i) => {
+    th.style.width    = (defaultWidths[i] || 100) + 'px';
+    th.style.minWidth = '50px';
+
+    const handle = document.createElement('div');
+    handle.className = 'col-resize';
+    th.appendChild(handle);
+
+    let startX, startW;
+    handle.addEventListener('mousedown', e => {
+      startX = e.pageX;
+      startW = th.offsetWidth;
+      handle.classList.add('active');
+      document.body.style.cursor = 'col-resize';
+      e.preventDefault();
+
+      const onMove = e => {
+        const w = Math.max(50, startW + e.pageX - startX);
+        th.style.width    = w + 'px';
+        th.style.minWidth = w + 'px';
+        syncStickyWidth();
+      };
+      const onUp = () => {
+        handle.classList.remove('active');
+        document.body.style.cursor = '';
+        document.removeEventListener('mousemove', onMove);
+        document.removeEventListener('mouseup',   onUp);
+      };
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup',   onUp);
+    });
+  });
+}
+
+// ── Yapışan scrollbar ─────────────────────────────────────────────────────────
+function syncStickyWidth() {
+  const outer = document.getElementById('table-outer');
+  document.getElementById('sticky-scroll-inner').style.width = outer.scrollWidth + 'px';
+}
+
+function initStickyScroll() {
+  const outer  = document.getElementById('table-outer');
+  const sticky = document.getElementById('sticky-scroll');
+  let syncing  = false;
+
+  function updatePos() {
+    const rect    = outer.getBoundingClientRect();
+    const inView  = rect.top < window.innerHeight && rect.bottom > 0;
+    const needsBar = outer.scrollWidth > outer.clientWidth;
+    if (!inView || !needsBar) { sticky.style.display = 'none'; return; }
+
+    // Footer varsa onun üst kenarına yapış, yoksa viewport altına
+    const footer   = document.querySelector('footer.app-footer');
+    const footerTop = footer ? footer.getBoundingClientRect().top : window.innerHeight;
+    const bottom   = Math.max(0, window.innerHeight - footerTop);
+
+    sticky.style.display = '';
+    sticky.style.left    = rect.left + 'px';
+    sticky.style.width   = rect.width + 'px';
+    sticky.style.bottom  = bottom + 'px';
+    syncStickyWidth();
+  }
+
+  window.addEventListener('scroll', updatePos);
+  window.addEventListener('resize', updatePos);
+
+  outer.addEventListener('scroll', () => {
+    if (syncing) return; syncing = true;
+    sticky.scrollLeft = outer.scrollLeft; syncing = false;
+  });
+  sticky.addEventListener('scroll', () => {
+    if (syncing) return; syncing = true;
+    outer.scrollLeft = sticky.scrollLeft; syncing = false;
+  });
+
+  new ResizeObserver(() => { syncStickyWidth(); updatePos(); }).observe(outer);
+  updatePos();
+}
+
+// İlk yükleme
+renderStats(allLicenses);
+renderTable(allLicenses);
+initColResize();
+initSortFilter();
+initStickyScroll();
+updateRepeatNote();
+</script>
+
+<script src="/static/app.js?v=1784405152"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){applyI18n(window._PS_LANG||'tr');});</script>
+<!-- AI Chat Widget — floating button + chat window, visible on all pages -->
+<div id="ai-root" aria-live="polite" data-page="/licenses">
+
+  <!-- Floating trigger button -->
+  <button id="ai-btn" onclick="aiToggle()" title="AI Asistan" aria-label="AI Asistanı aç" aria-expanded="false" aria-controls="ai-win">
+    <!-- Closed: chat icon -->
+    <svg id="ai-btn-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="10" r=".5" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r=".5" fill="currentColor"></circle>
+    </svg>
+    <!-- Open: close icon -->
+    <svg id="ai-btn-close" width="20" height="20" viewBox="0 0 24 24" style="display:none" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+    <!-- Unread dot -->
+    <span id="ai-dot" style="display:none"></span>
+  </button>
+
+  <!-- Chat window -->
+  <div id="ai-win" role="dialog" aria-label="AI Asistan" aria-hidden="true">
+    <!-- Header -->
+    <div id="ai-hd">
+      <div style="display:flex;align-items:center;gap:9px">
+        <div id="ai-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+        </div>
+        <div>
+          <div id="ai-title-txt" style="font-size:13px;font-weight:700;line-height:1.1">AI Asistan</div>
+          <div id="ai-status-txt" style="font-size:10px;opacity:.65;line-height:1">Altyapı verilerini analiz ediyor</div>
+        </div>
+      </div>
+      <button id="ai-close-btn" onclick="aiToggle()" title="Kapat" style="background:none;border:none;cursor:pointer;padding:4px;border-radius:5px;
+                     color:inherit;opacity:.7;display:flex;align-items:center;transition:opacity .15s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Messages area -->
+    <div id="ai-msgs" role="log">
+      <!-- Welcome message injected by JS -->
+    <div class="ai-bubble bot">Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.<br><br>Örnekler:</div><div id="ai-suggestions"><button class="ai-sug">Lisans envanteri</button><button class="ai-sug">Süresi dolmuş lisanslar?</button><button class="ai-sug">30 gün içinde dolacak lisanslar?</button></div></div>
+
+    <!-- Input area -->
+    <div id="ai-footer">
+      <div id="ai-input-wrap">
+        <textarea id="ai-input" rows="1" placeholder="Bir soru sorun…" maxlength="600" onkeydown="aiKey(event)" oninput="aiResize(this)" aria-label="Soru girin"></textarea>
+        <button id="ai-send" onclick="aiSend()" title="Gönder (Enter)" aria-label="Gönder">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <div id="ai-footer-note" style="font-size:10px;color:var(--ai-muted);text-align:center;margin-top:6px;line-height:1.3">Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder</div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ── Tokens ── */
+:root {
+  --ai-accent:   #4f6ef7;
+  --ai-accent2:  #7c5af5;
+  --ai-win-bg:   #ffffff;
+  --ai-hd-bg:    linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  --ai-hd-txt:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-user-bg:  linear-gradient(135deg, #4f6ef7, #7c5af5);
+  --ai-user-txt: #ffffff;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+  --ai-radius:   14px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ai-win-bg:   #1a1d23;
+    --ai-msg-bg:   #252830;
+    --ai-msg-txt:  #e5e7eb;
+    --ai-border:   rgba(255,255,255,.08);
+    --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+    --ai-muted:    #6b7280;
+    --ai-input-bg: #1e2128;
+    --ai-table-hd: #1e2128;
+  }
+}
+:root[data-theme="dark"] {
+  --ai-win-bg:   #1a1d23;
+  --ai-msg-bg:   #252830;
+  --ai-msg-txt:  #e5e7eb;
+  --ai-border:   rgba(255,255,255,.08);
+  --ai-shadow:   0 12px 40px rgba(0,0,0,.45), 0 4px 16px rgba(0,0,0,.3);
+  --ai-muted:    #6b7280;
+  --ai-input-bg: #1e2128;
+  --ai-table-hd: #1e2128;
+}
+:root[data-theme="light"] {
+  --ai-win-bg:   #ffffff;
+  --ai-msg-bg:   #f3f4f8;
+  --ai-msg-txt:  #111827;
+  --ai-border:   rgba(0,0,0,.08);
+  --ai-shadow:   0 12px 40px rgba(79,110,247,.25), 0 4px 16px rgba(0,0,0,.12);
+  --ai-muted:    #9ca3af;
+  --ai-input-bg: #f9fafb;
+  --ai-table-hd: #f3f4f8;
+}
+
+/* ── Trigger button ── */
+#ai-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f6ef7 0%, #7c5af5 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79,110,247,.45);
+  transition: transform .2s, box-shadow .2s;
+}
+#ai-btn:hover  { transform: scale(1.08); box-shadow: 0 6px 28px rgba(79,110,247,.6); }
+#ai-btn:active { transform: scale(.96); }
+#ai-btn.open   { box-shadow: 0 2px 10px rgba(0,0,0,.2); }
+
+/* Unread dot */
+#ai-dot {
+  position: absolute;
+  top: 5px; right: 5px;
+  width: 10px; height: 10px;
+  background: #f87171;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: ai-pulse 1.6s ease-in-out infinite;
+}
+@keyframes ai-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.35); opacity: .7; }
+}
+
+/* ── Chat window ── */
+#ai-win {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  z-index: 9997;
+  width: 380px;
+  max-width: calc(100vw - 32px);
+  height: 520px;
+  max-height: calc(100vh - 120px);
+  background: var(--ai-win-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--ai-radius);
+  box-shadow: var(--ai-shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform-origin: bottom right;
+  transform: scale(.85) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .22s cubic-bezier(.34,1.56,.64,1), opacity .18s ease;
+}
+#ai-win.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Header ── */
+#ai-hd {
+  background: var(--ai-hd-bg);
+  color: var(--ai-hd-txt);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+#ai-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Messages ── */
+#ai-msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+#ai-msgs::-webkit-scrollbar { width: 4px; }
+#ai-msgs::-webkit-scrollbar-track { background: transparent; }
+#ai-msgs::-webkit-scrollbar-thumb { background: var(--ai-border); border-radius: 4px; }
+
+/* Bubbles */
+.ai-bubble {
+  max-width: 88%;
+  padding: 10px 13px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.55;
+  word-break: break-word;
+}
+.ai-bubble.bot {
+  background: var(--ai-msg-bg);
+  color: var(--ai-msg-txt);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.ai-bubble.user {
+  background: var(--ai-user-bg);
+  color: var(--ai-user-txt);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+}
+.ai-bubble.error {
+  background: rgba(239,68,68,.1);
+  color: #dc2626;
+  align-self: flex-start;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Detail text below bubble */
+.ai-detail {
+  font-size: 11px;
+  color: var(--ai-muted);
+  margin-top: 5px;
+  padding: 0 2px;
+  align-self: flex-start;
+  max-width: 88%;
+  line-height: 1.5;
+}
+
+/* Cost table */
+.ai-cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.ai-cost-table th {
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding: 5px 8px;
+  background: var(--ai-table-hd);
+  border-bottom: 1px solid var(--ai-border);
+}
+.ai-cost-table td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--ai-border);
+  color: var(--ai-msg-txt);
+}
+.ai-cost-table tr:last-child td { border-bottom: none; }
+.ai-cost-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ai-accent);
+  margin-top: 8px;
+  padding: 6px 8px;
+  background: var(--ai-table-hd);
+  border-radius: 6px;
+}
+
+/* Source chip */
+.ai-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 10px; font-weight: 600; letter-spacing: .03em;
+  padding: 2px 7px; border-radius: 10px; margin-top: 5px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+}
+
+/* Typing indicator */
+.ai-typing {
+  display: flex; gap: 5px; align-items: center;
+  padding: 12px 14px;
+  background: var(--ai-msg-bg);
+  border-radius: 12px 12px 12px 3px;
+  align-self: flex-start;
+}
+.ai-typing span {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--ai-muted);
+  animation: ai-bounce .9s ease-in-out infinite;
+}
+.ai-typing span:nth-child(2) { animation-delay: .15s; }
+.ai-typing span:nth-child(3) { animation-delay: .30s; }
+@keyframes ai-bounce {
+  0%,100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-5px); opacity: 1; }
+}
+
+/* ── Input area ── */
+#ai-footer {
+  padding: 10px 12px 12px;
+  border-top: 1px solid var(--ai-border);
+  flex-shrink: 0;
+  background: var(--ai-win-bg);
+}
+#ai-input-wrap {
+  display: flex; align-items: flex-end; gap: 8px;
+  background: var(--ai-input-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: 10px;
+  padding: 6px 6px 6px 12px;
+  transition: border-color .15s;
+}
+#ai-input-wrap:focus-within { border-color: var(--ai-accent); }
+
+#ai-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--ai-msg-txt);
+  font-size: 13px;
+  line-height: 1.5;
+  resize: none;
+  max-height: 100px;
+  outline: none;
+  font-family: inherit;
+}
+#ai-input::placeholder { color: var(--ai-muted); }
+
+#ai-send {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  border: none; cursor: pointer; flex-shrink: 0;
+  background: linear-gradient(135deg, #4f6ef7, #7c5af5);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity .15s, transform .1s;
+}
+#ai-send:hover  { opacity: .9; }
+#ai-send:active { transform: scale(.93); }
+#ai-send:disabled { opacity: .4; cursor: default; }
+
+/* ── Quick suggestion chips ── */
+#ai-suggestions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px;
+}
+.ai-sug {
+  font-size: 11px; padding: 5px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.1); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.2); cursor: pointer;
+  transition: background .15s; white-space: nowrap;
+  font-weight: 500;
+}
+.ai-sug:hover { background: rgba(79,110,247,.2); }
+
+/* ── Follow-up suggestion chips ── */
+.ai-follow-row {
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 0 2px; margin-top: 6px;
+  align-self: flex-start; max-width: 96%;
+}
+.ai-follow-label {
+  width: 100%; font-size: 10px; color: var(--ai-muted);
+  font-weight: 600; letter-spacing: .03em; margin-bottom: 2px;
+}
+.ai-follow-chip {
+  font-size: 11px; padding: 4px 10px; border-radius: 20px;
+  background: rgba(79,110,247,.08); color: var(--ai-accent);
+  border: 1px solid rgba(79,110,247,.18); cursor: pointer;
+  transition: background .15s, border-color .15s; white-space: nowrap;
+  font-weight: 500; display: inline-flex; align-items: center; gap: 4px;
+}
+.ai-follow-chip::before { content: '↪'; font-size: 10px; opacity: .7; }
+.ai-follow-chip:hover {
+  background: rgba(79,110,247,.18); border-color: rgba(79,110,247,.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #ai-win { transition: none; }
+  .ai-typing span { animation: none; opacity: .7; }
+  #ai-dot { animation: none; }
+}
+</style>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ── Language: follows the same document.documentElement.lang set by applyI18n() ── */
+  function _lang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'tr';
+  }
+
+  const WELCOME = {
+    tr: 'Merhaba! Altyapı verileriniz hakkında sorular sorabilirsiniz.\n\nÖrnekler:',
+    en: 'Hello! You can ask questions about your infrastructure data.\n\nExamples:',
+  };
+
+  /* ── Static widget chrome strings ── */
+  const WI18N = {
+    tr: {
+      title:        'AI Asistan',
+      openLabel:    'AI Asistanı aç',
+      statusIdle:   'Altyapı verilerini analiz ediyor',
+      close:        'Kapat',
+      inputPh:      'Bir soru sorun…',
+      inputAria:    'Soru girin',
+      sendTitle:    'Gönder (Enter)',
+      sendAria:     'Gönder',
+      footerNote:   'Gerçek altyapı verilerinizden yanıt verir &nbsp;·&nbsp; Enter = gönder',
+      followLabel:  'Devam edebilirsiniz:',
+      serverError:  'Sunucu hatası (',
+      connError:    'Bağlantı hatası: ',
+      costHeaders:  ['Bileşen', 'Miktar', 'Tutar'],
+      chipCost:     'Maliyet Hesabı',
+      chipVcenter:  'vCenter Verisi',
+    },
+    en: {
+      title:        'AI Assistant',
+      openLabel:    'Open AI Assistant',
+      statusIdle:   'Analyzing infrastructure data',
+      close:        'Close',
+      inputPh:      'Ask a question…',
+      inputAria:    'Enter your question',
+      sendTitle:    'Send (Enter)',
+      sendAria:     'Send',
+      footerNote:   'Answers using your real infrastructure data &nbsp;·&nbsp; Enter = send',
+      followLabel:  'You can continue:',
+      serverError:  'Server error (',
+      connError:    'Connection error: ',
+      costHeaders:  ['Component', 'Quantity', 'Amount'],
+      chipCost:     'Cost Calculation',
+      chipVcenter:  'vCenter Data',
+    },
+  };
+  function _wt(key) { return (WI18N[_lang()] || WI18N.tr)[key]; }
+
+  /* ── Sayfaya özel hazır sorular — anahtar, sayfanın URL path'idir (en spesifik eşleşme kazanır). ── */
+  const SUGGESTION_MAP = {
+    tr: {
+      '/vcenter':                ['Kaç VM var?', 'Kapalı VM\'ler neler?', 'Tag\'siz VM\'ler neler?', 'En fazla RAM kullanan 10 VM?'],
+      '/rvtools':                ['Kaç VM var?', 'Snapshot var mı?', 'En fazla RAM kullanan 10 VM?', 'Kapalı VM\'ler neler?'],
+      '/licenses':               ['Lisans envanteri', 'Süresi dolmuş lisanslar?', '30 gün içinde dolacak lisanslar?'],
+      '/operations':             ['Bekleyen operasyonlar', 'Başarısız işlemler?', 'Bugün tamamlanan işlemler?'],
+      '/calculator':             ['Teklifler neler?', '32 GB RAM, 8 CPU, 500 GB disk maliyeti?'],
+      '/vm-host':                ['ESXi host listesi', 'Hangi host\'ta en çok VM var?'],
+      '/physical':               ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/opmanager':              ['Fiziksel cihaz durumu', 'Down olan cihazlar?', 'Kritik alarmlar var mı?'],
+      '/reports/notags-vms':     ['Tag\'siz VM\'ler neler?'],
+      '/reports/poc-vms':        ['POC VM\'ler neler?'],
+      '/reports/willdelete-vms': ['Silinecek VM\'ler neler?'],
+      '/reports/poweredoff-vms': ['Kapalı VM\'ler neler?'],
+    },
+    en: {
+      '/vcenter':                ['How many VMs are there?', 'Which VMs are powered off?', 'Which VMs are untagged?', 'Top 10 VMs by RAM usage?'],
+      '/rvtools':                ['How many VMs are there?', 'Are there any snapshots?', 'Top 10 VMs by RAM usage?', 'Which VMs are powered off?'],
+      '/licenses':               ['License inventory', 'Which licenses have expired?', 'Which licenses expire within 30 days?'],
+      '/operations':             ['Pending operations', 'Failed operations?', 'Operations completed today?'],
+      '/calculator':             ['What are the quotes?', 'Cost for 32 GB RAM, 8 CPU, 500 GB disk?'],
+      '/vm-host':                ['ESXi host list', 'Which host has the most VMs?'],
+      '/physical':               ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/opmanager':              ['Physical device status', 'Which devices are down?', 'Are there any critical alarms?'],
+      '/reports/notags-vms':     ['Which VMs are untagged?'],
+      '/reports/poc-vms':        ['What are the POC VMs?'],
+      '/reports/willdelete-vms': ['Which VMs are marked for deletion?'],
+      '/reports/poweredoff-vms': ['Which VMs are powered off?'],
+    },
+  };
+  const DASHBOARD_SUGGESTIONS = {
+    tr: ['Altyapımı özetle', 'Kaç VM var?', 'Bekleyen operasyonlar', 'Süresi dolmuş lisanslar?'],
+    en: ['Summarize my infrastructure', 'How many VMs are there?', 'Pending operations', 'Which licenses have expired?'],
+  };
+  const DEFAULT_SUGGESTIONS = {
+    tr: [
+      'Kaç VM var?',
+      'Tag\'siz VM\'ler neler?',
+      'Lisans envanteri',
+      'Bekleyen operasyonlar',
+      'Fiziksel cihaz durumu',
+      'Teklifler neler?',
+      'ESXi host listesi',
+      'Silinecek VM\'ler?',
+      'Süresi dolmuş lisanslar?',
+      '32 GB RAM, 8 CPU, 500 GB disk maliyeti?',
+    ],
+    en: [
+      'How many VMs are there?',
+      'Which VMs are untagged?',
+      'License inventory',
+      'Pending operations',
+      'Physical device status',
+      'What are the quotes?',
+      'ESXi host list',
+      'Which VMs are marked for deletion?',
+      'Which licenses have expired?',
+      'Cost for 32 GB RAM, 8 CPU, 500 GB disk?',
+    ],
+  };
+
+  /* ── Sayfaya göre hazır soru listesini seç ── */
+  function _pageSuggestions() {
+    const root = document.getElementById('ai-root');
+    const path = (root && root.dataset.page) || '/';
+    const lang = _lang();
+    if (path === '/') return DASHBOARD_SUGGESTIONS[lang];
+    const map = SUGGESTION_MAP[lang];
+    const keys = Object.keys(map).sort((a, b) => b.length - a.length);
+    for (const k of keys) {
+      if (path === k || path.startsWith(k + '/')) return map[k];
+    }
+    return DEFAULT_SUGGESTIONS[lang];
+  }
+
+  /* ── Apply static chrome translations ── */
+  function _applyWidgetI18n() {
+    const btn = document.getElementById('ai-btn');
+    if (btn) { btn.title = _wt('title'); btn.setAttribute('aria-label', _wt('openLabel')); }
+    const win = document.getElementById('ai-win');
+    if (win) win.setAttribute('aria-label', _wt('title'));
+    const titleTxt = document.getElementById('ai-title-txt');
+    if (titleTxt) titleTxt.textContent = _wt('title');
+    const statusTxt = document.getElementById('ai-status-txt');
+    if (statusTxt) statusTxt.textContent = _wt('statusIdle');
+    const closeBtn = document.getElementById('ai-close-btn');
+    if (closeBtn) closeBtn.title = _wt('close');
+    const inp = document.getElementById('ai-input');
+    if (inp) { inp.placeholder = _wt('inputPh'); inp.setAttribute('aria-label', _wt('inputAria')); }
+    const sendBtn = document.getElementById('ai-send');
+    if (sendBtn) { sendBtn.title = _wt('sendTitle'); sendBtn.setAttribute('aria-label', _wt('sendAria')); }
+    const footNote = document.getElementById('ai-footer-note');
+    if (footNote) footNote.innerHTML = _wt('footerNote');
+  }
+
+  let _open = false;
+  let _busy = false;
+
+  /* ── Bold markdown (**text**) → <strong> ── */
+  function _md(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/\n/g, '<br>');
+  }
+  function _e(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Scroll to bottom ── */
+  function _scroll() {
+    const m = document.getElementById('ai-msgs');
+    if (m) m.scrollTop = m.scrollHeight;
+  }
+
+  /* ── Follow-up suggestions after bot response ── */
+  function _addFollowSuggestions(suggestions) {
+    if (!suggestions || !suggestions.length) return;
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const row = document.createElement('div');
+    row.className = 'ai-follow-row';
+    const lbl = document.createElement('div');
+    lbl.className = 'ai-follow-label';
+    lbl.textContent = _wt('followLabel');
+    row.appendChild(lbl);
+    for (const s of suggestions) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-follow-chip';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      row.appendChild(btn);
+    }
+    msgs.appendChild(row);
+    _scroll();
+  }
+
+  /* ── Append message bubble ── */
+  function _addBubble(role, html, detail, extra) {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    // Remove initial suggestions and any follow-up rows
+    const sug = msgs.querySelector('#ai-suggestions');
+    if (sug) sug.remove();
+    msgs.querySelectorAll('.ai-follow-row').forEach(el => el.remove());
+
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column';
+
+    const bbl = document.createElement('div');
+    bbl.className = `ai-bubble ${role}`;
+    bbl.innerHTML = html;
+    wrap.appendChild(bbl);
+
+    if (detail) {
+      const det = document.createElement('div');
+      det.className = 'ai-detail';
+      det.innerHTML = _md(detail);
+      wrap.appendChild(det);
+    }
+    if (extra) {
+      const ex = document.createElement('div');
+      ex.innerHTML = extra;
+      wrap.appendChild(ex);
+    }
+    msgs.appendChild(wrap);
+    _scroll();
+    return wrap;
+  }
+
+  /* ── Typing indicator ── */
+  function _showTyping() {
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return null;
+    const el = document.createElement('div');
+    el.id = 'ai-typing-el';
+    el.className = 'ai-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    msgs.appendChild(el);
+    _scroll();
+    return el;
+  }
+  function _removeTyping() {
+    const el = document.getElementById('ai-typing-el');
+    if (el) el.remove();
+  }
+
+  /* ── Render bot response ── */
+  function _renderBot(data) {
+    const type = data.type || '';
+
+    if (type === 'cost' && data.table) {
+      const [hComp, hQty, hAmt] = _wt('costHeaders');
+      let tbl = `<table class="ai-cost-table">
+        <thead><tr><th>${_e(hComp)}</th><th>${_e(hQty)}</th><th>${_e(hAmt)}</th></tr></thead><tbody>`;
+      for (const [comp, qty, price] of data.table) {
+        tbl += `<tr><td>${_e(comp)}</td><td>${_e(qty)}</td><td style="text-align:right;font-weight:600">${_e(price)}</td></tr>`;
+      }
+      tbl += `</tbody></table>`;
+      if (data.total) {
+        tbl += `<div class="ai-cost-total">${_e(data.total)}</div>`;
+      }
+      _addBubble('bot', _md(data.answer) + tbl, '', _chip(_wt('chipCost'), 'calculator'));
+      return;
+    }
+
+    if (type === 'vm_count' || type === 'vm_filter') {
+      const detail = data.detail || '';
+      _addBubble('bot', _md(data.answer), detail, _chip(_wt('chipVcenter'), 'vcenter'));
+      return;
+    }
+
+    if (type === 'llm') {
+      const model = data.model ? _e(data.model) : 'AI';
+      _addBubble('bot', _md(data.answer), '', _chip(model, 'llm'));
+      return;
+    }
+
+    if (type === 'error') {
+      _addBubble('error', _md(data.answer), '', '');
+      return;
+    }
+
+    // cost_hint / unknown / fallback
+    _addBubble('bot', _md(data.answer), '', '');
+  }
+
+  function _chip(label, kind) {
+    const icons = {
+      vcenter:    '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>',
+      calculator: '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>',
+      llm:        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
+    };
+    return `<span class="ai-chip">${icons[kind] || ''} ${_e(label)}</span>`;
+  }
+
+  /* ── Send question ── */
+  async function aiSend() {
+    if (_busy) return;
+    const inp = document.getElementById('ai-input');
+    const q   = (inp.value || '').trim();
+    if (!q) return;
+
+    inp.value = '';
+    inp.style.height = '';
+    _addBubble('user', _e(q), '', '');
+
+    _busy = true;
+    document.getElementById('ai-send').disabled = true;
+    const tyEl = _showTyping();
+
+    try {
+      const r = await fetch('/ai/chat', {
+        method:  'POST',
+        headers: {'Content-Type': 'application/json'},
+        body:    JSON.stringify({ q, lang: _lang() }),
+      });
+      _removeTyping();
+      if (!r.ok) { _addBubble('error', _wt('serverError') + r.status + ')', '', ''); return; }
+      const data = await r.json();
+      _renderBot(data);
+      _addFollowSuggestions(data.suggestions || []);
+    } catch (err) {
+      _removeTyping();
+      _addBubble('error', _wt('connError') + _e(err.message), '', '');
+    } finally {
+      _busy = false;
+      document.getElementById('ai-send').disabled = false;
+      inp.focus();
+    }
+  }
+
+  /* ── Toggle open/close ── */
+  function aiToggle() {
+    _open = !_open;
+    const win = document.getElementById('ai-win');
+    const btn = document.getElementById('ai-btn');
+    win.classList.toggle('visible', _open);
+    win.setAttribute('aria-hidden', String(!_open));
+    btn.setAttribute('aria-expanded', String(_open));
+    btn.classList.toggle('open', _open);
+    document.getElementById('ai-btn-open').style.display  = _open ? 'none' : '';
+    document.getElementById('ai-btn-close').style.display = _open ? '' : 'none';
+    document.getElementById('ai-dot').style.display = 'none';
+    if (_open) {
+      document.getElementById('ai-input').focus();
+      _scroll();
+    }
+  }
+
+  /* ── Textarea auto-resize ── */
+  function aiResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+  }
+
+  /* ── Enter key handling ── */
+  function aiKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      aiSend();
+    }
+  }
+
+  /* ── Build suggestions ── */
+  function _buildSuggestions() {
+    const div = document.createElement('div');
+    div.id = 'ai-suggestions';
+    for (const s of _pageSuggestions()) {
+      const btn = document.createElement('button');
+      btn.className = 'ai-sug';
+      btn.textContent = s;
+      btn.onclick = () => {
+        document.getElementById('ai-input').value = s;
+        aiSend();
+      };
+      div.appendChild(btn);
+    }
+    return div;
+  }
+
+  /* ── Init welcome ── */
+  function _init() {
+    _applyWidgetI18n();
+    const msgs = document.getElementById('ai-msgs');
+    if (!msgs) return;
+    const bbl = document.createElement('div');
+    bbl.className = 'ai-bubble bot';
+    bbl.innerHTML = _md(WELCOME[_lang()]);
+    msgs.appendChild(bbl);
+    msgs.appendChild(_buildSuggestions());
+
+    // Check Ollama status quietly
+    fetch('/ai/status').then(r => r.json()).then(d => {
+      if (d.ollama && d.model) {
+        const txt = document.getElementById('ai-status-txt');
+        if (txt) txt.textContent = `Ollama · ${d.model}`;
+      }
+    }).catch(() => {});
+
+    // Show unread dot if window is closed after 1.5 s
+    setTimeout(() => {
+      if (!_open) document.getElementById('ai-dot').style.display = '';
+    }, 1500);
+  }
+
+  // Expose to HTML inline handlers
+  window.aiToggle = aiToggle;
+  window.aiSend   = aiSend;
+  window.aiResize = aiResize;
+  window.aiKey    = aiKey;
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', _init);
+  } else {
+    _init();
+  }
+})();
+</script>
+
+</body></html>

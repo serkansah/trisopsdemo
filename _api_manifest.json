@@ -1,0 +1,22 @@
+{
+  "/ai/status": "01117d948a3c7eab.json",
+  "/dashboard/data": "e1966a4dad859668.json",
+  "/admin/vm-categories/vms": "6774cb9f65738881.json",
+  "/settings/maintenance/status": "1172a8413c06a956.json",
+  "/vcenter/data?source=cache": "a8c5ed20cd3b7b03.json",
+  "/reports/poweredoff-vms/data": "3b760a3712a399b4.json",
+  "/reports/willdelete-vms/data": "4e615f01e6da3ed8.json",
+  "/reports/notags-vms/data": "b76b7ad4b8995614.json",
+  "/reports/poc-vms/data": "97320d7b6792129f.json",
+  "/reports/backup-check/data": "f921cc7a56e23d1e.json",
+  "/physical/data": "6816050476ffba29.json",
+  "/cmdb/history-status": "29b7aac9ef637e39.json",
+  "/backup/settings-data": "a148e78180225c8a.json",
+  "/backup/list": "ec4272096d32d562.json",
+  "/reports/zerto/data": "6bbd87b4f2dc477c.json",
+  "/rvtools/summary?date=": "6639ade22e1ea815.json",
+  "/reports/rvtools-changes/data?days=7": "5dcda40fe3869a09.json",
+  "/capacity/data": "2983dcc916bdebb5.json",
+  "/operations/queue": "dc2314344f447214.json",
+  "/finops/data": "3ebd1ced780ee474.json"
+}
