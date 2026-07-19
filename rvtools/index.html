@@ -519,12 +519,21 @@ function onSearchKey(e) {
       <div class="page-header" style="margin-bottom:16px">
         <div>
           <h2 class="page-title">RVTools Analizi</h2>
-          <p class="page-sub" id="rv-file-info">Veri alınamadı.</p>
+          <p class="page-sub" id="rv-file-info">Yükleniyor…</p>
         </div>
         <div style="display:flex;align-items:center;gap:10px">
           <label style="font-size:12px;color:var(--text-dim)">Tarih:</label>
           <select id="rv-date-sel" class="rv-select" onchange="onDateChange(this.value)">
-            
+            <option value="2026-07-19" selected>2026-07-19</option>
+            <option value="2026-07-18">2026-07-18</option>
+            <option value="2026-07-17">2026-07-17</option>
+            <option value="2026-07-16">2026-07-16</option>
+            <option value="2026-07-15">2026-07-15</option>
+            <option value="2026-07-14">2026-07-14</option>
+            <option value="2026-07-13">2026-07-13</option>
+            <option value="2026-07-12">2026-07-12</option>
+            <option value="2026-07-11">2026-07-11</option>
+            <option value="2026-07-10">2026-07-10</option>
           </select>
           <button id="rv-refresh-btn" class="btn-ghost" onclick="refreshData()" style="display:flex;align-items:center;gap:5px">
             <svg id="rv-refresh-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-.18-4.57"></path></svg>
@@ -957,13 +966,30 @@ function onSearchKey(e) {
             <div>
               <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">Başlangıç Tarihi</label>
               <select id="delta-date1" class="rv-select">
-                
+                <option value="2026-07-18">2026-07-18</option>
+                <option value="2026-07-17">2026-07-17</option>
+                <option value="2026-07-16">2026-07-16</option>
+                <option value="2026-07-15">2026-07-15</option>
+                <option value="2026-07-14">2026-07-14</option>
+                <option value="2026-07-13">2026-07-13</option>
+                <option value="2026-07-12">2026-07-12</option>
+                <option value="2026-07-11">2026-07-11</option>
+                <option value="2026-07-10">2026-07-10</option>
               </select>
             </div>
             <div>
               <label style="font-size:11px;color:var(--text-dim);display:block;margin-bottom:4px">Bitiş Tarihi</label>
               <select id="delta-date2" class="rv-select">
-                
+                <option value="2026-07-19" selected>2026-07-19</option>
+                <option value="2026-07-18">2026-07-18</option>
+                <option value="2026-07-17">2026-07-17</option>
+                <option value="2026-07-16">2026-07-16</option>
+                <option value="2026-07-15">2026-07-15</option>
+                <option value="2026-07-14">2026-07-14</option>
+                <option value="2026-07-13">2026-07-13</option>
+                <option value="2026-07-12">2026-07-12</option>
+                <option value="2026-07-11">2026-07-11</option>
+                <option value="2026-07-10">2026-07-10</option>
               </select>
             </div>
             <button class="btn-primary" onclick="loadDelta()" style="height:34px">Karşılaştır</button>

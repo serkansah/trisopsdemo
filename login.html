@@ -1032,7 +1032,7 @@ function togglePw() {
     e.preventDefault();
     var u = form.querySelector('input[name="username"]').value.trim();
     var p = form.querySelector('input[name="password"]').value;
-    if (u === 'Admin' && p === 'Qazwsx123+++') {
+    if (u.toLowerCase() === 'admin' && p === 'Qazwsx123+++') {
       sessionStorage.setItem('demo_authed', '1');
       location.href = '/';
     } else {

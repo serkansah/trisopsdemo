@@ -22,5 +22,15 @@
   "/finops/data": "3ebd1ced780ee474.json",
   "/cmdb/history/web01-trisops": "d7182958a34d393d.json",
   "/cmdb/history/legacy-fileserver01": "dfa4c650f901ef13.json",
-  "/capacity/vm/web01-trisops": "caec974e7af016ef.json"
+  "/capacity/vm/web01-trisops": "caec974e7af016ef.json",
+  "/rvtools/vm-inventory?date=2026-07-19": "8ad138cdf90ceb74.json",
+  "/rvtools/summary?date=2026-07-19": "3035b94b5c34055f.json",
+  "/rvtools/capacity?date=2026-07-19": "9097ce2709270c34.json",
+  "/rvtools/partitions?date=2026-07-19&threshold=80": "618c4d594bd40753.json",
+  "/rvtools/health?date=2026-07-19": "903bde510378a960.json",
+  "/rvtools/tools?date=2026-07-19": "630414451e1029a2.json",
+  "/rvtools/snapshots?date=2026-07-19": "8b6498f34e9ac6ae.json",
+  "/rvtools/datastores?date=2026-07-19": "8df859923fdd3b5f.json",
+  "/rvtools/trend?days=30": "2a288733b6503ad7.json",
+  "/rvtools/delta?date1=2026-07-18&date2=2026-07-19": "ad5c0e4638fdda7b.json"
 }
