@@ -4,7 +4,7 @@ Bu repo, Trisops (PS Portal) uygulamasının **statik, backend'siz bir demo klon
 uydurma (dummy) verilerle önceden oluşturulmuş HTML sayfalarından oluşur; sunucu, veritabanı
 veya gerçek entegrasyon yoktur.
 
-- Giriş: **Admin** / **Qazwsx123+++**
+- Giriş: **** / ****
 - Tüm veriler kurgusaldır; gerçek müşteri/altyapı bilgisi içermez.
 - Sayfa içi "kaydet/aç/kapat" gibi işlemler tarayıcıda simüle edilir, hiçbir istek bu sitenin
   dışına çıkmaz (bkz. `demo-shim.js`).
